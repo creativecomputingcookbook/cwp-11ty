@@ -1,0 +1,36 @@
+---
+layout: 'layouts/base.webc'
+---
+
+<main id="main-content" tabindex="-1">
+<!-- fix height -->
+<div style="background: #F2F2F2" class="flex h-600 justify-end">
+  <div class="py-4 md:py-8 prose md:prose-base prose-sm prose-gray text-gray-500 md:max-w-1/2 px-4">
+    <template @raw="content" webc:nokeep></template>
+  </div>
+</div>
+<div class="md:w-2/3">
+
+  <!-- https://codepen.io/MPDoctor/pen/mpJdYe MIT license -->
+  <div class="tabbed">
+		<input type="radio" id="tab21" name="css-tabs2" checked>
+		<input type="radio" id="tab22" name="css-tabs2">
+		
+		<ul class="tabs">
+			<li class="tab"><label for="tab21">Foundations</label></li>
+			<li class="tab"><label for="tab22">Builds</label></li>
+		</ul>
+		
+		<div class="tab-content">
+      <div class="px-4 grid md:grid-cols-2">
+        <listing-item webc:for="item of collections.foundations" @attributes="item"></listing-item>
+      </div>
+		</div>
+		
+		<div class="tab-content">
+      <div class="px-4 grid md:grid-cols-2">
+        <listing-item webc:for="item of collections.builds" @attributes="item"></listing-item>
+      </div>
+		</div>
+	</div>
+</div>

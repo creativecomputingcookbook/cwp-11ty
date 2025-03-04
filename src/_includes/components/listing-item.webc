@@ -1,0 +1,6 @@
+<div class="p-4">
+    <a :href="url">
+        <img :src="data.thumbnail"></img>
+        <p @text="data.title"></p>
+    </a>
+</div>

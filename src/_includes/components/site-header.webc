@@ -1,0 +1,39 @@
+<header>
+  <nav class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-end">
+      <ul class="flex space-x-4">
+        <script webc:type="js">
+          const items = $data.navigation.items;
+          const page = $data.page;
+
+          items
+            .map((item) => {
+              let current;
+              let highlight;
+
+              if (item.url === page.url) {
+                current = 'aria-current="page"';
+                highlight = 'cursor-default';
+              } else {
+                current = '';
+                highlight = 'underline';
+              }
+
+              return `
+                <li>
+                  <a
+                    href="${item.url}"
+                    class="text-base font-bold ${highlight}"
+                    ${current}
+                  >
+                    ${item.text}
+                  </a>
+                </li>
+              `}
+            )
+            .join('');
+        </script>
+      </ul>
+    </div>
+  </nav>
+</header>
