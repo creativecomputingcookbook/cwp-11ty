@@ -58,3 +58,16 @@
 .tabbed [type="radio"]:nth-of-type(2):checked ~ .tab-content:nth-of-type(2) {
 	display: block;
 }
+
+/* collapsible */
+summary {
+	background-color: #B0DC9C;
+	color: #000;
+	cursor: pointer;
+	padding: 10px;
+	font-weight: bold;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+}
