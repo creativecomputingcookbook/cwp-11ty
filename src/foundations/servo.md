@@ -13,10 +13,10 @@ A **servo motor** is like a tiny robot motor that can turn to a specific positio
 
 When you're using an **Arduino**, you can program it to tell the servo motor how far to turn. Inside the servo, there's a sensor that tells it when it's reached the right spot, so it knows when to stop moving. This makes it great for projects where you need precise movement, like making a robot move its arm to pick something up!
 
-### 360° Servo
-
-A 360-degree servo motor is a type of motor that can rotate continuously in either direction, just like a regular motor. Unlike a standard servo, which moves to a specific angle and stops, this one spins around like a wheel, and with an Arduino, you can control how fast it turns and in which direction, making it useful for things like moving wheels on a robot or conveyor belts.
-
-TODO: placeholder
+<collapsible title="360° Servo">
+A **360-degree servo motor** is a type of motor that can rotate continuously in either direction, just like a regular motor. Unlike a standard servo, which moves to a specific angle and stops, this one spins around like a wheel, and with an Arduino, you can control how fast it turns and in which direction, making it useful for things like moving wheels on a robot or conveyor belts.
+</collapsible>
 
 ### 180° Servo
+
+TODO...
