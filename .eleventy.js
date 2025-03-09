@@ -1,7 +1,7 @@
-const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite');
 const EleventyWebcPlugin = require('@11ty/eleventy-plugin-webc');
 
-module.exports = function (eleventyConfig) {
+module.exports = async function (eleventyConfig) {
+  const EleventyVitePlugin = (await import("@11ty/eleventy-plugin-vite")).default;
   eleventyConfig.addPlugin(EleventyVitePlugin);
   eleventyConfig.addPlugin(EleventyWebcPlugin, {
     components: 'src/_includes/components/**/*.webc',
@@ -44,16 +44,16 @@ module.exports = function (eleventyConfig) {
     // Change the default file encoding for reading/serving files
     encoding: 'utf-8',
   });
+};
 
-  return {
-    dir: {
-      input: 'src',
-      output: '_site',
-    },
-    passthroughFileCopy: true,
-    templateFormats: ['html', 'md', 'webc'],
-    htmlTemplateEngine: 'webc',
-    dataTemplateEngine: 'webc',
-    markdownTemplateEngine: 'webc',
-  };
+module.exports.config = {
+  dir: {
+    input: 'src',
+    output: '_site',
+  },
+  passthroughFileCopy: true,
+  templateFormats: ['html', 'md', 'webc'],
+  htmlTemplateEngine: 'webc',
+  dataTemplateEngine: 'webc',
+  markdownTemplateEngine: 'webc',
 };
