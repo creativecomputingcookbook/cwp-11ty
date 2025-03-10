@@ -5,8 +5,6 @@ thumbnail: '/images/servo.png'
 meta:
   desc:
     "A servo motor is like a tiny robot motor that can turn to a specific position. Here's how you can program it in Arduino!"
-intro:
-  title: 'Servo Motor'
 ---
 
 A **servo motor** is like a tiny robot motor that can turn to a specific position. Imagine you're controlling the steering wheel of a toy car. You can tell the car to turn its wheels left, right, or keep them straight. A servo motor works in a similar way, but instead of a wheel, it can move things like robot arms or dials to exactly where you want them to go.
