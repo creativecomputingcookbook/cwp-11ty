@@ -60,7 +60,7 @@
 }
 
 /* collapsible */
-summary {
+.collapsible-header-build {
 	background-color: #B0DC9C;
 	color: #000;
 	cursor: pointer;

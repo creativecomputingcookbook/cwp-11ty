@@ -1,5 +1,5 @@
 <details>
-<summary @raw="title"></summary>
+<summary class="collapsible-header-build" @raw="title"></summary>
 <template webc:type="11ty" 11ty:type="liquid,md">
     {{ slots.text.default }}
 </template>
