@@ -71,3 +71,15 @@
 	text-align: left;
 	outline: none;
 }
+
+h3 {
+	background-color: #B0DC9C;
+	color: #000;
+	cursor: pointer;
+	padding: 10px;
+	font-weight: bold;
+	width: fit-content;
+	border: none;
+	text-align: left;
+	outline: none;
+}
