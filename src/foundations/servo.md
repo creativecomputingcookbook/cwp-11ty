@@ -1,6 +1,7 @@
 ---
 title: 'Servo Motor'
 parsons: 'servo-motor'
+related: ['Corporate in Red']
 thumbnail: '/images/servo.png'
 meta:
   desc:

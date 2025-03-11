@@ -7,6 +7,11 @@ module.exports = async function (eleventyConfig) {
     components: 'src/_includes/components/**/*.webc',
   });
 
+  eleventyConfig.addFilter('findPostByTitles', (arr, titles) => {
+    if (!arr || !titles) return [];
+    return arr.filter((post) => titles.indexOf(post.data.title) > -1);
+  });
+
   // Static assets to pass through
   eleventyConfig.addPassthroughCopy('./src/images');
   eleventyConfig.addPassthroughCopy('./src/public');
