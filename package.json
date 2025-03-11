@@ -1,7 +1,6 @@
 {
-  "name": "11st-starter-kit",
-  "description": "11ty, powered by Vite with Tailwind CSS and Alpine.js.",
-  "version": "3.0.0",
+  "name": "cwp-11ty",
+  "version": "0.0.1",
   "engines": {
     "node": "18.x.x",
     "npm": "10.x.x"
@@ -9,28 +8,13 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:stefanfrede/11st-starter-kit.git"
+    "url": "git@github.com:creativecomputingcookbook/cwp-11ty.git"
   },
-  "keywords": [
-    "alpinejs",
-    "eleventy",
-    "jamstack",
-    "liquidjs",
-    "netlify",
-    "pwa",
-    "tailwindcss",
-    "vite"
-  ],
   "author": {
     "name": "Stefan Frede",
     "email": "stefan@frede.dev"
   },
-  "license": "MIT",
   "private": true,
-  "bugs": {
-    "url": "https://github.com/stefanfrede/11st-starter-kit/issues"
-  },
-  "homepage": "https://11st-starter-kit.netlify.app",
   "lint-staged": {
     "*.html": "prettier --write",
     "*.css": "stylelint --cache --fix",

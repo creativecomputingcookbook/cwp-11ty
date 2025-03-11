@@ -1,3 +1,15 @@
+11ty project for the Creative Cookbook project.
+
+Current custom features for content writers are
+
+* `related` front matter
+* `collapsible` element
+* `parsons` element (TODO)
+
+Below is the documentation for `11st-starter-kit` which was used as the starter project; that is licensed MIT. This project is all rights reserved *for now*.
+
+---
+
 # 📦 11st-Starter-Kit
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -41,25 +53,6 @@ npm run preview
 Open http://localhost:5000/ to view it in your browser.
 
 Your code is now ready to be deployed!
-
-## Netlify
-
-To get your own instance of this 11st-Starter-Kit cloned and deploying to
-Netlify very quickly, just click the button below and follow the instructions.
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" />](https://app.netlify.com/start/deploy?repository=https://github.com/stefanfrede/11st-starter-kit)
-
-### Add some Netlify helpers
-
-Netlify Dev adds the ability to use Netlify redirects, proxies, and serverless functions.
-
-```bash
-# install the Netlify CLI in order to get netlify dev
-npm install -g netlify-cli
-
-# run a local server with some added Netlify sugar
-netlify dev
-```
 
 ## Code Quality
 
