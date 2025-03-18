@@ -43,6 +43,7 @@
 
     <div @html="content"></div>
 
+    <script @raw="getBundle('js')" webc:keep></script>
     <script type="module" src="/main.js" webc:keep></script>
   </body>
 </html>
