@@ -2,14 +2,47 @@
 layout: 'layouts/base.webc'
 ---
 
+<script>
+document.addEventListener('alpine:init', () => {
+  Alpine.store('filter', {
+    tags: [],
+
+    set(tags) {
+      this.tags = tags;
+    },
+  });
+});
+
+// https://codepen.io/rblasam/pen/gOWrNMy
+
+function item(settings) {
+  return {
+    tags: settings.tags,
+
+    get tagFilters() {
+      return this.$store.filter.tags;
+    },
+
+    get shouldShow() {
+      console.log("tagFilters", this.tagFilters);
+      console.log("tags", this.tags);
+      return (
+        !this.tagFilters.length ||
+        this.tagFilters.all((v) => this.tags.includes(v))
+      );
+    },
+  };
+}
+</script>
+
 <main id="main-content" tabindex="-1">
 <!-- fix height -->
-<div style="background: #F2F2F2" class="flex h-600 justify-end">
+<div style="background: #F2F2F2" class="flex justify-end">
   <div class="py-4 md:py-8 prose md:prose-base prose-sm prose-gray text-gray-500 md:max-w-1/2 px-4">
     <template @raw="content" webc:nokeep></template>
   </div>
 </div>
-<div class="md:w-2/3">
+<div>
 
   <!-- https://codepen.io/MPDoctor/pen/mpJdYe MIT license -->
   <div class="tabbed">
@@ -21,15 +54,42 @@ layout: 'layouts/base.webc'
 			<li class="tab"><label for="tab22">Builds</label></li>
 		</ul>
 		
-		<div class="tab-content">
-      <div class="px-4 grid md:grid-cols-2">
-        <listing-item webc:for="item of collections.foundations" @attributes="item"></listing-item>
+		<div class="tab-content md:flex" x-data="{
+      setup: {
+        test1: ['test2', 'test3'],
+      },
+
+      get tags() {
+        return this.$store.filter.tags;
+      },
+      set tags(value) {
+        this.$store.filter.set(value);
+      },
+    }">
+      <div class="p-4 md:flex-1">
+        <template x-for="category in Object.keys(setup)">
+          <div>
+            <h3 x-text="category"></h3>
+            <template x-for="tag of setup[category]">
+              <label>
+                <input type="checkbox" x-bind:value="tag" x-model="tags">
+                <span x-text="tag"></span>
+              </label>
+            </template>
+          </div>
+        </template>
+      </div>
+      <div class="p-4 grid md:grid-cols-2 lg:grid-cols-3 md:flex-3">
+        <listing-item-home webc:for="item of collections.foundations" @attributes="item"></listing-item>
       </div>
 		</div>
 		
-		<div class="tab-content">
-      <div class="px-4 grid md:grid-cols-2">
-        <listing-item webc:for="item of collections.builds" @attributes="item"></listing-item>
+		<div class="tab-content md:flex">
+      <div class="p-4 md:flex-1">
+        <h3>test</h3>
+      </div>
+      <div class="p-4 grid md:grid-cols-2 lg:grid-cols-3 md:flex-3">
+        <listing-item-home webc:for="item of collections.builds" @attributes="item"></listing-item>
       </div>
 		</div>
 	</div>
