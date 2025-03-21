@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" class="leading-tight text-gray-900 antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Home :: Cookbook Demo</title>
+
+
+    <link rel="canonical" href="https://localhost:8000/">
+
+
+    <meta property="og:site_name" content="Cookbook Demo">
+  <meta property="og:title" content="Home :: Cookbook Demo">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://localhost:8000/">
+  
+
+
+    <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://localhost:8000/images/social-share.png">
+  <meta name="twitter:image" content="https://localhost:8000/images/social-share.png">
+  <meta property="og:image:alt" content="Page image for Cookbook Demo">
+  <meta name="twitter:image:alt" content="Page image for Cookbook Demo">
+  
+
+
+    <meta name="description" content="Our cookbook is designed to help both students and teachers explore and achieve their learning goals in a structured and engaging way.">
+  <meta name="twitter:description" content="Our cookbook is designed to help both students and teachers explore and achieve their learning goals in a structured and engaging way.">
+  <meta property="og:description" content="Our cookbook is designed to help both students and teachers explore and achieve their learning goals in a structured and engaging way.">
+  
+
+
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/favicon.ico" type="image/png" sizes="48x48">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="192x192">
+    <link rel="mask-icon" href="/favicon.svg" color="#4a5568">
+
+    <meta name="theme-color" content="#4a5568">
+
+    <!-- Preconnect to the font file origin -->
+    <link rel="preconnect" href="https://rsms.me" crossorigin>
+
+    <!-- Preload the font stylesheet asynchronously with low priority -->
+    <link rel="preload" href="https://rsms.me/inter/inter.css" as="style">
+
+    <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
+    <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
+    <script type="module" crossorigin src="/assets/main-j8sF5EwP.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-bpH_tCk9.css">
+  </head>
+  <body data-env="{{ node.env }}" class="min-h-screen bg-white">
+    <header>
+  <nav class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-end">
+      <ul class="flex space-x-4">
+        <li>
+                  <a href="/" aria-current="page" class="text-base font-bold cursor-default">
+                    Home
+                  </a>
+                </li>
+              
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <div><main id="main-content" tabindex="-1">
+<!-- fix height -->
+<div style="background: #F2F2F2" class="flex justify-end">
+  <div class="py-4 md:py-8 prose md:prose-base prose-sm prose-gray text-gray-500 md:max-w-1/2 px-4">
+    <p>Our cookbook is designed to help both students and teachers explore and achieve their learning goals in a structured and engaging way. It offers a variety of resources, guides, and activities to support your educational journey.</p>
+<ul>
+<li>Foundations: Provide students with the resources and small exercises needed to learn and master core concepts.</li>
+<li>Builds: Showcase students’ final projects, emphasizing their connection to foundational learning and activity design.
+<ul>
+<li>Activities: Teacher-designed instructional guidance and course resources to help students complete learning tasks and achieve goals.</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+<div>
+
+  <!-- https://codepen.io/MPDoctor/pen/mpJdYe MIT license -->
+  <div class="tabbed">
+		<input type="radio" id="tab21" name="css-tabs2" checked>
+		<input type="radio" id="tab22" name="css-tabs2">
+		
+		<ul class="tabs">
+			<li class="tab"><label for="tab21">Foundations</label></li>
+			<li class="tab"><label for="tab22">Builds</label></li>
+		</ul>
+		
+		<div x-data="{
+      setup: {
+        test1: ['test2', 'test3'],
+      },
+
+      get tags() {
+        return this.$store.filter.tags;
+      },
+      set tags(value) {
+        this.$store.filter.set(value);
+      },
+    }" class="tab-content md:flex">
+      <div class="p-4 md:flex-1">
+        <template x-for="category in Object.keys(setup)">
+          <div>
+            <h3 x-text="category"></h3>
+            <template x-for="tag of setup[category]">
+              <label>
+                <input type="checkbox" x-bind:value="tag" x-model="tags">
+                <span x-text="tag"></span>
+              </label>
+            </template>
+          </div>
+        </template>
+      </div>
+      <div class="p-4 grid md:grid-cols-2 lg:grid-cols-3 md:flex-3">
+        <div x-data="item({ tags: [&quot;foundations&quot;] })" x-show="shouldShow" class="p-4">
+    <a href="/foundations/servo/">
+        <img src="/assets/servo-CRPxB2Hg.png">
+        <p>Servo Motor</p>
+    </a>
+</div></div>
+		</div>
+		
+		<div class="tab-content md:flex">
+      <div class="p-4 md:flex-1">
+        <h3>test</h3>
+      </div>
+      <div class="p-4 grid md:grid-cols-2 lg:grid-cols-3 md:flex-3">
+        <div x-data="item({ tags: [&quot;builds&quot;] })" x-show="shouldShow" class="p-4">
+    <a href="/builds/corporate-in-red/">
+        <img src="/assets/corporate-in-red-DKJ1HPh7.png">
+        <p>Corporate in Red</p>
+    </a>
+</div></div>
+		</div>
+	</div>
+</div></main></div>
+
+    <script>document.addEventListener('alpine:init', () => {
+  Alpine.store('filter', {
+    tags: [],
+
+    set(tags) {
+      this.tags = tags;
+    },
+  });
+});
+
+// https://codepen.io/rblasam/pen/gOWrNMy
+
+function item(settings) {
+  return {
+    tags: settings.tags,
+
+    get tagFilters() {
+      return this.$store.filter.tags;
+    },
+
+    get shouldShow() {
+      console.log("tagFilters", this.tagFilters);
+      console.log("tags", this.tags);
+      return (
+        !this.tagFilters.length ||
+        this.tagFilters.all((v) => this.tags.includes(v))
+      );
+    },
+  };
+}</script>
+  
+
+</body>
+</html>
