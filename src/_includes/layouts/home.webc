@@ -24,11 +24,9 @@ function item(settings) {
     },
 
     get shouldShow() {
-      console.log("tagFilters", this.tagFilters);
-      console.log("tags", this.tags);
       return (
         !this.tagFilters.length ||
-        this.tagFilters.all((v) => this.tags.includes(v))
+        this.tagFilters.every((v) => this.tags.includes(v))
       );
     },
   };
