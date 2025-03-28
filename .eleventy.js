@@ -3,7 +3,11 @@ const syntaxHighlight = require("@pborenstein/eleventy-md-syntax-highlight");
 
 module.exports = async function (eleventyConfig) {
   const EleventyVitePlugin = (await import("@11ty/eleventy-plugin-vite")).default;
-  eleventyConfig.addPlugin(EleventyVitePlugin);
+  const { EleventyHtmlBasePlugin } = await import("@11ty/eleventy");
+  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+  eleventyConfig.addPlugin(EleventyVitePlugin, {
+    viteOptions: { base: `/cwp-11ty` },
+  });
   eleventyConfig.addPlugin(EleventyWebcPlugin, {
     components: 'src/_includes/components/**/*.webc',
   });
@@ -15,10 +19,11 @@ module.exports = async function (eleventyConfig) {
   });
 
   // Static assets to pass through
-  eleventyConfig.addPassthroughCopy('./src/images');
-  eleventyConfig.addPassthroughCopy('./src/public');
-  eleventyConfig.addPassthroughCopy('./src/styles');
-  eleventyConfig.addPassthroughCopy('./src/main.js');
+  eleventyConfig.addPassthroughCopy({
+    ['./src/images']: `cwp-11ty/images`,
+    ['./src/styles']: `cwp-11ty/styles`,
+    ['./src/main.js']: `cwp-11ty/main.js`,
+  });
 
   eleventyConfig.setServerOptions({
     // Default values are shown:
@@ -58,6 +63,7 @@ module.exports.config = {
     input: 'src',
     output: '_site',
   },
+  pathPrefix: "cwp-11ty",
   passthroughFileCopy: true,
   templateFormats: ['html', 'md', 'webc'],
   htmlTemplateEngine: 'webc',
