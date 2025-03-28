@@ -48,8 +48,8 @@
 
     <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
     <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
-    <script type="module" crossorigin src="/assets/main-j8sF5EwP.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/main-bpH_tCk9.css">
+    <script type="module" crossorigin src="/assets/main-BgDkDgUF.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-BOoalpL5.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-white">
     <header>
@@ -81,6 +81,19 @@
 </details>
 <h3>180° Servo</h3>
 <p>TODO...</p>
+<pre style="counter-reset: linenumber 0" class="language-arduino line-numbers"><code class="language-arduino"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"arduino/Arduino.h"</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Don't forget this!</span>
+  <span class="token function">pinMode</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token constant">OUTPUT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">digitalWrite</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token constant">HIGH</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">digitalWrite</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token constant">LOW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1700</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
     </div>
     <div>

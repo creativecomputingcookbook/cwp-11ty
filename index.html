@@ -48,8 +48,8 @@
 
     <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
     <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
-    <script type="module" crossorigin src="/assets/main-j8sF5EwP.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/main-bpH_tCk9.css">
+    <script type="module" crossorigin src="/assets/main-BgDkDgUF.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-BOoalpL5.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-white">
     <header>
@@ -85,20 +85,28 @@
   </div>
 </div>
 <div>
-
-  <!-- https://codepen.io/MPDoctor/pen/mpJdYe MIT license -->
-  <div class="tabbed">
-		<input type="radio" id="tab21" name="css-tabs2" checked>
-		<input type="radio" id="tab22" name="css-tabs2">
-		
-		<ul class="tabs">
-			<li class="tab"><label for="tab21">Foundations</label></li>
-			<li class="tab"><label for="tab22">Builds</label></li>
+		<ul x-data="{
+      tabs: ['Foundations', 'Builds']
+    }" class="tabs">
+      <template x-for="tab in tabs">
+        <li x-on:click="$store.category.set(tab)" x-bind:class="$store.category.category.includes(tab) ? 'tab tab-active' : 'tab'">
+          <label x-text="tab"></label>
+        </li>
+      </template>
 		</ul>
 		
 		<div x-data="{
       setup: {
-        test1: ['test2', 'test3'],
+        Foundations: {
+          test1: ['test2', 'test3'],
+        },
+        Builds: {
+          test4: ['test5', 'test6'],
+        },
+      },
+
+      get currentCategory() {
+        return this.$store.category.category;
       },
 
       get tags() {
@@ -107,12 +115,12 @@
       set tags(value) {
         this.$store.filter.set(value);
       },
-    }" class="tab-content md:flex">
+    }" class="md:flex">
       <div class="p-4 md:flex-1">
-        <template x-for="category in Object.keys(setup)">
+        <template x-for="category in Object.keys(setup[currentCategory])">
           <div>
             <h3 x-text="category"></h3>
-            <template x-for="tag of setup[category]">
+            <template x-for="tag of setup[currentCategory][category]">
               <label>
                 <input type="checkbox" x-bind:value="tag" x-model="tags">
                 <span x-text="tag"></span>
@@ -122,30 +130,30 @@
         </template>
       </div>
       <div class="p-4 grid md:grid-cols-2 lg:grid-cols-3 md:flex-3">
-        <div x-data="item({ tags: [&quot;foundations&quot;] })" x-show="shouldShow" class="p-4">
+        <div x-data="item({ tags: [&quot;Builds&quot;] })" x-show="shouldShow" class="p-4">
+    <a href="/builds/corporate-in-red/">
+        <img src="/assets/corporate-in-red-DKJ1HPh7.png">
+        <p>Corporate in Red</p>
+    </a>
+</div>
+<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4">
     <a href="/foundations/servo/">
         <img src="/assets/servo-CRPxB2Hg.png">
         <p>Servo Motor</p>
     </a>
 </div></div>
-		</div>
-		
-		<div class="tab-content md:flex">
-      <div class="p-4 md:flex-1">
-        <h3>test</h3>
-      </div>
-      <div class="p-4 grid md:grid-cols-2 lg:grid-cols-3 md:flex-3">
-        <div x-data="item({ tags: [&quot;builds&quot;] })" x-show="shouldShow" class="p-4">
-    <a href="/builds/corporate-in-red/">
-        <img src="/assets/corporate-in-red-DKJ1HPh7.png">
-        <p>Corporate in Red</p>
-    </a>
-</div></div>
-		</div>
 	</div>
 </div></main></div>
 
     <script>document.addEventListener('alpine:init', () => {
+  Alpine.store('category', {
+    category: 'Foundations',
+
+    set(category) {
+      this.category = category;
+    }
+  });
+
   Alpine.store('filter', {
     tags: [],
 
@@ -165,8 +173,12 @@ function item(settings) {
       return this.$store.filter.tags;
     },
 
+    get category() {
+      return this.$store.category.category;
+    },
+
     get shouldShow() {
-      return (
+      return this.tags.includes(this.category) && (
         !this.tagFilters.length ||
         this.tagFilters.every((v) => this.tags.includes(v))
       );
