@@ -48,8 +48,8 @@
 
     <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
     <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-BgDkDgUF.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-BOoalpL5.css">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-Cpps7MaV.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-CfUS39_W.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-white">
     <header>
@@ -129,19 +129,24 @@
           </div>
         </template>
       </div>
-      <div class="p-4 grid md:grid-cols-2 lg:grid-cols-3 md:flex-3">
-        <div x-data="item({ tags: [&quot;Builds&quot;] })" x-show="shouldShow" class="p-4">
-    <a href="/cwp-11ty/builds/corporate-in-red/">
-        <img src="/cwp-11ty/assets/corporate-in-red-DKJ1HPh7.png">
-        <p>Corporate in Red</p>
-    </a>
+      <div class="p-4 grid sm:grid-cols-2 lg:grid-cols-3 md:flex-3">
+        <div x-data="item({ tags: [&quot;Builds&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+    <div class="card">
+        <a href="/cwp-11ty/builds/corporate-in-red/" class="card-content">
+            <img src="/cwp-11ty/assets/corporate-in-red-DKJ1HPh7.png" class="card-img">
+            <p>Corporate in Red</p>
+        </a>
+    </div>
 </div>
-<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4">
-    <a href="/cwp-11ty/foundations/servo/">
-        <img src="/cwp-11ty/assets/servo-CRPxB2Hg.png">
-        <p>Servo Motor</p>
-    </a>
-</div></div>
+<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+    <div class="card">
+        <a href="/cwp-11ty/foundations/servo/" class="card-content">
+            <img src="/cwp-11ty/assets/servo-CRPxB2Hg.png" class="card-img">
+            <p>Servo Motor</p>
+        </a>
+    </div>
+</div>
+      </div>
 	</div>
 </div></main></div>
 
