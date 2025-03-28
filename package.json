@@ -50,7 +50,7 @@
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@tailwindcss/postcss": "^4.0.14",
-    "@tailwindcss/typography": "^0.5.0",
+    "@tailwindcss/typography": "^0.5.16",
     "babel-plugin-prismjs": "^2.1.0",
     "browserslist": "^4.16.6",
     "cross-env": "^7.0.3",

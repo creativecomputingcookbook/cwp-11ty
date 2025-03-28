@@ -6,6 +6,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@plugin "@tailwindcss/typography";
+
 /* https://codepen.io/MPDoctor/pen/mpJdYe MIT license */
 
 .tabs {
