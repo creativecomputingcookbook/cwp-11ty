@@ -53,9 +53,6 @@ function item(settings) {
   </div>
 </div>
 <div>
-
-  <!-- https://codepen.io/MPDoctor/pen/mpJdYe MIT license -->
-  <div class="tabbed">
 		<ul class="tabs" x-data="{
       tabs: ['Foundations', 'Builds']
     }">
@@ -105,7 +102,5 @@ function item(settings) {
       <div class="p-4 grid md:grid-cols-2 lg:grid-cols-3 md:flex-3">
         <listing-item-home webc:for="item of collections.all" @attributes="item"></listing-item>
       </div>
-		</div>
-		
 	</div>
 </div>

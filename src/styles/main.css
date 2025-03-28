@@ -11,24 +11,8 @@
 /* https://codepen.io/MPDoctor/pen/mpJdYe MIT license */
 
 .tabs {
+	margin: 16px 12px 8px 12px;
     display: inline-flex;
-    align-items: center;
-    gap: 50px;
-}
-
-.tabbed {
-	overflow-x: hidden; /* so we could easily hide the radio inputs */
-	margin: 32px 0;
-	padding-bottom: 16px;
-}
-
-.tabbed [type="radio"] {
-	/* hiding the inputs */
-	display: none;
-}
-
-.tabs {
-	display: flex;
 	align-items: stretch;
 	list-style: none;
 	padding: 0;
@@ -36,10 +20,11 @@
 
 .tab > label {
 	display: flex;
-    padding: 16px 20px;
+    padding: 12px 15px;
+	margin: 4px;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 15px;
     border: 2px solid #D9D9D9;
 	cursor: pointer;	
 	transition: all 0.3s;
@@ -47,10 +32,6 @@
 
 .tab:hover label {
 	border-color: #333;
-}
-
-.tab-content {
-	display: none;
 }
 
 /* As we cannot replace the numbers with variables or calls to element
