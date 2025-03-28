@@ -4,6 +4,14 @@ layout: 'layouts/base.webc'
 
 <script>
 document.addEventListener('alpine:init', () => {
+  Alpine.store('category', {
+    category: 'Foundations',
+
+    set(category) {
+      this.category = category;
+    }
+  });
+
   Alpine.store('filter', {
     tags: [],
 
@@ -23,8 +31,12 @@ function item(settings) {
       return this.$store.filter.tags;
     },
 
+    get category() {
+      return this.$store.category.category;
+    },
+
     get shouldShow() {
-      return (
+      return this.tags.includes(this.category) && (
         !this.tagFilters.length ||
         this.tagFilters.every((v) => this.tags.includes(v))
       );
@@ -44,17 +56,30 @@ function item(settings) {
 
   <!-- https://codepen.io/MPDoctor/pen/mpJdYe MIT license -->
   <div class="tabbed">
-		<input type="radio" id="tab21" name="css-tabs2" checked>
-		<input type="radio" id="tab22" name="css-tabs2">
-		
-		<ul class="tabs">
-			<li class="tab"><label for="tab21">Foundations</label></li>
-			<li class="tab"><label for="tab22">Builds</label></li>
+		<ul class="tabs" x-data="{
+      tabs: ['Foundations', 'Builds']
+    }">
+      <template x-for="tab in tabs">
+        <li x-on:click="$store.category.set(tab)"
+          x-bind:class="$store.category.category.includes(tab) ? 'tab tab-active' : 'tab'"
+          >
+          <label x-text="tab"></label>
+        </li>
+      </template>
 		</ul>
 		
-		<div class="tab-content md:flex" x-data="{
+		<div class="md:flex" x-data="{
       setup: {
-        test1: ['test2', 'test3'],
+        Foundations: {
+          test1: ['test2', 'test3'],
+        },
+        Builds: {
+          test4: ['test5', 'test6'],
+        },
+      },
+
+      get currentCategory() {
+        return this.$store.category.category;
       },
 
       get tags() {
@@ -65,10 +90,10 @@ function item(settings) {
       },
     }">
       <div class="p-4 md:flex-1">
-        <template x-for="category in Object.keys(setup)">
+        <template x-for="category in Object.keys(setup[currentCategory])">
           <div>
             <h3 x-text="category"></h3>
-            <template x-for="tag of setup[category]">
+            <template x-for="tag of setup[currentCategory][category]">
               <label>
                 <input type="checkbox" x-bind:value="tag" x-model="tags">
                 <span x-text="tag"></span>
@@ -78,17 +103,9 @@ function item(settings) {
         </template>
       </div>
       <div class="p-4 grid md:grid-cols-2 lg:grid-cols-3 md:flex-3">
-        <listing-item-home webc:for="item of collections.foundations" @attributes="item"></listing-item>
+        <listing-item-home webc:for="item of collections.all" @attributes="item"></listing-item>
       </div>
 		</div>
 		
-		<div class="tab-content md:flex">
-      <div class="p-4 md:flex-1">
-        <h3>test</h3>
-      </div>
-      <div class="p-4 grid md:grid-cols-2 lg:grid-cols-3 md:flex-3">
-        <listing-item-home webc:for="item of collections.builds" @attributes="item"></listing-item>
-      </div>
-		</div>
 	</div>
 </div>

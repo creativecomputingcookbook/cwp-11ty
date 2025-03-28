@@ -1,4 +1,4 @@
 module.exports = {
-  tags: ['foundations'],
+  tags: ['Foundations'],
   layout: 'layouts/info.webc',
 };
