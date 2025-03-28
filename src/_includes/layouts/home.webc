@@ -99,8 +99,8 @@ function item(settings) {
           </div>
         </template>
       </div>
-      <div class="p-4 grid md:grid-cols-2 lg:grid-cols-3 md:flex-3">
-        <listing-item-home webc:for="item of collections.all" @attributes="item"></listing-item>
+      <div class="p-4 grid sm:grid-cols-2 lg:grid-cols-3 md:flex-3">
+        <listing-item webc:for="item of collections.all" @attributes="item" :is-home="true"></listing-item>
       </div>
 	</div>
 </div>

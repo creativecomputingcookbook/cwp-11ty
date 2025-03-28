@@ -1,6 +1,0 @@
-<div class="p-4" :x-data="`item({ tags: ${JSON.stringify(data.tags)} })`" x-show="shouldShow">
-    <a :href="url">
-        <img :src="data.thumbnail"></img>
-        <p @text="data.title"></p>
-    </a>
-</div>

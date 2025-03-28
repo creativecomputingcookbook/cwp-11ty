@@ -1,6 +1,8 @@
-<div class="p-4">
-    <a :href="url">
-        <img :src="data.thumbnail"></img>
-        <p @text="data.title"></p>
-    </a>
+<div class="p-4 grid-item" :x-data="!isHome ? null : `item({ tags: ${JSON.stringify(data.tags)} })`" :x-show="!isHome ? null : 'shouldShow'">
+    <div class="card">
+        <a class="card-content" :href="url">
+            <img class="card-img" :src="data.thumbnail"></img>
+            <p @text="data.title"></p>
+        </a>
+    </div>
 </div>
