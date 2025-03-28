@@ -19,3 +19,18 @@ A **360-degree servo motor** is a type of motor that can rotate continuously in 
 ### 180° Servo
 
 TODO...
+
+```arduino#
+#include "arduino/Arduino.h"
+
+int main(){
+  init(); //Don't forget this!
+  pinMode(13,OUTPUT);
+  while(1) {
+    digitalWrite(13,HIGH);
+    delay(50);
+    digitalWrite(13,LOW);
+    delay(1700);
+  }
+}
+```

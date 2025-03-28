@@ -10,6 +10,15 @@ module.exports = (api) => {
           corejs: '3.20.2',
         },
       ],
+      [
+        'prismjs',
+        {
+          languages: ['arduino'],
+          plugins: ['line-numbers'],
+          theme: 'default',
+          css: true,
+        },
+      ],
     ],
   };
 };

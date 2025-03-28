@@ -1,4 +1,5 @@
 const EleventyWebcPlugin = require('@11ty/eleventy-plugin-webc');
+const syntaxHighlight = require("@pborenstein/eleventy-md-syntax-highlight");
 
 module.exports = async function (eleventyConfig) {
   const EleventyVitePlugin = (await import("@11ty/eleventy-plugin-vite")).default;
@@ -6,6 +7,7 @@ module.exports = async function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyWebcPlugin, {
     components: 'src/_includes/components/**/*.webc',
   });
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   eleventyConfig.addFilter('findPostByTitles', (arr, titles) => {
     if (!arr || !titles) return [];
