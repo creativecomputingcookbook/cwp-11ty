@@ -48,8 +48,8 @@
 
     <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
     <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-Cpps7MaV.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-CfUS39_W.css">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-D-uvUynm.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-CqfFCqcV.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-white">
     <header>
@@ -120,12 +120,16 @@
         <template x-for="category in Object.keys(setup[currentCategory])">
           <div>
             <h3 x-text="category"></h3>
-            <template x-for="tag of setup[currentCategory][category]">
-              <label>
-                <input type="checkbox" x-bind:value="tag" x-model="tags">
-                <span x-text="tag"></span>
-              </label>
-            </template>
+            <ul>
+              <template x-for="tag of setup[currentCategory][category]">
+                <li class="filter-option">
+                  <label>
+                    <input type="checkbox" x-bind:value="tag" x-model="tags">
+                    <span x-text="tag"></span>
+                  </label>
+                </li>
+              </template>
+            </ul>
           </div>
         </template>
       </div>
@@ -134,7 +138,7 @@
     <div class="card">
         <a href="/cwp-11ty/builds/corporate-in-red/" class="card-content">
             <img src="/cwp-11ty/assets/corporate-in-red-DKJ1HPh7.png" class="card-img">
-            <p>Corporate in Red</p>
+            <p class="card-name">Corporate in Red</p>
         </a>
     </div>
 </div>
@@ -142,7 +146,7 @@
     <div class="card">
         <a href="/cwp-11ty/foundations/servo/" class="card-content">
             <img src="/cwp-11ty/assets/servo-CRPxB2Hg.png" class="card-img">
-            <p>Servo Motor</p>
+            <p class="card-name">Servo Motor</p>
         </a>
     </div>
 </div>
