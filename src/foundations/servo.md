@@ -14,6 +14,56 @@ When you're using an **Arduino**, you can program it to tell the servo motor how
 
 <collapsible title="360° Servo">
 A **360-degree servo motor** is a type of motor that can rotate continuously in either direction, just like a regular motor. Unlike a standard servo, which moves to a specific angle and stops, this one spins around like a wheel, and with an Arduino, you can control how fast it turns and in which direction, making it useful for things like moving wheels on a robot or conveyor belts.
+
+```arduino#
+#include "arduino/Arduino.h"
+
+int main(){
+  init(); //Don't forget this!
+  pinMode(13,OUTPUT);
+  while(1) {
+    digitalWrite(13,HIGH);
+    delay(50);
+    digitalWrite(13,LOW);
+    delay(1700);
+  }
+}
+```
+
+<step>
+<div slot="left">test</div>
+#### Step 1
+
+Acquire this servo **test**
+</step>
+<step>
+<div slot="left">
+
+```arduino#
+#include "arduino/Arduino.h"
+
+int main(){
+  init(); //Don't forget this!
+  pinMode(13,OUTPUT);
+  while(1) {
+    digitalWrite(13,HIGH);
+    delay(50);
+    digitalWrite(13,LOW);
+    delay(1700);
+  }
+}
+```
+
+</div>
+#### Step 2
+
+put *this code*
+</step>
+<step img="/images/servo.png">
+#### Step 3
+
+assemble this
+</step>
 </collapsible>
 
 ### 180° Servo

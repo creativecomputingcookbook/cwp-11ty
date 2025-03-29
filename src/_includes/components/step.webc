@@ -1,0 +1,8 @@
+<div class="md:flex w-full">
+    <div class="md:w-1/2 w-full p-4">
+        <slot name="left"><img :src="img"></img></slot>
+    </div>
+    <div class="md:w-1/2 w-full p-4">
+        <slot></slot>
+    </div>
+</div>
