@@ -77,33 +77,53 @@ h2, h3, h4 {
 	cursor: pointer;
 	transition: 0.2s;
 	height: 100%;
-  }
+}
   
-  .grid-item:hover {
+.grid-item:hover {
 	transform: translateY(-0.5%);
 	box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
-  }
+}
   
-  .card {
+.card {
 	height: 100%;
-  }
+}
   
-  .card-img {
+.card-img {
 	display: block;
 	object-fit: contain;
 	width: 100%;
 	height: 25dvh;
-  }
+}
   
-  .card-content {
+.card-content {
 	padding: 4px;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-  }
+}
 
-  .card-name {
+.card-name {
 	color: #000;
 	font-weight: bold;
 	text-align: left;
+}
+
+/* https://github.com/11ty/eleventy-plugin-syntaxhighlight/issues/10 */
+
+pre {
+	counter-reset: lineNumber;
+}
+
+code .highlight-line:before {
+	-webkit-user-select: none;
+	border-right: 1px solid #404040;
+	color: #858585;
+	content: counter(lineNumber);
+	counter-increment: lineNumber;
+	display: inline-block;
+	font-variant-numeric: tabular-nums;
+	margin-right: 1.2em;
+	padding-right: 1.2em;
+	text-align: right;
+	width: 2.4em;
 }

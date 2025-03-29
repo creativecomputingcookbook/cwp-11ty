@@ -1,5 +1,5 @@
 const EleventyWebcPlugin = require('@11ty/eleventy-plugin-webc');
-const syntaxHighlight = require("@pborenstein/eleventy-md-syntax-highlight");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = async function (eleventyConfig) {
   const EleventyVitePlugin = (await import("@11ty/eleventy-plugin-vite")).default;
