@@ -11,7 +11,7 @@ layout: 'layouts/base.webc'
     </div>
     <div webc:if="related">
       <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
-      <div class="px-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+      <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
         <listing-item webc:for="item of findPostByTitles(collections.all, related)" @attributes="item"></listing-item>
       </div>
     </div>

@@ -2,7 +2,7 @@
     <div class="card">
         <a class="card-content" :href="url">
             <img class="card-img" :src="data.thumbnail"></img>
-            <p @text="data.title"></p>
+            <p class="card-name" @text="data.title"></p>
         </a>
     </div>
 </div>
