@@ -1,6 +1,4 @@
 <details>
 <summary class="collapsible-header-build" @raw="title"></summary>
-<template webc:type="11ty" 11ty:type="liquid">
-    {{ slots.text.default }}
-</template>
+<slot></slot>
 </details>
