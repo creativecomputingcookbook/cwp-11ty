@@ -90,12 +90,16 @@ function item(settings) {
         <template x-for="category in Object.keys(setup[currentCategory])">
           <div>
             <h3 x-text="category"></h3>
-            <template x-for="tag of setup[currentCategory][category]">
-              <label>
-                <input type="checkbox" x-bind:value="tag" x-model="tags">
-                <span x-text="tag"></span>
-              </label>
-            </template>
+            <ul>
+              <template x-for="tag of setup[currentCategory][category]">
+                <li class="filter-option">
+                  <label>
+                    <input type="checkbox" x-bind:value="tag" x-model="tags">
+                    <span x-text="tag"></span>
+                  </label>
+                </li>
+              </template>
+            </ul>
           </div>
         </template>
       </div>

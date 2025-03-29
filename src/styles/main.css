@@ -64,6 +64,10 @@ h3 {
 	outline: none;
 }
 
+.filter-option {
+	padding: 4px;
+}
+
 /* https://stackoverflow.com/a/75446062 */
 
 .grid-item {
