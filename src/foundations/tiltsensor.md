@@ -1,16 +1,15 @@
 ---
-title: 'Servo Motor'
-parsons: 'servo-motor'
+title: 'Tilt Sensor'
+parsons: 'tilt-sensor'
 related: ['Corporate in Red']
 thumbnail: '/images/servo.png'
 meta:
   desc:
-    "A servo motor is like a tiny robot motor that can turn to a specific position. Here's how you can program it in Arduino!"
+    "A tilt sensor is an electronic component that detects changes in orientation or angle, helping a system know when it's tilted or moved from its normal position."
 ---
 
-A **servo motor** is like a tiny robot motor that can turn to a specific position. Imagine you're controlling the steering wheel of a toy car. You can tell the car to turn its wheels left, right, or keep them straight. A servo motor works in a similar way, but instead of a wheel, it can move things like robot arms or dials to exactly where you want them to go.
+A **tilt sensor** is a gadget that can figure out the angle or inclination of the object it's attached to, helping to understand whether something is level or if it’s tilted to one side. 
 
-When you're using an *Arduino*, you can program it to tell the servo motor how far to turn. Inside the servo, there's a sensor that tells it when it's reached the right spot, so it knows when to stop moving. This makes it great for projects where you need precise movement, like making a robot move its arm to pick something up!
 
 <div style="position:relative;height:0;padding-bottom:70%;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://maker.makecode.com/#pub:_7jxJv38JF1t6" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin"></iframe></div>
 <collapsible title="360° Servo">
