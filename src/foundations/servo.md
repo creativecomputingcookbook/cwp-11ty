@@ -84,3 +84,25 @@ int main(){
   }
 }
 ```
+<!-- The following script block includes the initialization code for the Parsons widget -->
+<script>
+  // Define the initial Parsons problem code.
+  var initial = "const int BUTTON_PIN = 4;\n" +
+                "int buttonState = 0;\n" +
+                "void setup() {\\n" +
+                "  Serial.begin(9600);\\n" +
+                "  pinMode(LED_BUILTIN, OUTPUT);\\n" +
+                "  pinMode(BUTTON_PIN, INPUT);\\n" +
+                "}\n" +
+                "void loop() {\n" +
+                "  if (buttonState == HIGH) {\\n" +
+                "    Serial.println(\"Button HIGH\");\\n" +
+                "    digitalWrite(LED_BUILTIN, HIGH);\\n" +
+                "  }\n" +
+                "  else {\\n" +
+                "    Serial.println(\"Button LOW\");\\n" +
+                "    digitalWrite(LED_BUILTIN, LOW);\\n" +
+                "  }\n" +
+                "  delay(10);\\n" +
+                "}";
+</script>

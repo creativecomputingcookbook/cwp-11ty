@@ -1,0 +1,77 @@
+---
+layout: 'layouts/base.webc'
+title: "Interactive Parsons Problem"
+---
+<!-- Assets for the Parsons widget -->
+<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../lib/jquery.ui.touch-punch.min.js"></script>
+<script src="../../lib/underscore-min.js"></script>
+<script src="../../lib/lis.js"></script>
+<script src="../../parsons.js"></script>
+
+<main id="main-content" tabindex="-1">
+  <div class="px-4 sm:px-6 lg:px-8">
+    <!-- Page title -->
+    <h1 class="text-3xl font-bold leading-tight text-gray-900" @text="title"></h1>
+
+    <!-- Optionally display a thumbnail if provided -->
+    <img :src="thumbnail" class="max-w-full md:max-w-2xl mx-auto"></img>
+
+    <!-- Display Markdown content -->
+    <div class="prose-lg prose-gray text-gray-700 py-4">
+      <template @raw="content" webc:nokeep></template>
+    </div>
+		
+	<script>
+  // Helper for displaying errors from the Parsons widget
+  function displayErrors(fb) {
+    if (fb.errors && fb.errors.length > 0) {
+      alert(fb.errors[0]);
+    }
+  }
+  
+  // Wait for the document to be ready before initializing the widget
+  window.addEventListener("DOMContentLoaded", function() {
+    var parson = new ParsonsWidget({
+      sortableId: 'sortable',
+      trashId: 'sortableTrash',
+      max_wrong_lines: 1,
+      feedback_cb: displayErrors,
+      can_indent: false
+    });
+    parson.init(initial);
+    parson.shuffleLines();
+  
+    $("#newInstanceLink").click(function (event) {
+      event.preventDefault();
+      parson.shuffleLines();
+    });
+    $("#feedbackLink").click(function (event) {
+      event.preventDefault();
+      parson.getFeedback();
+    });
+  });
+	</script>
+    <!-- Parsons problem widget container -->
+    <div id="parsons-container" class="py-4">
+      <!-- Containers required by parsons.js -->
+      <div id="sortableTrash" class="sortable-code"></div>
+      <div id="sortable" class="sortable-code"></div>
+      <p class="mt-4">
+        <a id="newInstanceLink" href="#" class="text-blue-500 underline">New instance</a> |
+        <a id="feedbackLink" href="#" class="text-blue-500 underline">Get feedback</a>
+      </p>
+    </div>
+
+    <!-- Optional related content block -->
+    <div webc:if="related">
+      <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
+      <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        <listing-item webc:for="item of findPostByTitles(collections.all, related)" @attributes="item"></listing-item>
+      </div>
+    </div>
+  </div>
+</main>
+
+

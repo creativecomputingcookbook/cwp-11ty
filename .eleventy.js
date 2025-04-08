@@ -23,6 +23,9 @@ module.exports = async function (eleventyConfig) {
     ['./src/images']: `cwp-11ty/images`,
     ['./src/styles']: `cwp-11ty/styles`,
     ['./src/main.js']: `cwp-11ty/main.js`,
+		['./src/parsons.js']: `cwp-11ty/parsons.js`,
+		['./src/styles/parsons.css']: `cwp-11ty/styles/parsons.css`,
+		['./src/lib/']: `cwp-11ty/lib/`,
   });
 
   eleventyConfig.setServerOptions({
