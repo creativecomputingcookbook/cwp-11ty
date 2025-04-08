@@ -87,22 +87,43 @@ int main(){
 <!-- The following script block includes the initialization code for the Parsons widget -->
 <script>
   // Define the initial Parsons problem code.
-  var initial = "const int BUTTON_PIN = 4;\n" +
-                "int buttonState = 0;\n" +
-                "void setup() {\\n" +
-                "  Serial.begin(9600);\\n" +
-                "  pinMode(LED_BUILTIN, OUTPUT);\\n" +
-                "  pinMode(BUTTON_PIN, INPUT);\\n" +
-                "}\n" +
-                "void loop() {\n" +
-                "  if (buttonState == HIGH) {\\n" +
-                "    Serial.println(\"Button HIGH\");\\n" +
-                "    digitalWrite(LED_BUILTIN, HIGH);\\n" +
-                "  }\n" +
-                "  else {\\n" +
-                "    Serial.println(\"Button LOW\");\\n" +
-                "    digitalWrite(LED_BUILTIN, LOW);\\n" +
-                "  }\n" +
-                "  delay(10);\\n" +
-                "}";
+    // var initial = 
+    //   "#include &ltServo.h&gt\n" +
+    //   "Servo myservo;  // create servo object to control a servo\n" +
+    //   "int pos = 0;    // variable to store the servo position\n" +
+    //   "void setup() {\\n" +
+    //   "  myservo.attach(9);  // attaches the servo on pin 9 to the servo object\\n" +
+    //   "}\n" +
+    //   "void loop() {\\n" +
+    //   "  for (pos = 0; pos <= 180; pos += 1) {\\n" +
+    //   "    myservo.write(pos);  // tell servo to go to position in variable 'pos'\\n" +
+    //   "    delay(5);            // waits 5 ms for the servo to reach the position\\n" +
+    //   "  }\n" +
+    //   "  delay(500);\n" +
+    //   "  for (pos = 180; pos >= 0; pos -= 1) {\\n" +
+    //   "    myservo.write(pos);  // tell servo to go to position in variable 'pos'\\n" +
+    //   "    delay(5);            // waits 5 ms for the servo to reach the position\\n" +
+    //   "  }\n" +
+    //   "  delay(1500);\\n" +
+    //   "}\n";
+
+    var initial =
+        "int main(){\n" +
+        "  printf(Hello World!);\n" +
+        "  return 0;\n" +
+        "}\n";
+    function copyCode() {
+    navigator.clipboard.writeText(initial).then(() => {
+      alert("Code copied to clipboard!");
+    });
+  }
 </script>
+
+<div class="relative mb-4">
+  <button
+    onclick="copyCode()"
+    class="absolute top-2 right-2 px-3 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300"
+  >
+    Copy Code
+  </button>
+</div>

@@ -3,6 +3,7 @@ layout: 'layouts/base.webc'
 title: "Interactive Parsons Problem"
 ---
 <!-- Assets for the Parsons widget -->
+<link rel="stylesheet" href="../../styles/parsons.css">
 <script src="../../lib/jquery.min.js"></script>
 <script src="../../lib/jquery-ui.min.js"></script>
 <script src="../../lib/jquery.ui.touch-punch.min.js"></script>

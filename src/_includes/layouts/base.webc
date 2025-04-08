@@ -27,6 +27,7 @@
 
 		<!-- Preload the font stylesheet asynchronously with low priority -->
     <link rel="preload" href="https://rsms.me/inter/inter.css" as="style" />
+		<link rel="preload" href="../../styles/parsons.css" as="style" />
 
 		<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
     <link
