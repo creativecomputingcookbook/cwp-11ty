@@ -26,7 +26,7 @@ Connect the components as shown in the circuit diagram. For the Knob example, wi
 <step>
 <div slot="left">
 
-```arduino
+<syntax-highlight language="arduino">
 #include <Servo.h>
 
 Servo myservo;  // create servo object to control a servo
@@ -44,7 +44,7 @@ void loop() {
   myservo.write(val);                  // sets the servo position according to the scaled value
   delay(15);                           // waits for the servo to get there
 }
-```
+</syntax-highlight>
 
 </div>
 #### Step 2
@@ -64,7 +64,7 @@ Connect the components as shown in the circuit diagram. For the Knob example, wi
 <step>
 <div slot="left">
 
-```arduino
+<syntax-highlight language="arduino">
 #include <Servo.h>
 
 Servo myservo;  // create servo object to control a servo
@@ -87,7 +87,7 @@ void loop() {
     delay(15);                       // waits 15ms for the servo to reach the position
   }
 }
-```
+</syntax-highlight>
 
 </div>
 #### Step 2
