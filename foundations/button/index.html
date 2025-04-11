@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" class="leading-tight text-gray-900 antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Button :: Cookbook Demo</title>
+
+
+    <link rel="canonical" href="https://localhost:8000/foundations/button/">
+
+
+    <meta property="og:site_name" content="Cookbook Demo">
+  <meta property="og:title" content="Button :: Cookbook Demo">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://localhost:8000/foundations/button/">
+  
+
+
+    <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://localhost:8000/images/social-share.png">
+  <meta name="twitter:image" content="https://localhost:8000/images/social-share.png">
+  <meta property="og:image:alt" content="Page image for Cookbook Demo">
+  <meta name="twitter:image:alt" content="Page image for Cookbook Demo">
+  
+
+
+    <meta name="description" content="A button is one of the simplest input devices you can use with Arduino. Here's how you can detect when it's pressed!">
+  <meta name="twitter:description" content="A button is one of the simplest input devices you can use with Arduino. Here's how you can detect when it's pressed!">
+  <meta property="og:description" content="A button is one of the simplest input devices you can use with Arduino. Here's how you can detect when it's pressed!">
+  
+
+
+
+    <link rel="icon" href="/cwp-11ty/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/cwp-11ty/favicon.ico" type="image/png" sizes="48x48">
+    <link rel="apple-touch-icon" href="/cwp-11ty/apple-touch-icon.png" sizes="192x192">
+    <link rel="mask-icon" href="/cwp-11ty/favicon.svg" color="#4a5568">
+
+    <meta name="theme-color" content="#4a5568">
+
+    <!-- Preconnect to the font file origin -->
+    <link rel="preconnect" href="https://rsms.me" crossorigin="">
+
+    <!-- Preload the font stylesheet asynchronously with low priority -->
+    <link rel="preload" href="https://rsms.me/inter/inter.css" as="style">
+
+    <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
+    <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-CdfT6Lyt.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-ClwNZOn3.css">
+  </head>
+  <body data-env="{{ node.env }}" class="min-h-screen bg-white">
+    <header>
+  <nav class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-end">
+      <ul class="flex space-x-4">
+        <li>
+                  <a href="/cwp-11ty/" class="text-base font-bold underline">
+                    Home
+                  </a>
+                </li>
+              
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <div><main id="main-content" tabindex="-1">
+  <div class="px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold leading-tight text-gray-900">Button</h1>
+    <img src="/cwp-11ty/assets/button-CipuL4Cr.png" class="max-w-full md:max-w-2xl mx-auto">
+    <div class="prose-lg prose-gray text-gray-700 py-4">
+      <p>A <strong>button</strong> is one of the simplest input devices you can use with an Arduino. Imagine the power button on your computer or the play button on a music player—when you press it, something happens. With an Arduino, you can program it to detect when a button is pressed and then respond however you want!</p>
+<p>When you connect a button to your Arduino, it completes a circuit when pressed, sending a signal that your Arduino can detect. This makes buttons perfect for user input, like starting a <strong>motor</strong>, turning on a light, or navigating a menu on a screen.</p>
+<details>
+<summary class="collapsible-header-build">Button Basics</summary>
+<p>A button usually has two states: <strong>pressed</strong> or <strong>not pressed</strong>. When pressed, it connects the circuit and allows current to flow. Using <strong>digitalRead()</strong> in Arduino, you can check if a button is being pressed and then trigger an action, such as blinking an LED.</p>
+<pre class="language-arduino"><code class="language-arduino"><span class="highlight-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"arduino/Arduino.h"</span></span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">  const <span class="token keyword">int</span> buttonPin <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">  const <span class="token keyword">int</span> ledPin <span class="token operator">=</span> <span class="token number">13</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">  <span class="token keyword">void</span> <span class="token keyword">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">pinMode</span><span class="token punctuation">(</span>buttonPin<span class="token punctuation">,</span> <span class="token constant">INPUT</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token function">pinMode</span><span class="token punctuation">(</span>ledPin<span class="token punctuation">,</span> <span class="token constant">OUTPUT</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">  <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">  <span class="token keyword">void</span> <span class="token keyword">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">int</span> buttonState <span class="token operator">=</span> <span class="token function">digitalRead</span><span class="token punctuation">(</span>buttonPin<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>buttonState <span class="token operator">==</span> <span class="token constant">HIGH</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">      <span class="token function">digitalWrite</span><span class="token punctuation">(</span>ledPin<span class="token punctuation">,</span> <span class="token constant">HIGH</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">      <span class="token function">digitalWrite</span><span class="token punctuation">(</span>ledPin<span class="token punctuation">,</span> <span class="token constant">LOW</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">  <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span></code></pre>
+<div class="md:flex w-full">
+    <div class="md:w-1/2 w-full p-4">
+        <img src="/cwp-11ty/assets/button-circuit-CGNUXZKc.png">
+    </div>
+    <div class="md:w-1/2 w-full p-4">
+<h4>Step 1</h4>
+<p>Connect the <strong>red wire</strong> from the Arduino 5V pin to the <strong>red power rail</strong> on the breadboard, and the <strong>black wire</strong> from GND to the <strong>black rail</strong>. These rails will provide power and ground for your components.</p>
+<p></p></div><p></p>
+</div>
+<div class="md:flex w-full">
+    <div class="md:w-1/2 w-full p-4">
+        <img src="/cwp-11ty/assets/button-circuit-CGNUXZKc.png">
+    </div>
+    <div class="md:w-1/2 w-full p-4">
+<h4>Step 2</h4>
+<p>Take a <strong>third wire</strong> and connect <strong>pin 2</strong> on the Arduino to <strong>one leg</strong> of the button.<br>
+From that same leg, add a <strong>10K ohm resistor</strong> going to <strong>GND</strong>.<br>
+Then connect the <strong>other leg</strong> of the button to the <strong>5V</strong> rail.<br>
+This setup uses a <em>pull-down resistor</em> to keep your signal clean.</p>
+<p></p></div><p></p>
+</div>
+<div class="md:flex w-full">
+    <div class="md:w-1/2 w-full p-4">
+        <div>
+<pre class="language-arduino"><code class="language-arduino">const <span class="token keyword">int</span> buttonPin <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+const <span class="token keyword">int</span> ledPin <span class="token operator">=</span> <span class="token number">13</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token keyword">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">pinMode</span><span class="token punctuation">(</span>buttonPin<span class="token punctuation">,</span> <span class="token constant">INPUT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">pinMode</span><span class="token punctuation">(</span>ledPin<span class="token punctuation">,</span> <span class="token constant">OUTPUT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token keyword">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> buttonState <span class="token operator">=</span> <span class="token function">digitalRead</span><span class="token punctuation">(</span>buttonPin<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>buttonState <span class="token operator">==</span> <span class="token constant">HIGH</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">digitalWrite</span><span class="token punctuation">(</span>ledPin<span class="token punctuation">,</span> <span class="token constant">HIGH</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">digitalWrite</span><span class="token punctuation">(</span>ledPin<span class="token punctuation">,</span> <span class="token constant">LOW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</div>
+    </div>
+    <div class="md:w-1/2 w-full p-4">
+<h4>Step 3</h4>
+<p>When the button is not pressed, the two legs aren’t connected, so the wire going to pin 2 is pulled down to ground through the resistor. This means the Arduino will read a LOW signal.</p>
+<p>When the button is pressed, the legs connect, and power (5V) flows to pin 2. Now, the Arduino will read a HIGH signal.</p>
+<p></p></div><p></p>
+</div>
+</details>
+
+    </div>
+    <div>
+      <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
+      <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        <div class="p-4 grid-item">
+    <div class="card">
+        <a href="/cwp-11ty/builds/corporate-in-red/" class="card-content">
+            <img src="/cwp-11ty/assets/corporate-in-red-DKJ1HPh7.png" class="card-img">
+            <p class="card-name">Corporate in Red</p>
+        </a>
+    </div>
+</div>
+      </div>
+    </div>
+  </div>
+</main></div>
+
+    <script></script>
+  
+
+</body>
+</html>

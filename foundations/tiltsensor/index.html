@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en" class="leading-tight text-gray-900 antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Tilt Sensor :: Cookbook Demo</title>
+
+
+    <link rel="canonical" href="https://localhost:8000/foundations/tiltsensor/">
+
+
+    <meta property="og:site_name" content="Cookbook Demo">
+  <meta property="og:title" content="Tilt Sensor :: Cookbook Demo">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://localhost:8000/foundations/tiltsensor/">
+  
+
+
+    <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://localhost:8000/images/social-share.png">
+  <meta name="twitter:image" content="https://localhost:8000/images/social-share.png">
+  <meta property="og:image:alt" content="Page image for Cookbook Demo">
+  <meta name="twitter:image:alt" content="Page image for Cookbook Demo">
+  
+
+
+    <meta name="description" content="A tilt sensor, or tilt switch, detects the tilt, orientation, or inclination of movement. It is also sensitive to the direction of the movement.">
+  <meta name="twitter:description" content="A tilt sensor, or tilt switch, detects the tilt, orientation, or inclination of movement. It is also sensitive to the direction of the movement.">
+  <meta property="og:description" content="A tilt sensor, or tilt switch, detects the tilt, orientation, or inclination of movement. It is also sensitive to the direction of the movement.">
+  
+
+
+
+    <link rel="icon" href="/cwp-11ty/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/cwp-11ty/favicon.ico" type="image/png" sizes="48x48">
+    <link rel="apple-touch-icon" href="/cwp-11ty/apple-touch-icon.png" sizes="192x192">
+    <link rel="mask-icon" href="/cwp-11ty/favicon.svg" color="#4a5568">
+
+    <meta name="theme-color" content="#4a5568">
+
+    <!-- Preconnect to the font file origin -->
+    <link rel="preconnect" href="https://rsms.me" crossorigin="">
+
+    <!-- Preload the font stylesheet asynchronously with low priority -->
+    <link rel="preload" href="https://rsms.me/inter/inter.css" as="style">
+
+    <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
+    <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-CdfT6Lyt.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-ClwNZOn3.css">
+  </head>
+  <body data-env="{{ node.env }}" class="min-h-screen bg-white">
+    <header>
+  <nav class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-end">
+      <ul class="flex space-x-4">
+        <li>
+                  <a href="/cwp-11ty/" class="text-base font-bold underline">
+                    Home
+                  </a>
+                </li>
+              
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <div><main id="main-content" tabindex="-1">
+  <div class="px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold leading-tight text-gray-900">Tilt Sensor</h1>
+    <img src="/cwp-11ty/assets/tiltsensor-CrnVWN8e.png" class="max-w-full md:max-w-2xl mx-auto">
+    <div class="prose-lg prose-gray text-gray-700 py-4">
+      <p>A <strong>tilt sensor</strong> is a gadget that can figure out the angle or inclination of the object it's attached to, helping to understand whether something is level or if it’s tilted to one side.</p>
+<details>
+<summary class="collapsible-header-build">Arduino set up</summary>
+<div class="md:flex w-full">
+    <div class="md:w-1/2 w-full p-4">
+        <div>test</div>
+    </div>
+    <div class="md:w-1/2 w-full p-4">
+<div class="md:flex w-full">
+    <div class="md:w-1/2 w-full p-4">
+<p></p></div>
+<div class="md:w-1/2 w-full p-4"><p></p>
+<img src="/cwp-11ty/assets/digitalpintilt-D5-x_RZ_.png">
+<img src="/cwp-11ty/assets/digitalpintilt2-L5U4VVVp.png">
+#### Step 1
+<p>You need to connect it to a digital pin which are the ones labeled with an D in front of it. Pick one of the five slots to plug it in: [D3/4], [D5/6], [D7/8], [D9/10] or [D11/12]. We've chosen [D11/12].</p>
+<p></p></div><p></p>
+</div>
+<div class="md:flex w-full">
+    <div class="md:w-1/2 w-full p-4">
+<p></p></div>
+<div class="md:w-1/2 w-full p-4"><p></p>
+<div>
+<pre><code><span class="highlight-line">// TILT SENSOR TEST  //</span>
+<span class="highlight-line">///////////////////////</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">// Description: </span>
+<span class="highlight-line">/*</span>
+<span class="highlight-line">    Reads the tilt sensor state value from the digital pin and toggles the built-in LED light.</span>
+<span class="highlight-line">*/</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">// constants won't change. They're used here to set pin numbers:</span>
+<span class="highlight-line">const int TILT_PIN = 4;     // the number of the tilt sensor pin</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">// variables will change:</span>
+<span class="highlight-line">int tiltState = 0;         // variable for reading the tilt sensor status</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">void setup() {</span>
+<span class="highlight-line">    Serial.begin(9600); </span>
+<span class="highlight-line">    // initialize the LED pin as an output:</span>
+<span class="highlight-line">    pinMode(LED_BUILTIN, OUTPUT);</span>
+<span class="highlight-line">    // initialize the tilt sensor pin as an input:</span>
+<span class="highlight-line">    pinMode(TILT_PIN, INPUT);</span>
+<span class="highlight-line">}</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">void loop() {</span>
+<span class="highlight-line">    // read the state of the tilt sensor value:</span>
+<span class="highlight-line">    tiltState = digitalRead(TILT_PIN);</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    // check if the tilt sensor is pressed. If it is, the tiltState is HIGH:</span>
+<span class="highlight-line">    if (tiltState == HIGH) {</span>
+<span class="highlight-line">        Serial.println("Tilt HIGH"); </span>
+<span class="highlight-line">        // turn LED on:</span>
+<span class="highlight-line">        digitalWrite(LED_BUILTIN, HIGH);</span>
+<span class="highlight-line">    } else {</span>
+<span class="highlight-line">        Serial.println("Tilt LOW"); </span>
+<span class="highlight-line">        // turn LED off:</span>
+<span class="highlight-line">        digitalWrite(LED_BUILTIN, LOW);</span>
+<span class="highlight-line">    }</span>
+<span class="highlight-line">    </span>
+<span class="highlight-line">    delay(10);   // wait for 10 milliseconds for the Arduino to catch up</span>
+<span class="highlight-line">}</span></code></pre>
+</div>
+#### Step 2
+<p>Initialization: The code sets up a variable called "TILT_PIN" which stores the value of the pin that you have your tilt sensor plugged into. In the code, we have it set to D4, which will work if you have it plugged into [D3/4].
+You'll have to change the highlighted line changing 4 based on the Digital pin you plugged your tilt sensor into. If you plugged into:
+[D3/4] it should be D4
+[D5/6] it should be D6
+[D7/8] it should be D8
+[D9/10] it should be D10
+[D11/12] it should be D12.
+Setup: The "Serial.begin(9600);" sets up the Serial Monitor, which will allow you to monitor what gets printed out while your Arduino is running. We will print the tilt sensor state to the serial monitor. The pinMode(TILT_PIN, INPUT); tells the microcontroller that the button is an input.
+Loop: We read the button value using the digitalRead(TILT_PIN); and store it in a variable. We then print if the button is "HIGH" or "LOW" to the Serial Monitor using the Serial.println("").</p>
+<p></p></div><p></p>
+</div>
+<div class="md:flex w-full">
+    <div class="md:w-1/2 w-full p-4">
+<p></p></div>
+<div class="md:w-1/2 w-full p-4"><p></p>
+<h4>Step 3</h4>
+<img src="/cwp-11ty/assets/uploadbutton-amWEB7xY.png">
+Press the upload button with the arrow after making sure you've selected the correct board (Arduino BLE 33) and port that the Arduino is plugged into.  
+<img src="/cwp-11ty/assets/serialmonitor-DqUrF9Oa.png">
+Then open the Serial Monitor from the Tools --&gt; Serial Monitor (or pressing Ctrl+Shift+M) and see how the values change as you turn your potentiometer.
+<p></p></div><p></p>
+</div>
+<p></p></div><p></p>
+</div>
+</details>
+<details>
+<summary class="collapsible-header-build">Trinket Assembly</summary>
+<p>The code for using a tilt sensor is same as the <a href="/cwp-11ty/_site/foundations/button/index.html">button</a>. Just like the button, the tilt sensor is an input. It is read by the trinket as HIGH (tilted) or LOW (not tilted).</p>
+<p>If you use the 2 Button Example code and switch out the buttons with the tilt sensors, it will run the same.</p>
+<p>However, we change the variable from buttonRead1, buttonRead2 to tilt1, tilt2 for organization and clarity.</p>
+<div style="position:relative; height:0; padding-bottom:70%; overflow:hidden"><iframe src="https://maker.makecode.com/#pub:_9abdHwYLUWdM" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" style="position:absolute; top:0; left:0; width:100%; height:100%"></iframe></div>
+</details>
+
+    </div>
+    <div>
+      <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
+      <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        <div class="p-4 grid-item">
+    <div class="card">
+        <a href="/cwp-11ty/builds/corporate-in-red/" class="card-content">
+            <img src="/cwp-11ty/assets/corporate-in-red-DKJ1HPh7.png" class="card-img">
+            <p class="card-name">Corporate in Red</p>
+        </a>
+    </div>
+</div>
+      </div>
+    </div>
+  </div>
+</main></div>
+
+    <script></script>
+  
+
+</body>
+</html>
