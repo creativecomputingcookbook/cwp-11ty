@@ -91,7 +91,7 @@
 <div class="md:flex w-full">
     <div class="md:w-1/2 w-full p-4">
         <div>
-<pre class="language-arduino"><code class="language-arduino"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;servo.h&gt;</span></span>
+<pre class="language-arduino"><code class="language-arduino"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;Servo.h&gt;</span></span>
 
 <span class="token builtin">Servo</span> myservo<span class="token punctuation">;</span>  <span class="token comment">// create servo object to control a servo</span>
 
@@ -108,9 +108,9 @@
   myservo<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment">// sets the servo position according to the scaled value</span>
   <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                           <span class="token comment">// waits for the servo to get there</span>
 <span class="token punctuation">}</span></code></pre>
-<p>&lt;/servo.h&gt;</p></div>
 </div>
-<div class="md:w-1/2 w-full p-4"><p></p>
+    </div>
+    <div class="md:w-1/2 w-full p-4">
 <h4>Step 2</h4>
 <p>Upload this code to your Arduino. It reads the potentiometer value and maps it to an angle from 0° to 180°, rotating the servo accordingly.</p>
 <p></p></div><p></p>
@@ -131,7 +131,7 @@
 <div class="md:flex w-full">
     <div class="md:w-1/2 w-full p-4">
         <div>
-<pre class="language-arduino"><code class="language-arduino"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;servo.h&gt;</span></span>
+<pre class="language-arduino"><code class="language-arduino"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;Servo.h&gt;</span></span>
 
 <span class="token builtin">Servo</span> myservo<span class="token punctuation">;</span>  <span class="token comment">// create servo object to control a servo</span>
 <span class="token comment">// twelve servo objects can be created on most boards</span>
@@ -143,19 +143,19 @@
 <span class="token punctuation">}</span>
 
 <span class="token keyword">void</span> <span class="token keyword">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span>pos <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> pos <span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token operator">=</span> <span class="token number">180</span><span class="token punctuation">;</span> pos <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// goes from 0 degrees to 180 degrees</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>pos <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> pos <span class="token operator">&lt;=</span> <span class="token number">180</span><span class="token punctuation">;</span> pos <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// goes from 0 degrees to 180 degrees</span>
     <span class="token comment">// in steps of 1 degree</span>
     myservo<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">// tell servo to go to position in variable 'pos'</span>
     <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token comment">// waits 15ms for the servo to reach the position</span>
   <span class="token punctuation">}</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span>pos <span class="token operator">=</span> <span class="token number">180</span><span class="token punctuation">;</span> pos <span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> pos <span class="token operator">-=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// goes from 180 degrees to 0 degrees</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>pos <span class="token operator">=</span> <span class="token number">180</span><span class="token punctuation">;</span> pos <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> pos <span class="token operator">-=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// goes from 180 degrees to 0 degrees</span>
     myservo<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">// tell servo to go to position in variable 'pos'</span>
     <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token comment">// waits 15ms for the servo to reach the position</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p>&lt;/servo.h&gt;</p></div>
 </div>
-<div class="md:w-1/2 w-full p-4"><p></p>
+    </div>
+    <div class="md:w-1/2 w-full p-4">
 <h4>Step 2</h4>
 <p>Upload this code to your Arduino. It reads the potentiometer value and maps it to an angle from 0° to 180°, rotating the servo accordingly.</p>
 <p></p></div><p></p>
