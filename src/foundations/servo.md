@@ -53,8 +53,6 @@ Upload this code to your Arduino. It reads the potentiometer value and maps it t
 </step>
 </collapsible>
 
-<div style="margin-top: 24px;"></div>
-
 <collapsible title="Sweep Circuit">
 <step img="/images/servo_circuit_sweep.png">
 #### Step 1
