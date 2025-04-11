@@ -48,8 +48,8 @@
 
     <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
     <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-CdfT6Lyt.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-ClwNZOn3.css">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-JQ96PjLr.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-Dzlp49T5.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-white">
     <header>
@@ -78,65 +78,63 @@
 <summary class="collapsible-header-build">Arduino set up</summary>
 <div class="md:flex w-full">
     <div class="md:w-1/2 w-full p-4">
-        <div>test</div>
+        <div>
+    <img src="/cwp-11ty/assets/digitalpintilt-D5-x_RZ_.png">
+    <img src="/cwp-11ty/assets/digitalpintilt2-L5U4VVVp.png">
+</div>
     </div>
     <div class="md:w-1/2 w-full p-4">
-<div class="md:flex w-full">
-    <div class="md:w-1/2 w-full p-4">
-<p></p></div>
-<div class="md:w-1/2 w-full p-4"><p></p>
-<img src="/cwp-11ty/assets/digitalpintilt-D5-x_RZ_.png">
-<img src="/cwp-11ty/assets/digitalpintilt2-L5U4VVVp.png">
-#### Step 1
+<h4>Step 1</h4>
 <p>You need to connect it to a digital pin which are the ones labeled with an D in front of it. Pick one of the five slots to plug it in: [D3/4], [D5/6], [D7/8], [D9/10] or [D11/12]. We've chosen [D11/12].</p>
 <p></p></div><p></p>
 </div>
 <div class="md:flex w-full">
     <div class="md:w-1/2 w-full p-4">
-<p></p></div>
-<div class="md:w-1/2 w-full p-4"><p></p>
-<div>
-<pre><code><span class="highlight-line">// TILT SENSOR TEST  //</span>
-<span class="highlight-line">///////////////////////</span>
-<span class="highlight-line"></span>
-<span class="highlight-line">// Description: </span>
-<span class="highlight-line">/*</span>
-<span class="highlight-line">    Reads the tilt sensor state value from the digital pin and toggles the built-in LED light.</span>
-<span class="highlight-line">*/</span>
-<span class="highlight-line"></span>
-<span class="highlight-line">// constants won't change. They're used here to set pin numbers:</span>
-<span class="highlight-line">const int TILT_PIN = 4;     // the number of the tilt sensor pin</span>
-<span class="highlight-line"></span>
-<span class="highlight-line">// variables will change:</span>
-<span class="highlight-line">int tiltState = 0;         // variable for reading the tilt sensor status</span>
-<span class="highlight-line"></span>
-<span class="highlight-line">void setup() {</span>
-<span class="highlight-line">    Serial.begin(9600); </span>
-<span class="highlight-line">    // initialize the LED pin as an output:</span>
-<span class="highlight-line">    pinMode(LED_BUILTIN, OUTPUT);</span>
-<span class="highlight-line">    // initialize the tilt sensor pin as an input:</span>
-<span class="highlight-line">    pinMode(TILT_PIN, INPUT);</span>
-<span class="highlight-line">}</span>
-<span class="highlight-line"></span>
-<span class="highlight-line">void loop() {</span>
-<span class="highlight-line">    // read the state of the tilt sensor value:</span>
-<span class="highlight-line">    tiltState = digitalRead(TILT_PIN);</span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    // check if the tilt sensor is pressed. If it is, the tiltState is HIGH:</span>
-<span class="highlight-line">    if (tiltState == HIGH) {</span>
-<span class="highlight-line">        Serial.println("Tilt HIGH"); </span>
-<span class="highlight-line">        // turn LED on:</span>
-<span class="highlight-line">        digitalWrite(LED_BUILTIN, HIGH);</span>
-<span class="highlight-line">    } else {</span>
-<span class="highlight-line">        Serial.println("Tilt LOW"); </span>
-<span class="highlight-line">        // turn LED off:</span>
-<span class="highlight-line">        digitalWrite(LED_BUILTIN, LOW);</span>
-<span class="highlight-line">    }</span>
-<span class="highlight-line">    </span>
-<span class="highlight-line">    delay(10);   // wait for 10 milliseconds for the Arduino to catch up</span>
-<span class="highlight-line">}</span></code></pre>
+        <div>
+<pre class="language-arduino"><code class="language-arduino"><span class="token comment">/////////////////////// </span>
+<span class="token comment">// TILT SENSOR TEST  //</span>
+<span class="token comment">///////////////////////</span>
+
+<span class="token comment">// Description: </span>
+<span class="token comment">/*
+    Reads the tilt sensor state value from the digital pin and toggles the built-in LED light.
+*/</span>
+
+<span class="token comment">// constants won't change. They're used here to set pin numbers:</span>
+const <span class="token keyword">int</span> TILT_PIN <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>     <span class="token comment">// the number of the tilt sensor pin</span>
+
+<span class="token comment">// variables will change:</span>
+<span class="token keyword">int</span> tiltState <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>         <span class="token comment">// variable for reading the tilt sensor status</span>
+
+<span class="token keyword">void</span> <span class="token keyword">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">Serial</span><span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token number">9600</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token comment">// initialize the LED pin as an output:</span>
+    <span class="token function">pinMode</span><span class="token punctuation">(</span><span class="token constant">LED_BUILTIN</span><span class="token punctuation">,</span> <span class="token constant">OUTPUT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// initialize the tilt sensor pin as an input:</span>
+    <span class="token function">pinMode</span><span class="token punctuation">(</span>TILT_PIN<span class="token punctuation">,</span> <span class="token constant">INPUT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token keyword">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// read the state of the tilt sensor value:</span>
+    tiltState <span class="token operator">=</span> <span class="token function">digitalRead</span><span class="token punctuation">(</span>TILT_PIN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// check if the tilt sensor is pressed. If it is, the tiltState is HIGH:</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>tiltState <span class="token operator">==</span> <span class="token constant">HIGH</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token builtin">Serial</span><span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Tilt HIGH"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token comment">// turn LED on:</span>
+        <span class="token function">digitalWrite</span><span class="token punctuation">(</span><span class="token constant">LED_BUILTIN</span><span class="token punctuation">,</span> <span class="token constant">HIGH</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token builtin">Serial</span><span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Tilt LOW"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token comment">// turn LED off:</span>
+        <span class="token function">digitalWrite</span><span class="token punctuation">(</span><span class="token constant">LED_BUILTIN</span><span class="token punctuation">,</span> <span class="token constant">LOW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// wait for 10 milliseconds for the Arduino to catch up</span>
+<span class="token punctuation">}</span></code></pre>
 </div>
-#### Step 2
+    </div>
+    <div class="md:w-1/2 w-full p-4">
+<h4>Step 2</h4>
 <p>Initialization: The code sets up a variable called "TILT_PIN" which stores the value of the pin that you have your tilt sensor plugged into. In the code, we have it set to D4, which will work if you have it plugged into [D3/4].
 You'll have to change the highlighted line changing 4 based on the Digital pin you plugged your tilt sensor into. If you plugged into:
 [D3/4] it should be D4
@@ -150,15 +148,19 @@ Loop: We read the button value using the digitalRead(TILT_PIN); and store it in 
 </div>
 <div class="md:flex w-full">
     <div class="md:w-1/2 w-full p-4">
-<p></p></div>
-<div class="md:w-1/2 w-full p-4"><p></p>
+        <img src="/cwp-11ty/assets/uploadbutton-amWEB7xY.png">
+    </div>
+    <div class="md:w-1/2 w-full p-4">
 <h4>Step 3</h4>
-<img src="/cwp-11ty/assets/uploadbutton-amWEB7xY.png">
-Press the upload button with the arrow after making sure you've selected the correct board (Arduino BLE 33) and port that the Arduino is plugged into.  
-<img src="/cwp-11ty/assets/serialmonitor-DqUrF9Oa.png">
-Then open the Serial Monitor from the Tools --&gt; Serial Monitor (or pressing Ctrl+Shift+M) and see how the values change as you turn your potentiometer.
+<p>Press the upload button with the arrow after making sure you've selected the correct board (Arduino BLE 33) and port that the Arduino is plugged into.</p>
 <p></p></div><p></p>
 </div>
+<div class="md:flex w-full">
+    <div class="md:w-1/2 w-full p-4">
+        <img src="/cwp-11ty/assets/serialmonitor-DqUrF9Oa.png">
+    </div>
+    <div class="md:w-1/2 w-full p-4">
+<p>Then open the Serial Monitor from the Tools --&gt; Serial Monitor (or pressing Ctrl+Shift+M) and see how the values change as you turn your potentiometer.</p>
 <p></p></div><p></p>
 </div>
 </details>
