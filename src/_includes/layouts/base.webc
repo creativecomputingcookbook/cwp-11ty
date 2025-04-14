@@ -53,13 +53,6 @@
     <script src="/lib/lis.js" webc:keep></script>
     <script type="module" src="/parsons.js" webc:keep></script>
     <script webc:keep>
-        function copyCode() {
-            navigator.clipboard.writeText(initial).then(() => {
-                alert("Code copied to clipboard!");
-            });
-        }
-
-
         // Helper for displaying errors from the Parsons widget
         function displayErrors(fb) {
             if (fb.errors && fb.errors.length > 0) {
@@ -69,8 +62,9 @@
         
         // Wait for the document to be ready before initializing the widget
         window.addEventListener("DOMContentLoaded", function() {
+            let sortableId = 'sortable';
             var parson = new ParsonsWidget({
-                sortableId: 'sortable',
+                sortableId,
                 trashId: 'sortableTrash',
                 max_wrong_lines: 1,
                 feedback_cb: displayErrors,
@@ -86,6 +80,15 @@
             $("#feedbackLink").click(function (event) {
                 event.preventDefault();
                 parson.getFeedback();
+            });
+            $("#copyCodeLink").click(function (event) {
+                event.preventDefault();
+                let studentCode = parson
+                  .normalizeIndents(parson.getModifiedCode("#ul-" + sortableId))
+                  .map(c => `${'    '.repeat(c.indent < 0 ? 0 : c.indent)}${c.code}`)
+                navigator.clipboard.writeText(studentCode.join("\n")).then(() => {
+                    alert("Code copied to clipboard!");
+                });
             });
         });
     </script>
