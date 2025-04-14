@@ -112,18 +112,5 @@ int main(){
         "  printf(Hello World!);\n" +
         "  return 0;\n" +
         "}\n";
-    function copyCode() {
-    navigator.clipboard.writeText(initial).then(() => {
-      alert("Code copied to clipboard!");
-    });
-  }
 </script>
 
-<div class="relative mb-4">
-  <button
-    onclick="copyCode()"
-    class="absolute top-2 right-2 px-3 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300"
-  >
-    Copy Code
-  </button>
-</div>

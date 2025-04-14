@@ -25,6 +25,13 @@ title: "Interactive Parsons Problem"
     </div>
 		
 	<script>
+	function copyCode() {
+    navigator.clipboard.writeText(initial).then(() => {
+      alert("Code copied to clipboard!");
+    });
+  }
+
+
   // Helper for displaying errors from the Parsons widget
   function displayErrors(fb) {
     if (fb.errors && fb.errors.length > 0) {
@@ -54,6 +61,15 @@ title: "Interactive Parsons Problem"
     });
   });
 	</script>
+			<div class="relative mb-4">
+				<button
+					onclick="copyCode()"
+					class="absolute top-2 right-2 px-3 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300"
+				>
+					Copy Code
+				</button>
+			</div>
+
     <!-- Parsons problem widget container -->
     <div id="parsons-container" class="py-4">
       <!-- Containers required by parsons.js -->
@@ -65,7 +81,7 @@ title: "Interactive Parsons Problem"
       </p>
     </div>
 
-    <!-- Optional related content block -->
+		<!-- Optional related content block -->
     <div webc:if="related">
       <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
       <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
