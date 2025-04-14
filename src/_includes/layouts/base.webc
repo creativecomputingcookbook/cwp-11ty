@@ -27,7 +27,6 @@
 
 		<!-- Preload the font stylesheet asynchronously with low priority -->
     <link rel="preload" href="https://rsms.me/inter/inter.css" as="style" />
-		<link rel="preload" href="/styles/parsons.css" as="style" />
 
 		<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
     <link
@@ -45,53 +44,8 @@
     <div @html="content"></div>
 
     <script @raw="getBundle('js')" webc:keep></script>
+    <style @raw="getBundle('css')" webc:keep></style>
     <script type="module" src="/main.js" webc:keep></script>
-    <script src="/lib/jquery.min.js" webc:keep></script>
-    <script src="/lib/jquery-ui.min.js" webc:keep></script>
-    <script src="/lib/jquery.ui.touch-punch.min.js" webc:keep></script>
-    <script src="/lib/underscore-min.js" webc:keep></script>
-    <script src="/lib/lis.js" webc:keep></script>
-    <script type="module" src="/parsons.js" webc:keep></script>
-    <script webc:keep>
-        // Helper for displaying errors from the Parsons widget
-        function displayErrors(fb) {
-            if (fb.errors && fb.errors.length > 0) {
-                alert(fb.errors[0]);
-            }
-        }
-        
-        // Wait for the document to be ready before initializing the widget
-        window.addEventListener("DOMContentLoaded", function() {
-            let sortableId = 'sortable';
-            var parson = new ParsonsWidget({
-                sortableId,
-                trashId: 'sortableTrash',
-                max_wrong_lines: 1,
-                feedback_cb: displayErrors,
-                can_indent: true
-            });
-            parson.init(initial);
-            parson.shuffleLines();
-        
-            $("#newInstanceLink").click(function (event) {
-                event.preventDefault();
-                parson.shuffleLines();
-            });
-            $("#feedbackLink").click(function (event) {
-                event.preventDefault();
-                parson.getFeedback();
-            });
-            $("#copyCodeLink").click(function (event) {
-                event.preventDefault();
-                let studentCode = parson
-                  .normalizeIndents(parson.getModifiedCode("#ul-" + sortableId))
-                  .map(c => `${'    '.repeat(c.indent < 0 ? 0 : c.indent)}${c.code}`)
-                navigator.clipboard.writeText(studentCode.join("\n")).then(() => {
-                    alert("Code copied to clipboard!");
-                });
-            });
-        });
-    </script>
 
   </body>
 </html>

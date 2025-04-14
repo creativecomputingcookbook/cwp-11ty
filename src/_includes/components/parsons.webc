@@ -1,3 +1,51 @@
+<link rel="stylesheet" href="../../styles/parsons.css">
+<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../lib/jquery.ui.touch-punch.min.js"></script>
+<script src="../../lib/underscore-min.js"></script>
+<script src="../../lib/lis.js"></script>
+<script type="module" src="../../parsons.js"></script>
+<script>
+    // Helper for displaying errors from the Parsons widget
+    function displayErrors(fb) {
+        if (fb.errors && fb.errors.length > 0) {
+            alert(fb.errors[0]);
+        }
+    }
+    
+    // Wait for the document to be ready before initializing the widget
+    window.addEventListener("DOMContentLoaded", function() {
+        let sortableId = 'sortable';
+        var parson = new ParsonsWidget({
+            sortableId,
+            trashId: 'sortableTrash',
+            max_wrong_lines: 1,
+            feedback_cb: displayErrors,
+            can_indent: true
+        });
+        parson.init(initial);
+        parson.shuffleLines();
+    
+        $("#newInstanceLink").click(function (event) {
+            event.preventDefault();
+            parson.shuffleLines();
+        });
+        $("#feedbackLink").click(function (event) {
+            event.preventDefault();
+            parson.getFeedback();
+        });
+        $("#copyCodeLink").click(function (event) {
+            event.preventDefault();
+            let studentCode = parson
+              .normalizeIndents(parson.getModifiedCode("#ul-" + sortableId))
+              .map(c => `${'    '.repeat(c.indent < 0 ? 0 : c.indent)}${c.code}`)
+            navigator.clipboard.writeText(studentCode.join("\n")).then(() => {
+                alert("Code copied to clipboard!");
+            });
+        });
+    });
+</script>
+
 <!-- Parsons problem widget container -->
 <div id="parsons-container" class="py-4 overflow-auto">
     <!-- Containers required by parsons.js -->
