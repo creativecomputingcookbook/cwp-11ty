@@ -14,19 +14,17 @@ A **tilt sensor** is a gadget that can figure out the angle or inclination of th
 <collapsible title="Arduino set up">
 
 <step>
-<div slot="left">test</div>
 
-
-<step>
 <img src="/images/digitalpintilt.png">
 <img src="/images/digitalpintilt2.png">
+
 #### Step 1
 
 You need to connect it to a digital pin which are the ones labeled with an D in front of it. Pick one of the five slots to plug it in: [D3/4], [D5/6], [D7/8], [D9/10] or [D11/12]. We've chosen [D11/12]. 
 </step>
 
 <step>
-<div>
+
 
 ```/////////////////////// 
 // TILT SENSOR TEST  //
@@ -69,8 +67,6 @@ void loop() {
     delay(10);   // wait for 10 milliseconds for the Arduino to catch up
 }
 ```
-
-</div>
 #### Step 2
 
 Initialization: The code sets up a variable called "TILT_PIN" which stores the value of the pin that you have your tilt sensor plugged into. In the code, we have it set to D4, which will work if you have it plugged into [D3/4]. 
@@ -83,8 +79,9 @@ You'll have to change the highlighted line changing 4 based on the Digital pin y
 Setup: The "Serial.begin(9600);" sets up the Serial Monitor, which will allow you to monitor what gets printed out while your Arduino is running. We will print the tilt sensor state to the serial monitor. The pinMode(TILT_PIN, INPUT); tells the microcontroller that the button is an input. 
 Loop: We read the button value using the digitalRead(TILT_PIN); and store it in a variable. We then print if the button is "HIGH" or "LOW" to the Serial Monitor using the Serial.println(""). 
  
- </step>
+</step>
 <step>
+
 #### Step 3
 
 <img src="/images/uploadbutton.png">
