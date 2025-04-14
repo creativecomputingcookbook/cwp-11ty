@@ -1,4 +1,4 @@
 module.exports = {
   tags: ['Foundations'],
-  layout: 'layouts/parsons.webc',
+  layout: 'layouts/info.webc',
 };

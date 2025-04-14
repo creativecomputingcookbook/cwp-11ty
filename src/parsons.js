@@ -1,3 +1,5 @@
+import './styles/parsons.css';
+
 (function($, _) { // wrap in anonymous function to not show some helper variables
 
    // regexp used for trimming

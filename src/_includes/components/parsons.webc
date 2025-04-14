@@ -1,3 +1,21 @@
-<div>
-    Parsons problem for <b @text="name"></b>
+<!-- Assets for the Parsons widget -->
+
+<div class="relative mb-4">
+    <button
+        onclick="copyCode()"
+        class="absolute top-2 right-2 px-3 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300"
+    >
+        Copy Code
+    </button>
+</div>
+
+<!-- Parsons problem widget container -->
+<div id="parsons-container" class="py-4">
+    <!-- Containers required by parsons.js -->
+    <div id="sortableTrash" class="sortable-code"></div>
+    <div id="sortable" class="sortable-code"></div>
+    <p class="mt-4">
+        <a id="newInstanceLink" href="#" class="text-blue-500 underline">New instance</a> |
+        <a id="feedbackLink" href="#" class="text-blue-500 underline">Get feedback</a>
+    </p>
 </div>
