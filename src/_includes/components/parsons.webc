@@ -5,55 +5,104 @@
 <script src="../../lib/underscore-min.js"></script>
 <script src="../../lib/lis.js"></script>
 <script type="module" src="../../parsons.js"></script>
-<script>
-    // Helper for displaying errors from the Parsons widget
-    function displayErrors(fb) {
-        if (fb.errors && fb.errors.length > 0) {
-            alert(fb.errors[0]);
-        }
-    }
-    
-    // Wait for the document to be ready before initializing the widget
-    window.addEventListener("DOMContentLoaded", function() {
-        let sortableId = 'sortable';
-        var parson = new ParsonsWidget({
-            sortableId,
-            trashId: 'sortableTrash',
-            max_wrong_lines: 1,
-            feedback_cb: displayErrors,
-            can_indent: true
-        });
-        parson.init(initial);
-        parson.shuffleLines();
-    
-        $("#newInstanceLink").click(function (event) {
-            event.preventDefault();
-            parson.shuffleLines();
-        });
-        $("#feedbackLink").click(function (event) {
-            event.preventDefault();
-            parson.getFeedback();
-        });
-        $("#copyCodeLink").click(function (event) {
-            event.preventDefault();
-            let studentCode = parson
-              .normalizeIndents(parson.getModifiedCode("#ul-" + sortableId))
-              .map(c => `${'    '.repeat(c.indent < 0 ? 0 : c.indent)}${c.code}`)
-            navigator.clipboard.writeText(studentCode.join("\n")).then(() => {
-                alert("Code copied to clipboard!");
-            });
-        });
-    });
-</script>
 
-<!-- Parsons problem widget container -->
-<div id="parsons-container" class="py-4 overflow-auto">
-    <!-- Containers required by parsons.js -->
-    <div id="sortableTrash" class="sortable-code"></div>
-    <div id="sortable" class="sortable-code"></div>
-    <p class="mt-4">
-        <a id="newInstanceLink" href="#" class="text-blue-500 underline">New instance</a> |
-        <a id="feedbackLink" href="#" class="text-blue-500 underline">Get feedback</a> |
-        <a id="copyCodeLink" href="#" class="text-blue-500 underline">Copy code</a>
-    </p>
+<!-- Component container with clear boundaries -->
+<div class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-4 mb-8 max-w-4xl mx-auto">
+  <!-- Title from attribute -->
+  <h3 class="text-xl font-semibold mb-4 text-gray-800" @text="title"></h3>
+  
+  <!-- Description slot -->
+  <div class="prose mb-6 text-gray-700">
+    <slot></slot>
+  </div>
+  
 </div>
+
+<script>
+  // Component initialization
+  const componentId = 'parsons-' + Math.random().toString(36).substring(2, 9);
+  
+  // Helper for displaying errors from the Parsons widget
+  function displayErrors(fb) {
+    if (fb.errors && fb.errors.length > 0) {
+      // Create a nicer error message element instead of an alert
+      const errorContainer = document.createElement('div');
+      errorContainer.className = 'bg-red-50 border-l-4 border-red-400 p-4 mt-4 text-red-700 rounded';
+      errorContainer.innerHTML = `<p>${fb.errors[0]}</p>`;
+      
+      // Find the widget container and append the error
+      const widgetContainer = document.querySelector('.parsons-widget');
+      
+      // Remove any existing error messages
+      const existingErrors = widgetContainer.querySelectorAll('.bg-red-50');
+      existingErrors.forEach(el => el.remove());
+      
+      widgetContainer.appendChild(errorContainer);
+      
+      // Auto-remove after 5 seconds
+      setTimeout(() => {
+        errorContainer.remove();
+      }, 5000);
+    }
+  }
+  
+  // Wait for the document to be ready before initializing the widget
+  window.addEventListener("DOMContentLoaded", function() {
+    let sortableId = 'sortable';
+    var parson = new ParsonsWidget({
+      sortableId,
+      trashId: 'sortableTrash',
+      max_wrong_lines: 1,
+      feedback_cb: displayErrors,
+      can_indent: true
+    });
+    
+    // Initialize with the initial code
+    parson.init(initial);
+    parson.shuffleLines();
+    
+    // Button event handlers
+    $("#newInstanceLink").click(function (event) {
+      event.preventDefault();
+      parson.shuffleLines();
+      
+      // Remove any error messages when shuffling
+      const widgetContainer = document.querySelector('.parsons-widget');
+      const existingErrors = widgetContainer.querySelectorAll('.bg-red-50');
+      existingErrors.forEach(el => el.remove());
+    });
+    
+    $("#feedbackLink").click(function (event) {
+      event.preventDefault();
+      parson.getFeedback();
+    });
+    
+    $("#copyCodeLink").click(function (event) {
+      event.preventDefault();
+      let studentCode = parson
+        .normalizeIndents(parson.getModifiedCode("#ul-" + sortableId))
+        .map(c => `${'    '.repeat(c.indent < 0 ? 0 : c.indent)}${c.code}`);
+      
+      navigator.clipboard.writeText(studentCode.join("\n")).then(() => {
+        // Create a success message element instead of an alert
+        const successContainer = document.createElement('div');
+        successContainer.className = 'bg-green-50 border-l-4 border-green-400 p-4 mt-4 text-green-700 rounded';
+        successContainer.innerHTML = `<p>Code copied to clipboard!</p>`;
+        
+        // Find the widget container and append the success message
+        const widgetContainer = document.querySelector('.parsons-widget');
+        
+        // Remove any existing success messages
+        const existingMessages = widgetContainer.querySelectorAll('.bg-green-50');
+        existingMessages.forEach(el => el.remove());
+        
+        widgetContainer.appendChild(successContainer);
+        
+        // Auto-remove after 3 seconds
+        setTimeout(() => {
+          successContainer.remove();
+        }, 3000);
+      });
+    });
+  });
+</script>
