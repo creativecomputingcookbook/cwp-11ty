@@ -22,7 +22,9 @@ You need to connect the board to a digital pin which are the ones labeled with a
 </step>
 
 <step>
-<syntax-highlight slot="left" language="arduino">
+<div slot="left">
+
+<syntax-highlight language="arduino">
 ////////////////////
 // LED STRIP TEST //
 ////////////////////
@@ -147,38 +149,30 @@ void theaterChaseRainbow(int wait) {
     }
 }
 </syntax-highlight>
+</div>
 
 #### Step 2 - Remix the Code
 
-Initialization: The code sets up a constant called "LED_PIN" which stores the value of the pin that you have your LED strip plugged into. In the code, we have it set to D12, which will work if you have it plugged into [D11/12]. It also sets "LED_COUNT" which is the number of white square lights on the LED strip. You also set up the "brightness" of the LED strip with any number from 1 to 255. We also need to declare a special object, which is the LED strip in the code with Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+**Initialization**: The code sets up a constant called `LED_PIN` which stores the value of the pin that you have your LED strip plugged into. In the code, we have it set to D12, which will work if you have it plugged into [D11/12]. It also sets `LED_COUNT` which is the number of white square lights on the LED strip. You also set up the "brightness" of the LED strip with any number from 1 to 255. We also need to declare a special object, which is the LED strip in the code with `Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);`
 
 You'll have to change the highlighted line changing 12 based on the Digital pin you plugged your LED strip into. If you plugged into: 
 
-[D3/4] it should be D4 
+* [D3/4] it should be D4 
+* [D5/6] it should be D6
+* [D7/8] it should be D8
+* [D9/10] it should be D10
+* [D11/12] it should be D12.
 
-[D5/6] it should be D6
-
-[D7/8] it should be D8
-
-[D9/10] it should be D10
-
-[D11/12] it should be D12.
-
-Setup: You begin using the LED strip with strip.begin(); and strip.show();. You set the brightness of the LED strip with strip.SetBrightness(brightness);.
+**Setup**: You begin using the LED strip with `strip.begin();` and` strip.show();`. You set the brightness of the LED strip with `strip.SetBrightness(brightness);`.
 
 You can create some fun patterns on the LED strip using either one of the following functions: 
 
-loop: for a rainbow pattern
-
-blinkAll: makes the LEDs blink
-
-colorWipe: gradually changes the color of each LED
-
-theatreChase: creates a chase effect on the strip
-
-rainbow: creates a rainbow cycle along the strip
-
-theatreChaseRaindbow:  creates a rainbow chase effect
+* `loop`: for a rainbow pattern
+* `blinkAll`: makes the LEDs blink
+* `colorWipe`: gradually changes the color of each LED
+* `theatreChase`: creates a chase effect on the strip
+* `rainbow`: creates a rainbow cycle along the strip
+* `theatreChaseRaindbow`: creates a rainbow chase effect
 
 </step>
 <step>
@@ -195,7 +189,4 @@ Press the upload button with the arrow after making sure you've selected the cor
 Then open the Serial Monitor from the Tools --> Serial Monitor (or pressing Ctrl+Shift+M) and see how the values change as you turn your potentiometer.
 
 </step>
-</collapsible>
-<collapsible title="">
-
 </collapsible>

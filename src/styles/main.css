@@ -128,3 +128,17 @@ code .highlight-line:before {
 	text-align: right;
 	width: 2.4em;
 }
+
+.prose-lg ul {
+	list-style: unset;
+}
+
+.prose-lg ul li p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.prose-lg a {
+	color: #91BD7D;
+	text-decoration: underline;
+}
