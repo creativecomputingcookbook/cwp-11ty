@@ -14,9 +14,10 @@ A **tilt sensor** is a gadget that can figure out the angle or inclination of th
 <collapsible title="Arduino set up">
 
 <step>
-
+<div slot="left">
 <img src="/images/digitalpintilt.png">
 <img src="/images/digitalpintilt2.png">
+</div>
 
 #### Step 1
 
@@ -24,9 +25,10 @@ You need to connect it to a digital pin which are the ones labeled with an D in 
 </step>
 
 <step>
+<div slot="left">
 
-
-```/////////////////////// 
+```arduino
+/////////////////////// 
 // TILT SENSOR TEST  //
 ///////////////////////
 
@@ -67,6 +69,8 @@ void loop() {
     delay(10);   // wait for 10 milliseconds for the Arduino to catch up
 }
 ```
+</div>
+
 #### Step 2
 
 Initialization: The code sets up a variable called "TILT_PIN" which stores the value of the pin that you have your tilt sensor plugged into. In the code, we have it set to D4, which will work if you have it plugged into [D3/4]. 
@@ -80,14 +84,13 @@ Setup: The "Serial.begin(9600);" sets up the Serial Monitor, which will allow yo
 Loop: We read the button value using the digitalRead(TILT_PIN); and store it in a variable. We then print if the button is "HIGH" or "LOW" to the Serial Monitor using the Serial.println(""). 
  
 </step>
-<step>
+<step img="/images/uploadbutton.png">
 
 #### Step 3
 
-<img src="/images/uploadbutton.png">
 Press the upload button with the arrow after making sure you've selected the correct board (Arduino BLE 33) and port that the Arduino is plugged into.  
-
-<img src="/images/serialmonitor.png">
+</step>
+<step img="/images/serialmonitor.png">
 Then open the Serial Monitor from the Tools --> Serial Monitor (or pressing Ctrl+Shift+M) and see how the values change as you turn your potentiometer.
 </step>
 </collapsible>
