@@ -106,12 +106,6 @@ int main(){
       "  }\n" +
       "  delay(1500);\\n" +
       "}\n";
-
-    // var initial =
-    //     "int main(){\n" +
-    //     "  printf(Hello World!);\n" +
-    //     "  return 0;\n" +
-    //     "}\n";
 </script>
 <parsons></parsons>
 

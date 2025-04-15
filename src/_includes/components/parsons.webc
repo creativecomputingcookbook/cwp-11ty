@@ -39,6 +39,12 @@
       copyButton.classList.remove("opacity-50", "pointer-events-none");
     }
   }
+
+	function decodeHtmlEntities(str) {
+		var txt = document.createElement("textarea");
+		txt.innerHTML = str;
+		return txt.value;
+	}
   
   // Wait for the document to be ready before initializing the widget
   window.addEventListener("DOMContentLoaded", function() {
@@ -82,7 +88,10 @@
       event.preventDefault();
       let studentCode = parson
         .normalizeIndents(parson.getModifiedCode("#ul-" + sortableId))
-        .map(c => `${'    '.repeat(c.indent < 0 ? 0 : c.indent)}${c.code}`);
+				.map(c => {
+					let decoded = decodeHtmlEntities(c.code);
+					return `${'    '.repeat(c.indent < 0 ? 0 : c.indent)}${decoded}`;
+			});
       
       navigator.clipboard.writeText(studentCode.join("\n")).then(() => {
         // Create a success message element instead of an alert
