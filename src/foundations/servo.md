@@ -87,31 +87,31 @@ int main(){
 <!-- The following script block includes the initialization code for the Parsons widget -->
 <script>
   // Define the initial Parsons problem code.
-    // var initial = 
-    //   "#include &ltServo.h&gt\n" +
-    //   "Servo myservo;  // create servo object to control a servo\n" +
-    //   "int pos = 0;    // variable to store the servo position\n" +
-    //   "void setup() {\\n" +
-    //   "  myservo.attach(9);  // attaches the servo on pin 9 to the servo object\\n" +
-    //   "}\n" +
-    //   "void loop() {\\n" +
-    //   "  for (pos = 0; pos <= 180; pos += 1) {\\n" +
-    //   "    myservo.write(pos);  // tell servo to go to position in variable 'pos'\\n" +
-    //   "    delay(5);            // waits 5 ms for the servo to reach the position\\n" +
-    //   "  }\n" +
-    //   "  delay(500);\n" +
-    //   "  for (pos = 180; pos >= 0; pos -= 1) {\\n" +
-    //   "    myservo.write(pos);  // tell servo to go to position in variable 'pos'\\n" +
-    //   "    delay(5);            // waits 5 ms for the servo to reach the position\\n" +
-    //   "  }\n" +
-    //   "  delay(1500);\\n" +
-    //   "}\n";
+    var initial = 
+      "#include &ltServo.h&gt\n" +
+      "Servo myservo;\n" +
+      "int pos = 0;\n" +
+      "void setup() {\\n" +
+      "  myservo.attach(9);\\n" +
+      "}\n" +
+      "void loop() {\\n" +
+      "  for (pos = 0; pos <= 180; pos += 1) {\\n" +
+      "    myservo.write(pos);\\n" +
+      "    delay(5);\\n" +
+      "  }\n" +
+      "  delay(500);\n" +
+      "  for (pos = 180; pos >= 0; pos -= 1) {\\n" +
+      "    myservo.write(pos);\\n" +
+      "    delay(5);\\n" +
+      "  }\n" +
+      "  delay(1500);\\n" +
+      "}\n";
 
-    var initial =
-        "int main(){\n" +
-        "  printf(Hello World!);\n" +
-        "  return 0;\n" +
-        "}\n";
+    // var initial =
+    //     "int main(){\n" +
+    //     "  printf(Hello World!);\n" +
+    //     "  return 0;\n" +
+    //     "}\n";
 </script>
 <parsons></parsons>
 

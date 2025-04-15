@@ -25,7 +25,7 @@
 #sortableTrash { width: 65%; }
 #sortable { width: 65%; }
 .sortable-code ul {
-    font-size: 120%;
+    font-size: 80%;
     font-family: monospace;
     list-style: none;
     background-color: #efefff;
@@ -51,7 +51,7 @@ ul.output {
     border:1px solid lightgray;
     padding:10px;
     margin-top: 5px;
-    white-space: nowrap;
+    white-space: pre-wrap;
     overflow: hidden;
     cursor: move;
 }
