@@ -6,22 +6,7 @@
 <script src="../../lib/lis.js"></script>
 <script type="module" src="../../parsons.js"></script>
 
-<!-- Component container with clear boundaries -->
-<div class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-4 mb-8 max-w-4xl mx-auto">
-  <!-- Title from attribute -->
-  <h3 class="text-xl font-semibold mb-4 text-gray-800" @text="title"></h3>
-  
-  <!-- Description slot -->
-  <div class="prose mb-6 text-gray-700">
-    <slot></slot>
-  </div>
-  
-</div>
-
 <script>
-  // Component initialization
-  const componentId = 'parsons-' + Math.random().toString(36).substring(2, 9);
-  
   // Helper for displaying errors from the Parsons widget
   function displayErrors(fb) {
     if (fb.errors && fb.errors.length > 0) {
@@ -106,3 +91,41 @@
     });
   });
 </script>
+
+<!-- Component container with clear boundaries -->
+<div class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 mx-auto">
+  <!-- Title from attribute -->
+  <h3 class="text-xl font-semibold mb-4 text-gray-800" @text="title"></h3>
+  
+  <!-- Parsons problem widget container -->
+  <div class="parsons-widget bg-white border border-gray-300 rounded-lg p-5 shadow-sm">
+    <div class="flex flex-col md:flex-row gap-6">
+      <!-- Source container -->
+      <div class="w-full md:w-1/2">
+        <h4 class="text-sm font-medium text-gray-500 mb-3">Available Code</h4>
+        <div id="sortableTrash" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
+      </div>
+      
+      <!-- Solution container -->
+      <div class="w-full md:w-1/2">
+        <h4 class="text-sm font-medium text-gray-500 mb-3">Your Solution</h4>
+        <div id="sortable" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
+      </div>
+    </div>
+    
+    <!-- Controls -->
+    <div class="mt-4 flex justify-between items-center pt-2 border-t border-gray-200">
+      <div class="space-x-2">
+        <a id="newInstanceLink" href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium hover:underline">
+          ↻ New instance
+        </a>
+        <a id="feedbackLink" href="#" class="text-green-600 hover:text-green-800 text-sm font-medium hover:underline">
+          ✓ Get feedback
+        </a>
+      </div>
+      <a id="copyCodeLink" href="#" class="bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium py-1 px-3 rounded border border-blue-200 transition-colors">
+        Copy code
+      </a>
+    </div>
+  </div>
+</div>
