@@ -68,8 +68,8 @@ void loop() {
     delay(10);   // wait for 10 milliseconds for the Arduino to catch up
 }
 ```
-
 </div>
+
 #### Step 2
 
 Initialization: The code sets up a variable called "TILT_PIN" which stores the value of the pin that you have your tilt sensor plugged into. In the code, we have it set to D4, which will work if you have it plugged into [D3/4]. 
@@ -84,6 +84,7 @@ Loop: We read the button value using the digitalRead(TILT_PIN); and store it in 
  
 </step>
 <step img="/images/uploadbutton.png">
+
 #### Step 3
 
 Press the upload button with the arrow after making sure you've selected the correct board (Arduino BLE 33) and port that the Arduino is plugged into.  
