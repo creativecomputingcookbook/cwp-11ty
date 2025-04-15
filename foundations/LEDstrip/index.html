@@ -48,8 +48,8 @@
 
     <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
     <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-JQ96PjLr.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-Dzlp49T5.css">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-VpPq39pm.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-49rkG-MZ.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-white">
     <header>
@@ -87,45 +87,58 @@
 </div>
 <div class="md:flex w-full">
     <div class="md:w-1/2 w-full p-4">
-        <pre class="language-arduino"><code class="language-arduino"><span class="token comment">////////////////////</span>
+        <div>
+<pre class="language-arduino"><code class="language-arduino"><span class="token comment">////////////////////</span>
 <span class="token comment">// LED STRIP TEST //</span>
 <span class="token comment">////////////////////</span>
-<p><span class="token comment">// Description: </span>
+
+<span class="token comment">// Description: </span>
 <span class="token comment">/*
-Takes a reading with the ultrasonic sensor and displays it in inches and centimeters to the serial monitor.
-*/</span></p>
-<p><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;Adafruit_NeoPixel.h&gt;</span></span></p>
-<p><span class="token comment">// constants won't change. They're used here to set pin numbers:</span>
+    Takes a reading with the ultrasonic sensor and displays it in inches and centimeters to the serial monitor.
+*/</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;Adafruit_NeoPixel.h&gt;</span></span>
+
+<span class="token comment">// constants won't change. They're used here to set pin numbers:</span>
 const <span class="token keyword">int</span> LED_COUNT <span class="token operator">=</span> <span class="token number">18</span><span class="token punctuation">;</span>
-const <span class="token keyword">int</span> LED_PIN <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span></p>
-<p><span class="token comment">// variables will change:</span>
-<span class="token keyword">int</span> brightness <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span> <span class="token comment">// set LED brightness to about 1/5 (max = 255)</span></p>
-<p><span class="token comment">// the LED strip requires a special object that we declare here:</span>
-Adafruit_NeoPixel <span class="token function">strip</span><span class="token punctuation">(</span>LED_COUNT<span class="token punctuation">,</span> LED_PIN<span class="token punctuation">,</span> NEO_GRB <span class="token operator">+</span> NEO_KHZ800<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// creates an object that will represent our LED strip</span></p>
-<p><span class="token keyword">void</span> <span class="token keyword">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-strip<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">// begin using the LED strip object (REQUIRED)</span>
-strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">// turn OFF all pixels ASAP (this only works when first being run)</span>
-strip<span class="token punctuation">.</span><span class="token function">setBrightness</span><span class="token punctuation">(</span>brightness<span class="token punctuation">)</span><span class="token punctuation">;</span></p>
-<p>strip<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>strip<span class="token punctuation">.</span><span class="token function">Color</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// show no color (i.e., another way to turn LEDs off)</span>
-strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></p>
-<p><span class="token keyword">void</span> <span class="token keyword">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token function">rainbow</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></p>
-<p><span class="token comment">// ----------------- Some functions creating animated effects -----------------</span></p>
-<p><span class="token comment">/*
+const <span class="token keyword">int</span> LED_PIN <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
+
+<span class="token comment">// variables will change:</span>
+<span class="token keyword">int</span> brightness <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span> <span class="token comment">// set LED brightness to about 1/5 (max = 255)</span>
+
+<span class="token comment">// the LED strip requires a special object that we declare here:</span>
+Adafruit_NeoPixel <span class="token function">strip</span><span class="token punctuation">(</span>LED_COUNT<span class="token punctuation">,</span> LED_PIN<span class="token punctuation">,</span> NEO_GRB <span class="token operator">+</span> NEO_KHZ800<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// creates an object that will represent our LED strip</span>
+
+<span class="token keyword">void</span> <span class="token keyword">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    strip<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">// begin using the LED strip object (REQUIRED)</span>
+    strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">// turn OFF all pixels ASAP (this only works when first being run)</span>
+    strip<span class="token punctuation">.</span><span class="token function">setBrightness</span><span class="token punctuation">(</span>brightness<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    strip<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>strip<span class="token punctuation">.</span><span class="token function">Color</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// show no color (i.e., another way to turn LEDs off)</span>
+    strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token keyword">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">rainbow</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// ----------------- Some functions creating animated effects -----------------</span>
+
+<span class="token comment">/*
 Fill all LEDs with a single color for a number of milliseconds
 */</span>
 <span class="token keyword">void</span> <span class="token function">blinkAll</span><span class="token punctuation">(</span>uint32_t color<span class="token punctuation">,</span> <span class="token keyword">int</span> wait<span class="token punctuation">)</span><span class="token punctuation">{</span>
-strip<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span>
-strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">delay</span><span class="token punctuation">(</span>wait<span class="token punctuation">)</span><span class="token punctuation">;</span></p>
-<p>strip<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>strip<span class="token punctuation">.</span><span class="token function">Color</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">delay</span><span class="token punctuation">(</span>wait<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></p>
-<p><span class="token comment">/*
+    strip<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token function">delay</span><span class="token punctuation">(</span>wait<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    
+    strip<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>strip<span class="token punctuation">.</span><span class="token function">Color</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token function">delay</span><span class="token punctuation">(</span>wait<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
 Fill strip pixels one after another with a color. Strip is NOT cleared
 first; anything there will be covered pixel by pixel. Pass in color
 (as a single 'packed' 32-bit value, which you can get by calling
@@ -133,87 +146,107 @@ strip.Color(red, green, blue) as shown in the loop() function above),
 and a delay time (in milliseconds) between pixels.
 */</span>
 <span class="token keyword">void</span> <span class="token function">colorWipe</span><span class="token punctuation">(</span>uint32_t color<span class="token punctuation">,</span> <span class="token keyword">int</span> wait<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>strip<span class="token punctuation">.</span><span class="token function">numPixels</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// For each pixel in strip...</span>
-strip<span class="token punctuation">.</span><span class="token function">setPixelColor</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//  Set pixel's color (in RAM)</span>
-strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                          <span class="token comment">//  Update strip to match</span>
-<span class="token function">delay</span><span class="token punctuation">(</span>wait<span class="token punctuation">)</span><span class="token punctuation">;</span>                           <span class="token comment">//  Pause for a moment</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>strip<span class="token punctuation">.</span><span class="token function">numPixels</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// For each pixel in strip...</span>
+        strip<span class="token punctuation">.</span><span class="token function">setPixelColor</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//  Set pixel's color (in RAM)</span>
+        strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                          <span class="token comment">//  Update strip to match</span>
+        <span class="token function">delay</span><span class="token punctuation">(</span>wait<span class="token punctuation">)</span><span class="token punctuation">;</span>                           <span class="token comment">//  Pause for a moment</span>
+    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></p>
-<p><span class="token comment">// Theater-marquee-style chasing lights. Pass in a color (32-bit value,</span>
+
+<span class="token comment">// Theater-marquee-style chasing lights. Pass in a color (32-bit value,</span>
 <span class="token comment">// a la strip.Color(r,g,b) as mentioned above), and a delay time (in ms)</span>
 <span class="token comment">// between frames.</span>
 <span class="token keyword">void</span> <span class="token function">theaterChase</span><span class="token punctuation">(</span>uint32_t color<span class="token punctuation">,</span> <span class="token keyword">int</span> wait<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> a<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span> a<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">// Repeat 10 times...</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> b<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> b<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span> b<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//  'b' counts from 0 to 2...</span>
-strip<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//   Set all pixels in RAM to 0 (off)</span>
-<span class="token comment">// 'c' counts up from 'b' to end of strip in steps of 3...</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> c<span class="token operator">=</span>b<span class="token punctuation">;</span> c<span class="token operator">&lt;</span>strip<span class="token punctuation">.</span><span class="token function">numPixels</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> c <span class="token operator">+=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-strip<span class="token punctuation">.</span><span class="token function">setPixelColor</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Set pixel 'c' to value 'color'</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> a<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span> a<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">// Repeat 10 times...</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> b<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> b<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span> b<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//  'b' counts from 0 to 2...</span>
+        strip<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//   Set all pixels in RAM to 0 (off)</span>
+        <span class="token comment">// 'c' counts up from 'b' to end of strip in steps of 3...</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> c<span class="token operator">=</span>b<span class="token punctuation">;</span> c<span class="token operator">&lt;</span>strip<span class="token punctuation">.</span><span class="token function">numPixels</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> c <span class="token operator">+=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            strip<span class="token punctuation">.</span><span class="token function">setPixelColor</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Set pixel 'c' to value 'color'</span>
+        <span class="token punctuation">}</span>
+        strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Update strip with new contents</span>
+        <span class="token function">delay</span><span class="token punctuation">(</span>wait<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Pause for a moment</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Update strip with new contents</span>
-<span class="token function">delay</span><span class="token punctuation">(</span>wait<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Pause for a moment</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span></p>
-<p><span class="token comment">// Rainbow cycle along whole strip. Pass delay time (in ms) between frames.</span>
+
+<span class="token comment">// Rainbow cycle along whole strip. Pass delay time (in ms) between frames.</span>
 <span class="token keyword">void</span> <span class="token function">rainbow</span><span class="token punctuation">(</span><span class="token keyword">int</span> wait<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token comment">// Hue of first pixel runs 5 complete loops through the color wheel.</span>
-<span class="token comment">// Color wheel has a range of 65536 but it's OK if we roll over, so</span>
-<span class="token comment">// just count from 0 to 5<em>65536. Adding 256 to firstPixelHue each time</em></span><em>
-<span class="token comment">// means we'll make 5</span></em>65536/256 = 1280 passes through this loop:
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">long</span> firstPixelHue <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> firstPixelHue <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token operator">*</span><span class="token number">65536</span><span class="token punctuation">;</span> firstPixelHue <span class="token operator">+=</span> <span class="token number">256</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token comment">// strip.rainbow() can take a single argument (first pixel hue) or</span>
-<span class="token comment">// optionally a few extras: number of rainbow repetitions (default 1),</span>
-<span class="token comment">// saturation and value (brightness) (both 0-255, similar to the</span>
-<span class="token comment">// ColorHSV() function, default 255), and a true/false flag for whether</span>
-<span class="token comment">// to apply gamma correction to provide 'truer' colors (default true).</span>
-strip<span class="token punctuation">.</span><span class="token function">rainbow</span><span class="token punctuation">(</span>firstPixelHue<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// Above line is equivalent to:</span>
-<span class="token comment">// strip.rainbow(firstPixelHue, 1, 255, 255, true);</span>
-strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Update strip with new contents</span>
-<span class="token function">delay</span><span class="token punctuation">(</span>wait<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Pause for a moment</span>
+    <span class="token comment">// Hue of first pixel runs 5 complete loops through the color wheel.</span>
+    <span class="token comment">// Color wheel has a range of 65536 but it's OK if we roll over, so</span>
+    <span class="token comment">// just count from 0 to 5*65536. Adding 256 to firstPixelHue each time</span>
+    <span class="token comment">// means we'll make 5*65536/256 = 1280 passes through this loop:</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">long</span> firstPixelHue <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> firstPixelHue <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token operator">*</span><span class="token number">65536</span><span class="token punctuation">;</span> firstPixelHue <span class="token operator">+=</span> <span class="token number">256</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// strip.rainbow() can take a single argument (first pixel hue) or</span>
+        <span class="token comment">// optionally a few extras: number of rainbow repetitions (default 1),</span>
+        <span class="token comment">// saturation and value (brightness) (both 0-255, similar to the</span>
+        <span class="token comment">// ColorHSV() function, default 255), and a true/false flag for whether</span>
+        <span class="token comment">// to apply gamma correction to provide 'truer' colors (default true).</span>
+        strip<span class="token punctuation">.</span><span class="token function">rainbow</span><span class="token punctuation">(</span>firstPixelHue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// Above line is equivalent to:</span>
+        <span class="token comment">// strip.rainbow(firstPixelHue, 1, 255, 255, true);</span>
+        strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Update strip with new contents</span>
+        <span class="token function">delay</span><span class="token punctuation">(</span>wait<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Pause for a moment</span>
+    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></p>
-</code><p><code class="language-arduino"><span class="token comment">// Rainbow-enhanced theater marquee. Pass delay time (in ms) between frames.</span>
+
+<span class="token comment">// Rainbow-enhanced theater marquee. Pass delay time (in ms) between frames.</span>
 <span class="token keyword">void</span> <span class="token function">theaterChaseRainbow</span><span class="token punctuation">(</span><span class="token keyword">int</span> wait<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">int</span> firstPixelHue <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>     <span class="token comment">// First pixel starts at red (hue 0)</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> a<span class="token operator">&lt;</span><span class="token number">30</span><span class="token punctuation">;</span> a<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">// Repeat 30 times...</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> b<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> b<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span> b<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//  'b' counts from 0 to 2...</span>
-strip<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//   Set all pixels in RAM to 0 (off)</span>
-<span class="token comment">// 'c' counts up from 'b' to end of strip in increments of 3...</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> c<span class="token operator">=</span>b<span class="token punctuation">;</span> c<span class="token operator">&lt;</span>strip<span class="token punctuation">.</span><span class="token function">numPixels</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> c <span class="token operator">+=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token comment">// hue of pixel 'c' is offset by an amount to make one full</span>
-<span class="token comment">// revolution of the color wheel (range 65536) along the length</span>
-<span class="token comment">// of the strip (strip.numPixels() steps):</span>
-<span class="token keyword">int</span>      hue   <span class="token operator">=</span> firstPixelHue <span class="token operator">+</span> c <span class="token operator">*</span> <span class="token number">65536L</span> <span class="token operator">/</span> strip<span class="token punctuation">.</span><span class="token function">numPixels</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-uint32_t color <span class="token operator">=</span> strip<span class="token punctuation">.</span><span class="token function">gamma32</span><span class="token punctuation">(</span>strip<span class="token punctuation">.</span><span class="token function">ColorHSV</span><span class="token punctuation">(</span>hue<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// hue -&gt; RGB</span>
-strip<span class="token punctuation">.</span><span class="token function">setPixelColor</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Set pixel 'c' to value 'color'</span>
-<span class="token punctuation">}</span>
-strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// Update strip with new contents</span>
-<span class="token function">delay</span><span class="token punctuation">(</span>wait<span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// Pause for a moment</span>
-firstPixelHue <span class="token operator">+=</span> <span class="token number">65536</span> <span class="token operator">/</span> <span class="token number">90</span><span class="token punctuation">;</span> <span class="token comment">// One cycle of color wheel over 90 frames</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></p></pre><p></p>
-<p></p></div>
-<div class="md:w-1/2 w-full p-4"><p></p>
+    <span class="token keyword">int</span> firstPixelHue <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>     <span class="token comment">// First pixel starts at red (hue 0)</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> a<span class="token operator">&lt;</span><span class="token number">30</span><span class="token punctuation">;</span> a<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">// Repeat 30 times...</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> b<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> b<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span> b<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//  'b' counts from 0 to 2...</span>
+        strip<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//   Set all pixels in RAM to 0 (off)</span>
+        <span class="token comment">// 'c' counts up from 'b' to end of strip in increments of 3...</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> c<span class="token operator">=</span>b<span class="token punctuation">;</span> c<span class="token operator">&lt;</span>strip<span class="token punctuation">.</span><span class="token function">numPixels</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> c <span class="token operator">+=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// hue of pixel 'c' is offset by an amount to make one full</span>
+            <span class="token comment">// revolution of the color wheel (range 65536) along the length</span>
+            <span class="token comment">// of the strip (strip.numPixels() steps):</span>
+            <span class="token keyword">int</span>      hue   <span class="token operator">=</span> firstPixelHue <span class="token operator">+</span> c <span class="token operator">*</span> <span class="token number">65536L</span> <span class="token operator">/</span> strip<span class="token punctuation">.</span><span class="token function">numPixels</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            uint32_t color <span class="token operator">=</span> strip<span class="token punctuation">.</span><span class="token function">gamma32</span><span class="token punctuation">(</span>strip<span class="token punctuation">.</span><span class="token function">ColorHSV</span><span class="token punctuation">(</span>hue<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// hue -&gt; RGB</span>
+            strip<span class="token punctuation">.</span><span class="token function">setPixelColor</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Set pixel 'c' to value 'color'</span>
+        <span class="token punctuation">}</span>
+        strip<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// Update strip with new contents</span>
+        <span class="token function">delay</span><span class="token punctuation">(</span>wait<span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// Pause for a moment</span>
+        firstPixelHue <span class="token operator">+=</span> <span class="token number">65536</span> <span class="token operator">/</span> <span class="token number">90</span><span class="token punctuation">;</span> <span class="token comment">// One cycle of color wheel over 90 frames</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</div>
+    </div>
+    <div class="md:w-1/2 w-full p-4">
 <h4>Step 2 - Remix the Code</h4>
-<p>Initialization: The code sets up a constant called "LED_PIN" which stores the value of the pin that you have your LED strip plugged into. In the code, we have it set to D12, which will work if you have it plugged into [D11/12]. It also sets "LED_COUNT" which is the number of white square lights on the LED strip. You also set up the "brightness" of the LED strip with any number from 1 to 255. We also need to declare a special object, which is the LED strip in the code with Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);</p>
+<p><strong>Initialization</strong>: The code sets up a constant called <code>LED_PIN</code> which stores the value of the pin that you have your LED strip plugged into. In the code, we have it set to D12, which will work if you have it plugged into [D11/12]. It also sets <code>LED_COUNT</code> which is the number of white square lights on the LED strip. You also set up the "brightness" of the LED strip with any number from 1 to 255. We also need to declare a special object, which is the LED strip in the code with <code>Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);</code></p>
 <p>You'll have to change the highlighted line changing 12 based on the Digital pin you plugged your LED strip into. If you plugged into:</p>
-<p>[D3/4] it should be D4</p>
-<p>[D5/6] it should be D6</p>
-<p>[D7/8] it should be D8</p>
-<p>[D9/10] it should be D10</p>
-<p>[D11/12] it should be D12.</p>
-<p>Setup: You begin using the LED strip with strip.begin(); and strip.show();. You set the brightness of the LED strip with strip.SetBrightness(brightness);.</p>
+<ul>
+<li>[D3/4] it should be D4</li>
+<li>[D5/6] it should be D6</li>
+<li>[D7/8] it should be D8</li>
+<li>[D9/10] it should be D10</li>
+<li>[D11/12] it should be D12.</li>
+</ul>
+<p><strong>Setup</strong>: You begin using the LED strip with <code>strip.begin();</code> and<code> strip.show();</code>. You set the brightness of the LED strip with <code>strip.SetBrightness(brightness);</code>.</p>
 <p>You can create some fun patterns on the LED strip using either one of the following functions:</p>
-<p>loop: for a rainbow pattern</p>
-<p>blinkAll: makes the LEDs blink</p>
-<p>colorWipe: gradually changes the color of each LED</p>
-<p>theatreChase: creates a chase effect on the strip</p>
-<p>rainbow: creates a rainbow cycle along the strip</p>
-<p>theatreChaseRaindbow:  creates a rainbow chase effect</p>
-<p></p></div><p></p>
+<ul>
+<li>
+<p><code>loop</code>: for a rainbow pattern</p>
+</li>
+<li>
+<p><code>blinkAll</code>: makes the LEDs blink</p>
+</li>
+<li>
+<p><code>colorWipe</code>: gradually changes the color of each LED</p>
+</li>
+<li>
+<p><code>theatreChase</code>: creates a chase effect on the strip</p>
+</li>
+<li>
+<p><code>rainbow</code>: creates a rainbow cycle along the strip</p>
+</li>
+<li>
+<p><code>theatreChaseRaindbow</code>: creates a rainbow chase effect</p>
+  </li></ul></div>
+
+
 </div>
 <div class="md:flex w-full">
     <div class="md:w-1/2 w-full p-4">
@@ -228,9 +261,6 @@ firstPixelHue <span class="token operator">+=</span> <span class="token number">
 <p>Then open the Serial Monitor from the Tools --&gt; Serial Monitor (or pressing Ctrl+Shift+M) and see how the values change as you turn your potentiometer.</p>
 <p></p></div><p></p>
 </div>
-</details>
-<details>
-<summary class="collapsible-header-build"></summary>
 </details>
 
     </div>
