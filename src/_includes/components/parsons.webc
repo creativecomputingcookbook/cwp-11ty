@@ -9,7 +9,13 @@
 <script>
   // Helper for displaying errors from the Parsons widget
   function displayErrors(fb) {
+    const copyButton = document.querySelector("#copyCodeLink");
+    
+    // If there are errors, show error message and disable copy button.
     if (fb.errors && fb.errors.length > 0) {
+      // Disable copy button if there are errors
+      copyButton.classList.add("opacity-50", "pointer-events-none");
+      
       // Create a nicer error message element instead of an alert
       const errorContainer = document.createElement('div');
       errorContainer.className = 'bg-red-50 border-l-4 border-red-400 p-4 mt-4 text-red-700 rounded';
@@ -28,11 +34,18 @@
       setTimeout(() => {
         errorContainer.remove();
       }, 5000);
+    } else {
+      // No errors: enable the copy button.
+      copyButton.classList.remove("opacity-50", "pointer-events-none");
     }
   }
   
   // Wait for the document to be ready before initializing the widget
   window.addEventListener("DOMContentLoaded", function() {
+    // Disable the copy button by default.
+    const copyButton = document.querySelector("#copyCodeLink");
+    copyButton.classList.add("opacity-50", "pointer-events-none");
+  
     let sortableId = 'sortable';
     var parson = new ParsonsWidget({
       sortableId,
@@ -55,6 +68,9 @@
       const widgetContainer = document.querySelector('.parsons-widget');
       const existingErrors = widgetContainer.querySelectorAll('.bg-red-50');
       existingErrors.forEach(el => el.remove());
+      
+      // Also disable the copy button when shuffling for a fresh attempt.
+      copyButton.classList.add("opacity-50", "pointer-events-none");
     });
     
     $("#feedbackLink").click(function (event) {
@@ -91,7 +107,6 @@
     });
   });
 </script>
-
 <!-- Component container with clear boundaries -->
 <div class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 mx-auto">
   <!-- Title from attribute -->
