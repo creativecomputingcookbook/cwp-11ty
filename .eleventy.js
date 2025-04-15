@@ -9,7 +9,10 @@ module.exports = async function (eleventyConfig) {
     viteOptions: { base: `/cwp-11ty` },
   });
   eleventyConfig.addPlugin(EleventyWebcPlugin, {
-    components: 'src/_includes/components/**/*.webc',
+    components: [
+      'src/_includes/components/**/*.webc',
+      "npm:@11ty/eleventy-plugin-syntaxhighlight/*.webc",
+    ],
   });
   eleventyConfig.addPlugin(syntaxHighlight);
 

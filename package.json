@@ -2,8 +2,7 @@
   "name": "cwp-11ty",
   "version": "0.0.1",
   "engines": {
-    "node": "18.x.x",
-    "npm": "10.x.x"
+    "node": "18 || 20 || 22"
   },
   "main": "index.js",
   "repository": {
