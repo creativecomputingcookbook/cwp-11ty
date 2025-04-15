@@ -25,10 +25,10 @@
     <!-- Preconnect to the font file origin -->
     <link rel="preconnect" href="https://rsms.me" crossorigin />
 
-    <!-- Preload the font stylesheet asynchronously with low priority -->
+		<!-- Preload the font stylesheet asynchronously with low priority -->
     <link rel="preload" href="https://rsms.me/inter/inter.css" as="style" />
 
-    <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
+		<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
     <link
       webc:keep
       crossorigin="anonymous"
@@ -44,6 +44,8 @@
     <div @html="content"></div>
 
     <script @raw="getBundle('js')" webc:keep></script>
+    <style @raw="getBundle('css')" webc:keep></style>
     <script type="module" src="/main.js" webc:keep></script>
+
   </body>
 </html>

@@ -85,6 +85,7 @@ void loop() {
     delay(15);                       // waits 15ms for the servo to reach the position
   }
 }
+
 </syntax-highlight>
 
 </div>
@@ -93,3 +94,30 @@ void loop() {
 Upload this code to your Arduino. It reads the potentiometer value and maps it to an angle from 0° to 180°, rotating the servo accordingly.
 </step>
 </collapsible>
+
+### Try it yourself!  
+
+<!-- The following script block includes the initialization code for the Parsons widget -->
+<script>
+  // Define the initial Parsons problem code.
+    var initial = 
+      "#include &ltServo.h&gt\n" +
+      "Servo myservo;\n" +
+      "int pos = 0;\n" +
+      "void setup() {\\n" +
+      "  myservo.attach(9);\\n" +
+      "}\n" +
+      "void loop() {\\n" +
+      "  for (pos = 0; pos <= 180; pos += 1) {\\n" +
+      "    myservo.write(pos);\\n" +
+      "    delay(5);\\n" +
+      "  }\n" +
+      "  delay(500);\n" +
+      "  for (pos = 180; pos >= 0; pos -= 1) {\\n" +
+      "    myservo.write(pos);\\n" +
+      "    delay(5);\\n" +
+      "  }\n" +
+      "  delay(1500);\\n" +
+      "}\n";
+</script>
+<parsons></parsons>

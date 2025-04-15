@@ -17,3 +17,6 @@ layout: 'layouts/base.webc'
     </div>
   </div>
 </main>
+
+<script @raw="getBundle('js')"></script>
+<style @raw="getBundle('css')"></style>
