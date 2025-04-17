@@ -85,3 +85,26 @@ When the button is pressed, the legs connect, and power (5V) flows to pin 2. Now
 
 </step>
 </collapsible>
+
+<script>
+    var initial = 
+      "const int BUTTON_PIN = 4;\n" +
+      "int buttonState = 0;\n" +
+      "void setup() {\\n" +
+      "    Serial.begin(9600);\\n" +
+      "    pinMode(LED_BUILTIN, OUTPUT);\\n" +
+      "    pinMode(BUTTON_PIN, INPUT);\\n" +
+      "}\n" +
+      "void loop() {\\n" +
+      "    buttonState = digitalRead(BUTTON_PIN);\n" +
+      "    if (buttonState == HIGH) {\\n" +
+      "        Serial.println(\"Button HIGH\");\\n" +
+      "        digitalWrite(LED_BUILTIN, HIGH);\n" +
+      "    } else {\\n" +
+      "        Serial.println(\"Button LOW\");\\n" +
+      "        digitalWrite(LED_BUILTIN, LOW);\\n" +
+      "    }\n" +
+      "    delay(10);\\n" +
+      "}\n";
+</script>
+<parsons></parsons>
