@@ -197,6 +197,14 @@ Then open the Serial Monitor from the Tools --> Serial Monitor (or pressing Ctrl
 
 </step>
 </collapsible>
-<collapsible title="">
+<collapsible title="Trinket Assembly">
+
+The battery, LED pixel/strip, and wires form a circuit.
+
+In the hardware provided, you do not need to worry about attaching wires to power and ground - this is already done through the wiring.
+
+<img src="/images/buttontrinket.jpg">
+
+[Here](https://www.loom.com/share/38a5eeecdf3c439ca3b279666db32b98) is example code to set your LED strip to festive colors. 
 
 </collapsible>
