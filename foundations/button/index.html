@@ -93,7 +93,7 @@
       <p>A <strong>button</strong> is one of the simplest input devices you can use with an Arduino. Imagine the power button on your computer or the play button on a music player—when you press it, something happens. With an Arduino, you can program it to detect when a button is pressed and then respond however you want!</p>
 <p>When you connect a button to your Arduino, it completes a circuit when pressed, sending a signal that your Arduino can detect. This makes buttons perfect for user input, like starting a <strong>motor</strong>, turning on a light, or navigating a menu on a screen.</p>
 <details>
-<summary class="collapsible-header-build">Button Basics</summary>
+<summary class="collapsible-header-build">Arduino Assembly</summary>
 <p>A button usually has two states: <strong>pressed</strong> or <strong>not pressed</strong>. When pressed, it connects the circuit and allows current to flow. Using <strong>digitalRead()</strong> in Arduino, you can check if a button is being pressed and then trigger an action, such as blinking an LED.</p>
 <pre class="language-arduino"><code class="language-arduino"><span class="highlight-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"arduino/Arduino.h"</span></span></span>
 <span class="highlight-line"></span>
@@ -213,6 +213,15 @@ const <span class="token keyword">int</span> ledPin <span class="token operator"
   </div>
 </div>
 </parsons>
+<details>
+<summary class="collapsible-header-build">Trinket Assembly</summary>
+<p>The battery, LED pixel/strip, and wires form a circuit.</p>
+<p>In the hardware provided, you do not need to worry about attaching wires to power and ground - this is already done through the wiring.</p>
+<img src="/cwp-11ty/assets/buttontrinket-BgxIZhPj.jpg">
+<p>We can set a condition so that when we press the button, an action results (LED changes color, flashes differently, etc.)</p>
+<p>To do this, we will need to create a variable for the button and use an if/then statement.</p>
+<p><a href="https://www.loom.com/share/91ea5b53f24645d8a4d485fd4259e5e0?t=130">Watch video here</a></p>
+</details>
 
     </div>
     <div>
