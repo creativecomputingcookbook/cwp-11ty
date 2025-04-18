@@ -5,6 +5,7 @@ meta:
   desc:
     "STEM From Dance instructors choreography for 'All of the Lights'"
 ---
+<video src="/images/allofthelights.mp4" width="320" height="240" controls></video>
 
 STEM From Dance instructors choreographed a routine to the song "All of the Lights," incorporating LED strips on the torso, arms, and wrists. A button, strategically placed on their wrists, is pressed during fast arm movements to activate the lights in sync with the choreography.
 

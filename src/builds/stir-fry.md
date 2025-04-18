@@ -5,6 +5,7 @@ meta:
   desc:
     "STEM From Dance instructors choreography for 'Stir Fry'"
 ---
+<video src="/images/stirfry.mp4" width="320" height="240" controls></video>
 
 STEM From Dance instructors created a routine to the song "Stir Fry," featuring LED strips on their torso and knees. Buttons placed on the chest and knees are tapped during the STEP-inspired choreography, triggering the lights to activate in sync with the movement.
 
