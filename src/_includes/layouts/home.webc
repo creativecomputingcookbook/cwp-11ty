@@ -71,7 +71,10 @@ function item(settings) {
           test1: ['test2', 'test3'],
         },
         Builds: {
-          test4: ['test5', 'test6'],
+          'Component': ['Servo', 'Potentiometer', 'Arduino', 'LED strip'],
+          'Interaction': ['Rotating', 'Pop-up', 'Light-up'],
+          'Techniques & Concepts': ['Juxtaposition', 'Duality', 'Metaphor', 'Collaging', 'Illuminated manuscript', 'Single-sentence story'],
+          'Materials': ['Cardboard', 'Acrylic', 'Birch wood', 'Fabric', '3D printing'],
         },
       },
 
