@@ -5,7 +5,7 @@ layout: 'layouts/base.webc'
 <script>
 document.addEventListener('alpine:init', () => {
   Alpine.store('category', {
-    category: 'Foundations',
+    category: 'Builds',
 
     set(category) {
       this.category = category;
