@@ -12,7 +12,7 @@ A **button** is one of the simplest input devices you can use with an Arduino. I
 
 When you connect a button to your Arduino, it completes a circuit when pressed, sending a signal that your Arduino can detect. This makes buttons perfect for user input, like starting a **motor**, turning on a light, or navigating a menu on a screen.
 
-<collapsible title="Button Basics">
+<collapsible title="Arduino Assembly">
 A button usually has two states: **pressed** or **not pressed**. When pressed, it connects the circuit and allows current to flow. Using **digitalRead()** in Arduino, you can check if a button is being pressed and then trigger an action, such as blinking an LED.
 
 ```arduino/
@@ -84,4 +84,19 @@ When the button is not pressed, the two legs aren’t connected, so the wire goi
 When the button is pressed, the legs connect, and power (5V) flows to pin 2. Now, the Arduino will read a HIGH signal.
 
 </step>
+</collapsible>
+<collapsible title="Trinket Assembly">
+
+The battery, LED pixel/strip, and wires form a circuit.
+
+In the hardware provided, you do not need to worry about attaching wires to power and ground - this is already done through the wiring.
+
+<img src="/images/buttontrinket.jpg">
+
+We can set a condition so that when we press the button, an action results (LED changes color, flashes differently, etc.)
+
+To do this, we will need to create a variable for the button and use an if/then statement.
+
+[Watch video here](https://www.loom.com/share/91ea5b53f24645d8a4d485fd4259e5e0?t=130)
+
 </collapsible>
