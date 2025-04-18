@@ -1,0 +1,8 @@
+<div x-data>
+    <div x-show="!$store.trinket.on">
+        <slot name="arduino"></slot>
+    </div>
+    <div x-show="$store.trinket.on">
+        <slot name="trinket"></slot>
+    </div>
+</div>
