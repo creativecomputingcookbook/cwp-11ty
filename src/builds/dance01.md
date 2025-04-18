@@ -1,6 +1,7 @@
 ---
 title: 'Dance01'
 thumbnail: '/images/Dance01.png'
+shortDesc: 'An interactive dance interface'
 meta:
   desc:
     "tbd..."

@@ -91,9 +91,10 @@ h2, h3, h4 {
   
 .card-img {
 	display: block;
-	object-fit: contain;
+	object-fit: cover;
 	width: 100%;
 	height: 25dvh;
+	margin: 8px;
 }
   
 .card-content {
