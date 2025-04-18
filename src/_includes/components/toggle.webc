@@ -1,0 +1,14 @@
+<p webc:ignore>
+    Copied from https://flowbite.com/docs/forms/toggle/
+    Don't you hate it when there's a million class names???
+</p>
+<div x-data>
+    <label class="inline-flex items-center cursor-pointer">
+        <input type="checkbox" value="" class="sr-only peer" x-on:change="$store.trinket.on = !$store.trinket.on">
+        <div class="relative w-11 h-6 bg-teal-500 peer-focus:outline-none peer-focus:ring-4 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-800"></div>
+        <div class="w-[80px]">
+            <span class="ms-3 w-100" x-show="!$store.trinket.on">Arduino</span>
+            <span class="ms-3 w-100" x-show="$store.trinket.on">Trinket</span>
+        </div>
+    </label>
+</div>
