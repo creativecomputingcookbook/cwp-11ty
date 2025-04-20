@@ -143,3 +143,102 @@ code .highlight-line:before {
 	color: #91BD7D;
 	text-decoration: underline;
 }
+
+.slideshow-slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 110%;
+	height: 110%;
+	z-index: -1;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	opacity: 0;
+}
+
+.slideshow-slide:nth-of-type(1) {
+	animation: xfade 16s 0s infinite, slideshow-up 16s linear 0s infinite;
+	opacity: 1;
+	background-image: resolve('corporate-in-red.png');
+}
+
+.slideshow-slide:nth-of-type(2) {
+	right: 10%;
+	animation: xfade 16s 4s infinite, slideshow-left 16s linear 4s infinite;
+	background-image: resolve('Dance01.png');
+}
+
+.slideshow-slide:nth-of-type(3) {
+	bottom: 10%;
+	animation: xfade 16s 8s infinite, slideshow-down 16s linear 8s infinite;
+	background-image: resolve('digitalpintilt2.png');
+}
+
+.slideshow-slide:nth-of-type(4) {
+	animation: xfade 16s 12s infinite, slideshow-right 16s linear 12s infinite;
+	background-image: resolve('tiltsensor.png');
+}
+
+@keyframes xfade{
+	6% {
+		opacity: 1;
+	}
+	25% {
+	  	opacity: 1;
+	}
+	31% {
+	  	opacity: 0;
+	}
+	100% {
+	  	opacity: 0;
+	}
+}
+
+@keyframes slideshow-up {
+	0% {
+		transform: translateY(0);
+	}
+	30% {
+		transform: translateY(-10%);
+	}
+	90% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideshow-down {
+	0% {
+		transform: translateY(-10%);
+	}
+	30% {
+		transform: translateY(0);
+	}
+	90% {
+		transform: translateY(-10%);
+	}
+}
+
+@keyframes slideshow-left {
+	0% {
+		transform: translateX(0);
+	}
+	30% {
+		transform: translateX(-10%);
+	}
+	90% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideshow-right {
+	0% {
+		transform: translateX(-10%);
+	}
+	30% {
+		transform: translateX(0);
+	}
+	90% {
+		transform: translateX(-10%);
+	}
+}

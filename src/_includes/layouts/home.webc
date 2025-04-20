@@ -46,10 +46,17 @@ function item(settings) {
 </script>
 
 <main id="main-content" tabindex="-1">
-<!-- fix height -->
-<div style="background: #F2F2F2" class="flex justify-end">
-  <div class="py-4 md:py-8 prose md:prose-base prose-sm prose-gray text-gray-500 md:max-w-1/2 px-4">
-    <template @raw="content" webc:nokeep></template>
+<div>
+  <div style="background:#69696988" class="h-[600px] relative overflow-hidden">
+    <div class="py-4 md:py-8 prose md:prose-base prose-sm text-white md:max-w-1/2 px-4 size-fit align-middle inline-block">
+      <template @raw="content" webc:nokeep></template>
+    </div>
+    <div class="size-[100%]">
+      <div class="slideshow-slide"></div>
+      <div class="slideshow-slide"></div>
+      <div class="slideshow-slide"></div>
+      <div class="slideshow-slide"></div>
+    </div>
   </div>
 </div>
 <div>
