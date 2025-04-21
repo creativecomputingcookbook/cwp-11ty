@@ -1996,12 +1996,110 @@ ParsonsCodeline.prototype._addInputs = function() {
       feedback_cb: displayErrors,
       can_indent: true
     });
-    
-    // Initialize with the initial code
-    parson.init(initial);
-    parson.shuffleLines();
-    
-    // Button event handlers
+
+
+		function preprocess(code) {
+			// 1) strip comments
+			code = code
+				.replace(/\/\/.*$/gm, '')
+				.replace(/\/\*[\s\S]*?\*\//g, '')
+				.trim();
+
+			const lines = code.split('\n');
+			const blocks = [];
+			let i = 0;
+
+			while (i < lines.length) {
+				let line = lines[i].trim();
+				if (!line) { i++; continue; }
+
+				// 2) Function signature?
+				//    e.g. "void setup() {" or "int foo(int x) {"
+				const fnMatch = line.match(/^[\w\*\s]+\s+\w+\s*\([^)]*\)\s*{$/);
+				if (fnMatch) {
+					// push the signature line
+					blocks.push(line);
+					i++;
+
+					// now we're inside the function body
+					let depth = 1;      // we've seen one '{'
+					let buffer = [];
+
+					while (i < lines.length && depth > 0) {
+						const raw = lines[i];
+						const txt = raw.trim();
+						i++;
+
+						// adjust depth for braces
+						if (txt.includes('{')) depth++;
+						if (txt.includes('}')) depth--;
+
+						// if we're still inside the function (depth > 0)
+						if (depth > 0) {
+							// group loops or if/else blocks
+							const startMatch = txt.match(/^(for\s*\([^)]*\)\s*{|if\s*\([^)]*\)\s*{|else\s*{)$/);
+							if (startMatch) {
+								// collect that entire block up to matching '}'
+								let blk = [txt];
+								let subDepth = 1;
+								while (i < lines.length && subDepth > 0) {
+									const ln = lines[i].trim();
+									blk.push(ln);
+									if (ln.includes('{')) subDepth++;
+									if (ln.includes('}')) subDepth--;
+									i++;
+								}
+								blocks.push(blk.join(' '));
+							} 
+							// standalone statement?
+							else if (txt.endsWith(';')) {
+								blocks.push(txt);
+							}
+							// otherwise ignore blank or stray braces here
+						}
+						// once depth drops to zero, the function body is done
+					}
+
+					// push the closing brace as its own block
+					blocks.push('}');
+					continue;
+				}
+
+				// 3) Preprocessor or global statements (like #include)
+				if (line.startsWith('#')) {
+					blocks.push(line);
+					i++;
+					continue;
+				}
+
+				// 4) Anything else at global scope ending in ';'
+				if (line.endsWith(';')) {
+					blocks.push(line);
+					i++;
+					continue;
+				}
+
+				// skip unrecognized lines
+				i++;
+			}
+
+			return blocks;
+		}
+
+    const blocks = preprocess(initial);
+
+    const initStruct = parson.parseCode(blocks, parson.options.max_wrong_lines);
+    parson.model_solution = initStruct.solution;
+    parson.extra_lines    = initStruct.distractors;
+    parson.modified_lines = initStruct.widgetInitial;
+
+    parson.modified_lines.forEach((lineObj, idx) => {
+      lineObj.id     = parson.id_prefix + idx;
+      lineObj.indent = 0;
+    });
+    parson.shuffleLines();    
+
+		// Button event handlers
     $("#newInstanceLink").click(function (event) {
       event.preventDefault();
       parson.shuffleLines();
@@ -2052,24 +2150,35 @@ ParsonsCodeline.prototype._addInputs = function() {
     });
   });
 var initial = 
-      "const int BUTTON_PIN = 4;\n" +
-      "int buttonState = 0;\n" +
-      "void setup() {\\n" +
-      "    Serial.begin(9600);\\n" +
-      "    pinMode(LED_BUILTIN, OUTPUT);\\n" +
-      "    pinMode(BUTTON_PIN, INPUT);\\n" +
-      "}\n" +
-      "void loop() {\\n" +
-      "    buttonState = digitalRead(BUTTON_PIN);\n" +
-      "    if (buttonState == HIGH) {\\n" +
-      "        Serial.println(\"Button HIGH\");\\n" +
-      "        digitalWrite(LED_BUILTIN, HIGH);\n" +
-      "    } else {\\n" +
-      "        Serial.println(\"Button LOW\");\\n" +
-      "        digitalWrite(LED_BUILTIN, LOW);\\n" +
-      "    }\n" +
-      "    delay(10);\\n" +
-      "}\n";
+        `const int BUTTON_PIN = 4;
+
+        int buttonState = 0;
+
+        void setup() {
+            Serial.begin(9600); 
+            // initialize the LED pin as an output:
+            pinMode(LED_BUILTIN, OUTPUT);
+            // initialize the pushbutton pin as an input:
+            pinMode(BUTTON_PIN, INPUT);
+        }
+
+        void loop() {
+            // read the state of the pushbutton value:
+            buttonState = digitalRead(BUTTON_PIN);
+
+            // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+            if (buttonState == HIGH) {
+                Serial.println("Button HIGH"); 
+                // turn LED on:
+                digitalWrite(LED_BUILTIN, HIGH);
+            } else {
+                Serial.println("Button LOW"); 
+                // turn LED off:
+                digitalWrite(LED_BUILTIN, LOW);
+            }
+
+            delay(10);
+        }`;
 /*__EleventyBundle:get:js:default:EleventyBundle__*/
 document.addEventListener('alpine:init', () => {
       Alpine.store('trinket', {
