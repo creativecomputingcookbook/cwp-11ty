@@ -101,23 +101,23 @@ Upload this code to your Arduino. It reads the potentiometer value and maps it t
 <script>
   // Define the initial Parsons problem code.
     var initial = 
-      "#include &ltServo.h&gt\n" +
-      "Servo myservo;\n" +
-      "int pos = 0;\n" +
-      "void setup() {\\n" +
-      "  myservo.attach(9);\\n" +
-      "}\n" +
-      "void loop() {\\n" +
-      "  for (pos = 0; pos <= 180; pos += 1) {\\n" +
-      "    myservo.write(pos);\\n" +
-      "    delay(5);\\n" +
-      "  }\n" +
-      "  delay(500);\n" +
-      "  for (pos = 180; pos >= 0; pos -= 1) {\\n" +
-      "    myservo.write(pos);\\n" +
-      "    delay(5);\\n" +
-      "  }\n" +
-      "  delay(1500);\\n" +
-      "}\n";
+      `#include &ltServo.h&gt
+      Servo myservo;
+      int pos = 0;
+      void setup() {
+        myservo.attach(9);
+      }
+      void loop() {
+        for (pos = 0; pos <= 180; pos += 1) {
+          myservo.write(pos);
+          delay(5);
+        }
+        delay(500);
+        for (pos = 180; pos >= 0; pos -= 1) {
+          myservo.write(pos);
+          delay(5);
+        }
+        delay(1500);
+      }`
 </script>
 <parsons></parsons>

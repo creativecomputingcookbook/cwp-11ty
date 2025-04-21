@@ -60,12 +60,110 @@
       feedback_cb: displayErrors,
       can_indent: true
     });
-    
-    // Initialize with the initial code
-    parson.init(initial);
-    parson.shuffleLines();
-    
-    // Button event handlers
+
+
+		function preprocess(code) {
+			// 1) strip comments
+			code = code
+				.replace(/\/\/.*$/gm, '')
+				.replace(/\/\*[\s\S]*?\*\//g, '')
+				.trim();
+
+			const lines = code.split('\n');
+			const blocks = [];
+			let i = 0;
+
+			while (i < lines.length) {
+				let line = lines[i].trim();
+				if (!line) { i++; continue; }
+
+				// 2) Function signature?
+				//    e.g. "void setup() {" or "int foo(int x) {"
+				const fnMatch = line.match(/^[\w\*\s]+\s+\w+\s*\([^)]*\)\s*{$/);
+				if (fnMatch) {
+					// push the signature line
+					blocks.push(line);
+					i++;
+
+					// now we're inside the function body
+					let depth = 1;      // we've seen one '{'
+					let buffer = [];
+
+					while (i < lines.length && depth > 0) {
+						const raw = lines[i];
+						const txt = raw.trim();
+						i++;
+
+						// adjust depth for braces
+						if (txt.includes('{')) depth++;
+						if (txt.includes('}')) depth--;
+
+						// if we're still inside the function (depth > 0)
+						if (depth > 0) {
+							// group loops or if/else blocks
+							const startMatch = txt.match(/^(for\s*\([^)]*\)\s*{|if\s*\([^)]*\)\s*{|else\s*{)$/);
+							if (startMatch) {
+								// collect that entire block up to matching '}'
+								let blk = [txt];
+								let subDepth = 1;
+								while (i < lines.length && subDepth > 0) {
+									const ln = lines[i].trim();
+									blk.push(ln);
+									if (ln.includes('{')) subDepth++;
+									if (ln.includes('}')) subDepth--;
+									i++;
+								}
+								blocks.push(blk.join(' '));
+							} 
+							// standalone statement?
+							else if (txt.endsWith(';')) {
+								blocks.push(txt);
+							}
+							// otherwise ignore blank or stray braces here
+						}
+						// once depth drops to zero, the function body is done
+					}
+
+					// push the closing brace as its own block
+					blocks.push('}');
+					continue;
+				}
+
+				// 3) Preprocessor or global statements (like #include)
+				if (line.startsWith('#')) {
+					blocks.push(line);
+					i++;
+					continue;
+				}
+
+				// 4) Anything else at global scope ending in ';'
+				if (line.endsWith(';')) {
+					blocks.push(line);
+					i++;
+					continue;
+				}
+
+				// skip unrecognized lines
+				i++;
+			}
+
+			return blocks;
+		}
+
+    const blocks = preprocess(initial);
+
+    const initStruct = parson.parseCode(blocks, parson.options.max_wrong_lines);
+    parson.model_solution = initStruct.solution;
+    parson.extra_lines    = initStruct.distractors;
+    parson.modified_lines = initStruct.widgetInitial;
+
+    parson.modified_lines.forEach((lineObj, idx) => {
+      lineObj.id     = parson.id_prefix + idx;
+      lineObj.indent = 0;
+    });
+    parson.shuffleLines();    
+
+		// Button event handlers
     $("#newInstanceLink").click(function (event) {
       event.preventDefault();
       parson.shuffleLines();

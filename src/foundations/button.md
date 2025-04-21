@@ -88,24 +88,35 @@ When the button is pressed, the legs connect, and power (5V) flows to pin 2. Now
 
 <script>
     var initial = 
-      "const int BUTTON_PIN = 4;\n" +
-      "int buttonState = 0;\n" +
-      "void setup() {\\n" +
-      "    Serial.begin(9600);\\n" +
-      "    pinMode(LED_BUILTIN, OUTPUT);\\n" +
-      "    pinMode(BUTTON_PIN, INPUT);\\n" +
-      "}\n" +
-      "void loop() {\\n" +
-      "    buttonState = digitalRead(BUTTON_PIN);\n" +
-      "    if (buttonState == HIGH) {\\n" +
-      "        Serial.println(\"Button HIGH\");\\n" +
-      "        digitalWrite(LED_BUILTIN, HIGH);\n" +
-      "    } else {\\n" +
-      "        Serial.println(\"Button LOW\");\\n" +
-      "        digitalWrite(LED_BUILTIN, LOW);\\n" +
-      "    }\n" +
-      "    delay(10);\\n" +
-      "}\n";
+        `const int BUTTON_PIN = 4;
+
+        int buttonState = 0;
+
+        void setup() {
+            Serial.begin(9600); 
+            // initialize the LED pin as an output:
+            pinMode(LED_BUILTIN, OUTPUT);
+            // initialize the pushbutton pin as an input:
+            pinMode(BUTTON_PIN, INPUT);
+        }
+
+        void loop() {
+            // read the state of the pushbutton value:
+            buttonState = digitalRead(BUTTON_PIN);
+
+            // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+            if (buttonState == HIGH) {
+                Serial.println("Button HIGH"); 
+                // turn LED on:
+                digitalWrite(LED_BUILTIN, HIGH);
+            } else {
+                Serial.println("Button LOW"); 
+                // turn LED off:
+                digitalWrite(LED_BUILTIN, LOW);
+            }
+
+            delay(10);
+        }`;
 </script>
 <parsons></parsons>
 <collapsible title="Trinket Assembly">
