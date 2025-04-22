@@ -60,18 +60,26 @@ function item(settings) {
   </div>
 </div>
 <div>
-		<ul class="tabs" x-data="{
+  <div x-data="{
       tabs: ['Foundations', 'Builds']
     }">
+		<ul class="tabs">
       <template x-for="tab in tabs">
         <li x-on:click="$store.category.set(tab)"
-          x-bind:class="$store.category.category.includes(tab) ? 'tab tab-active' : 'tab'"
+          x-bind:class="$store.category.category == tab ? 'tab tab-active' : 'tab'"
           >
           <label x-text="tab"></label>
         </li>
       </template>
 		</ul>
-		
+    <p class="px-6" x-show="$store.category.category == 'Builds'">
+      Showcase students’ final projects, emphasizing their connection to foundational
+      learning and activity design.
+    </p>
+    <p class="px-6" x-show="$store.category.category == 'Foundations'">
+      Provide students with the resources and small exercises needed to learn and master core concepts.
+    </p>
+	</div>
 		<div class="md:flex" x-data="{
       setup: {
         Foundations: {
