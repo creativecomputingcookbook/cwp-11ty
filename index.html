@@ -48,8 +48,8 @@
 
 		<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
     <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-Bteuiolh.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-De6qMQGA.css">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-B32QQ2hI.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-MMblNqFc.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-white">
     <header>
@@ -57,8 +57,14 @@
     <div class="flex h-16 items-center justify-end">
       <ul class="flex space-x-4">
         <li>
-                  <a href="/cwp-11ty/" aria-current="page" class="text-base font-bold cursor-default">
-                    Home
+                  <a href="/cwp-11ty/#builds" class="text-base font-bold underline">
+                    Builds
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/cwp-11ty/#foundations" class="text-base font-bold underline">
+                    Foundations
                   </a>
                 </li>
               
@@ -90,14 +96,6 @@
   <div style="background:#69696988" class="h-[600px] relative overflow-hidden">
     <div class="py-4 md:py-8 prose md:prose-base prose-sm text-white md:max-w-1/2 px-4 size-fit align-middle inline-block">
       <p>Our cookbook is designed to help both students and teachers explore and achieve their learning goals in a structured and engaging way. It offers a variety of resources, guides, and activities to support your educational journey.</p>
-<ul>
-<li>Foundations: Provide students with the resources and small exercises needed to learn and master core concepts.</li>
-<li>Builds: Showcase students’ final projects, emphasizing their connection to foundational learning and activity design.
-<ul>
-<li>Activities: Teacher-designed instructional guidance and course resources to help students complete learning tasks and achieve goals.</li>
-</ul>
-</li>
-</ul>
 
     </div>
     <div class="size-[100%]">
@@ -109,16 +107,24 @@
   </div>
 </div>
 <div>
-		<ul x-data="{
+  <div x-data="{
       tabs: ['Foundations', 'Builds']
-    }" class="tabs">
+    }">
+		<ul class="tabs">
       <template x-for="tab in tabs">
-        <li x-on:click="$store.category.set(tab)" x-bind:class="$store.category.category.includes(tab) ? 'tab tab-active' : 'tab'">
+        <li x-on:click="$store.category.set(tab)" x-bind:class="$store.category.category == tab ? 'tab tab-active' : 'tab'">
           <label x-text="tab"></label>
         </li>
       </template>
 		</ul>
-		
+    <p x-show="$store.category.category == 'Builds'" class="px-6">
+      Showcase students’ final projects, emphasizing their connection to foundational
+      learning and activity design.
+    </p>
+    <p x-show="$store.category.category == 'Foundations'" class="px-6">
+      Provide students with the resources and small exercises needed to learn and master core concepts.
+    </p>
+	</div>
 		<div x-data="{
       setup: {
         Foundations: {
@@ -256,7 +262,22 @@
 </div></main></div>
 
     
-    <script>document.addEventListener('alpine:init', () => {
+    <script>handleHashChange = () => {
+  switch (window.location.hash) {
+    case '':
+      return;
+    case '#builds':
+      Alpine.store("category").set("Builds");
+      break;
+    case '#foundations':
+      Alpine.store("category").set("Foundations");
+      break;
+  }
+
+  window.location.hash = '';
+}
+
+document.addEventListener('alpine:init', () => {
   Alpine.store('category', {
     category: 'Builds',
 
@@ -272,6 +293,9 @@
       this.tags = tags;
     },
   });
+  
+  window.addEventListener("hashchange", handleHashChange);
+  handleHashChange();
 });
 
 // https://codepen.io/rblasam/pen/gOWrNMy
