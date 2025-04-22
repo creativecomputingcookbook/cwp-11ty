@@ -139,8 +139,8 @@ code .highlight-line:before {
 	margin-bottom: 0px;
 }
 
-.prose-lg a {
-	color: #91BD7D;
+.prose-lg a:not([class]){
+	color: inherit;
 	text-decoration: underline;
 }
 
