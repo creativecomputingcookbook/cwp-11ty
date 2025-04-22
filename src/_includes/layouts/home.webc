@@ -3,6 +3,21 @@ layout: 'layouts/base.webc'
 ---
 
 <script>
+handleHashChange = () => {
+  switch (window.location.hash) {
+    case '':
+      return;
+    case '#builds':
+      Alpine.store("category").set("Builds");
+      break;
+    case '#foundations':
+      Alpine.store("category").set("Foundations");
+      break;
+  }
+
+  window.location.hash = '';
+}
+
 document.addEventListener('alpine:init', () => {
   Alpine.store('category', {
     category: 'Builds',
@@ -19,6 +34,9 @@ document.addEventListener('alpine:init', () => {
       this.tags = tags;
     },
   });
+  
+  window.addEventListener("hashchange", handleHashChange);
+  handleHashChange();
 });
 
 // https://codepen.io/rblasam/pen/gOWrNMy
