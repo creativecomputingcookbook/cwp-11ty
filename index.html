@@ -107,9 +107,9 @@
   </div>
 </div>
 <div>
- <!--  <div x-data="{ -->
- <!--      tabs: ['Foundations', 'Builds'] -->
- <!--    }"> -->
+<div x-data="{
+  tabs: ['Foundations', 'Builds']
+}">
 	<!-- 	<ul class="tabs"> -->
  <!--      <template x-for="tab in tabs"> -->
  <!--        <li x-on:click="$store.category.set(tab)" -->
@@ -119,25 +119,20 @@
  <!--        </li> -->
  <!--      </template> -->
 	<!-- 	</ul> -->
- <!--    <p class="px-6" x-show="$store.category.category == 'Builds'"> -->
- <!--      Showcase students’ final projects, emphasizing their connection to foundational -->
- <!--      learning and activity design. -->
- <!--    </p> -->
- <!--    <p class="px-6" x-show="$store.category.category == 'Foundations'"> -->
- <!--      Provide students with the resources and small exercises needed to learn and master core concepts. -->
- <!--    </p> -->
-	<!-- </div> -->
+      <p x-show="$store.category.category == 'Builds'" class="py-4 px-6">
+        Showcase students’ final projects, emphasizing their connection to foundational
+        learning and activity design.
+      </p>
+      <p x-show="$store.category.category == 'Foundations'" class="py-4 px-6">
+        Provide students with the resources and small exercises needed to learn and master core concepts.
+      </p>
+    </div>
 		<div x-data="{
       setup: {
-        Foundations: {
-          test1: ['test2', 'test3'],
-        },
-        Builds: {
-          'Component': ['Servo', 'Potentiometer', 'Arduino', 'LED strip'],
-          'Interaction': ['Rotating', 'Pop-up', 'Light-up'],
-          'Techniques &amp; Concepts': ['Juxtaposition', 'Duality', 'Metaphor', 'Collaging', 'Illuminated manuscript', 'Single-sentence story'],
-          'Materials': ['Cardboard', 'Acrylic', 'Birch wood', 'Fabric', '3D printing'],
-        },
+        'Component': ['Servo', 'Potentiometer', 'Arduino', 'LED strip'],
+        'Interaction': ['Rotating', 'Pop-up', 'Light-up'],
+        'Techniques &amp; Concepts': ['Juxtaposition', 'Duality', 'Metaphor', 'Collaging', 'Illuminated manuscript', 'Single-sentence story'],
+        'Materials': ['Cardboard', 'Acrylic', 'Birch wood', 'Fabric', '3D printing'],
       },
 
       get currentCategory() {
@@ -152,11 +147,11 @@
       },
     }" class="md:flex">
       <div class="p-4 md:flex-1">
-        <template x-for="category in Object.keys(setup[currentCategory])">
+        <template x-for="category in Object.keys(setup)">
           <div>
             <h3 x-text="category"></h3>
             <ul>
-              <template x-for="tag of setup[currentCategory][category]">
+              <template x-for="tag of setup[category]">
                 <li class="filter-option">
                   <label>
                     <input type="checkbox" x-bind:value="tag" x-model="tags">
