@@ -100,15 +100,10 @@ function item(settings) {
     </div>
 		<div class="md:flex" x-data="{
       setup: {
-        Foundations: {
-          test1: ['test2', 'test3'],
-        },
-        Builds: {
-          'Component': ['Servo', 'Potentiometer', 'Arduino', 'LED strip'],
-          'Interaction': ['Rotating', 'Pop-up', 'Light-up'],
-          'Techniques & Concepts': ['Juxtaposition', 'Duality', 'Metaphor', 'Collaging', 'Illuminated manuscript', 'Single-sentence story'],
-          'Materials': ['Cardboard', 'Acrylic', 'Birch wood', 'Fabric', '3D printing'],
-        },
+        'Component': ['Servo', 'Potentiometer', 'Arduino', 'LED strip'],
+        'Interaction': ['Rotating', 'Pop-up', 'Light-up'],
+        'Techniques & Concepts': ['Juxtaposition', 'Duality', 'Metaphor', 'Collaging', 'Illuminated manuscript', 'Single-sentence story'],
+        'Materials': ['Cardboard', 'Acrylic', 'Birch wood', 'Fabric', '3D printing'],
       },
 
       get currentCategory() {
@@ -123,11 +118,11 @@ function item(settings) {
       },
     }">
       <div class="p-4 md:flex-1">
-        <template x-for="category in Object.keys(setup[currentCategory])">
+        <template x-for="category in Object.keys(setup)">
           <div>
             <h3 x-text="category"></h3>
             <ul>
-              <template x-for="tag of setup[currentCategory][category]">
+              <template x-for="tag of setup[category]">
                 <li class="filter-option">
                   <label>
                     <input type="checkbox" x-bind:value="tag" x-model="tags">
