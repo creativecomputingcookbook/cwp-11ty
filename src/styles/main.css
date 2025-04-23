@@ -160,24 +160,24 @@ code .highlight-line:before {
 .slideshow-slide:nth-of-type(1) {
 	animation: xfade 16s 0s infinite, slideshow-up 16s linear 0s infinite;
 	opacity: 1;
-	background-image: resolve('corporate-in-red.png');
+	background-image: url(/cwp-11ty/images/corporate-in-red.png);
 }
 
 .slideshow-slide:nth-of-type(2) {
 	right: 10%;
 	animation: xfade 16s 4s infinite, slideshow-left 16s linear 4s infinite;
-	background-image: resolve('Dance01.png');
+	background-image: url(/cwp-11ty/images/Dance01.png);
 }
 
 .slideshow-slide:nth-of-type(3) {
 	bottom: 10%;
 	animation: xfade 16s 8s infinite, slideshow-down 16s linear 8s infinite;
-	background-image: resolve('digitalpintilt2.png');
+	background-image: url(/cwp-11ty/images/digitalpintilt2.png);
 }
 
 .slideshow-slide:nth-of-type(4) {
 	animation: xfade 16s 12s infinite, slideshow-right 16s linear 12s infinite;
-	background-image: resolve('tiltsensor.png');
+	background-image: url(/cwp-11ty/images/tiltsensor.png);
 }
 
 @keyframes xfade{
