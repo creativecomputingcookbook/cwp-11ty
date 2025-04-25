@@ -48,8 +48,8 @@
 
 		<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
     <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-Dqb45Zgo.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-CXaM1JO0.css">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-C2Tb1gS2.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-DndBpRC9.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-white">
     <header>
@@ -93,9 +93,10 @@
 
     <div><main id="main-content" tabindex="-1">
 <div>
-  <div style="background:#69696988" class="h-[600px] relative overflow-hidden">
-    <div class="py-4 md:py-8 prose md:prose-base prose-sm text-white md:max-w-1/2 px-4 size-fit align-middle inline-block">
-      <p>Our cookbook is designed to help both students and teachers explore and achieve their learning goals in a structured and engaging way. It offers a variety of resources, guides, and activities to support your educational journey.</p>
+  <div class="home relative overflow-hidden">
+    <div class="m-auto prose md:prose-base prose-sm text-white size-fit py-[15%] px-4">
+      <h1>Creative Computing Cookbook</h1>
+<p>Our cookbook is designed to help both students and teachers explore and achieve their learning goals in a structured and engaging way. It offers a variety of resources, guides, and activities to support your educational journey.</p>
 
     </div>
     <div class="size-[100%]">
@@ -119,13 +120,6 @@
  <!--        </li> -->
  <!--      </template> -->
 	<!-- 	</ul> -->
-      <p x-show="$store.category.category == 'Builds'" class="py-4 px-6">
-        Showcase students’ final projects, emphasizing their connection to foundational
-        learning and activity design.
-      </p>
-      <p x-show="$store.category.category == 'Foundations'" class="py-4 px-6">
-        Provide students with the resources and small exercises needed to learn and master core concepts.
-      </p>
     </div>
 		<div x-data="{
       setup: {
@@ -163,8 +157,16 @@
           </div>
         </template>
       </div>
-      <div class="p-4 grid sm:grid-cols-2 lg:grid-cols-3 md:flex-3">
-        <div x-data="item({ tags: [&quot;Builds&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+      <div class="p-4 md:flex-3">
+        <p x-show="$store.category.category == 'Builds'" class="py-4 px-6">
+          Showcase students’ final projects, emphasizing their connection to foundational
+          learning and activity design.
+        </p>
+        <p x-show="$store.category.category == 'Foundations'" class="py-4 px-6">
+          Provide students with the resources and small exercises needed to learn and master core concepts.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3">
+          <div x-data="item({ tags: [&quot;Builds&quot;] })" x-show="shouldShow" class="p-4 grid-item">
     <div class="card">
         <a href="/cwp-11ty/builds/all-of-the-lights/" class="card-content">
             <img src="/cwp-11ty/assets/allofthelights-BZBnA6P-.gif" class="card-img">
@@ -254,6 +256,7 @@
         </a>
     </div>
 </div>
+        </div>
       </div>
 	</div>
 </div>
