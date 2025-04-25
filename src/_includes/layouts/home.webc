@@ -90,13 +90,6 @@ function item(settings) {
  <!--        </li> -->
  <!--      </template> -->
 	<!-- 	</ul> -->
-      <p class="py-4 px-6" x-show="$store.category.category == 'Builds'">
-        Showcase students’ final projects, emphasizing their connection to foundational
-        learning and activity design.
-      </p>
-      <p class="py-4 px-6" x-show="$store.category.category == 'Foundations'">
-        Provide students with the resources and small exercises needed to learn and master core concepts.
-      </p>
     </div>
 		<div class="md:flex" x-data="{
       setup: {
@@ -134,8 +127,17 @@ function item(settings) {
           </div>
         </template>
       </div>
-      <div class="p-4 grid sm:grid-cols-2 lg:grid-cols-3 md:flex-3">
-        <listing-item webc:for="item of collections.all" @attributes="item" :is-home="true"></listing-item>
+      <div class="p-4 md:flex-3">
+        <p class="py-4 px-6" x-show="$store.category.category == 'Builds'">
+          Showcase students’ final projects, emphasizing their connection to foundational
+          learning and activity design.
+        </p>
+        <p class="py-4 px-6" x-show="$store.category.category == 'Foundations'">
+          Provide students with the resources and small exercises needed to learn and master core concepts.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3">
+          <listing-item webc:for="item of collections.all" @attributes="item" :is-home="true"></listing-item>
+        </div>
       </div>
 	</div>
 </div>
