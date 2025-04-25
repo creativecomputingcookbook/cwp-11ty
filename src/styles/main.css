@@ -34,6 +34,14 @@
 	border-color: #333;
 }
 
+.home {
+	background: #2A005FAA;
+}
+
+.home h1 {
+	color: var(--color-white);
+}
+
 /* As we cannot replace the numbers with variables or calls to element
 	properties, the number of this selector parts is our tab count limit */
 .tab-active > label {

@@ -65,8 +65,8 @@ function item(settings) {
 
 <main id="main-content" tabindex="-1">
 <div>
-  <div style="background:#69696988" class="h-[600px] relative overflow-hidden">
-    <div class="py-4 md:py-8 prose md:prose-base prose-sm text-white md:max-w-1/2 px-4 size-fit align-middle inline-block">
+  <div class="home relative overflow-hidden">
+    <div class="m-auto prose md:prose-base prose-sm text-white size-fit py-[15%] px-4">
       <template @raw="content" webc:nokeep></template>
     </div>
     <div class="size-[100%]">
