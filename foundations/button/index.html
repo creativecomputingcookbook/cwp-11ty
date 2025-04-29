@@ -2005,7 +2005,6 @@ ParsonsCodeline.prototype._addInputs = function() {
 
 
 		function preprocess(code) {
-			// 1) strip comments
 			code = code
 				.replace(/\/\/.*$/gm, '')
 				.replace(/\/\*[\s\S]*?\*\//g, '')
@@ -2014,79 +2013,58 @@ ParsonsCodeline.prototype._addInputs = function() {
 			const blocks = [];
 			let i = 0;
 			
-			// Helper function to preserve indentation when processing a block
-			function processBlock(startLine, startDepth, baseIndent) {
-				let result = [startLine];
-				let depth = startDepth;
-				i++; // Move past the starting line
-				
+			function processBlock(startRaw) {
+				const linesAcc = [ startRaw ];
+				let depth = 1;
+				i++;
+
 				while (i < lines.length && depth > 0) {
-					const line = lines[i].trim();
-					if (!line) { i++; continue; }
-					
-					// Calculate proper indentation for this line
-					let indentLevel = baseIndent;
-					if (line.includes('}') && !line.includes('{')) {
-						indentLevel--;
-					}
-					
-					// Check if this is the start of a nested block
-					const nestedBlockMatch = line.match(/^(for\s*\([^)]*\)\s*{|if\s*\([^)]*\)\s*{|else\s*{)$/);
-					if (nestedBlockMatch) {
-						// Process the nested block with increased indentation
-						const nestedBlock = processBlock(line, 1, baseIndent + 1);
-						result.push(nestedBlock);
-					} else {
-						// Add the line with proper indentation
-						const indent = '    '.repeat(indentLevel);
-						result.push(indent + line);
-					}
-					
-					// Update depth tracking
-					if (line.includes('{')) depth++;
-					if (line.includes('}')) depth--;
+					const raw = lines[i];
+					const trimmed = raw.trim();
 					i++;
+					if (!trimmed) continue;
+
+					if (trimmed.includes('{')) depth++;
+					if (trimmed.includes('}')) depth--;
+
+					if (/^(for\s*\([^)]*\)\s*{|if\s*\([^)]*\)\s*{|else\s*{)/.test(trimmed) && depth >= 1) {
+						linesAcc.push(processBlock(raw));
+						continue;
+					}
+					linesAcc.push(trimmed);
 				}
-				
-				// Join the block lines with newlines
-				return result.join('\n');
+
+				return linesAcc.join('\n');
 			}
-			
+
 			while (i < lines.length) {
 				let line = lines[i].trim();
 				if (!line) { i++; continue; }
 				
-				// Function signature?
 				const fnMatch = line.match(/^[\w\*\s]+\s+\w+\s*\([^)]*\)\s*{$/);
 				if (fnMatch) {
-					// Push the function signature
 					blocks.push(line);
 					i++;
 					
-					// Process function body
 					let fnDepth = 1;
 					while (i < lines.length && fnDepth > 0) {
 						const txt = lines[i].trim();
 						
-						// If this is a control structure start
 						const blockMatch = txt.match(/^(for\s*\([^)]*\)\s*{|if\s*\([^)]*\)\s*{|else\s*{)$/);
 						if (blockMatch && fnDepth === 1) {
-							// Process the block with base indentation of 1
 							const block = processBlock(txt, 1, 1);
 							blocks.push(block);
 						}
-						// Standalone statement at function level
 						else if (txt.endsWith(';') && fnDepth === 1) {
-							blocks.push('    ' + txt);
+							/* blocks.push('    ' + txt); */
+							blocks.push(txt);
 							i++;
 						}
-						// Other content (including close braces)
 						else {
 							if (txt.includes('{')) fnDepth++;
 							if (txt.includes('}')) fnDepth--;
 							
 							if (fnDepth === 0) {
-								// We've reached the end of the function
 								blocks.push('}');
 							}
 							i++;
@@ -2095,26 +2073,23 @@ ParsonsCodeline.prototype._addInputs = function() {
 					continue;
 				}
 				
-				// Preprocessor or global statements
 				if (line.startsWith('#')) {
 					blocks.push(line);
 					i++;
 					continue;
 				}
 				
-				// Global variables
 				if (line.endsWith(';')) {
 					blocks.push(line);
 					i++;
 					continue;
 				}
-				
-				// Skip unrecognized lines
 				i++;
 			}
-			
 			return blocks;
-		}    
+		}
+
+
 		const blocks = preprocess(initial);
 
     const initStruct = parson.parseCode(blocks, parson.options.max_wrong_lines);
