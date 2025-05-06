@@ -114,7 +114,6 @@
 							blocks.push(block);
 						}
 						else if (txt.endsWith(';') && fnDepth === 1) {
-							/* blocks.push('    ' + txt); */
 							blocks.push(txt);
 							i++;
 						}
