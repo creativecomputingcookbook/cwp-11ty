@@ -1,15 +1,14 @@
 ---
-title: 'All of the Lights Dance Example'
+title: 'All of the Lights Dance with Buttons'
 thumbnail: '/images/allofthelights.gif'
 hideThumbnail: true
 meta:
   desc:
-    "STEM From Dance instructors choreography for 'All of the Lights'"
+    "STEM From Dance instructors choreography for 'All of the Lights' by Kanye West"
 ---
-<video src="/images/allofthelights.mp4" width="320" height="240" controls></video>
+<iframe src="https://nyu.app.box.com/embed/s/nb9wvoo8bl02e7kkwjvq4pgr2wx0vjgf?sortColumn=date" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
-STEM From Dance instructors choreographed a routine to the song "All of the Lights," incorporating LED strips on the torso, arms, and wrists. A button, strategically placed on their wrists, is pressed during fast arm movements to activate the lights in sync with the choreography.
-
+STEM From Dance instructors choreographed a routine to the song "All of the Lights," incorporating LED strips on the torso, arms, and wrists.
 
 #### Sensor Placement
 
@@ -17,7 +16,12 @@ STEM From Dance instructors choreographed a routine to the song "All of the Ligh
 
 #### Dance Style
 
-+ Hip
++ Hip Hop
+
+#### Coding Concepts
+
++ Counter
++ Conditionals
 
 #### Code
 

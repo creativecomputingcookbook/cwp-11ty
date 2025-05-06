@@ -1,14 +1,14 @@
 ---
-title: 'Mona Lisa Example'
+title: 'Mona Lisa with Picture Frame Prop'
 thumbnail: '/images/Dance01.png'
 hideThumbnail: true
 meta:
   desc:
     "STEM From Dance instructors choreography for 'Mona Lisa'"
 ---
-<video src="/images/monalisa.mp4" width="320" height="240" controls></video>
+<iframe src="https://nyu.app.box.com/embed/s/otklaud4uz34tneigvc6emgdnleg5sk3?sortColumn=date" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
-STEM From Dance instructors create choreography to the song "Mona Lisa," with a picture frame prop.
+STEM From Dance instructors create choreography to the song "Mona Lisa" by J-Hope with a picture frame prop.
 
 #### Sensor Placement
 
@@ -18,6 +18,12 @@ STEM From Dance instructors create choreography to the song "Mona Lisa," with a 
 #### Dance Style
 
 + K-Pop 
+
+#### Coding Concepts
+
++ Function
++ Conditionals
++ Counter
 
 #### Code
 

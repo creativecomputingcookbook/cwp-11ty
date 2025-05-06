@@ -1,12 +1,12 @@
 ---
-title: 'Take Time Dance Example'
+title: 'Take Time Dance with Hip Tilt Sensor'
 thumbnail: '/images/taketime.gif'
 hideThumbnail: true
 meta:
   desc:
-    "STEM From Dance instructors choreography for 'Take Time'"
+    "STEM From Dance instructors choreography for 'Take Time' by BackRoad Gee"
 ---
-<video src="/images/taketime.mp4" width="320" height="240" controls></video>
+<iframe src="https://nyu.app.box.com/embed/s/0dphnj1hkyl7ut3f5jw44hi0bnbjkovw?sortColumn=date" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
 STEM From Dance instructors created a routine set to the song "Take Time," featuring LED strips running down the sides of their pants. 
 
@@ -17,6 +17,11 @@ STEM From Dance instructors created a routine set to the song "Take Time," featu
 #### Dance Style
 
 + African
+
+#### Coding Concepts
+
++ Counter
++ Conditionals
 
 #### Code
 

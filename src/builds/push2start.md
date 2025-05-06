@@ -1,14 +1,14 @@
 ---
-title: 'Push 2 Start Example'
+title: 'Push 2 Start with Buttons'
 thumbnail: '/images/Dance01.png'
 hideThumbnail: true
 meta:
   desc:
-    "STEM From Dance instructors choreography for 'Mona Lisa'"
+    "STEM From Dance instructors choreography for 'Push 2 Start' by Tyla"
 ---
-<video src="/images/push2start.mp4" width="320" height="240" controls></video>
+<iframe src="https://nyu.app.box.com/embed/s/s1ucd040b6ty1amwmqiocbbrq7f7f0tq?sortColumn=date" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
-STEM From Dance instructors create choreography to the song "Push2Start," with a wings prop
+STEM From Dance instructors create choreography to the song "Push2Start," with wings prop.
 
 #### Sensor Placement
 
@@ -21,7 +21,10 @@ STEM From Dance instructors create choreography to the song "Push2Start," with a
 
 #### Coding Concepts
 
-+ 
++ Functions
++ Variables
++ Arrays
++ Conditionals
 
 #### Code
 
