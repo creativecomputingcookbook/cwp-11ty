@@ -1,12 +1,12 @@
 ---
-title: 'Stir Fry Dance Example'
+title: 'Stir Fry Dance with Buttons'
 thumbnail: '/images/stirfry.gif'
 hideThumbnail: true
 meta:
   desc:
-    "STEM From Dance instructors choreography for 'Stir Fry'"
+    "STEM From Dance instructors choreography for 'Stir Fry' by Migos"
 ---
-<video src="/images/stirfry.mp4" width="320" height="240" controls></video>
+<iframe src="https://nyu.app.box.com/embed/s/rtlia8wntlml85kdvvrzmigfvxhf8prh?sortColumn=date" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
 STEM From Dance instructors created a routine to the song "Stir Fry," featuring LED strips on their torso and knees. 
 
@@ -18,6 +18,11 @@ STEM From Dance instructors created a routine to the song "Stir Fry," featuring 
 #### Dance Style
 
 + STEP inspired dance
+
+#### Coding Concepts
+
++ Conditionals 
++ Counter
 
 #### Code
 
