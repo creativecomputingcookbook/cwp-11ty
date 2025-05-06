@@ -7,91 +7,99 @@ meta:
   desc:
     "A servo motor is like a tiny robot motor that can turn to a specific position. Here's how you can program it in Arduino!"
 ---
-
 A **servo motor** is like a tiny robot motor that can turn to a specific position. Imagine you're controlling the steering wheel of a toy car. You can tell the car to turn its wheels left, right, or keep them straight. A servo motor works in a similar way, but instead of a wheel, it can move things like robot arms or dials to exactly where you want them to go.
 
 When you're using an **Arduino**, you can program it to tell the servo motor how far to turn. Inside the servo, there's a sensor that tells it when it's reached the right spot, so it knows when to stop moving. This makes it great for projects where you need precise movement, like making a robot move its arm to pick something up!
 
-### 180° Servo
+<arduino-trinket-split>
+  <div slot="arduino">
 
-A servo motor usually has three wires: power, ground, and signal. The power wire is typically red and connects to the positive pole (+) of the power source. The ground wire is usually black or brown and connects to the negative pole (–). The signal wire, often yellow or orange, is used to receive control signals and should be connected to a PWM pin on the board. In this example, it is connected to pin number 9.
+  ### 180° Servo
 
+  A servo motor usually has three wires: power, ground, and signal. The power wire is typically red and connects to the positive pole (+) of the power source. The ground wire is usually black or brown and connects to the negative pole (–). The signal wire, often yellow or orange, is used to receive control signals and should be connected to a PWM pin on the board. In this example, it is connected to pin number 9.
 
-<collapsible title="Knob Circuit">
-<step img="/images/servo_circuit_knob-pot.png">
-#### Step 1
+  <collapsible title="Knob Circuit">
+    <step img="/images/servo_circuit_knob-pot.png">
+    
+  #### Step 1
 
-Connect the components as shown in the circuit diagram. For the Knob example, wire the potentiometer so that its two outer pins are connected to power (+5V) and ground, and its middle pin is connected to A0 on the board. Then, connect the servo motor as shown in the circuit below.
-</step>
-<step>
-<div slot="left">
+      Connect the components as shown in the circuit diagram. For the Knob example, wire the potentiometer so that its two outer pins are connected to power (+5V) and ground, and its middle pin is connected to A0 on the board. Then, connect the servo motor as shown in the circuit below.
+    </step>
 
-```arduino
-#include <Servo.h>
+  <step>
+      <div slot="left">
 
-Servo myservo;  // create servo object to control a servo
+      ```arduino
+      #include <Servo.h>
 
-int potpin = 0;  // analog pin used to connect the potentiometer
-int val;    // variable to read the value from the analog pin
+      Servo myservo;  // create servo object to control a servo
 
-void setup() {
-  myservo.attach(9);  // attaches the servo on pin 9 to the servo object
-}
+      int potpin = 0;  // analog pin used to connect the potentiometer
+      int val;    // variable to read the value from the analog pin
 
-void loop() {
-  val = analogRead(potpin);            // reads the value of the potentiometer (value between 0 and 1023)
-  val = map(val, 0, 1023, 0, 180);     // scale it to use it with the servo (value between 0 and 180)
-  myservo.write(val);                  // sets the servo position according to the scaled value
-  delay(15);                           // waits for the servo to get there
-}
-```
+      void setup() {
+        myservo.attach(9);  // attaches the servo on pin 9 to the servo object
+      }
 
-</div>
-#### Step 2
+      void loop() {
+        val = analogRead(potpin);            // reads the value of the potentiometer (value between 0 and 1023)
+        val = map(val, 0, 1023, 0, 180);     // scale it to use it with the servo (value between 0 and 180)
+        myservo.write(val);                  // sets the servo position according to the scaled value
+        delay(15);                           // waits for the servo to get there
+      }
+      ```
 
-Upload this code to your Arduino. It reads the potentiometer value and maps it to an angle from 0° to 180°, rotating the servo accordingly.
-</step>
-</collapsible>
+  </div>
 
-<div style="margin-top: 24px;"></div>
+  #### Step 2
 
-<collapsible title="Sweep Circuit">
-<step img="/images/servo_circuit_sweep.png">
-#### Step 1
+      Upload this code to your Arduino. It reads the potentiometer value and maps it to an angle from 0° to 180°, rotating the servo accordingly.
+    </step>
+  </collapsible>
 
-Connect the components as shown in the circuit diagram. For the Knob example, wire the potentiometer so that its two outer pins are connected to power (+5V) and ground, and its middle pin is connected to A0 on the board. Then, connect the servo motor as shown in the circuit below.
-</step>
-<step>
-<div slot="left">
+  <div style="margin-top: 24px;"></div>
 
-```arduino
-#include <Servo.h>
+  <collapsible title="Sweep Circuit">
+    <step img="/images/servo_circuit_sweep.png">
+      #### Step 1
 
-Servo myservo;  // create servo object to control a servo
-// twelve servo objects can be created on most boards
+      Connect the components as shown in the circuit diagram. For the Knob example, wire the potentiometer so that its two outer pins are connected to power (+5V) and ground, and its middle pin is connected to A0 on the board. Then, connect the servo motor as shown in the circuit below.
+    </step>
 
-int pos = 0;    // variable to store the servo position
+    <step>
+      <div slot="left">
 
-void setup() {
-  myservo.attach(9);  // attaches the servo on pin 9 to the servo object
-}
+      ```arduino
+      #include <Servo.h>
 
-void loop() {
-  for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
-    // in steps of 1 degree
-    myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
-  }
-  for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
-    myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
-  }
-}
-```
+      Servo myservo;  // create servo object to control a servo
+      // twelve servo objects can be created on most boards
 
-</div>
-#### Step 2
+      int pos = 0;    // variable to store the servo position
 
-Upload this code to your Arduino. It reads the potentiometer value and maps it to an angle from 0° to 180°, rotating the servo accordingly.
-</step>
-</collapsible>
+      void setup() {
+        myservo.attach(9);  // attaches the servo on pin 9 to the servo object
+      }
+
+      void loop() {
+        for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+          // in steps of 1 degree
+          myservo.write(pos);              // tell servo to go to position in variable 'pos'
+          delay(15);                       // waits 15ms for the servo to reach the position
+        }
+        for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+          myservo.write(pos);              // tell servo to go to position in variable 'pos'
+          delay(15);                       // waits 15ms for the servo to reach the position
+        }
+      }
+      ```
+
+      </div>
+
+      #### Step 2
+
+      Upload this code to your Arduino. It reads the potentiometer value and maps it to an angle from 0° to 180°, rotating the servo accordingly.
+    </step>
+  </collapsible>
+  </div>
+</arduino-trinket-split>

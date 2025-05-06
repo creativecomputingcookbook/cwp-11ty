@@ -10,7 +10,8 @@ meta:
 
 A **tilt sensor** is a gadget that can figure out the angle or inclination of the object it's attached to, helping to understand whether something is level or if it’s tilted to one side. 
 
-
+<arduino-trinket-split>
+<div slot="arduino">
 <collapsible title="Arduino set up">
 
 <step>
@@ -91,8 +92,9 @@ Press the upload button with the arrow after making sure you've selected the cor
 Then open the Serial Monitor from the Tools --> Serial Monitor (or pressing Ctrl+Shift+M) and see how the values change as you turn your potentiometer.
 </step>
 </collapsible>
+</div>
 
-
+<div slot="trinket">
 <collapsible title="Trinket Assembly">
 
 The code for using a tilt sensor is same as the [button](/_site/foundations/button/index.html). Just like the button, the tilt sensor is an input. It is read by the trinket as HIGH (tilted) or LOW (not tilted).
@@ -102,5 +104,6 @@ If you use the 2 Button Example code and switch out the buttons with the tilt se
 However, we change the variable from buttonRead1, buttonRead2 to tilt1, tilt2 for organization and clarity.
 
 <div style="position:relative;height:0;padding-bottom:70%;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://maker.makecode.com/#pub:_9abdHwYLUWdM" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin"></iframe></div>
-
 </collapsible>
+</div>
+</arduino-trinket-split>
