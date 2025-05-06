@@ -1,6 +1,6 @@
 ---
 title: 'Push 2 Start Example'
-thumbnail: ''
+thumbnail: '/images/Dance01.png'
 hideThumbnail: true
 meta:
   desc:

@@ -21,84 +21,83 @@ When you're using an **Arduino**, you can program it to tell the servo motor how
   <collapsible title="Knob Circuit">
     <step img="/images/servo_circuit_knob-pot.png">
     
-  #### Step 1
+#### Step 1
 
-      Connect the components as shown in the circuit diagram. For the Knob example, wire the potentiometer so that its two outer pins are connected to power (+5V) and ground, and its middle pin is connected to A0 on the board. Then, connect the servo motor as shown in the circuit below.
-    </step>
-
-  <step>
-      <div slot="left">
-<syntax-highlight language="arduino">
-      #include <Servo.h>
-
-      Servo myservo;  // create servo object to control a servo
-
-      int potpin = 0;  // analog pin used to connect the potentiometer
-      int val;    // variable to read the value from the analog pin
-
-      void setup() {
-        myservo.attach(9);  // attaches the servo on pin 9 to the servo object
-      }
-
-      void loop() {
-        val = analogRead(potpin);            // reads the value of the potentiometer (value between 0 and 1023)
-        val = map(val, 0, 1023, 0, 180);     // scale it to use it with the servo (value between 0 and 180)
-        myservo.write(val);                  // sets the servo position according to the scaled value
-        delay(15);                           // waits for the servo to get there
-      }
-      ```
-
-  </div>
-
-  #### Step 2
-
-      Upload this code to your Arduino. It reads the potentiometer value and maps it to an angle from 0° to 180°, rotating the servo accordingly.
-    </step>
-  </collapsible>
-
-  <div style="margin-top: 24px;"></div>
-
-  <collapsible title="Sweep Circuit">
-    <step img="/images/servo_circuit_sweep.png">
-      #### Step 1
-
-      Connect the components as shown in the circuit diagram. For the Knob example, wire the potentiometer so that its two outer pins are connected to power (+5V) and ground, and its middle pin is connected to A0 on the board. Then, connect the servo motor as shown in the circuit below.
+  Connect the components as shown in the circuit diagram. For the Knob example, wire the potentiometer so that its two outer pins are connected to power (+5V) and ground, and its middle pin is connected to A0 on the board. Then, connect the servo motor as shown in the circuit below.
     </step>
 
     <step>
       <div slot="left">
 
 <syntax-highlight language="arduino">
-      #include <Servo.h>
+#include <Servo.h>
 
-      Servo myservo;  // create servo object to control a servo
-      // twelve servo objects can be created on most boards
+Servo myservo;  // create servo object to control a servo
 
-      int pos = 0;    // variable to store the servo position
+int potpin = 0;  // analog pin used to connect the potentiometer
+int val;    // variable to read the value from the analog pin
 
-      void setup() {
-        myservo.attach(9);  // attaches the servo on pin 9 to the servo object
-      }
+void setup() {
+  myservo.attach(9);  // attaches the servo on pin 9 to the servo object
+}
 
-      void loop() {
-        for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
-          // in steps of 1 degree
-          myservo.write(pos);              // tell servo to go to position in variable 'pos'
-          delay(15);                       // waits 15ms for the servo to reach the position
-        }
-        for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
-          myservo.write(pos);              // tell servo to go to position in variable 'pos'
-          delay(15);                       // waits 15ms for the servo to reach the position
-        }
-      }
-</syntax-highlight>
+void loop() {
+  val = analogRead(potpin);            // reads the value of the potentiometer (value between 0 and 1023)
+  val = map(val, 0, 1023, 0, 180);     // scale it to use it with the servo (value between 0 and 180)
+  myservo.write(val);                  // sets the servo position according to the scaled value
+  delay(15);                           // waits for the servo to get there
+}
+          </syntax-highlight>
+        </div>
 
-      </div>
-
-      #### Step 2
+  #### Step 2
 
       Upload this code to your Arduino. It reads the potentiometer value and maps it to an angle from 0° to 180°, rotating the servo accordingly.
+      </step>
+    </collapsible>
+
+  <collapsible title="Sweep Circuit">
+    <step img="/images/servo_circuit_sweep.png">
+
+#### Step 1
+
+Connect the components as shown in the circuit diagram. For the Knob example, wire the potentiometer so that its two outer pins are connected to power (+5V) and ground, and its middle pin is connected to A0 on the board. Then, connect the servo motor as shown in the circuit below.
+
     </step>
-  </collapsible>
+
+    <step>
+      <div slot="left">
+
+<syntax-highlight language="arduino">
+#include <Servo.h>
+
+Servo myservo;  // create servo object to control a servo
+// twelve servo objects can be created on most boards
+
+int pos = 0;    // variable to store the servo position
+
+void setup() {
+  myservo.attach(9);  // attaches the servo on pin 9 to the servo object
+}
+
+void loop() {
+  for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+    // in steps of 1 degree
+    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(15);                       // waits 15ms for the servo to reach the position
+  }
+  for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(15);                       // waits 15ms for the servo to reach the position
+  }
+}
+</syntax-highlight>
+        </div>
+
+#### Step 2
+
+Upload this code to your Arduino. It reads the potentiometer value and maps it to an angle from 0° to 180°, rotating the servo accordingly.
+      </step>
+    </collapsible>
   </div>
 </arduino-trinket-split>

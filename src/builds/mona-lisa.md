@@ -1,6 +1,6 @@
 ---
 title: 'Mona Lisa Example'
-thumbnail: ''
+thumbnail: '/images/Dance01.png'
 hideThumbnail: true
 meta:
   desc:

@@ -14,29 +14,8 @@ When you connect a button to your Arduino, it completes a circuit when pressed, 
 <arduino-trinket-split>
   <div slot="arduino">
     <collapsible title="Arduino Assembly">
-      A button usually has two states: **pressed** or **not pressed**. When pressed, it connects the circuit and allows current to flow. Using **digitalRead()** in Arduino, you can check if a button is being pressed and then trigger an action, such as blinking an LED.
 
-      ```arduino
-      #include "arduino/Arduino.h"
-
-      const int buttonPin = 2;
-      const int ledPin = 13;
-
-      void setup() {
-        pinMode(buttonPin, INPUT);
-        pinMode(ledPin, OUTPUT);
-      }
-
-      void loop() {
-        int buttonState = digitalRead(buttonPin);
-
-        if (buttonState == HIGH) {
-          digitalWrite(ledPin, HIGH);
-        } else {
-          digitalWrite(ledPin, LOW);
-        }
-      }
-      ```
+A button usually has two states: **pressed** or **not pressed**. When pressed, it connects the circuit and allows current to flow. Using **digitalRead()** in Arduino, you can check if a button is being pressed and then trigger an action, such as blinking an LED.
 
   <step img="/images/button-circuit.png">
   
@@ -58,25 +37,25 @@ When you connect a button to your Arduino, it completes a circuit when pressed, 
   <step>
         <div slot="left">
 
-          ```arduino
-          const int buttonPin = 2;
-          const int ledPin = 13;
+```arduino
+const int buttonPin = 2;
+const int ledPin = 13;
 
-          void setup() {
-            pinMode(buttonPin, INPUT);
-            pinMode(ledPin, OUTPUT);
-          }
+void setup() {
+  pinMode(buttonPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+}
 
-          void loop() {
-            int buttonState = digitalRead(buttonPin);
+void loop() {
+  int buttonState = digitalRead(buttonPin);
 
-            if (buttonState == HIGH) {
-              digitalWrite(ledPin, HIGH);
-            } else {
-              digitalWrite(ledPin, LOW);
-            }
-          }
-          ```
+  if (buttonState == HIGH) {
+    digitalWrite(ledPin, HIGH);
+  } else {
+    digitalWrite(ledPin, LOW);
+  }
+}
+```
   </div>
 
   #### Step 3
@@ -87,19 +66,19 @@ When you connect a button to your Arduino, it completes a circuit when pressed, 
   </step>
     </collapsible>
   </div>
+  <div slot="trinket">
   <collapsible title="Trinket Assembly">
-    <div slot="trinket">
       The battery, LED pixel/strip, and wires form a circuit.
 
       In the hardware provided, you do not need to worry about attaching wires to power and ground - this is already done through the wiring.
 
-      <img src="/images/buttontrinket.jpg">
+      <img src="/images/buttontrinket.jpg" />
 
       We can set a condition so that when we press the button, an action results (LED changes color, flashes differently, etc.)
 
       To do this, we will need to create a variable for the button and use an if/then statement.
 
       [Watch video here](https://www.loom.com/share/91ea5b53f24645d8a4d485fd4259e5e0?t=130)
- </div>
 </collapsible>
+</div>
 </arduino-trinket-split>

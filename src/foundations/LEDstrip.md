@@ -12,7 +12,7 @@ An **LED strip** is a flexible circuit containing multiple small lights (LEDs), 
 <arduino-trinket-split>
   <div slot="arduino">
     <collapsible title="LED Setup">
-<step img="images/digitalpins.jpg">
+<step img="/images/digitalpins.png">
         
 #### Step 1 - Connect the Sensor
 
@@ -20,37 +20,6 @@ An **LED strip** is a flexible circuit containing multiple small lights (LEDs), 
 </step>
 <step>
 <div slot="left">
-
-#### Step 2 - Remix the Code
-
-**Initialization:**  
-        The code sets up a constant called `LED_PIN` which stores the value of the pin that you have your LED strip plugged into. In the code, we have it set to D12, which will work if you have it plugged into [D11/12].  
-        It also sets `LED_COUNT`, which is the number of white square lights on the LED strip.  
-        You also set up the brightness of the LED strip with any number from 1 to 255.  
-        We declare a special object for the LED strip in the code:
-
-        ```cpp
-        Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
-        ```
-
-        You'll have to change the highlighted line to match your digital pin:  
-        - [D3/4] → D4  
-        - [D5/6] → D6  
-        - [D7/8] → D8  
-        - [D9/10] → D10  
-        - [D11/12] → D12  
-
-        **Setup:**  
-        You begin using the LED strip with `strip.begin();` and `strip.show();`.  
-        Set brightness with `strip.setBrightness(brightness);`.
-
-        You can create fun patterns using these functions:  
-        - `loop`: rainbow pattern  
-        - `blinkAll`: makes the LEDs blink  
-        - `colorWipe`: gradually changes the color  
-        - `theaterChase`: chase effect  
-        - `rainbow`: rainbow cycle  
-        - `theaterChaseRainbow`: rainbow chase effect
 
 <syntax-highlight language="arduino">
 ////////////////////
@@ -111,7 +80,7 @@ strip.Color(red, green, blue) as shown in the loop() function above),
 and a delay time (in milliseconds) between pixels.
 */
 void colorWipe(uint32_t color, int wait) {
-    for(int i=0; i<strip.numPixels(); i++) { // For each pixel in strip...
+    for(int i=0; i < strip.numPixels(); i++) { // For each pixel in strip...
         strip.setPixelColor(i, color);         //  Set pixel's color (in RAM)
         strip.show();                          //  Update strip to match
         delay(wait);                           //  Pause for a moment
@@ -122,60 +91,92 @@ void colorWipe(uint32_t color, int wait) {
 // a la strip.Color(r,g,b) as mentioned above), and a delay time (in ms)
 // between frames.
 void theaterChase(uint32_t color, int wait) {
-    for(int a=0; a<10; a++) {  // Repeat 10 times...
-        for(int b=0; b<3; b++) { //  'b' counts from 0 to 2...
-        strip.clear();         //   Set all pixels in RAM to 0 (off)
-        // 'c' counts up from 'b' to end of strip in steps of 3...
-        for(int c=b; c<strip.numPixels(); c += 3) {
-            strip.setPixelColor(c, color); // Set pixel 'c' to value 'color'
-        }
+  for(int a=0; a<10; a++) {  // Repeat 10 times...
+      for(int b=0; b<3; b++) { //  'b' counts from 0 to 2...
+      strip.clear();         //   Set all pixels in RAM to 0 (off)
+      // 'c' counts up from 'b' to end of strip in steps of 3...
+      for(int c=b; c < strip.numPixels(); c += 3) {
+          strip.setPixelColor(c, color); // Set pixel 'c' to value 'color'
+      }
 
-              strip.show();
-              delay(wait);
-            }
-          }
-        }
+      strip.show();
+      delay(wait);
+    }
+  }
+}
 
-        void rainbow(int wait) {
-          for(long firstPixelHue = 0; firstPixelHue < 5*65536; firstPixelHue += 256) {
-            strip.rainbow(firstPixelHue);
-            strip.show();
-            delay(wait);
-          }
-        }
+void rainbow(int wait) {
+  for(long firstPixelHue = 0; firstPixelHue < 5*65536; firstPixelHue += 256) {
+    strip.rainbow(firstPixelHue);
+    strip.show();
+    delay(wait);
+  }
+}
 
-        void theaterChaseRainbow(int wait) {
-          int firstPixelHue = 0;
-          for(int a=0; a<30; a++) {
-            for(int b=0; b<3; b++) {
-              strip.clear();
-              for(int c=b; c<strip.numPixels(); c += 3) {
-                int hue = firstPixelHue + c * 65536L / strip.numPixels();
-                uint32_t color = strip.gamma32(strip.ColorHSV(hue));
-                strip.setPixelColor(c, color);
-              }
-              strip.show();
-              delay(wait);
-              firstPixelHue += 65536 / 90;
-            }
-          }
-        }
+void theaterChaseRainbow(int wait) {
+  int firstPixelHue = 0;
+  for(int a=0; a<30; a++) {
+    for(int b=0; b<3; b++) {
+      strip.clear();
+      for(int c=b; c < strip.numPixels(); c += 3) {
+        int hue = firstPixelHue + c * 65536L / strip.numPixels();
+        uint32_t color = strip.gamma32(strip.ColorHSV(hue));
+        strip.setPixelColor(c, color);
+      }
+      strip.show();
+      delay(wait);
+      firstPixelHue += 65536 / 90;
+    }
+  }
+}
 </syntax-highlight>
-</step>
 
-        <img src="/images/serialmonitor.png">
-        <img src="/images/serialmonitor.png">
+</div>
+
+#### Step 2 - Remix the Code
+
+**Initialization:**  
+        The code sets up a constant called `LED_PIN` which stores the value of the pin that you have your LED strip plugged into. In the code, we have it set to D12, which will work if you have it plugged into [D11/12].  
+        It also sets `LED_COUNT`, which is the number of white square lights on the LED strip.  
+        You also set up the brightness of the LED strip with any number from 1 to 255.  
+        We declare a special object for the LED strip in the code:
+
+        <syntax-highlight language="cpp">
+        Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+        </syntax-highlight>
+
+        You'll have to change the highlighted line to match your digital pin:  
+        
+        - [D3/4] → D4  
+        - [D5/6] → D6  
+        - [D7/8] → D8  
+        - [D9/10] → D10  
+        - [D11/12] → D12  
+
+        **Setup:**  
+        You begin using the LED strip with `strip.begin();` and `strip.show();`.  
+        Set brightness with `strip.setBrightness(brightness);`.
+
+        You can create fun patterns using these functions:  
+
+        - `loop`: rainbow pattern  
+        - `blinkAll`: makes the LEDs blink  
+        - `colorWipe`: gradually changes the color  
+        - `theaterChase`: chase effect  
+        - `rainbow`: rainbow cycle  
+        - `theaterChaseRainbow`: rainbow chase effect
+</step>
+<step img="/images/serialmonitor.png">
 
 #### Step 3 - Upload & Code 
 
-<img src="/images/uploadbutton.png">  
+      <img src="/images/uploadbutton.png" />  
         Press the upload button with the arrow after making sure you've selected the correct board (Arduino BLE 33) and port that the Arduino is plugged into.  
 
-<img src="/images/serialmonitor.png">  
         Then open the Serial Monitor from the Tools → Serial Monitor (or press Ctrl+Shift+M) and see how the values change as you turn your potentiometer.
-</step>
+    </step>
 
-</collapsible>
+  </collapsible>
 </div>
   <div slot="trinket">
     <collapsible title="Trinket Assembly">
@@ -186,6 +187,6 @@ void theaterChase(uint32_t color, int wait) {
       <img src="/images/buttontrinket.jpg">
 
       [Here](https://www.loom.com/share/38a5eeecdf3c439ca3b279666db32b98) is example code to set your LED strip to festive colors.
-</collapsible>
-</div>
+    </collapsible>
+  </div>
 </arduino-trinket-split>
