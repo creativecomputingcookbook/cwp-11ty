@@ -1,6 +1,6 @@
 ---
-title: 'Update with Tilt Hat Prop'
-thumbnail: '/images/stirfry.gif'
+title: 'Update Dance with Tilt Hat Prop'
+thumbnail: '/images/tilt hat.gif'
 hideThumbnail: true
 meta:
   desc:

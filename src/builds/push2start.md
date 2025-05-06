@@ -1,6 +1,6 @@
 ---
-title: 'Push 2 Start with Buttons'
-thumbnail: '/images/Dance01.png'
+title: 'Push 2 Start Dance with Buttons'
+thumbnail: '/images/wings.gif'
 hideThumbnail: true
 meta:
   desc:

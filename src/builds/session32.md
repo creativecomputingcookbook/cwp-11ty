@@ -1,6 +1,6 @@
 ---
-title: 'Session 32 with Book Prop'
-thumbnail: '/images/stirfry.gif'
+title: 'Session 32 Dance with Book Prop'
+thumbnail: '/images/books.gif'
 hideThumbnail: true
 meta:
   desc:

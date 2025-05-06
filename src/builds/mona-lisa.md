@@ -1,6 +1,6 @@
 ---
 title: 'Mona Lisa with Picture Frame Prop'
-thumbnail: '/images/Dance01.png'
+thumbnail: '/images/photo frame.gif'
 hideThumbnail: true
 meta:
   desc:
@@ -10,9 +10,13 @@ meta:
 
 STEM From Dance instructors create choreography to the song "Mona Lisa" by J-Hope with a picture frame prop.
 
+#### Images
+
+<img src="/images/frame-back.jpg">
+
 #### Sensor Placement
 
-+ Tilt sensor placed on side of frame
++ Tilt sensors placed on either side of the frame
 + Button placed on bottom of frame
 
 #### Dance Style
