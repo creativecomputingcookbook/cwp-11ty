@@ -1,6 +1,7 @@
 ---
 title: 'All of the Lights Dance Example'
-thumbnail: '/images/allofthelights.mp4'
+thumbnail: '/images/allofthelights.gif'
+hideThumbnail: true
 meta:
   desc:
     "STEM From Dance instructors choreography for 'All of the Lights'"

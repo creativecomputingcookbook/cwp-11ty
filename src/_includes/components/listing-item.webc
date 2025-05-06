@@ -3,6 +3,7 @@
         <a class="card-content" :href="url">
             <img class="card-img" :src="data.thumbnail"></img>
             <p class="card-name" @text="data.title"></p>
+            <p webc:if="data.shortDesc" @text="data.shortDesc"></p>
         </a>
     </div>
 </div>

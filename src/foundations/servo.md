@@ -28,8 +28,7 @@ When you're using an **Arduino**, you can program it to tell the servo motor how
 
   <step>
       <div slot="left">
-
-      ```arduino
+<syntax-highlight language="arduino">
       #include <Servo.h>
 
       Servo myservo;  // create servo object to control a servo
@@ -69,7 +68,7 @@ When you're using an **Arduino**, you can program it to tell the servo motor how
     <step>
       <div slot="left">
 
-      ```arduino
+<syntax-highlight language="arduino">
       #include <Servo.h>
 
       Servo myservo;  // create servo object to control a servo
@@ -92,7 +91,7 @@ When you're using an **Arduino**, you can program it to tell the servo motor how
           delay(15);                       // waits 15ms for the servo to reach the position
         }
       }
-      ```
+</syntax-highlight>
 
       </div>
 

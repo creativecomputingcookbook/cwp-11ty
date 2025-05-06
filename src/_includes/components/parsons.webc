@@ -1,3 +1,251 @@
-<div>
-    Parsons problem for <b @text="name"></b>
+<link rel="stylesheet" href="../../styles/parsons.css">
+<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../lib/jquery.ui.touch-punch.min.js"></script>
+<script src="../../lib/underscore-min.js"></script>
+<script src="../../lib/lis.js"></script>
+<script type="module" src="../../parsons.js"></script>
+
+<script>
+  // Helper for displaying errors from the Parsons widget
+  function displayErrors(fb) {
+    const copyButton = document.querySelector("#copyCodeLink");
+    
+    // If there are errors, show error message and disable copy button.
+    if (fb.errors && fb.errors.length > 0) {
+      // Disable copy button if there are errors
+      copyButton.classList.add("opacity-50", "pointer-events-none");
+      
+      // Create a nicer error message element instead of an alert
+      const errorContainer = document.createElement('div');
+      errorContainer.className = 'bg-red-50 border-l-4 border-red-400 p-4 mt-4 text-red-700 rounded';
+      errorContainer.innerHTML = `<p>${fb.errors[0]}</p>`;
+      
+      // Find the widget container and append the error
+      const widgetContainer = document.querySelector('.parsons-widget');
+      
+      // Remove any existing error messages
+      const existingErrors = widgetContainer.querySelectorAll('.bg-red-50');
+      existingErrors.forEach(el => el.remove());
+      
+      widgetContainer.appendChild(errorContainer);
+      
+      // Auto-remove after 5 seconds
+      setTimeout(() => {
+        errorContainer.remove();
+      }, 5000);
+    } else {
+      // No errors: enable the copy button.
+      copyButton.classList.remove("opacity-50", "pointer-events-none");
+    }
+  }
+
+	function decodeHtmlEntities(str) {
+		var txt = document.createElement("textarea");
+		txt.innerHTML = str;
+		return txt.value;
+	}
+  
+  // Wait for the document to be ready before initializing the widget
+  window.addEventListener("DOMContentLoaded", function() {
+    // Disable the copy button by default.
+    const copyButton = document.querySelector("#copyCodeLink");
+    copyButton.classList.add("opacity-50", "pointer-events-none");
+  
+    let sortableId = 'sortable';
+    var parson = new ParsonsWidget({
+      sortableId,
+      trashId: 'sortableTrash',
+      max_wrong_lines: 1,
+      feedback_cb: displayErrors,
+      can_indent: true
+    });
+
+
+		function preprocess(code) {
+			code = code
+				.replace(/\/\/.*$/gm, '')
+				.replace(/\/\*[\s\S]*?\*\//g, '')
+				.trim();
+			const lines = code.split('\n');
+			const blocks = [];
+			let i = 0;
+			
+			function processBlock(startRaw) {
+				const linesAcc = [ startRaw ];
+				let depth = 1;
+				i++;
+
+				while (i < lines.length && depth > 0) {
+					const raw = lines[i];
+					const trimmed = raw.trim();
+					i++;
+					if (!trimmed) continue;
+
+					if (trimmed.includes('{')) depth++;
+					if (trimmed.includes('}')) depth--;
+
+					if (/^(for\s*\([^)]*\)\s*{|if\s*\([^)]*\)\s*{|else\s*{)/.test(trimmed) && depth >= 1) {
+						linesAcc.push(processBlock(raw));
+						continue;
+					}
+					linesAcc.push(trimmed);
+				}
+
+				return linesAcc.join('\n');
+			}
+
+			while (i < lines.length) {
+				let line = lines[i].trim();
+				if (!line) { i++; continue; }
+				
+				const fnMatch = line.match(/^[\w\*\s]+\s+\w+\s*\([^)]*\)\s*{$/);
+				if (fnMatch) {
+					blocks.push(line);
+					i++;
+					
+					let fnDepth = 1;
+					while (i < lines.length && fnDepth > 0) {
+						const txt = lines[i].trim();
+						
+						const blockMatch = txt.match(/^(for\s*\([^)]*\)\s*{|if\s*\([^)]*\)\s*{|else\s*{)$/);
+						if (blockMatch && fnDepth === 1) {
+							const block = processBlock(txt, 1, 1);
+							blocks.push(block);
+						}
+						else if (txt.endsWith(';') && fnDepth === 1) {
+							/* blocks.push('    ' + txt); */
+							blocks.push(txt);
+							i++;
+						}
+						else {
+							if (txt.includes('{')) fnDepth++;
+							if (txt.includes('}')) fnDepth--;
+							
+							if (fnDepth === 0) {
+								blocks.push('}');
+							}
+							i++;
+						}
+					}
+					continue;
+				}
+				
+				if (line.startsWith('#')) {
+					blocks.push(line);
+					i++;
+					continue;
+				}
+				
+				if (line.endsWith(';')) {
+					blocks.push(line);
+					i++;
+					continue;
+				}
+				i++;
+			}
+			return blocks;
+		}
+
+
+		const blocks = preprocess(initial);
+
+    const initStruct = parson.parseCode(blocks, parson.options.max_wrong_lines);
+    parson.model_solution = initStruct.solution;
+    parson.extra_lines    = initStruct.distractors;
+    parson.modified_lines = initStruct.widgetInitial;
+
+    parson.modified_lines.forEach((lineObj, idx) => {
+      lineObj.id     = parson.id_prefix + idx;
+      lineObj.indent = 0;
+    });
+    parson.shuffleLines();    
+
+		// Button event handlers
+    $("#newInstanceLink").click(function (event) {
+      event.preventDefault();
+      parson.shuffleLines();
+      
+      // Remove any error messages when shuffling
+      const widgetContainer = document.querySelector('.parsons-widget');
+      const existingErrors = widgetContainer.querySelectorAll('.bg-red-50');
+      existingErrors.forEach(el => el.remove());
+      
+      // Also disable the copy button when shuffling for a fresh attempt.
+      copyButton.classList.add("opacity-50", "pointer-events-none");
+    });
+    
+    $("#feedbackLink").click(function (event) {
+      event.preventDefault();
+      parson.getFeedback();
+    });
+    
+    $("#copyCodeLink").click(function (event) {
+      event.preventDefault();
+      let studentCode = parson
+        .normalizeIndents(parson.getModifiedCode("#ul-" + sortableId))
+				.map(c => {
+					let decoded = decodeHtmlEntities(c.code);
+					return `${'    '.repeat(c.indent < 0 ? 0 : c.indent)}${decoded}`;
+			});
+      
+      navigator.clipboard.writeText(studentCode.join("\n")).then(() => {
+        // Create a success message element instead of an alert
+        const successContainer = document.createElement('div');
+        successContainer.className = 'bg-green-50 border-l-4 border-green-400 p-4 mt-4 text-green-700 rounded';
+        successContainer.innerHTML = `<p>Code copied to clipboard!</p>`;
+        
+        // Find the widget container and append the success message
+        const widgetContainer = document.querySelector('.parsons-widget');
+        
+        // Remove any existing success messages
+        const existingMessages = widgetContainer.querySelectorAll('.bg-green-50');
+        existingMessages.forEach(el => el.remove());
+        
+        widgetContainer.appendChild(successContainer);
+        
+        // Auto-remove after 3 seconds
+        setTimeout(() => {
+          successContainer.remove();
+        }, 3000);
+      });
+    });
+  });
+</script>
+<!-- Component container with clear boundaries -->
+<div class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 mx-auto">
+  <!-- Title from attribute -->
+  <h3 class="text-xl font-semibold mb-4 text-gray-800" @text="title"> Try your hand at a parsons problem! </h3>
+  
+  <!-- Parsons problem widget container -->
+  <div class="parsons-widget bg-white border border-gray-300 rounded-lg p-5 shadow-sm">
+    <div class="flex flex-col md:flex-row gap-6">
+      <!-- Source container -->
+      <div class="w-full md:w-1/2">
+        <h4 class="text-sm font-medium text-gray-500 mb-3">Available Code</h4>
+        <div id="sortableTrash" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
+      </div>
+      
+      <!-- Solution container -->
+      <div class="w-full md:w-1/2">
+        <h4 class="text-sm font-medium text-gray-500 mb-3">Your Solution</h4>
+        <div id="sortable" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
+      </div>
+    </div>
+    
+    <!-- Controls -->
+    <div class="mt-4 flex justify-between items-center pt-2 border-t border-gray-200">
+      <div class="space-x-2">
+        <a id="newInstanceLink" href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium hover:underline">
+          ↻ New instance
+        </a>
+        <a id="feedbackLink" href="#" class="text-green-600 hover:text-green-800 text-sm font-medium hover:underline">
+          ✓ Get feedback
+        </a>
+      </div>
+      <a id="copyCodeLink" href="#" class="bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium py-1 px-3 rounded border border-blue-200 transition-colors">
+        Copy code
+      </a>
+    </div>
+  </div>
 </div>

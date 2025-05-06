@@ -19,6 +19,7 @@ An **LED strip** is a flexible circuit containing multiple small lights (LEDs), 
         You need to connect the board to a digital pin which are the ones labeled with a D in front of it. Pick one of the five slots to plug it in: [D3/4], [D5/6], [D7/8], [D9/10] or [D11/12]. We've chosen [D11/12]. 
 </step>
 <step>
+<div slot="left">
 
 #### Step 2 - Remix the Code
 
@@ -51,56 +52,84 @@ An **LED strip** is a flexible circuit containing multiple small lights (LEDs), 
         - `rainbow`: rainbow cycle  
         - `theaterChaseRainbow`: rainbow chase effect
 
-        ```cpp
-        ////////////////////
-        // LED STRIP TEST //
-        ////////////////////
+<syntax-highlight language="arduino">
+////////////////////
+// LED STRIP TEST //
+////////////////////
 
-        #include <Adafruit_NeoPixel.h>
+// Description: 
+/*
+    Takes a reading with the ultrasonic sensor and displays it in inches and centimeters to the serial monitor.
+*/
 
-        const int LED_COUNT = 18;
-        const int LED_PIN = 12;
-        int brightness = 50;
+#include <Adafruit_NeoPixel.h>
 
-        Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+// constants won't change. They're used here to set pin numbers:
+const int LED_COUNT = 18;
+const int LED_PIN = 12;
 
-        void setup() {
-          strip.begin();
-          strip.show();
-          strip.setBrightness(brightness);
-          strip.fill(strip.Color(0, 0, 0));
-          strip.show();
-          delay(1000);
+// variables will change:
+int brightness = 50; // set LED brightness to about 1/5 (max = 255)
+
+// the LED strip requires a special object that we declare here:
+Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);  // creates an object that will represent our LED strip
+
+void setup() {
+    strip.begin();                    // begin using the LED strip object (REQUIRED)
+    strip.show();                     // turn OFF all pixels ASAP (this only works when first being run)
+    strip.setBrightness(brightness);
+    
+    strip.fill(strip.Color(0, 0, 0)); // show no color (i.e., another way to turn LEDs off)
+    strip.show();
+    delay(1000); 
+}
+
+void loop() {
+    rainbow(50);
+}
+
+// ----------------- Some functions creating animated effects -----------------
+
+/*
+Fill all LEDs with a single color for a number of milliseconds
+*/
+void blinkAll(uint32_t color, int wait){
+    strip.fill(color);
+    strip.show(); 
+    delay(wait); 
+    
+    strip.fill(strip.Color(0, 0, 0));
+    strip.show(); 
+    delay(wait); 
+}
+
+/*
+Fill strip pixels one after another with a color. Strip is NOT cleared
+first; anything there will be covered pixel by pixel. Pass in color
+(as a single 'packed' 32-bit value, which you can get by calling
+strip.Color(red, green, blue) as shown in the loop() function above),
+and a delay time (in milliseconds) between pixels.
+*/
+void colorWipe(uint32_t color, int wait) {
+    for(int i=0; i<strip.numPixels(); i++) { // For each pixel in strip...
+        strip.setPixelColor(i, color);         //  Set pixel's color (in RAM)
+        strip.show();                          //  Update strip to match
+        delay(wait);                           //  Pause for a moment
+    }
+}
+
+// Theater-marquee-style chasing lights. Pass in a color (32-bit value,
+// a la strip.Color(r,g,b) as mentioned above), and a delay time (in ms)
+// between frames.
+void theaterChase(uint32_t color, int wait) {
+    for(int a=0; a<10; a++) {  // Repeat 10 times...
+        for(int b=0; b<3; b++) { //  'b' counts from 0 to 2...
+        strip.clear();         //   Set all pixels in RAM to 0 (off)
+        // 'c' counts up from 'b' to end of strip in steps of 3...
+        for(int c=b; c<strip.numPixels(); c += 3) {
+            strip.setPixelColor(c, color); // Set pixel 'c' to value 'color'
         }
 
-        void loop() {
-          rainbow(50);
-        }
-
-        void blinkAll(uint32_t color, int wait) {
-          strip.fill(color);
-          strip.show(); 
-          delay(wait); 
-          strip.fill(strip.Color(0, 0, 0));
-          strip.show(); 
-          delay(wait); 
-        }
-
-        void colorWipe(uint32_t color, int wait) {
-          for(int i=0; i<strip.numPixels(); i++) {
-            strip.setPixelColor(i, color);
-            strip.show();
-            delay(wait);
-          }
-        }
-
-        void theaterChase(uint32_t color, int wait) {
-          for(int a=0; a<10; a++) {
-            for(int b=0; b<3; b++) {
-              strip.clear();
-              for(int c=b; c<strip.numPixels(); c += 3) {
-                strip.setPixelColor(c, color);
-              }
               strip.show();
               delay(wait);
             }
@@ -131,10 +160,9 @@ An **LED strip** is a flexible circuit containing multiple small lights (LEDs), 
             }
           }
         }
-        ```
+</syntax-highlight>
 </step>
 
-<step>
         <img src="/images/serialmonitor.png">
         <img src="/images/serialmonitor.png">
 

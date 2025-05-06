@@ -3,9 +3,24 @@ layout: 'layouts/base.webc'
 ---
 
 <script>
+handleHashChange = () => {
+  switch (window.location.hash) {
+    case '':
+      return;
+    case '#builds':
+      Alpine.store("category").set("Builds");
+      break;
+    case '#foundations':
+      Alpine.store("category").set("Foundations");
+      break;
+  }
+
+  window.location.hash = '';
+}
+
 document.addEventListener('alpine:init', () => {
   Alpine.store('category', {
-    category: 'Foundations',
+    category: 'Builds',
 
     set(category) {
       this.category = category;
@@ -19,6 +34,9 @@ document.addEventListener('alpine:init', () => {
       this.tags = tags;
     },
   });
+  
+  window.addEventListener("hashchange", handleHashChange);
+  handleHashChange();
 });
 
 // https://codepen.io/rblasam/pen/gOWrNMy
@@ -46,33 +64,39 @@ function item(settings) {
 </script>
 
 <main id="main-content" tabindex="-1">
-<!-- fix height -->
-<div style="background: #F2F2F2" class="flex justify-end">
-  <div class="py-4 md:py-8 prose md:prose-base prose-sm prose-gray text-gray-500 md:max-w-1/2 px-4">
-    <template @raw="content" webc:nokeep></template>
+<div>
+  <div class="home relative overflow-hidden">
+    <div class="m-auto prose md:prose-base prose-sm text-white size-fit py-[15%] px-4">
+      <template @raw="content" webc:nokeep></template>
+    </div>
+    <div class="size-[100%]">
+      <div class="slideshow-slide"></div>
+      <div class="slideshow-slide"></div>
+      <div class="slideshow-slide"></div>
+      <div class="slideshow-slide"></div>
+    </div>
   </div>
 </div>
 <div>
-		<ul class="tabs" x-data="{
-      tabs: ['Foundations', 'Builds']
-    }">
-      <template x-for="tab in tabs">
-        <li x-on:click="$store.category.set(tab)"
-          x-bind:class="$store.category.category.includes(tab) ? 'tab tab-active' : 'tab'"
-          >
-          <label x-text="tab"></label>
-        </li>
-      </template>
-		</ul>
-		
+<div x-data="{
+  tabs: ['Foundations', 'Builds']
+}">
+	<!-- 	<ul class="tabs"> -->
+ <!--      <template x-for="tab in tabs"> -->
+ <!--        <li x-on:click="$store.category.set(tab)" -->
+ <!--          x-bind:class="$store.category.category == tab ? 'tab tab-active' : 'tab'" -->
+ <!--          > -->
+ <!--          <label x-text="tab"></label> -->
+ <!--        </li> -->
+ <!--      </template> -->
+	<!-- 	</ul> -->
+    </div>
 		<div class="md:flex" x-data="{
       setup: {
-        Foundations: {
-          test1: ['test2', 'test3'],
-        },
-        Builds: {
-          test4: ['test5', 'test6'],
-        },
+        'Component': ['Servo', 'Potentiometer', 'Arduino', 'LED strip'],
+        'Interaction': ['Rotating', 'Pop-up', 'Light-up'],
+        'Techniques & Concepts': ['Juxtaposition', 'Duality', 'Metaphor', 'Collaging', 'Illuminated manuscript', 'Single-sentence story'],
+        'Materials': ['Cardboard', 'Acrylic', 'Birch wood', 'Fabric', '3D printing'],
       },
 
       get currentCategory() {
@@ -87,11 +111,11 @@ function item(settings) {
       },
     }">
       <div class="p-4 md:flex-1">
-        <template x-for="category in Object.keys(setup[currentCategory])">
+        <template x-for="category in Object.keys(setup)">
           <div>
             <h3 x-text="category"></h3>
             <ul>
-              <template x-for="tag of setup[currentCategory][category]">
+              <template x-for="tag of setup[category]">
                 <li class="filter-option">
                   <label>
                     <input type="checkbox" x-bind:value="tag" x-model="tags">
@@ -103,8 +127,17 @@ function item(settings) {
           </div>
         </template>
       </div>
-      <div class="p-4 grid sm:grid-cols-2 lg:grid-cols-3 md:flex-3">
-        <listing-item webc:for="item of collections.all" @attributes="item" :is-home="true"></listing-item>
+      <div class="p-4 md:flex-3">
+        <p class="py-4 px-6" x-show="$store.category.category == 'Builds'">
+          Showcase students’ final projects, emphasizing their connection to foundational
+          learning and activity design.
+        </p>
+        <p class="py-4 px-6" x-show="$store.category.category == 'Foundations'">
+          Provide students with the resources and small exercises needed to learn and master core concepts.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3">
+          <listing-item webc:for="item of collections.all" @attributes="item" :is-home="true"></listing-item>
+        </div>
       </div>
 	</div>
 </div>

@@ -1,6 +1,7 @@
 ---
 title: 'Take Time Dance Example'
-thumbnail: '/images/taketime.mp4'
+thumbnail: '/images/taketime.gif'
+hideThumbnail: true
 meta:
   desc:
     "STEM From Dance instructors choreography for 'Take Time'"

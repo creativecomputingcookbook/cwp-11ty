@@ -8,6 +8,8 @@ Current custom features for content writers are
 
 Below is the documentation for `11st-starter-kit` which was used as the starter project; that is licensed MIT. This project is all rights reserved *for now*.
 
+Make sure you have Node.js v18, v20 or v22. Do NOT use v23 (latest) until 11ty fixes for [this issue](https://github.com/11ty/eleventy/issues/3518) are released (which, as of writing, is not the case).
+
 ---
 
 # 📦 11st-Starter-Kit

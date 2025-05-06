@@ -1,6 +1,7 @@
 ---
 title: 'Stir Fry Dance Example'
-thumbnail: '/images/stirfry.mp4'
+thumbnail: '/images/stirfry.gif'
+hideThumbnail: true
 meta:
   desc:
     "STEM From Dance instructors choreography for 'Stir Fry'"

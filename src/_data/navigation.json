@@ -1,8 +1,16 @@
 {
   "items": [
     {
-      "text": "Home",
-      "url": "/"
+      "text": "Builds",
+      "url": "/#builds"
+    },
+    {
+      "text": "Foundations",
+      "url": "/#foundations"
+    },
+    {
+      "text": "About",
+      "url": "/about/"
     }
   ]
 }

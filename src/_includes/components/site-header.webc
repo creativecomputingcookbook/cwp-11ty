@@ -33,6 +33,7 @@
             )
             .join('');
         </script>
+        <li><toggle /></li>
       </ul>
     </div>
   </nav>
