@@ -100,6 +100,6 @@ When you connect a button to your Arduino, it completes a circuit when pressed, 
       To do this, we will need to create a variable for the button and use an if/then statement.
 
       [Watch video here](https://www.loom.com/share/91ea5b53f24645d8a4d485fd4259e5e0?t=130)
-    </div>
-  </collapsible>
+ </div>
+</collapsible>
 </arduino-trinket-split>
