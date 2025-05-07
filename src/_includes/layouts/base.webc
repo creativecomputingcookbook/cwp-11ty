@@ -37,6 +37,12 @@
       media="print"
       onload="this.media='all'; this.onload=null;"
     />
+
+		<script>
+			if ('scrollRestoration' in history) {
+				history.scrollRestoration = 'manual';
+			}
+		</script>
   </head>
   <body class="min-h-screen bg-white" data-env="{{ node.env }}">
     <site-header></site-header>
@@ -54,5 +60,5 @@
     <style @raw="getBundle('css')" webc:keep></style>
     <script type="module" src="/main.js" webc:keep></script>
 
-  </body>
+	</body>
 </html>

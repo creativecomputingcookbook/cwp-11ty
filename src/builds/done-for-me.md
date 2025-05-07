@@ -6,7 +6,15 @@ meta:
   desc:
     "STEM From Dance instructors choreography for 'Done For Me' by Fridayy"
 ---
-<iframe src="https://nyu.app.box.com/embed/s/193kf93q1689tio6mhay6nbpy02ubw92?sortColumn=date" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+<div class="flex justify-center">
+  <iframe
+    src="https://nyu.app.box.com/embed/s/193kf93q1689tio6mhay6nbpy02ubw92?sortColumn=date"
+    class="w-11/12 lg:w-2/3 aspect-video"
+    frameborder="0"
+    allowfullscreen
+  ></iframe>
+</div>
+
 
 STEM From Dance instructors create choreography to the song "Done For Me," with LED shoes.
 
@@ -30,4 +38,14 @@ STEM From Dance instructors create choreography to the song "Done For Me," with 
 
 #### Code
 
-<div style="position:relative;height:0;padding-bottom:70%;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://maker.makecode.com/#pub:_9jqRmzYVFM00" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin"></iframe></div>
+<div class="flex justify-center">
+  <div class="relative w-11/12 lg:w-2/3 pb-[56.25%] overflow-hidden">
+    <iframe
+      src="https://maker.makecode.com/#pub:_9jqRmzYVFM00"
+      class="absolute inset-0 w-full h-full"
+      frameborder="0"
+      sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
+    ></iframe>
+  </div>
+</div>
+

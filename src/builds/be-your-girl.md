@@ -6,7 +6,15 @@ meta:
   desc:
     "STEM From Dance instructors choreography for 'Be Your Girl' by Kaytranada"
 ---
-<iframe src="https://nyu.app.box.com/embed/s/z1o22z9eju10i2sj2kz1bd4dm8sc615r?sortColumn=date" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+<div class="flex justify-center">
+  <iframe
+    src="https://nyu.app.box.com/embed/s/z1o22z9eju10i2sj2kz1bd4dm8sc615r?sortColumn=date"
+    class="w-11/12 lg:w-2/3 aspect-video"
+    frameborder="0"
+    allowfullscreen
+  ></iframe>
+</div>
+
 
 STEM From Dance instructors create choreography to the song "Be Your Girl," with LED shoes.
 
@@ -28,4 +36,13 @@ STEM From Dance instructors create choreography to the song "Be Your Girl," with
 
 #### Code
 
-<div style="position:relative;height:0;padding-bottom:70%;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://maker.makecode.com/#pub:_W0TMmuVX2iss" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin"></iframe></div>
+<div class="flex justify-center">
+  <div class="relative w-11/12 lg:w-2/3 pb-[56.25%] overflow-hidden">
+    <iframe
+      src="https://maker.makecode.com/#pub:_W0TMmuVX2iss"
+      class="absolute inset-0 w-full h-full"
+      frameborder="0"
+      sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
+    ></iframe>
+  </div>
+</div>
