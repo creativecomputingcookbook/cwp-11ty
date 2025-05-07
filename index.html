@@ -48,8 +48,10 @@
 
 		<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
     <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-C2Tb1gS2.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-DndBpRC9.css">
+
+		
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-NPeyr7wv.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-ktl0bWrc.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-white">
     <header>
@@ -384,6 +386,9 @@ function item(settings) {
     },
   };
 }
+if ('scrollRestoration' in history) {
+				history.scrollRestoration = 'manual';
+			}
 document.addEventListener('alpine:init', () => {
       Alpine.store('trinket', {
         on: Alpine.$persist(false).as('trinket')
@@ -391,7 +396,7 @@ document.addEventListener('alpine:init', () => {
     });</script>
     <style></style>
 
-  
+	
 
 </body>
 </html>

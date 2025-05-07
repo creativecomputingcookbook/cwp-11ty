@@ -48,8 +48,10 @@
 
 		<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
     <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-C2Tb1gS2.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-DndBpRC9.css">
+
+		
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-NPeyr7wv.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-ktl0bWrc.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-white">
     <header>
@@ -99,8 +101,10 @@
       <p>This interactive dance interface uses <strong>button sensors</strong> located on the hands. When a button is pressed, it triggers a gradient color animation on the connected LED strips, creating a synchronized visual response to movement.</p>
 <details>
 <summary class="collapsible-header-build">How It Works</summary>
-<div style="position:relative; height:0; padding-bottom:70%; overflow:hidden">
-  <iframe src="https://maker.makecode.com/#pub:_TiPHpoWE96yv" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" style="position:absolute; top:0; left:0; width:100%; height:100%"></iframe>
+<div class="flex justify-center">
+  <div class="relative w-11/12 lg:w-2/3 pb-[56.25%] overflow-hidden">
+    <iframe src="https://maker.makecode.com/#pub:_TiPHpoWE96yv" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" class="absolute inset-0 w-full h-full"></iframe>
+  </div>
 </div>
 <h4>Code Logic Overview</h4>
 <p>This program waits for the button to be pressed. Once pressed, it triggers a smooth gradient animation on the LED strip by sequentially changing colors across the strip. The loop continuously checks for button input, ensuring that the effect can repeat with each press.</p>
@@ -113,20 +117,13 @@
 
 
 
-
-
 </div>
 
     
-    <script>window.addEventListener('DOMContentLoaded', () => {
-    if (window.location.hash) {
-      // Scroll back to top
-      window.scrollTo(0, 0);
-      // Remove the hash without reloading
-      history.replaceState(null, null, window.location.pathname + window.location.search);
-    }
-  });
-/*__EleventyBundle:get:js:default:EleventyBundle__*/
+    <script>/*__EleventyBundle:get:js:default:EleventyBundle__*/
+if ('scrollRestoration' in history) {
+				history.scrollRestoration = 'manual';
+			}
 document.addEventListener('alpine:init', () => {
       Alpine.store('trinket', {
         on: Alpine.$persist(false).as('trinket')
@@ -134,7 +131,7 @@ document.addEventListener('alpine:init', () => {
     });</script>
     <style>/*__EleventyBundle:get:css:default:EleventyBundle__*/</style>
 
-  
+	
 
 </body>
 </html>
