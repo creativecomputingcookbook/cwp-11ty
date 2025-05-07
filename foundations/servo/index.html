@@ -212,10 +212,20 @@
 
 
 
+
+
 </div>
 
     
-    <script>/*__EleventyBundle:get:js:default:EleventyBundle__*/
+    <script>window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash) {
+      // Scroll back to top
+      window.scrollTo(0, 0);
+      // Remove the hash without reloading
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
+  });
+/*__EleventyBundle:get:js:default:EleventyBundle__*/
 document.addEventListener('alpine:init', () => {
       Alpine.store('trinket', {
         on: Alpine.$persist(false).as('trinket')
