@@ -54,10 +54,17 @@ function item(settings) {
     },
 
     get shouldShow() {
-      return this.tags.includes(this.category) && (
-        !this.tagFilters.length ||
-        this.tagFilters.every((v) => this.tags.includes(v))
-      );
+      switch (this.category) {
+        case "Builds":
+          return this.tagFilters.concat(["Builds"]).every((v) => this.tags.includes(v)) && (
+              (this.$store.trinket.on && !this.tags.includes("arduino")) ||
+              (!this.$store.trinket.on && !this.tags.includes("trinket"))
+            );
+        case "Foundations":
+          return this.tagFilters.concat(["Foundations"]).every((v) => this.tags.includes(v));
+        default:
+          return false
+      }
     },
   };
 }
@@ -78,9 +85,7 @@ function item(settings) {
   </div>
 </div>
 <div>
-<div x-data="{
-  tabs: ['Foundations', 'Builds']
-}">
+<!-- <div x-data="{tabs: ['Foundations', 'Builds']}"> -->
 	<!-- 	<ul class="tabs"> -->
  <!--      <template x-for="tab in tabs"> -->
  <!--        <li x-on:click="$store.category.set(tab)" -->
@@ -90,7 +95,7 @@ function item(settings) {
  <!--        </li> -->
  <!--      </template> -->
 	<!-- 	</ul> -->
-    </div>
+    <!-- </div> -->
 		<div class="md:flex" x-data="{
       setup: {
         'Component': ['Servo', 'Potentiometer', 'Arduino', 'LED strip'],

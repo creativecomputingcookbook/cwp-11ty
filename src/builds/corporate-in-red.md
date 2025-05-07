@@ -2,6 +2,7 @@
 title: 'Corporate in Red'
 thumbnail: '/images/corporate-in-red.png'
 shortDesc: 'An interactive art installation'
+tags: ['arduino']
 meta:
   desc:
     "An interactive art installation that explores the emotional unraveling of a corporate worker, contrasting repression and control with the instability of life outside corporate systems."
