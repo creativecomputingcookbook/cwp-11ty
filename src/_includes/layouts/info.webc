@@ -18,5 +18,16 @@ layout: 'layouts/base.webc'
   </div>
 </main>
 
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash) {
+      // Scroll back to top
+      window.scrollTo(0, 0);
+      // Remove the hash without reloading
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
+  });
+</script>
+
 <script @raw="getBundle('js')"></script>
 <style @raw="getBundle('css')"></style>
