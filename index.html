@@ -110,9 +110,7 @@
   </div>
 </div>
 <div>
-<div x-data="{
-  tabs: ['Foundations', 'Builds']
-}">
+<!-- <div x-data="{tabs: ['Foundations', 'Builds']}"> -->
 	<!-- 	<ul class="tabs"> -->
  <!--      <template x-for="tab in tabs"> -->
  <!--        <li x-on:click="$store.category.set(tab)" -->
@@ -122,7 +120,7 @@
  <!--        </li> -->
  <!--      </template> -->
 	<!-- 	</ul> -->
-    </div>
+    <!-- </div> -->
 		<div x-data="{
       setup: {
         'Component': ['Servo', 'Potentiometer', 'Arduino', 'LED strip'],
@@ -186,7 +184,7 @@
         </a>
     </div>
 </div>
-<div x-data="item({ tags: [&quot;Builds&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Builds&quot;,&quot;arduino&quot;] })" x-show="shouldShow" class="p-4 grid-item">
     <div class="card">
         <a href="/cwp-11ty/builds/corporate-in-red/" class="card-content">
             <img src="/cwp-11ty/assets/corporate-in-red-DKJ1HPh7.png" class="card-img">
@@ -379,10 +377,17 @@ function item(settings) {
     },
 
     get shouldShow() {
-      return this.tags.includes(this.category) && (
-        !this.tagFilters.length ||
-        this.tagFilters.every((v) => this.tags.includes(v))
-      );
+      switch (this.category) {
+        case "Builds":
+          return this.tagFilters.concat(["Builds"]).every((v) => this.tags.includes(v)) && (
+              (this.$store.trinket.on && !this.tags.includes("arduino")) ||
+              (!this.$store.trinket.on && !this.tags.includes("trinket"))
+            );
+        case "Foundations":
+          return this.tagFilters.concat(["Foundations"]).every((v) => this.tags.includes(v));
+        default:
+          return false
+      }
     },
   };
 }
