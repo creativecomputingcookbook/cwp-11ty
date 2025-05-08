@@ -8,7 +8,7 @@ meta:
 ---
 <iframe src="https://nyu.app.box.com/embed/s/193kf93q1689tio6mhay6nbpy02ubw92?sortColumn=date" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
-STEM From Dance instructors create choreography to the song "Done For Me," with LED shoes.
+STEM From Dance instructor developed choreography to the song "Done For Me," incorporating LED shoes. This instructor adapted an existing routine to include button taps on the shoes, drawing from Afro dance, which features footwork involving one foot tapping the other. She used this motion to subtly tap the side or heel of the shoe, triggering a change in the LED display from purple to a rainbow animation.
 
 #### Images 
 

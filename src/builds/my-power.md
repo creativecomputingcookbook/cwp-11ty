@@ -9,7 +9,7 @@ meta:
 
 <iframe src="https://nyu.app.box.com/embed/s/p9i9geehdco3obs2kqig22bep67tvpnv?sortColumn=date" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
-STEM From Dance instructors create choreography to the song "My Power" with LED strip shoes.
+STEM From Dance instructors choreographed a piece to "My Power," using LED strip shoes equipped with various sensors. They designed specific movements—like foot taps to trigger buttons or walking patterns to activate tilt sensors—to interact with the tech. One of the most playful moments involves a collaborative move where one dancer taps the sensor on the side of the other’s shoe, lighting it up in sync with the choreography.
 
 #### Sensor Placement
 

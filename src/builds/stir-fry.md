@@ -8,7 +8,8 @@ meta:
 ---
 <iframe src="https://nyu.app.box.com/embed/s/rtlia8wntlml85kdvvrzmigfvxhf8prh?sortColumn=date" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
-STEM From Dance instructors created a routine to the song "Stir Fry," featuring LED strips on their torso and knees. 
+STEM From Dance instructors created a routine to the song "Stir Fry," featuring LED strips on their torsos and knees. Drawing inspiration from the STEP dance style, they used sharp, rhythmic movements to trigger sensor-based state changes, switching the lights between purple and yellow in sync with the choreography.
+
 
 #### Sensor Placement
 

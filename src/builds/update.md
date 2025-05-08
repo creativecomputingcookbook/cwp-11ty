@@ -9,7 +9,7 @@ meta:
 
 <iframe src="https://nyu.app.box.com/embed/s/jswesx2ljydr6hbicyhtw940okxoh79s?sortColumn=date" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
-STEM From Dance instructors created a routine to the song "Update," featuring a tilt hat prop. 
+STEM From Dance instructors choreographed a piece to the song "Update," featuring a tilt hat as a central prop. The dancer aimed to maximize sensor use by incorporating head tilts and directional movement, while also holding and shifting it when it was off her head. 
 
 #### Sensor Placement
 

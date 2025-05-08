@@ -8,7 +8,7 @@ meta:
 ---
 <iframe src="https://nyu.app.box.com/embed/s/nb9wvoo8bl02e7kkwjvq4pgr2wx0vjgf?sortColumn=date" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
-STEM From Dance instructors choreographed a routine to the song "All of the Lights," incorporating LED strips on the torso, arms, and wrists.
+STEM From Dance instructors choreographed a routine to the song "All of the Lights," using LED strips on the torso, arms, and wrists. They focused on their arm movement within their choreography to show off the LEDs. When choosing colors they picked bright colors to convey a "pop anthem" feel. They chose to put the buttons in their hands so they could press them as the beat dropped--changing the lights from a bright pink to a rainbow animation. They used a counter in the code to make this happen
 
 #### Sensor Placement
 
