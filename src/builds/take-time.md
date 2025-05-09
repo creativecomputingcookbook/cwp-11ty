@@ -18,7 +18,7 @@ meta:
 </div>
 
 
-STEM From Dance instructors created a routine set to the song "Take Time," featuring LED strips running down the sides of their pants. 
+STEM From Dance instructors created a routine set to the song "Take Time," featuring LED strips running down the sides of their pants. Since the tilt sensor is on their hips, they rely on movements that require bending their knees to trigger the changes. 
 
 #### Sensor Placement
 

@@ -15,7 +15,9 @@ meta:
   ></iframe>
 </div>
 
-STEM From Dance instructors create choreography to the song "Mona Lisa" by J-Hope with a picture frame prop.
+STEM From Dance instructors choreographed a piece to "Mona Lisa" by J-Hope, featuring a picture frame prop embedded with sensors. The instructor selected the frame for its flexibility in triggering different effects. While seated, she tilts it side to side to activate a specific animation, presses a side button to light up the entire frame during key moments of the song, and uses a bottom button—tapped with her thigh—to trigger an additional animation.
+
+
 
 #### Images
 
@@ -23,8 +25,9 @@ STEM From Dance instructors create choreography to the song "Mona Lisa" by J-Hop
 
 #### Sensor Placement
 
-+ Tilt sensors placed on either side of the frame
++ Tilt sensor on the side of the frame
 + Button placed on bottom of frame
++ Button on the side of the frame
 
 #### Dance Style
 
