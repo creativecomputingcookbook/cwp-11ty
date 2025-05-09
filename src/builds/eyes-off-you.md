@@ -16,7 +16,9 @@ meta:
 </div>
 
 
-STEM From Dance instructors create choreography to the song "Can't Take My Eyes Off Of You," with a boombox prop.
+STEM From Dance instructors choreographed a piece to "Can’t Take My Eyes Off Of You," featuring a boombox prop equipped with sensors. They experimented with different movements to activate the sensors, realizing that dramatic up-and-down motions worked especially well with the tilt sensor. 
+
+Using two props encouraged collaboration, as dancers created interactive moments and adapted to each other’s styles. The placement of the sensors inspired creative movement across different levels—like crouching to press a button that changed colors or tilting the boombox to pass it between partners—pushing dancers to explore new ways of expressing themselves through technology and choreography. 
 
 #### Images 
 

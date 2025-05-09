@@ -18,7 +18,9 @@ meta:
   ></iframe>
 </div>
 
-STEM From Dance instructors create choreography to the song "Push2Start," with wings prop.
+STEM From Dance instructors choreographed a piece to "Push2Start," featuring a wings prop embedded with sensors. The goal was to embrace a  graceful, airy style that matched the feel of the wings. The physical structure of the prop—and the placement of a sensor on the left thigh—introduced creative constraints that shaped the movement vocabulary.
+
+To maintain the sparkle light effect, the instructor kept one hand on the sensor while using the other to move freely, which led to dynamic and expressive movement. The graceful and airy theme guided decisions about sensor placement and movement choices, ultimately made the choreographic process more intuitive.
 
 #### Sensor Placement
 

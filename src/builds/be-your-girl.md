@@ -6,6 +6,7 @@ meta:
   desc:
     "STEM From Dance instructors choreography for 'Be Your Girl' by Kaytranada"
 ---
+
 <div class="flex justify-center">
   <iframe
     src="https://nyu.app.box.com/embed/s/z1o22z9eju10i2sj2kz1bd4dm8sc615r?sortColumn=date"
@@ -15,8 +16,7 @@ meta:
   ></iframe>
 </div>
 
-
-STEM From Dance instructors create choreography to the song "Be Your Girl," with LED shoes.
+STEM From Dance instructors choreographed a routine to the song "Be Your Girl," using LED shoes as part of the performance. One instructor chose to incorporate the shoes' tilt sensor, since the dance style involves frequent foot movements. This allowed for dynamic lighting effects—each time the dancer lifted or lowered her foot, the LEDs would shift between two distinct states: a solid white light and a rainbow animation.
 
 #### Images 
 

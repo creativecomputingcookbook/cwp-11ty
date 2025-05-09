@@ -18,7 +18,7 @@ meta:
 </div>
 
 
-STEM From Dance instructors created a routine to the song "Session 32," featuring LED strips on 2 book props. 
+STEM From Dance instructors created a routine to the song "Session 32," featuring LED strips on 2 book props. They experimented with different ways to trigger the button, either by pressing each others button, or by pressing the button on the floor. The button on the spine triggers a state rainbow state or an orange color, whereas the button in the inside triggers a rainbow animation. 
 
 #### Sensor Placement
 
