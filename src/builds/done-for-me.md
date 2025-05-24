@@ -42,7 +42,7 @@ STEM From Dance instructor developed choreography to the song "Done For Me," inc
   <div class="relative w-11/12 lg:w-2/3 pb-[56.25%] overflow-hidden">
     <iframe
       src="https://maker.makecode.com/#pub:_9jqRmzYVFM00"
-      class="absolute inset-0 w-full h-full"
+      class="absolute inset-0 w-full h-full makercode"
       frameborder="0"
       sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
     ></iframe>

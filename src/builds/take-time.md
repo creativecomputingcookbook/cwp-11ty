@@ -39,7 +39,7 @@ STEM From Dance instructors created a routine set to the song "Take Time," featu
   <div style="position:relative;width:80%;padding-bottom:56.25%; /* 16:9 */ overflow:hidden;">
     <iframe
       src="https://maker.makecode.com/#pub:_a7tUTxY2L3uD"
-      class="absolute inset-0 w-full h-full"
+      class="absolute inset-0 w-full h-full makercode"
       frameborder="0"
       sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
     ></iframe>

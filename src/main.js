@@ -22,3 +22,12 @@ if ('serviceWorker' in navigator && env === 'production') {
     }
   });
 }
+
+// makercode fix
+let makercodes = document.getElementsByClassName("makercode")
+
+for (let i = 0; i < makercodes.length; i++) {
+  makercodes[i].addEventListener("load", e => {
+    e.target.style.display = "inline";
+  })
+}

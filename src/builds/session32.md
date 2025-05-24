@@ -40,7 +40,7 @@ STEM From Dance instructors created a routine to the song "Session 32," featurin
   <div style="position:relative;width:80%;padding-bottom:56.25%; /* 16:9 */ overflow:hidden;">
     <iframe
       src="https://maker.makecode.com/#pub:_d6rhuPgyp2sU" 
-      class="absolute inset-0 w-full h-full"
+      class="absolute inset-0 w-full h-full makercode"
       frameborder="0"
       sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
     ></iframe>

@@ -44,7 +44,7 @@ To maintain the sparkle light effect, the instructor kept one hand on the sensor
   <div style="position:relative;width:80%;padding-bottom:56.25%; /* 16:9 */ overflow:hidden;">
     <iframe
       src="https://maker.makecode.com/#pub:_0UobdDd4PA6A"
-      class="absolute inset-0 w-full h-full"
+      class="absolute inset-0 w-full h-full makercode"
       frameborder="0"
       sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
     ></iframe>

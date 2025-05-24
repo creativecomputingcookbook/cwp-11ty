@@ -109,7 +109,7 @@ If you use the 2 Button Example code and switch out the buttons with the tilt se
 
 However, we change the variable from `buttonRead1`, `buttonRead2` to `tilt1`, `tilt2` for organization and clarity.
 
-<div style="position:relative;height:0;padding-bottom:70%;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://maker.makecode.com/#pub:_9abdHwYLUWdM" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin"></iframe></div>
+<div style="position:relative;height:0;padding-bottom:70%;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://maker.makecode.com/#pub:_9abdHwYLUWdM" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin makercode"></iframe></div>
 </collapsible>
 </div>
 </arduino-trinket-split>

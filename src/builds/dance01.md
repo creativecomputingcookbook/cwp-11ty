@@ -15,7 +15,7 @@ This interactive dance interface uses **button sensors** located on the hands. W
   <div class="relative w-11/12 lg:w-2/3 pb-[56.25%] overflow-hidden">
     <iframe
       src="https://maker.makecode.com/#pub:_TiPHpoWE96yv"
-      class="absolute inset-0 w-full h-full"
+      class="absolute inset-0 w-full h-full makercode"
       frameborder="0"
       sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
     ></iframe>

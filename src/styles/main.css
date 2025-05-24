@@ -250,3 +250,8 @@ code .highlight-line:before {
 		transform: translateX(-10%);
 	}
 }
+
+/* makercode fix */
+.makercode {
+	display: none;
+}
