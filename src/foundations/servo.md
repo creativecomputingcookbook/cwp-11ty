@@ -106,7 +106,7 @@ Upload this code to your Arduino. It reads the potentiometer value and maps it t
 <script>
   // Define the initial Parsons problem code.
     var initial = 
-      `#include &ltServo.h&gt
+      `#include <Servo.h>
       Servo myservo;
       int pos = 0;
       void setup() {

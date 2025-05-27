@@ -1,3 +1,31 @@
+<div webc:ignore>
+  Instructions: Add a script element defining the code, then a parsons element for placement.
+  Note that indentations DO matter and the variable MUST be "initial". Example:
+  <script>
+    var initial = 
+      `#include <Servo.h>
+      Servo myservo;
+      int pos = 0;
+      void setup() {
+        myservo.attach(9);
+      }
+      void loop() {
+        for (pos = 0; pos <= 180; pos += 1) {
+          myservo.write(pos);
+          delay(5);
+        }
+        delay(500);
+        for (pos = 180; pos >= 0; pos -= 1) {
+          myservo.write(pos);
+          delay(5);
+        }
+        delay(1500);
+      }`
+  </script>
+  Then just
+  <parsons></parsons>
+</div>
+
 <link rel="stylesheet" href="../../styles/parsons.css">
 <script src="../../lib/jquery.min.js"></script>
 <script src="../../lib/jquery-ui.min.js"></script>
@@ -66,6 +94,8 @@
 			code = code
 				.replace(/\/\/.*$/gm, '')
 				.replace(/\/\*[\s\S]*?\*\//g, '')
+        .replace(/</g, '&lt')
+        .replace(/>/g, '&gt')
 				.trim();
 			const lines = code.split('\n');
 			const blocks = [];
