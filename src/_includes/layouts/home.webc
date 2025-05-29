@@ -85,17 +85,6 @@ function item(settings) {
   </div>
 </div>
 <div>
-<!-- <div x-data="{tabs: ['Foundations', 'Builds']}"> -->
-	<!-- 	<ul class="tabs"> -->
- <!--      <template x-for="tab in tabs"> -->
- <!--        <li x-on:click="$store.category.set(tab)" -->
- <!--          x-bind:class="$store.category.category == tab ? 'tab tab-active' : 'tab'" -->
- <!--          > -->
- <!--          <label x-text="tab"></label> -->
- <!--        </li> -->
- <!--      </template> -->
-	<!-- 	</ul> -->
-    <!-- </div> -->
 		<div class="md:flex" x-data="{
       setup: {
         'Component': ['Servo', 'Potentiometer', 'Arduino', 'LED strip'],
@@ -103,10 +92,8 @@ function item(settings) {
         'Techniques & Concepts': ['Juxtaposition', 'Duality', 'Metaphor', 'Collaging', 'Illuminated manuscript', 'Single-sentence story'],
         'Materials': ['Cardboard', 'Acrylic', 'Birch wood', 'Fabric', '3D printing'],
       },
-
-      get currentCategory() {
-        return this.$store.category.category;
-      },
+      show: window.innerWidth >= 768,
+      showOption: false,
 
       get tags() {
         return this.$store.filter.tags;
@@ -114,8 +101,19 @@ function item(settings) {
       set tags(value) {
         this.$store.filter.set(value);
       },
+
+      checkWindowSize() {
+        this.show = window.innerWidth >= 768 || this.showOption;
+      },
+      setShowOption() {
+        this.showOption = !this.showOption;
+        this.checkWindowSize();
+      },
     }">
-      <div class="p-4 md:flex-1">
+      <button x-on:click="setShowOption()" type="button" class="md:hidden py-4 px-10 w-full text-center font-bold bg-[#B0DC9C]">
+        Show filters...
+      </button>
+      <div x-show="show" x-on:resize.window="checkWindowSize()" class="p-4 md:flex-1">
         <template x-for="category in Object.keys(setup)">
           <div>
             <h3 x-text="category"></h3>
