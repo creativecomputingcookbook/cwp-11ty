@@ -1,7 +1,7 @@
 <header>
-  <nav class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+  <nav x-data="{ open: false }" class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-end">
-      <ul class="flex space-x-4">
+      <ul class="hidden md:flex space-x-4">
         <script webc:type="js">
           const items = $data.navigation.items;
           const page = $data.page;
@@ -34,6 +34,48 @@
             .join('');
         </script>
         <li><toggle /></li>
+      </ul>
+      <button x-on:click="open = !open" x-bind:aria-expanded="open" type="button" class="flex md:hidden" aria-label="mobile menu" aria-controls="mobileMenu">
+        <svg x-cloak x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        <svg x-cloak x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <ul x-cloak x-show="open" id="mobileMenu" class="fixed inset-x-0 top-0 z-10 bg-white px-6 pb-6 pt-6 mt-14 md:hidden">
+        <script webc:type="js">
+          const items = $data.navigation.items;
+          const page = $data.page;
+
+          items
+            .map((item) => {
+              let current;
+              let highlight;
+
+              if (item.url === page.url) {
+                current = 'aria-current="page"';
+                highlight = '';
+              } else {
+                current = '';
+                highlight = 'font-bold';
+              }
+
+              return `
+                <li class="py-2">
+                  <a
+                    href="${item.url}"
+                    class="text-base ${highlight}"
+                    ${current}
+                  >
+                    ${item.text}
+                  </a>
+                </li>
+              `}
+            )
+            .join('');
+        </script>
+        <li class="py-2"><toggle /></li>
       </ul>
     </div>
   </nav>
