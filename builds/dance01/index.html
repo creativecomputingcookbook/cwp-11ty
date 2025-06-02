@@ -50,14 +50,14 @@
     <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
 
 		
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-NPeyr7wv.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-ktl0bWrc.css">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-Btc3bHdP.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-C58vTOlX.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-white">
     <header>
-  <nav class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+  <nav x-data="{ open: false }" class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-end">
-      <ul class="flex space-x-4">
+      <ul class="hidden md:flex space-x-4">
         <li>
                   <a href="/cwp-11ty/#builds" class="text-base font-bold underline">
                     Builds
@@ -88,14 +88,53 @@
     </label>
 </div></li>
       </ul>
+      <button x-on:click="open = !open" x-bind:aria-expanded="open" type="button" aria-label="mobile menu" aria-controls="mobileMenu" class="flex md:hidden">
+        <svg x-cloak="" x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+        </svg>
+        <svg x-cloak="" x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <ul x-cloak="" x-show="open" id="mobileMenu" class="fixed inset-x-0 top-0 z-10 bg-white px-6 pb-6 pt-6 mt-14 md:hidden">
+        <li class="py-2">
+                  <a href="/cwp-11ty/#builds" class="text-base font-bold">
+                    Builds
+                  </a>
+                </li>
+              
+                <li class="py-2">
+                  <a href="/cwp-11ty/#foundations" class="text-base font-bold">
+                    Foundations
+                  </a>
+                </li>
+              
+                <li class="py-2">
+                  <a href="/cwp-11ty/about/" class="text-base font-bold">
+                    About
+                  </a>
+                </li>
+              
+        <li class="py-2">
+<div x-data="">
+    <label class="inline-flex items-center cursor-pointer">
+        <input type="checkbox" x-bind:value="$store.trinket.on" x-on:change="$store.trinket.on = !$store.trinket.on" class="sr-only peer">
+        <div class="relative w-11 h-6 bg-teal-500 peer-focus:outline-none peer-focus:ring-4 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-800"></div>
+        <div class="w-[80px]">
+            <span x-show="!$store.trinket.on" class="ms-3 w-100">Arduino</span>
+            <span x-show="$store.trinket.on" class="ms-3 w-100">Trinket</span>
+        </div>
+    </label>
+</div></li>
+      </ul>
     </div>
   </nav>
 </header>
 
 
     <div><main id="main-content" tabindex="-1">
-  <div class="px-4 sm:px-6 lg:px-8">
-    <h1 class="text-3xl font-bold leading-tight text-gray-900">Dance01</h1>
+  <div class="px-4 sm:px-6 md:px-[10%] lg:px-[15%]">
+    <h1 class="text-3xl font-bold leading-tight text-gray-900 my-4">Dance01</h1>
     <img src="/cwp-11ty/assets/Dance01-C-E5VVcr.png" class="max-w-full md:max-w-2xl mx-auto">
     <div class="prose-lg prose-gray text-gray-700 py-4">
       <p>This interactive dance interface uses <strong>button sensors</strong> located on the hands. When a button is pressed, it triggers a gradient color animation on the connected LED strips, creating a synchronized visual response to movement.</p>
@@ -103,7 +142,7 @@
 <summary class="collapsible-header-build">How It Works</summary>
 <div class="flex justify-center">
   <div class="relative w-11/12 lg:w-2/3 pb-[56.25%] overflow-hidden">
-    <iframe src="https://maker.makecode.com/#pub:_TiPHpoWE96yv" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" class="absolute inset-0 w-full h-full"></iframe>
+    <iframe src="https://maker.makecode.com/#pub:_TiPHpoWE96yv" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" class="absolute inset-0 w-full h-full makercode"></iframe>
   </div>
 </div>
 <h4>Code Logic Overview</h4>
