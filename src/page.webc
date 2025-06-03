@@ -1,0 +1,38 @@
+---js 
+{
+  layout: "layouts/base.webc",
+  pagination: { 
+    data: "pages", 
+    size: 1,
+    alias: "p" 
+  }, 
+  permalink: args => args.p.permalink,
+  eleventyComputed: {
+    title: args => args.p.title,
+    tags: args => args.p.tags,
+    thumbnail: args => args.p.thumbnail,
+    meta: { desc: args => args.p.shortDesc }
+  },
+} 
+---
+
+<main id="main-content" tabindex="-1">
+  <div class="px-4 sm:px-6 md:px-[10%] lg:px-[15%]">
+    <h1 class="text-3xl font-bold leading-tight text-gray-900 my-4" @text="p.title"></h1>
+    <img :src="p.thumbnail" webc:if="!p.hideThumbnail" class="max-w-full md:max-w-2xl mx-auto"></img>
+    <div class="prose-lg prose-gray text-gray-700 py-4">
+      <p webc:ignore>
+        content should go here
+      </p>
+    </div>
+    <div webc:if="related">
+      <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
+      <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        <listing-item webc:for="item of findPostByTitles(collections.all, p.related)" @attributes="item"></listing-item>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script @raw="getBundle('js')"></script>
+<style @raw="getBundle('css')"></style>
