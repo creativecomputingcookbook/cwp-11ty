@@ -7,6 +7,7 @@
     socialImage = `${$data.site.url}/images/social-share.png`;
     metaDesc = '';
   }
+  metaDesc = metaDesc.replaceAll("\"", "&quot;");
 
   `
   <meta name="description" content="${metaDesc}" />

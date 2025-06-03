@@ -10,6 +10,7 @@
       propertyTitle = `${$data.title} :: ${$data.site.name}`;
     }
   }
+  propertyTitle = propertyTitle.replaceAll("\"", "&quot;");
 
   const propertyUrl = `${$data.site.url}${$data.page.url}`;
 
