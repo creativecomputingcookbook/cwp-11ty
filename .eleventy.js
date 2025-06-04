@@ -1,5 +1,10 @@
 const EleventyWebcPlugin = require('@11ty/eleventy-plugin-webc');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const markdownIt = require("markdown-it");
+
+const md = new markdownIt({
+  html: true,
+});
 
 module.exports = async function (eleventyConfig) {
   const EleventyVitePlugin = (await import("@11ty/eleventy-plugin-vite")).default;
@@ -19,6 +24,9 @@ module.exports = async function (eleventyConfig) {
   eleventyConfig.addFilter('findPostByTitles', (arr, titles) => {
     if (!arr || !titles) return [];
     return arr.filter((post) => titles.indexOf(post.data.title) > -1);
+  });
+  eleventyConfig.addFilter("markdown", (content) => {
+    return md.render(content);
   });
 
   // Static assets to pass through
