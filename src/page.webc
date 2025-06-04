@@ -21,9 +21,35 @@
     <h1 class="text-3xl font-bold leading-tight text-gray-900 my-4" @text="p.title"></h1>
     <img :src="p.thumbnail" webc:if="!p.hideThumbnail" class="max-w-full md:max-w-2xl mx-auto"></img>
     <div class="prose-lg prose-gray text-gray-700 py-4">
-      <p webc:ignore>
-        content should go here
-      </p>
+      <template webc:for="f of p.fields" webc:nokeep>
+        <div class="flex justify-center" webc:if="f.type == 'nyubox'">
+          <iframe
+            :src="f.url"
+            class="w-11/12 lg:w-2/3 aspect-video"
+            frameborder="0"
+            allowfullscreen
+            webkitallowfullscreen
+            msallowfullscreen
+          ></iframe>
+        </div>
+        <p webc:if="f.type == 'text'" @html="markdown(f.text)"></p>
+        <img webc:if="f.type == 'image'" :src="f.src" />
+        <div webc:if="f.type == 'carousel'" class="grid sm:grid-cols-2 lg:grid-cols-3">
+          <div webc:for="ff of f.fields" class="p-4">
+            <p webc:if="ff.type == 'text'" @html="markdown(ff.text)"></p>
+          </div>
+        </div>
+        <div class="flex justify-center" webc:if="f.type == 'makecode'">
+          <div class="relative w-11/12 lg:w-2/3 pb-[56.25%] overflow-hidden">
+            <iframe
+              :src="f.url"
+              class="absolute inset-0 w-full h-full makercode"
+              frameborder="0"
+              sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
+            ></iframe>
+          </div>
+        </div>
+      </template>
     </div>
     <div webc:if="related">
       <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
