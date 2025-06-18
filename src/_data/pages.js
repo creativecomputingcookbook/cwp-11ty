@@ -15,6 +15,7 @@ module.exports = async () => {
         if (d.tags.indexOf("Builds") > -1) prefix = "builds";
         pages.push({
             ...d,
+            prefix,
             permalink: `/${prefix}/${slugify(d.title)}/`,
         });
     });
