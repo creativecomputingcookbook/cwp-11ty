@@ -12,6 +12,11 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@master
+      - name: Google Cloud auth
+        uses: google-github-actions/auth@v2
+        with:
+          project_id: 'cwp-11ty'
+          workload_identity_provider: 'projects/883885125524/locations/global/workloadIdentityPools/github/providers/github-actions'
       - name: Build
         uses: cjerrington/actions-eleventy@master
         with:
