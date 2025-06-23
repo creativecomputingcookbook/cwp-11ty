@@ -10,6 +10,9 @@
   eleventyComputed: {
     title: args => args.p.title,
     tags: args => args.p.tags,
+    rich_tags: args => {
+      return args.p.tags.map(t => args.tag_categories.find(c => c.name == t)).filter(t => t != null);
+    },
     thumbnail: args => args.p.thumbnail,
     meta: { desc: args => args.p.shortDesc }
   },
