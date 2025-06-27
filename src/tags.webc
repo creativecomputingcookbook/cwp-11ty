@@ -1,0 +1,7 @@
+---js 
+{
+  permalink: "tags.json"
+} 
+---
+
+<template webc:nokeep @text="JSON.stringify(tag_categories)"></template>
