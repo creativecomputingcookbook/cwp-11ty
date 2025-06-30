@@ -18,12 +18,12 @@ module.exports = [
           {
             type: 'image',
             src: '/images/tilt-shoes.gif',
-            title: 'Dance Clip 1',
+            title: 'Clip 1',
           },
           {
             type: 'image',
             src: '/images/shoes-close.png',
-            title: 'Dance Clip 2',
+            title: 'Clip 2',
           },
         ],
       },
