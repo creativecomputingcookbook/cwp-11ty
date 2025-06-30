@@ -2,7 +2,7 @@
 {
   layout: "layouts/base.webc",
   pagination: { 
-    data: "pages", 
+    data: "sample_data", 
     size: 1,
     alias: "p" 
   }, 
@@ -26,6 +26,7 @@
         <!-- Page Title -->
         <h1
           class="text-5xl font-bold leading-tight text-gray-900 mb-0"
+          id="videos"
           @text="p.title"
         ></h1>
 
@@ -37,7 +38,7 @@
               <h2 class="text-lg font-semibold text-gray-900">Interaction</h2>
               <div class="flex flex-wrap gap-2">
                 <span
-                  webc:for="tag of sample_data.interaction"
+                  webc:for="tag of p.interaction"
                   class="px-3 py-1 rounded-full text-sm font-normal bg-purple-300 text-gray-900"
                   @text="tag"
                 >
@@ -51,7 +52,7 @@
               </h2>
               <div class="flex flex-wrap gap-2">
                 <span
-                  webc:for="tag of sample_data.techniques"
+                  webc:for="tag of p.techniques"
                   class="px-3 py-1 rounded-full text-sm font-normal bg-pink-200 text-gray-900"
                   @text="tag"
                 >
@@ -63,7 +64,7 @@
 
         <div class="prose-gray text-gray-700 py-4">
           <!-- change this back to f of p.fields after prototyping-->
-          <template webc:for="(f,i) of sample_data.fields" webc:nokeep>
+          <template webc:for="(f,i) of p.fields" webc:nokeep>
             <!-- Image/iframe gallery at top -->
             <div webc:if="f.type == 'gallery'" class="my-8">
               <!-- issues when starting with k:0-->
@@ -75,10 +76,24 @@
                 <div
                   class="lg:flex lg:flex-col gap-2 lg:w-[15%] lg:flex-shrink-0 md:flex-row my-2"
                 >
+                  <!-- whole video -->
                   <button
                     webc:for="(j, i) of f.items"
+                    webc:if="i == 0"
                     class="px-2 py-1 border rounded"
-                    x-on:click="k = Number($el.dataset.index); console.log(k)"
+                    x-on:click="k = Number($el.dataset.index)"
+                    :data-index="{{ i + 1 }}"
+                    x-bind:class="{ 'bg-blue-500 text-white': k == Number($el.dataset.index) }"
+                    @text="j.title"
+                  ></button>
+                  <hr class="lg:block hidden" />
+                  <!-- for the rest of the clips -->
+                  <p class="text-sm flex">Instructor Notes:</p>
+                  <button
+                    webc:for="(j, i) of f.items"
+                    webc:if="i >= 1"
+                    class="px-2 py-1 border rounded"
+                    x-on:click="k = Number($el.dataset.index)"
                     :data-index="{{ i + 1 }}"
                     x-bind:class="{ 'bg-blue-500 text-white': k == Number($el.dataset.index) }"
                     @text="j.title"
@@ -265,7 +280,14 @@
                   Table of Contents
                 </h2>
                 <ul class="text-sm text-gray-600 space-y-1">
-                  <template webc:for="(f,i) of sample_data.fields" webc:nokeep>
+                  <a
+                    href="#videos"
+                    class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"
+                  >
+                    Videos
+                  </a>
+
+                  <template webc:for="(f,i) of p.fields" webc:nokeep>
                     <li webc:if="f.heading">
                       <a
                         :href="'#section-' + i"
@@ -283,13 +305,17 @@
     </div>
 
     <!-- Related, not sure how this works yet -->
-    <div webc:if="related">
+    <div webc:if="p.related">
       <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
       <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-        <listing-item
+        <!-- <listing-item
           webc:for="item of findPostByTitles(collections.all, p.related)"
           @attributes="item"
-        ></listing-item>
+        ></listing-item> -->
+        <related-pages
+          webc:for="item of findPostByDBPosts(sample_data, p.related)"
+          @attributes="item"
+        ></related-pages>
       </div>
     </div>
   </div>
@@ -306,8 +332,8 @@
 
   .accordion-content {
     transition:
-      max-height 0.3s ease,
-      padding 0.3s ease;
+      max-height 2s,
+      padding 0.3s;
   }
 
   .accordion-content.collapsed .content-text {

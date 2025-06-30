@@ -1,0 +1,13 @@
+<div
+  class="p-4 grid-item"
+  :x-data="!isHome ? null : `item({ tags: ${JSON.stringify(tags)} })`"
+  :x-show="!isHome ? null : 'shouldShow'"
+>
+  <div class="card">
+    <a class="card-content" :href="permalink">
+      <img class="card-img" :src="thumbnail"></img>
+      <p class="card-name" @text="title"></p>
+      <p webc:if="shortDesc" @text="shortDesc"></p>
+    </a>
+  </div>
+</div>
