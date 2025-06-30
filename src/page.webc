@@ -74,28 +74,34 @@
               >
                 <!-- make row at top at medium/small screens -->
                 <div
-                  class="lg:flex lg:flex-col gap-2 lg:w-[15%] lg:flex-shrink-0 md:flex-row my-2"
+                  class="flex lg:flex-col lg:gap-2 lg:w-[15%] lg:flex-shrink-0 flex-row flex-wrap items-center gap-x-2 gap-y-2 my-2"
                 >
                   <!-- whole video -->
                   <button
                     webc:for="(j, i) of f.items"
                     webc:if="i == 0"
-                    class="px-2 py-1 border rounded"
+                    class="px-2 py-1 border rounded lg:w-full transition-all duration-200"
                     x-on:click="k = Number($el.dataset.index)"
                     :data-index="{{ i + 1 }}"
-                    x-bind:class="{ 'bg-blue-500 text-white': k == Number($el.dataset.index) }"
+                    x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }"
                     @text="j.title"
                   ></button>
-                  <hr class="lg:block hidden" />
+
+                  <!-- Separator: pipe for small/medium, hr for large -->
+                  <div class="lg:hidden">|</div>
+                  <hr class="lg:block hidden w-full" />
+
+                  <!-- Instructor Notes label -->
+                  <p class="text-sm lg:mb-0 mb-1">Instructor Notes:</p>
+
                   <!-- for the rest of the clips -->
-                  <p class="text-sm flex">Instructor Notes:</p>
                   <button
                     webc:for="(j, i) of f.items"
                     webc:if="i >= 1"
-                    class="px-2 py-1 border rounded"
+                    class="px-2 py-1 border rounded lg:w-full transition-all duration-200"
                     x-on:click="k = Number($el.dataset.index)"
                     :data-index="{{ i + 1 }}"
-                    x-bind:class="{ 'bg-blue-500 text-white': k == Number($el.dataset.index) }"
+                    x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }"
                     @text="j.title"
                   ></button>
                 </div>

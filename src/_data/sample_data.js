@@ -12,12 +12,12 @@ module.exports = [
         items: [
           {
             type: 'iframe',
-            src: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1',
-            title: 'Whole',
+            src: 'https://www.youtube.com/embed/dQw4w9WgXcQ?si=bl08ZDTa_6r4MRdO',
+            title: 'Full Video',
           },
           {
-            type: 'iframe',
-            src: 'https://www.youtube.com/embed/dQw4w9WgXcQ?si=bl08ZDTa_6r4MRdO',
+            type: 'image',
+            src: '/images/tilt-shoes.gif',
             title: 'Dance Clip 1',
           },
           {
