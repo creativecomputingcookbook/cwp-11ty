@@ -53,6 +53,11 @@ module.exports = [
         heading: 'Materials',
       },
       {
+        type: 'circuit',
+        src: '/images/servo_circuit_sweep.png',
+        heading: 'Circuit Assembly',
+      },
+      {
         type: 'makecode',
         url: 'https://maker.makecode.com/#pub:_W0TMmuVX2iss',
         heading: 'Code',

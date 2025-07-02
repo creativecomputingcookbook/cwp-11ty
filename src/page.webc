@@ -65,20 +65,20 @@
         </div>
 
         <div class="prose-gray text-gray-700 py-4">
-          <!-- change this back to f of p.fields after prototyping-->
+          <!-- Change this back to f of p.fields after prototyping-->
           <template webc:for="(f,i) of p.fields" webc:nokeep>
             <!-- Image/iframe gallery at top -->
             <div webc:if="f.type == 'gallery'" class="my-8">
-              <!-- issues when starting with k:0-->
+              <!-- Issues when starting with k:0-->
               <div
                 x-data="{ k: 1 }"
                 class="lg:flex content-start gap-4 md:flex-row"
               >
-                <!-- make row at top at medium/small screens -->
+                <!-- Make row at top at medium/small screens -->
                 <div
                   class="flex lg:flex-col lg:gap-2 lg:w-[15%] lg:flex-shrink-0 flex-row flex-wrap items-center gap-x-2 gap-y-2 my-2"
                 >
-                  <!-- whole video -->
+                  <!-- Whole video -->
                   <button
                     webc:for="(j, i) of f.items"
                     webc:if="i == 0"
@@ -96,7 +96,7 @@
                   <!-- Instructor Notes label -->
                   <p class="text-sm lg:mb-0 mb-1">Instructor Notes:</p>
 
-                  <!-- for the rest of the clips -->
+                  <!-- For the rest of the clips -->
                   <button
                     webc:for="(j, i) of f.items"
                     webc:if="i >= 1"
@@ -139,11 +139,11 @@
 
             <!-- Text -->
             <div webc:if="f.type == 'text'" class="my-8" :id="'section-' + i">
-              <div
+              <h2
                 webc:if="f.heading"
                 class="text-3xl font-bold text-gray-900 mb-4"
                 @text="f.heading"
-              ></div>
+              ></h2>
               <div
                 class="text-gray-700 leading-relaxed mb-4"
                 @html="markdown(f.text)"
@@ -166,10 +166,10 @@
               class="my-8"
               :id="'section-' + i"
             >
-              <div
+              <h2
                 class="text-3xl font-bold text-gray-900 mb-2"
                 @text="f.heading"
-              ></div>
+              ></h2>
               <div class="flex justify-center">
                 <div
                   class="relative w-11/12 lg:w-2/3 pb-[56.25%] overflow-hidden"
@@ -212,16 +212,26 @@
               </div>
             </div>
 
+            <!-- Circuit Assembly -->
+            <div webc:if="f.type == 'circuit'" class="my-8">
+              <h2
+                class="text-3xl font-bold text-gray-900"
+                @text="f.heading"
+                :id="'section-' + i"
+              ></h2>
+              <img :src="f.src" />
+            </div>
+
             <!-- Subcomponents -->
             <div
               webc:if="f.type == 'subcomponents'"
               class="my-8 overflow-hidden"
             >
-              <div
+              <h2
                 class="text-3xl font-bold text-gray-900"
                 :id="'section-' + i"
                 @text="f.heading"
-              ></div>
+              ></h2>
 
               <div class="p-8 px-10">
                 <div webc:for="ff of f.fields">
@@ -419,6 +429,8 @@
           webc:for="item of findPostByTitles(collections.all, p.related)"
           @attributes="item"
         ></listing-item> -->
+
+        <!-- Block below uses a different script in the .eleventy.js file change back-->
         <related-pages
           webc:for="item of findPostByDBPosts(sample_data, p.related)"
           @attributes="item"
