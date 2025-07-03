@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Be Your Girl :: Cookbook Demo</title>
+    <title>Be Your Girl2 :: Cookbook Demo</title>
 
 
-    <link rel="canonical" href="https://localhost:8000/builds/Be-Your-Girl/">
+    <link rel="canonical" href="https://localhost:8000/builds/Be-Your-Girl2/">
 
 
     <meta property="og:site_name" content="Cookbook Demo">
-  <meta property="og:title" content="Be Your Girl :: Cookbook Demo">
+  <meta property="og:title" content="Be Your Girl2 :: Cookbook Demo">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://localhost:8000/builds/Be-Your-Girl/">
+  <meta property="og:url" content="https://localhost:8000/builds/Be-Your-Girl2/">
   
 
 
@@ -137,7 +137,7 @@
     <div class="flex flex-col lg:flex-row lg:gap-8">
       <div class="flex-1 lg:w-[75%]">
         <!-- Page Title -->
-        <h1 id="videos" class="text-5xl font-bold leading-tight text-gray-900 mb-0">Be Your Girl</h1>
+        <h1 id="videos" class="text-5xl font-bold leading-tight text-gray-900 mb-0">Be Your Girl2</h1>
 
         <!-- Primary Tags -->
         <div class="my-6">
@@ -176,7 +176,7 @@
                 <!-- Make row at top at medium/small screens -->
                 <div class="flex lg:flex-col lg:gap-2 lg:w-[15%] lg:flex-shrink-0 flex-row flex-wrap items-center gap-x-2 gap-y-2 my-2">
                   <!-- Whole video -->
-                  <button x-on:click="k = Number($el.dataset.index)" data-index="1" x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }" class="px-2 py-1 border rounded lg:w-full transition-all duration-200">Full Video</button>
+                  <button x-on:click="k = Number($el.dataset.index)" data-index="1" x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }" class="px-2 py-1 border rounded lg:w-full transition-all duration-200">Whole</button>
 
                   <!-- Separator: pipe for small/medium, hr for large -->
                   <div class="lg:hidden text-3xl">|</div>
@@ -186,8 +186,8 @@
                   <p class="text-sm lg:mb-0 mb-1">Instructor Notes:</p>
 
                   <!-- For the rest of the clips -->
-                  <button x-on:click="k = Number($el.dataset.index)" data-index="2" x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }" class="px-2 py-1 border rounded lg:w-full transition-all duration-200">Clip 1</button>
-<button x-on:click="k = Number($el.dataset.index)" data-index="3" x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }" class="px-2 py-1 border rounded lg:w-full transition-all duration-200">Clip 2</button>
+                  <button x-on:click="k = Number($el.dataset.index)" data-index="2" x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }" class="px-2 py-1 border rounded lg:w-full transition-all duration-200">Dance Clip 1</button>
+<button x-on:click="k = Number($el.dataset.index)" data-index="3" x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }" class="px-2 py-1 border rounded lg:w-full transition-all duration-200">Dance Clip 2</button>
                 </div>
 
                 <!-- Display the current item -->
@@ -195,7 +195,7 @@
                   
                     <div x-show="k == Number($el.dataset.index)" data-index="1" class="w-full max-w-full">
                       
-                      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=bl08ZDTa_6r4MRdO" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="" class="w-full aspect-video rounded"></iframe>
+                      <iframe src="https://nyu.app.box.com/embed/s/z1o22z9eju10i2sj2kz1bd4dm8sc615r?sortColumn=date" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="" class="w-full aspect-video rounded"></iframe>
                     </div>
                   
 
@@ -318,32 +318,7 @@
             
 
             <!-- Makecode -->
-            
-
-            <!-- Materials -->
-            
-
-            <!-- Circuit Assembly -->
-            <div class="my-8">
-              <h2 id="section-3" class="text-3xl font-bold text-gray-900">Circuit Assembly</h2>
-              <img src="/cwp-11ty/assets/servo_circuit_sweep-BQnndrNA.png" class="w-full h-auto mb-2 mx-auto rounded-md not-prose">
-            </div>
-
-            <!-- Subcomponents -->
-            
-          
-
-            <!-- Image/iframe gallery at top -->
-            
-
-            <!-- Text -->
-            
-
-            <!-- Carousel -->
-            
-
-            <!-- Makecode -->
-            <div id="section-4" class="my-8">
+            <div id="section-3" class="my-8">
               <h2 class="text-3xl font-bold text-gray-900 mb-2">Code</h2>
               <div class="flex justify-center">
                 <div class="relative w-11/12 lg:w-2/3 pb-[56.25%] overflow-hidden">
@@ -382,7 +357,7 @@
 
             <!-- Subcomponents -->
             <div class="my-8 overflow-hidden">
-              <h2 id="section-5" class="text-3xl font-bold text-gray-900">Subcomponents</h2>
+              <h2 id="section-4" class="text-3xl font-bold text-gray-900">Subcomponents</h2>
 
               <div class="p-8 px-10">
                 <div>
@@ -502,17 +477,12 @@
               
 
                 <li>
-                  <a x-on:click="drawerOpen=false" href="#section-3" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
+                  <a x-on:click="drawerOpen=false" href="#section-3" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
                 </li>
               
 
                 <li>
-                  <a x-on:click="drawerOpen=false" href="#section-4" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
-                </li>
-              
-
-                <li>
-                  <a x-on:click="drawerOpen=false" href="#section-5" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Subcomponents</a>
+                  <a x-on:click="drawerOpen=false" href="#section-4" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Subcomponents</a>
                 </li>
               
             </ul>
@@ -549,17 +519,12 @@
                   
 
                     <li>
-                      <a href="#section-3" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
+                      <a href="#section-3" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
                     </li>
                   
 
                     <li>
-                      <a href="#section-4" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
-                    </li>
-                  
-
-                    <li>
-                      <a href="#section-5" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Subcomponents</a>
+                      <a href="#section-4" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Subcomponents</a>
                     </li>
                   
                 </ul>
@@ -580,6 +545,16 @@
 
         <!-- Block below uses a different script in the .eleventy.js file change back-->
         <div class="p-4 grid-item">
+  <div class="card">
+    <a href="/cwp-11ty/builds/Be-Your-Girl/" class="card-content">
+      <img src="/cwp-11ty/assets/tilt-shoes-voqdLIeW.gif" class="card-img">
+      <p class="card-name">Be Your Girl</p>
+      <p>STEM From Dance instructors choreography for "Be Your Girl" by Kaytranada</p>
+    </a>
+  </div>
+</div>
+
+<div class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/Be-Your-Girl2/" class="card-content">
       <img src="/cwp-11ty/assets/tilt-shoes-voqdLIeW.gif" class="card-img">
