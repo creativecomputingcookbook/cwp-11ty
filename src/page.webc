@@ -427,11 +427,6 @@
     <div webc:if="p.related">
       <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
       <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-        <!-- <listing-item
-          webc:for="item of findPostByTitles(collections.all, p.related)"
-          @attributes="item"
-        ></listing-item> -->
-
         <!-- Block below uses a different script in the .eleventy.js file change back-->
         <related-pages
           webc:for="item of findPostByDBPosts(pages, p.related)"

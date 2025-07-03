@@ -139,7 +139,7 @@ function item(settings) {
           Provide students with the resources and small exercises needed to learn and master core concepts.
         </p>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3">
-          <listing-item webc:for="item of collections.all" @attributes="item" :is-home="true"></listing-item>
+          <related-pages webc:for="item of pages" @attributes="item" :is-home="true"></related-pages>
         </div>
       </div>
 	</div>
