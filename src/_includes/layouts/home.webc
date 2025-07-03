@@ -85,13 +85,14 @@ function item(settings) {
   </div>
 </div>
 <div>
-		<div class="md:flex" x-data="{
-      setup: {
-        'Component': ['Servo', 'Potentiometer', 'Arduino', 'LED strip'],
-        'Interaction': ['Rotating', 'Pop-up', 'Light-up'],
-        'Techniques & Concepts': ['Juxtaposition', 'Duality', 'Metaphor', 'Collaging', 'Illuminated manuscript', 'Single-sentence story'],
-        'Materials': ['Cardboard', 'Acrylic', 'Birch wood', 'Fabric', '3D printing'],
-      },
+		<div class="md:flex" :x-data="`{
+      setup: ${JSON.stringify(
+        tag_categories.reduce((a, c, i) => {
+          if (!a[c.category]) a[c.category] = [];
+          a[c.category].push(c.name);
+          return a;
+        }, {})
+      )},
       show: window.innerWidth >= 768,
       showOption: false,
 
@@ -109,7 +110,7 @@ function item(settings) {
         this.showOption = !this.showOption;
         this.checkWindowSize();
       },
-    }">
+    }`">
       <button x-on:click="setShowOption()" type="button" class="md:hidden py-4 px-10 w-full text-center font-bold bg-[#B0DC9C]">
         Show filters...
       </button>
