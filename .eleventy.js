@@ -1,14 +1,15 @@
 const EleventyWebcPlugin = require('@11ty/eleventy-plugin-webc');
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const markdownIt = require("markdown-it");
+const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const markdownIt = require('markdown-it');
 
 const md = new markdownIt({
   html: true,
 });
 
 module.exports = async function (eleventyConfig) {
-  const EleventyVitePlugin = (await import("@11ty/eleventy-plugin-vite")).default;
-  const { EleventyHtmlBasePlugin } = await import("@11ty/eleventy");
+  const EleventyVitePlugin = (await import('@11ty/eleventy-plugin-vite'))
+    .default;
+  const { EleventyHtmlBasePlugin } = await import('@11ty/eleventy');
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(EleventyVitePlugin, {
     viteOptions: { base: `/cwp-11ty` },
@@ -16,7 +17,7 @@ module.exports = async function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyWebcPlugin, {
     components: [
       'src/_includes/components/**/*.webc',
-      "npm:@11ty/eleventy-plugin-syntaxhighlight/*.webc",
+      'npm:@11ty/eleventy-plugin-syntaxhighlight/*.webc',
     ],
   });
   eleventyConfig.addPlugin(syntaxHighlight);
@@ -25,7 +26,14 @@ module.exports = async function (eleventyConfig) {
     if (!arr || !titles) return [];
     return arr.filter((post) => titles.indexOf(post.data.title) > -1);
   });
-  eleventyConfig.addFilter("markdown", (content) => {
+
+  // mathew-made function to account for the prototype for now
+  eleventyConfig.addFilter('findPostByDBPosts', (arr, relatedTitles) => {
+    if (!arr || !relatedTitles) return [];
+    return arr.filter((post) => relatedTitles.indexOf(post.title) > -1);
+  });
+
+  eleventyConfig.addFilter('markdown', (content) => {
     return md.render(content);
   });
 
@@ -34,8 +42,8 @@ module.exports = async function (eleventyConfig) {
     ['./src/images']: `cwp-11ty/images`,
     ['./src/styles']: `cwp-11ty/styles`,
     ['./src/main.js']: `cwp-11ty/main.js`,
-		['./src/parsons.js']: `cwp-11ty/parsons.js`,
-		['./src/lib/']: `cwp-11ty/lib/`,
+    ['./src/parsons.js']: `cwp-11ty/parsons.js`,
+    ['./src/lib/']: `cwp-11ty/lib/`,
   });
 
   eleventyConfig.setServerOptions({
@@ -76,7 +84,7 @@ module.exports.config = {
     input: 'src',
     output: '_site',
   },
-  pathPrefix: "cwp-11ty",
+  pathPrefix: 'cwp-11ty',
   passthroughFileCopy: true,
   templateFormats: ['html', 'md', 'webc'],
   htmlTemplateEngine: 'webc',

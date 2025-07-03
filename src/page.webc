@@ -20,48 +20,445 @@
 ---
 
 <main id="main-content" tabindex="-1">
-  <div class="px-4 sm:px-6 md:px-[10%] lg:px-[15%]">
-    <h1 class="text-3xl font-bold leading-tight text-gray-900 my-4" @text="p.title"></h1>
-    <img :src="p.thumbnail" webc:if="!p.hideThumbnail" class="max-w-full md:max-w-2xl mx-auto"></img>
-    <div class="prose-lg prose-gray text-gray-700 py-4">
-      <template webc:for="f of p.fields" webc:nokeep>
-        <div class="flex justify-center" webc:if="f.type == 'nyubox'">
-          <iframe
-            :src="f.url"
-            class="w-11/12 lg:w-2/3 aspect-video"
-            frameborder="0"
-            allowfullscreen
-            webkitallowfullscreen
-            msallowfullscreen
-          ></iframe>
-        </div>
-        <p webc:if="f.type == 'text'" @html="markdown(f.text)"></p>
-        <img webc:if="f.type == 'image'" :src="f.src" />
-        <div webc:if="f.type == 'carousel'" class="grid sm:grid-cols-2 lg:grid-cols-3">
-          <div webc:for="ff of f.fields" class="p-4">
-            <p webc:if="ff.type == 'text'" @html="markdown(ff.text)"></p>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-6">
+    <div class="flex flex-col lg:flex-row lg:gap-8">
+      <div class="flex-1 lg:w-[75%]">
+        <!-- Page Title -->
+        <h1
+          class="text-5xl font-bold leading-tight text-gray-900 mb-0"
+          id="videos"
+          @text="p.title"
+        ></h1>
+
+        <!-- Primary Tags -->
+        <div class="my-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Interaction -->
+            <div class="space-y-0">
+              <div class="text-lg font-semibold text-gray-900 pb-2">
+                Interaction
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  webc:for="tag of p.interaction"
+                  class="px-3 py-1 rounded-full text-sm font-normal bg-purple-300 text-gray-900"
+                  @text="tag"
+                >
+                </span>
+              </div>
+            </div>
+            <!-- Techniques -->
+            <div class="space-y-0">
+              <div class="text-lg font-semibold text-gray-900 pb-2">
+                Techniques & Concepts
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  webc:for="tag of p.techniques"
+                  class="px-3 py-1 rounded-full text-sm font-normal bg-pink-200 text-gray-900"
+                  @text="tag"
+                >
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="flex justify-center" webc:if="f.type == 'makecode'">
-          <div class="relative w-11/12 lg:w-2/3 pb-[56.25%] overflow-hidden">
-            <iframe
-              :src="f.url"
-              class="absolute inset-0 w-full h-full makercode"
-              frameborder="0"
-              sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
-            ></iframe>
+
+        <div class="prose-gray text-gray-700 py-4">
+          <!-- Change this back to f of p.fields after prototyping-->
+          <template webc:for="(f,i) of p.fields" webc:nokeep>
+            <!-- Image/iframe gallery at top -->
+            <div webc:if="f.type == 'gallery'" class="my-8">
+              <!-- Issues when starting with k:0-->
+              <div
+                x-data="{ k: 1 }"
+                class="lg:flex content-start gap-4 md:flex-row"
+              >
+                <!-- Make row at top at medium/small screens -->
+                <div
+                  class="flex lg:flex-col lg:gap-2 lg:w-[15%] lg:flex-shrink-0 flex-row flex-wrap items-center gap-x-2 gap-y-2 my-2"
+                >
+                  <!-- Whole video -->
+                  <button
+                    webc:for="(j, i) of f.items"
+                    webc:if="i == 0"
+                    class="px-2 py-1 border rounded lg:w-full transition-all duration-200"
+                    x-on:click="k = Number($el.dataset.index)"
+                    :data-index="{{ i + 1 }}"
+                    x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }"
+                    @text="j.title"
+                  ></button>
+
+                  <!-- Separator: pipe for small/medium, hr for large -->
+                  <div class="lg:hidden text-3xl">|</div>
+                  <hr class="lg:block hidden w-full" />
+
+                  <!-- Instructor Notes label -->
+                  <p class="text-sm lg:mb-0 mb-1">Instructor Notes:</p>
+
+                  <!-- For the rest of the clips -->
+                  <button
+                    webc:for="(j, i) of f.items"
+                    webc:if="i >= 1"
+                    class="px-2 py-1 border rounded lg:w-full transition-all duration-200"
+                    x-on:click="k = Number($el.dataset.index)"
+                    :data-index="{{ i + 1 }}"
+                    x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }"
+                    @text="j.title"
+                  ></button>
+                </div>
+
+                <!-- Display the current item -->
+                <div class="flex-1 max-w-4xl place-content-start">
+                  <div webc:for="(ff, i) of f.items" webc:nokeep>
+                    <div
+                      x-show="k == Number($el.dataset.index)"
+                      :data-index="{{ i + 1 }}"
+                      class="w-full max-w-full"
+                    >
+                      <div webc:if="ff.type == 'image'" class="my-0">
+                        <img
+                          :src="ff.src"
+                          class="not-prose my-0 block rounded"
+                        />
+                      </div>
+                      <iframe
+                        webc:if="ff.type == 'iframe'"
+                        :src="ff.src"
+                        frameborder="0"
+                        allowfullscreen
+                        webkitallowfullscreen
+                        msallowfullscreen
+                        class="w-full aspect-video rounded"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Text -->
+            <div webc:if="f.type == 'text'" class="my-8" :id="'section-' + i">
+              <h2
+                webc:if="f.heading"
+                class="text-3xl font-bold text-gray-900 mb-4"
+                @text="f.heading"
+              ></h2>
+              <div
+                class="text-gray-700 leading-relaxed mb-4"
+                @html="markdown(f.text)"
+              ></div>
+            </div>
+
+            <!-- Carousel -->
+            <div
+              webc:if="f.type == 'carousel'"
+              class="grid sm:grid-cols-2 lg:grid-cols-3"
+            >
+              <div webc:for="ff of f.fields" class="p-4">
+                <p webc:if="ff.type == 'text'" @html="markdown(ff.text)"></p>
+              </div>
+            </div>
+
+            <!-- Makecode -->
+            <div
+              webc:if="f.type == 'makecode'"
+              class="my-8"
+              :id="'section-' + i"
+            >
+              <h2
+                class="text-3xl font-bold text-gray-900 mb-2"
+                @text="f.heading"
+              ></h2>
+              <div class="flex justify-center">
+                <div
+                  class="relative w-11/12 lg:w-2/3 pb-[56.25%] overflow-hidden"
+                >
+                  <iframe
+                    :src="f.url"
+                    class="absolute inset-0 w-full h-full makercode"
+                    frameborder="0"
+                    sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Materials -->
+            <div
+              webc:if="f.type == 'materials'"
+              class="my-8"
+              :id="'section-' + i"
+            >
+              <h2
+                class="text-3xl font-bold text-gray-900"
+                @text="f.heading"
+              ></h2>
+              <div class="grid grid-col flex md:grid-cols-2 gap-8">
+                <div webc:for="ff of f.fields" class="space-y-0">
+                  <h3
+                    class="text-lg font-semibold text-gray-900"
+                    @text="ff.heading"
+                  ></h3>
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      webc:for="tag of ff.tags"
+                      class="px-3 py-1 rounded-full text-sm font-normal bg-blue-300 text-gray-900"
+                      @text="tag"
+                    >
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Circuit Assembly -->
+            <div webc:if="f.type == 'circuit'" class="my-8">
+              <h2
+                class="text-3xl font-bold text-gray-900"
+                @text="f.heading"
+                :id="'section-' + i"
+              ></h2>
+              <img
+                :src="f.src"
+                class="w-full h-auto mb-2 mx-auto rounded-md not-prose"
+              />
+            </div>
+
+            <!-- Subcomponents -->
+            <div
+              webc:if="f.type == 'subcomponents'"
+              class="my-8 overflow-hidden"
+            >
+              <h2
+                class="text-3xl font-bold text-gray-900"
+                :id="'section-' + i"
+                @text="f.heading"
+              ></h2>
+
+              <div class="p-8 px-10">
+                <div webc:for="ff of f.fields">
+                  <div
+                    x-data="{ expanded: false }"
+                    class="border-b border-gray-200 last:border-b-0 shadow-upward"
+                  >
+                    <div
+                      class="flex items-center justify-between p-5 bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors duration-200 select-none rounded-t-md"
+                      x-on:click="expanded = !expanded"
+                    >
+                      <div
+                        webc:if="ff.title"
+                        class="text-xl font-semibold text-gray-900"
+                        @text="ff.title"
+                      ></div>
+
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        x-bind:style="expanded ? 'transform: rotate(180deg); transition: transform 0.3s ease;' : 'transform: rotate(0deg); transition: transform 0.3s ease;'"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-6 accordion-arrow"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      x-ref="content"
+                      class="accordion-content overflow-hidden bg-gray-50 transition-all duration-500"
+                      x-bind:style="expanded ? 'max-height: ' + $refs.content.scrollHeight + 'px; padding: 1.25rem; border-radius: 0.5rem' : 'max-height: 150px; padding: 1.25rem'"
+                    >
+                      <img
+                        webc:if="ff.img_src"
+                        :src="ff.img_src"
+                        class="w-full h-auto mb-2 mx-auto rounded-md not-prose"
+                      />
+                      <p
+                        webc:if="ff.text"
+                        class="text-gray-700 leading-relaxed"
+                        @html="markdown(ff.text)"
+                      ></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- Pullout Drawer if medium/small screen -->
+      <div x-data="{ drawerOpen: false }" class="lg:hidden">
+        <div class="p-4">
+          <div
+            x-on:click="drawerOpen = true"
+            class="fixed right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white px-2 py-6 rounded-l-lg shadow-lg cursor-pointer transition-all duration-200 hover:px-3 z-30"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              ></path>
+            </svg>
           </div>
         </div>
-      </template>
+        <!-- Overlay -->
+        <div
+          x-show="drawerOpen"
+          x-transition:enter="transition-opacity ease-linear duration-300"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition-opacity ease-linear duration-300"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          x-on:click="drawerOpen = false"
+          class="fixed inset-0 bg-black bg-opacity-50 z-40"
+        ></div>
+
+        <!-- Drawer -->
+        <div
+          x-show="drawerOpen"
+          x-transition:enter="transform transition ease-in-out duration-300"
+          x-transition:enter-start="translate-x-full"
+          x-transition:enter-end="translate-x-0"
+          x-transition:leave="transform transition ease-in-out duration-300"
+          x-transition:leave-start="translate-x-0"
+          x-transition:leave-end="translate-x-full"
+          class="fixed top-0 right-0 z-50 w-80 h-full bg-white shadow-xl"
+        >
+          <div
+            class="flex items-center justify-between p-4 border-b border-gray-200"
+          >
+            <h2 class="text-xl font-semibold text-gray-800">
+              Table of Contents
+            </h2>
+            <button
+              x-on:click="drawerOpen = false"
+              class="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+            >
+              <svg
+                class="w-5 h-5 text-gray-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Drawer Content -->
+          <div class="p-4">
+            <ul class="text-sm text-gray-600 space-y-1">
+              <a
+                x-on:click="drawerOpen=false"
+                href="#videos"
+                class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"
+              >
+                Videos
+              </a>
+
+              <template webc:for="(f,i) of p.fields" webc:nokeep>
+                <li webc:if="f.heading">
+                  <a
+                    x-on:click="drawerOpen=false"
+                    :href="'#section-' + i"
+                    class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"
+                    @text="f.heading"
+                  ></a>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar if large screen -->
+      <aside class="hidden lg:block lg:w-[20%] lg:flex-shrink-0">
+        <div class="sticky top-4">
+          <div class="bg-violet-100 rounded-lg p-4 shadow-sm">
+            <div class="space-y-4">
+              <div>
+                <h2 class="text-md font-medium text-gray-700 mb-2">
+                  Table of Contents
+                </h2>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <a
+                    href="#videos"
+                    class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"
+                  >
+                    Videos
+                  </a>
+
+                  <template webc:for="(f,i) of p.fields" webc:nokeep>
+                    <li webc:if="f.heading">
+                      <a
+                        :href="'#section-' + i"
+                        class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"
+                        @text="f.heading"
+                      ></a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
-    <div webc:if="related">
+
+    <div webc:if="p.related">
       <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
       <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-        <listing-item webc:for="item of findPostByTitles(collections.all, p.related)" @attributes="item"></listing-item>
+        <!-- <listing-item
+          webc:for="item of findPostByTitles(collections.all, p.related)"
+          @attributes="item"
+        ></listing-item> -->
+
+        <!-- Block below uses a different script in the .eleventy.js file change back-->
+        <related-pages
+          webc:for="item of findPostByDBPosts(pages, p.related)"
+          @attributes="item"
+        ></related-pages>
       </div>
     </div>
   </div>
 </main>
 
+<style>
+  .shadow-upward {
+    box-shadow:
+      0 -4px 6px 0px rgba(0, 0, 0, 0.1),
+      0 -2px 4px 0px rgba(0, 0, 0, 0.06),
+      -2px 0 4px 0px rgba(0, 0, 0, 0.06),
+      2px 0 4px 0px rgba(0, 0, 0, 0.06);
+    border-radius: 0.5rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  [id^='section-'] {
+    scroll-margin-top: 2rem;
+  }
+</style>
 <script @raw="getBundle('js')"></script>
 <style @raw="getBundle('css')"></style>
