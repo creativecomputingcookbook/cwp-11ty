@@ -149,13 +149,8 @@
   </div>
 </div>
 <div>
-		<div x-data="{
-      setup: {
-        'Component': ['Servo', 'Potentiometer', 'Arduino', 'LED strip'],
-        'Interaction': ['Rotating', 'Pop-up', 'Light-up'],
-        'Techniques &amp; Concepts': ['Juxtaposition', 'Duality', 'Metaphor', 'Collaging', 'Illuminated manuscript', 'Single-sentence story'],
-        'Materials': ['Cardboard', 'Acrylic', 'Birch wood', 'Fabric', '3D printing'],
-      },
+		<div x-data='{
+      setup: {"Electronics":["Button","LED","Potentiometer","Servo Motor","Tilt Sensor"],"Interaction":["Continuous Rotation","Linear Movement","Pop-Up"],"Dance Style":["House"],"Techniques &amp; Concepts":["Metaphors","Storytelling"]},
       show: window.innerWidth >= 768,
       showOption: false,
 
@@ -173,7 +168,7 @@
         this.showOption = !this.showOption;
         this.checkWindowSize();
       },
-    }" class="md:flex">
+    }' class="md:flex">
       <button x-on:click="setShowOption()" type="button" class="md:hidden py-4 px-10 w-full text-center font-bold bg-[#B0DC9C]">
         Show filters...
       </button>
@@ -203,24 +198,16 @@
           Provide students with the resources and small exercises needed to learn and master core concepts.
         </p>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3">
-          <div x-data="item({ tags: [&quot;Builds&quot;,&quot;House&quot;] })" x-show="shouldShow" class="p-4 grid-item">
-    <div class="card">
-        <a href="/cwp-11ty/builds/Be-Your-Girl/" class="card-content">
-            <img src="/cwp-11ty/assets/tilt-shoes-voqdLIeW.gif" class="card-img">
-            <p class="card-name">Be Your Girl</p>
-            
-        </a>
-    </div>
+          <div x-data="item({ tags: [&quot;Builds&quot;,&quot;Linear Movement&quot;,&quot;Pop-Up&quot;,&quot;Continuous Rotation&quot;,&quot;Storytelling&quot;,&quot;Metaphors&quot;,&quot;LED&quot;,&quot;Servo Motor&quot;,&quot;Tilt Sensor&quot;,&quot;Button&quot;,&quot;Potentiometer&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+  <div class="card">
+    <a href="/cwp-11ty/builds/Be-Your-Girl/" class="card-content">
+      <img src="/cwp-11ty/assets/tilt-shoes-voqdLIeW.gif" class="card-img">
+      <p class="card-name">Be Your Girl</p>
+      <p>STEM From Dance instructors choreography for "Be Your Girl" by Kaytranada</p>
+    </a>
+  </div>
 </div>
-<div x-data="item({ tags: undefined })" x-show="shouldShow" class="p-4 grid-item">
-    <div class="card">
-        <a href="/cwp-11ty/tags.json" class="card-content">
-            <img class="card-img">
-            <p class="card-name"></p>
-            
-        </a>
-    </div>
-</div>
+
         </div>
       </div>
 	</div>
