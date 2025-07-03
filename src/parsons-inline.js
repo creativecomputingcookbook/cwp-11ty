@@ -40,97 +40,97 @@ function decodeHtmlEntities(str) {
   return txt.value;
 }
 
-function processBlock(startRaw, i, lines) {
-  const linesAcc = [startRaw];
-  let depth = 1;
-  i++;
+// function processBlock(startRaw, i, lines) {
+//   const linesAcc = [startRaw];
+//   let depth = 1;
+//   i++;
 
-  while (i < lines.length && depth > 0) {
-    const raw = lines[i];
-    const trimmed = raw.trim();
-    i++;
-    if (!trimmed) continue;
+//   while (i < lines.length && depth > 0) {
+//     const raw = lines[i];
+//     const trimmed = raw.trim();
+//     i++;
+//     if (!trimmed) continue;
 
-    if (trimmed.includes('{')) depth++;
-    if (trimmed.includes('}')) depth--;
+//     if (trimmed.includes('{')) depth++;
+//     if (trimmed.includes('}')) depth--;
 
-    if (
-      /^(for\s*\([^)]*\)\s*{|if\s*\([^)]*\)\s*{|else\s*{)/.test(trimmed) &&
-      depth >= 1
-    ) {
-      linesAcc.push(processBlock(raw));
-      continue;
-    }
-    linesAcc.push(trimmed);
-  }
+//     if (
+//       /^(for\s*\([^)]*\)\s*{|if\s*\([^)]*\)\s*{|else\s*{)/.test(trimmed) &&
+//       depth >= 1
+//     ) {
+//       linesAcc.push(processBlock(raw));
+//       continue;
+//     }
+//     linesAcc.push(trimmed);
+//   }
 
-  return linesAcc.join('\n');
-}
+//   return linesAcc.join('\n');
+// }
 
-function preprocess(code) {
-  code = code
-    .replace(/\/\/.*$/gm, '')
-    .replace(/\/\*[\s\S]*?\*\//g, '')
-    .replace(/</g, '&lt')
-    .replace(/>/g, '&gt')
-    .trim();
-  const lines = code.split('\n');
-  const blocks = [];
-  let i = 0;
+// function preprocess(code) {
+//   code = code
+//     .replace(/\/\/.*$/gm, '')
+//     .replace(/\/\*[\s\S]*?\*\//g, '')
+//     .replace(/</g, '&lt')
+//     .replace(/>/g, '&gt')
+//     .trim();
+//   const lines = code.split('\n');
+//   const blocks = [];
+//   let i = 0;
 
-  while (i < lines.length) {
-    let line = lines[i].trim();
-    if (!line) {
-      i++;
-      continue;
-    }
+//   while (i < lines.length) {
+//     let line = lines[i].trim();
+//     if (!line) {
+//       i++;
+//       continue;
+//     }
 
-    const fnMatch = line.match(/^[\w\*\s]+\s+\w+\s*\([^)]*\)\s*{$/);
-    if (fnMatch) {
-      blocks.push(line);
-      i++;
+//     const fnMatch = line.match(/^[\w\*\s]+\s+\w+\s*\([^)]*\)\s*{$/);
+//     if (fnMatch) {
+//       blocks.push(line);
+//       i++;
 
-      let fnDepth = 1;
-      while (i < lines.length && fnDepth > 0) {
-        const txt = lines[i].trim();
+//       let fnDepth = 1;
+//       while (i < lines.length && fnDepth > 0) {
+//         const txt = lines[i].trim();
 
-        const blockMatch = txt.match(
-          /^(for\s*\([^)]*\)\s*{|if\s*\([^)]*\)\s*{|else\s*{)$/,
-        );
-        if (blockMatch && fnDepth === 1) {
-          const block = processBlock(txt, i, lines);
-          blocks.push(block);
-        } else if (txt.endsWith(';') && fnDepth === 1) {
-          blocks.push(txt);
-          i++;
-        } else {
-          if (txt.includes('{')) fnDepth++;
-          if (txt.includes('}')) fnDepth--;
+//         const blockMatch = txt.match(
+//           /^(for\s*\([^)]*\)\s*{|if\s*\([^)]*\)\s*{|else\s*{)$/,
+//         );
+//         if (blockMatch && fnDepth === 1) {
+//           const block = processBlock(txt, i, lines);
+//           blocks.push(block);
+//         } else if (txt.endsWith(';') && fnDepth === 1) {
+//           blocks.push(txt);
+//           i++;
+//         } else {
+//           if (txt.includes('{')) fnDepth++;
+//           if (txt.includes('}')) fnDepth--;
 
-          if (fnDepth === 0) {
-            blocks.push('}');
-          }
-          i++;
-        }
-      }
-      continue;
-    }
+//           if (fnDepth === 0) {
+//             blocks.push('}');
+//           }
+//           i++;
+//         }
+//       }
+//       continue;
+//     }
 
-    if (line.startsWith('#')) {
-      blocks.push(line);
-      i++;
-      continue;
-    }
-
-    if (line.endsWith(';')) {
-      blocks.push(line);
-      i++;
-      continue;
-    }
-    i++;
-  }
-  return blocks;
-}
+//     if (line.startsWith('#')) {
+//       blocks.push(line);
+//       i++;
+//       continue;
+//     }
+//
+//     if (line.endsWith(';')) {
+//       blocks.push(line);
+//       i++;
+//       continue;
+//     }
+//     i++;
+//   }
+//   return blocks;
+// }
 
 function setup_parsons(uid, initial) {
   // Wait for the document to be ready before initializing the widget
@@ -144,22 +144,37 @@ function setup_parsons(uid, initial) {
       sortableId,
       trashId: uid + '-sortableTrash',
       max_wrong_lines: 1,
+      lang: 'en',
       feedback_cb: (fb) => displayErrors(fb, uid),
       can_indent: true,
     });
 
-    const blocks = preprocess(initial);
-
-    const initStruct = parson.parseCode(blocks, parson.options.max_wrong_lines);
-    parson.model_solution = initStruct.solution;
-    parson.extra_lines = initStruct.distractors;
-    parson.modified_lines = initStruct.widgetInitial;
-    console.log(parson.modified_lines);
-
-    parson.modified_lines.forEach((lineObj, idx) => {
-      lineObj.id = parson.id_prefix + idx;
-      lineObj.indent = 0;
-    });
+    // const blocks = preprocess(initial);
+    //
+    // const initStruct = parson.parseCode(blocks, parson.options.max_wrong_lines);
+    // parson.model_solution = initStruct.solution;
+    // parson.extra_lines = initStruct.distractors;
+    // parson.modified_lines = initStruct.widgetInitial;
+    //
+    // parson.modified_lines.forEach((lineObj, idx) => {
+    //   lineObj.id = parson.id_prefix + idx;
+    //   lineObj.indent = 0;
+    // });
+    initial = initial
+      .replace(/\/\/.*$/gm, '')
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .replace(/</g, '&lt')
+      .replace(/>/g, '&gt')
+      .replace(/^\s*[\t\n\r]/, '') // no empty first line
+      .trimEnd();
+    // get first line
+    let firstIndent = initial.split('\n')[0].match(/^\s+/);
+    console.log(initial.split('\n')[0], firstIndent);
+    if (firstIndent) {
+      initial = initial.replace(new RegExp(`^${firstIndent[0]}`, 'gm'), '');
+    }
+    console.log(initial);
+    parson.init(initial);
     parson.shuffleLines();
 
     // Button event handlers
