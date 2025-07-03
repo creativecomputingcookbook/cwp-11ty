@@ -219,7 +219,10 @@
                 @text="f.heading"
                 :id="'section-' + i"
               ></h2>
-              <img :src="f.src" />
+              <img
+                :src="f.src"
+                class="w-full h-auto mb-2 mx-auto rounded-md not-prose"
+              />
             </div>
 
             <!-- Subcomponents -->
@@ -273,7 +276,7 @@
                       <img
                         webc:if="ff.img_src"
                         :src="ff.img_src"
-                        class="max-w-full h-auto mb-2 mx-auto rounded-md not-prose"
+                        class="w-full h-auto mb-2 mx-auto rounded-md not-prose"
                       />
                       <p
                         webc:if="ff.text"
