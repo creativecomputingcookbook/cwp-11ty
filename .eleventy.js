@@ -30,7 +30,6 @@ module.exports = async function (eleventyConfig) {
   // mathew-made function to account for the prototype for now
   eleventyConfig.addFilter('findPostByDBPosts', (arr, relatedTitles) => {
     if (!arr || !relatedTitles) return [];
-    console.log(arr.filter((post) => relatedTitles.indexOf(post.title) > -1));
     return arr.filter((post) => relatedTitles.indexOf(post.title) > -1);
   });
 
