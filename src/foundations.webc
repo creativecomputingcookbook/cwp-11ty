@@ -99,7 +99,7 @@
               webc:if="f.type == 'parsons'"
               class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500"
             >
-              <parsons @html="f.code"></parsons>
+              <parsons :code="f.code"></parsons>
             </div>
 
             <!-- Other combinations -->
