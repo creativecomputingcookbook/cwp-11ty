@@ -21,13 +21,15 @@
         delay(1500);
       }
   </parsons>
+  However, if the code comes from some variable in the page, then it should be in property "code". eg.
+  <parsons :code="myVariable"></parsons>
 </div>
 
 <parsons-dependencies></parsons-dependencies>
 
 <script webc:type="js">
   `<script>
-    setup_parsons("${uid}", \`${slots.text.default}\`);
+    setup_parsons("${uid}", \`${code ?? slots.text.default}\`);
   </` + "script>";
 </script>
 <!-- Component container with clear boundaries -->

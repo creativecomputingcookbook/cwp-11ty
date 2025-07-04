@@ -25,7 +25,8 @@ module.exports = [
       },
       {
         type: 'parsons',
-        code: `#include <Servo.h>
+        code: `
+        #include <Servo.h>
         Servo myservo;
         int pos = 0;
         void setup() {
@@ -91,7 +92,8 @@ module.exports = [
       },
       {
         type: 'parsons',
-        code: ` #include <Servo.h>
+        code: `
+                #include <Servo.h>
                 Servo myservo;
                 int pos = 0;
                 void setup() {
