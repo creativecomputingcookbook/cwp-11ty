@@ -27,7 +27,7 @@ module.exports = async function (eleventyConfig) {
     return arr.filter((post) => titles.indexOf(post.data.title) > -1);
   });
 
-  // mathew-made function to account for the prototype for now
+  // mathew-made function to account for the prototype using sample data, use findPostByTitles after prototyping
   eleventyConfig.addFilter('findPostByDBPosts', (arr, relatedTitles) => {
     if (!arr || !relatedTitles) return [];
     return arr.filter((post) => relatedTitles.indexOf(post.title) > -1);

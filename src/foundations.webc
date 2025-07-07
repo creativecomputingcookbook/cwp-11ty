@@ -2,7 +2,7 @@
 {
   layout: "layouts/base.webc",
   pagination: { 
-    data: "sample_data", //using sample data here, change back to pages
+    data: "sample_data", //using "sample_data", change back to "pages"
     size: 1,
     alias: "p" 
   }, 
@@ -122,7 +122,7 @@
                 :id="'section-' + i"
               ></h2>
               <div class="flex-row">
-                <!-- Block below uses a different script in the .eleventy.js file change back-->
+                <!-- Block below uses a different script in the .eleventy.js file (findPostByDBPosts) change back to findPostByTitles-->
                 <other-combos
                   webc:for="item of findPostByDBPosts(sample_data, f.other)"
                   @attributes="item"
@@ -269,7 +269,7 @@
     <div webc:if="p.related">
       <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
       <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-        <!-- Block below uses a different script in the .eleventy.js file change back-->
+        <!-- Block below uses a different script in the .eleventy.js file (findPostByDBPosts) change back to findPostByTitles-->
         <related-pages
           webc:for="item of findPostByDBPosts(pages, p.related)"
           @attributes="item"
