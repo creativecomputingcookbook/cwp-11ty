@@ -98,7 +98,16 @@
             <div
               webc:if="f.type == 'parsons'"
               class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500"
+              :id="'section-' + i"
             >
+              <h2
+                class="text-3xl font-bold text-gray-900 mb-2"
+                @text="f.heading"
+              ></h2>
+              <div
+                class="text-gray-700 leading-relaxed mb-4"
+                @text="f.text"
+              ></div>
               <parsons :code="f.code"></parsons>
             </div>
 

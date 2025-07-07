@@ -25,6 +25,8 @@ module.exports = [
       },
       {
         type: 'parsons',
+        heading: 'Remix Your Code',
+        text: 'Try arranging the code blocks below to  have the LEDs cycle through different colors when you press the button!',
         code: `
         #include <Servo.h>
         Servo myservo;
