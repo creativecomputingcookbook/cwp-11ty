@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en" class="leading-tight text-gray-900 antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Can’t Take My Eyes Off Of You :: Cookbook Demo</title>
+
+
+    <link rel="canonical" href="https://localhost:8000/builds/Can't-Take-My-Eyes-Off-Of-You/">
+
+
+    <meta property="og:site_name" content="Cookbook Demo">
+  <meta property="og:title" content="Can’t Take My Eyes Off Of You :: Cookbook Demo">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://localhost:8000/builds/Can't-Take-My-Eyes-Off-Of-You/">
+  
+
+
+    <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://localhost:8000/images/social-share.png">
+  <meta name="twitter:image" content="https://localhost:8000/images/social-share.png">
+  <meta property="og:image:alt" content="Page image for Cookbook Demo">
+  <meta name="twitter:image:alt" content="Page image for Cookbook Demo">
+  
+
+
+    <meta name="description" content="STEM From Dance fused tech and movement using sensor boomboxes, sparking creative, collaborative choreography through interactive motion.">
+  <meta name="twitter:description" content="STEM From Dance fused tech and movement using sensor boomboxes, sparking creative, collaborative choreography through interactive motion.">
+  <meta property="og:description" content="STEM From Dance fused tech and movement using sensor boomboxes, sparking creative, collaborative choreography through interactive motion.">
+  
+
+
+
+    <link rel="icon" href="/cwp-11ty/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/cwp-11ty/favicon.ico" type="image/png" sizes="48x48">
+    <link rel="apple-touch-icon" href="/cwp-11ty/apple-touch-icon.png" sizes="192x192">
+    <link rel="mask-icon" href="/cwp-11ty/favicon.svg" color="#4a5568">
+
+    <meta name="theme-color" content="#4a5568">
+
+    <!-- Preconnect to the font file origin -->
+    <link rel="preconnect" href="https://rsms.me" crossorigin="">
+
+		<!-- Preload the font stylesheet asynchronously with low priority -->
+    <link rel="preload" href="https://rsms.me/inter/inter.css" as="style">
+
+		<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
+    <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
+
+		
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-DeAZKVF8.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-BoylmvmG.css">
+  </head>
+  <body data-env="{{ node.env }}" class="min-h-screen bg-white">
+    <header>
+  <nav x-data="{ open: false }" class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-end">
+      <ul class="hidden md:flex space-x-4">
+        <li>
+                  <a href="/cwp-11ty/#builds" class="text-base font-bold underline">
+                    Builds
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/cwp-11ty/#foundations" class="text-base font-bold underline">
+                    Foundations
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/cwp-11ty/about/" class="text-base font-bold underline">
+                    About
+                  </a>
+                </li>
+              
+        <li>
+<div x-data="">
+    <label class="inline-flex items-center cursor-pointer">
+        <input type="checkbox" x-bind:value="$store.trinket.on" x-on:change="$store.trinket.on = !$store.trinket.on" class="sr-only peer">
+        <div class="relative w-11 h-6 bg-teal-500 peer-focus:outline-none peer-focus:ring-4 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-800"></div>
+        <div class="w-[80px]">
+            <span x-show="!$store.trinket.on" class="ms-3 w-100">Arduino</span>
+            <span x-show="$store.trinket.on" class="ms-3 w-100">Trinket</span>
+        </div>
+    </label>
+</div></li>
+      </ul>
+      <button x-on:click="open = !open" x-bind:aria-expanded="open" type="button" aria-label="mobile menu" aria-controls="mobileMenu" class="flex md:hidden">
+        <svg x-cloak="" x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+        </svg>
+        <svg x-cloak="" x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <ul x-cloak="" x-show="open" id="mobileMenu" class="fixed inset-x-0 top-0 z-10 bg-white px-6 pb-6 pt-6 mt-14 md:hidden">
+        <li class="py-2">
+                  <a href="/cwp-11ty/#builds" class="text-base font-bold">
+                    Builds
+                  </a>
+                </li>
+              
+                <li class="py-2">
+                  <a href="/cwp-11ty/#foundations" class="text-base font-bold">
+                    Foundations
+                  </a>
+                </li>
+              
+                <li class="py-2">
+                  <a href="/cwp-11ty/about/" class="text-base font-bold">
+                    About
+                  </a>
+                </li>
+              
+        <li class="py-2">
+<div x-data="">
+    <label class="inline-flex items-center cursor-pointer">
+        <input type="checkbox" x-bind:value="$store.trinket.on" x-on:change="$store.trinket.on = !$store.trinket.on" class="sr-only peer">
+        <div class="relative w-11 h-6 bg-teal-500 peer-focus:outline-none peer-focus:ring-4 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-800"></div>
+        <div class="w-[80px]">
+            <span x-show="!$store.trinket.on" class="ms-3 w-100">Arduino</span>
+            <span x-show="$store.trinket.on" class="ms-3 w-100">Trinket</span>
+        </div>
+    </label>
+</div></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <div><main id="main-content" tabindex="-1">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-6">
+    <div class="flex flex-col lg:flex-row lg:gap-8">
+      <div class="flex-1 lg:w-[75%]">
+        <!-- Page Title -->
+        <h1 id="videos" class="text-5xl font-bold leading-tight text-gray-900 mb-0">Can’t Take My Eyes Off Of You</h1>
+
+        <!-- Primary Tags -->
+        <div class="my-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Interaction -->
+            <div class="space-y-0">
+              <div class="text-lg font-semibold text-gray-900 pb-2">
+                Interaction
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full text-sm font-normal bg-purple-300 text-gray-900">Cross Turn</span>
+<span class="px-3 py-1 rounded-full text-sm font-normal bg-purple-300 text-gray-900">Prep</span>
+<span class="px-3 py-1 rounded-full text-sm font-normal bg-purple-300 text-gray-900">Happy Feet</span>
+              </div>
+            </div>
+            <!-- Techniques -->
+            <div class="space-y-0">
+              <div class="text-lg font-semibold text-gray-900 pb-2">
+                Techniques &amp; Concepts
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full text-sm font-normal bg-pink-200 text-gray-900">Hip Hop</span>
+<span class="px-3 py-1 rounded-full text-sm font-normal bg-pink-200 text-gray-900">Choreography</span>
+<span class="px-3 py-1 rounded-full text-sm font-normal bg-pink-200 text-gray-900">Collaboration</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="prose-gray text-gray-700 py-4">
+          <!-- Change this back to f of p.fields after prototyping-->
+          
+            <!-- Image/iframe gallery at top -->
+            <div class="my-8">
+              <!-- Issues when starting with k:0-->
+              <div x-data="{ k: 1 }" class="lg:flex content-start gap-4 md:flex-row">
+                <!-- Make row at top at medium/small screens -->
+                <div class="flex lg:flex-col lg:gap-2 lg:w-[15%] lg:flex-shrink-0 flex-row flex-wrap items-center gap-x-2 gap-y-2 my-2">
+                  <!-- Whole video -->
+                  <button x-on:click="k = Number($el.dataset.index)" data-index="1" x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }" class="px-2 py-1 border rounded lg:w-full transition-all duration-200">Full Video</button>
+
+                  <!-- Separator: pipe for small/medium, hr for large -->
+                  <div class="lg:hidden text-3xl">|</div>
+                  <hr class="lg:block hidden w-full">
+
+                  <!-- Instructor Notes label -->
+                  <p class="text-sm lg:mb-0 mb-1">Instructor Notes:</p>
+
+                  <!-- For the rest of the clips -->
+                  
+                </div>
+
+                <!-- Display the current item -->
+                <div class="flex-1 max-w-4xl place-content-start">
+                  
+                    <div x-show="k == Number($el.dataset.index)" data-index="1" class="w-full max-w-full">
+                      
+                      <iframe src="https://nyu.box.com/s/jqnrrlzyvf7wmchyweww0wy7z00z7mn9" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="" class="w-full aspect-video rounded"></iframe>
+                    </div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <!-- Text -->
+            
+
+            <!-- Carousel -->
+            
+
+            <!-- Makecode -->
+            
+
+            <!-- Materials -->
+            
+
+            <!-- Circuit Assembly -->
+            
+
+            <!-- Subcomponents -->
+            
+          
+
+            <!-- Image/iframe gallery at top -->
+            
+
+            <!-- Text -->
+            <div id="section-1" class="my-8">
+              <h2 class="text-3xl font-bold text-gray-900 mb-4">Introduction</h2>
+              <div class="text-gray-700 leading-relaxed mb-4"><p>STEM From Dance instructors choreographed a piece to "Can’t Take My Eyes Off Of You," featuring a boombox prop equipped with sensors. They experimented with different movements to activate the sensors, realizing that dramatic up-and-down motions worked especially well with the tilt sensor. Using two props encouraged collaboration, as dancers created interactive moments and adapted to each other’s styles. The placement of the sensors inspired creative movement across different levels—like crouching to press a button that changed colors or tilting the boombox to pass it between partners—pushing dancers to explore new ways of expressing themselves through technology and choreography.</p>
+</div>
+            </div>
+
+            <!-- Carousel -->
+            
+
+            <!-- Makecode -->
+            
+
+            <!-- Materials -->
+            
+
+            <!-- Circuit Assembly -->
+            
+
+            <!-- Subcomponents -->
+            
+          
+
+            <!-- Image/iframe gallery at top -->
+            
+
+            <!-- Text -->
+            
+
+            <!-- Carousel -->
+            
+
+            <!-- Makecode -->
+            
+
+            <!-- Materials -->
+            <div id="section-2" class="my-8">
+              <h2 class="text-3xl font-bold text-gray-900">Materials</h2>
+              <div class="grid grid-col flex md:grid-cols-2 gap-8">
+                <div class="space-y-0">
+                  <h3 class="text-lg font-semibold text-gray-900">Electronics</h3>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-full text-sm font-normal bg-blue-300 text-gray-900">Tilt Sensors</span>
+<span class="px-3 py-1 rounded-full text-sm font-normal bg-blue-300 text-gray-900">Button</span>
+<span class="px-3 py-1 rounded-full text-sm font-normal bg-blue-300 text-gray-900">LEDs</span>
+                  </div>
+                </div>
+<div class="space-y-0">
+                  <h3 class="text-lg font-semibold text-gray-900">Supplies</h3>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-full text-sm font-normal bg-blue-300 text-gray-900">Tape</span>
+<span class="px-3 py-1 rounded-full text-sm font-normal bg-blue-300 text-gray-900">Cardboard</span>
+<span class="px-3 py-1 rounded-full text-sm font-normal bg-blue-300 text-gray-900">Scissors</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Circuit Assembly -->
+            
+
+            <!-- Subcomponents -->
+            
+          
+
+            <!-- Image/iframe gallery at top -->
+            
+
+            <!-- Text -->
+            
+
+            <!-- Carousel -->
+            
+
+            <!-- Makecode -->
+            
+
+            <!-- Materials -->
+            
+
+            <!-- Circuit Assembly -->
+            <div class="my-8">
+              <h2 id="section-3" class="text-3xl font-bold text-gray-900">Circuit Assembly</h2>
+              <img src="/cwp-11ty/assets/servo_circuit_sweep-BQnndrNA.png" class="w-full h-auto mb-2 mx-auto rounded-md not-prose">
+            </div>
+
+            <!-- Subcomponents -->
+            
+          
+
+            <!-- Image/iframe gallery at top -->
+            
+
+            <!-- Text -->
+            
+
+            <!-- Carousel -->
+            
+
+            <!-- Makecode -->
+            <div id="section-4" class="my-8">
+              <h2 class="text-3xl font-bold text-gray-900 mb-2">Code</h2>
+              <div class="flex justify-center">
+                <div class="relative w-11/12 lg:w-2/3 pb-[56.25%] overflow-hidden">
+                  <iframe src="https://makecode.com/_i01XYb4cKdLz" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" class="absolute inset-0 w-full h-full makercode"></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Materials -->
+            
+
+            <!-- Circuit Assembly -->
+            
+
+            <!-- Subcomponents -->
+            
+          
+
+            <!-- Image/iframe gallery at top -->
+            
+
+            <!-- Text -->
+            
+
+            <!-- Carousel -->
+            
+
+            <!-- Makecode -->
+            
+
+            <!-- Materials -->
+            
+
+            <!-- Circuit Assembly -->
+            
+
+            <!-- Subcomponents -->
+            <div class="my-8 overflow-hidden">
+              <h2 id="section-5" class="text-3xl font-bold text-gray-900">Subcomponents</h2>
+
+              <div class="p-8 px-10">
+                <div>
+                  <div x-data="{ expanded: false }" class="border-b border-gray-200 last:border-b-0 shadow-upward">
+                    <div x-on:click="expanded = !expanded" class="flex items-center justify-between p-5 bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors duration-200 select-none rounded-t-md">
+                      <div class="text-xl font-semibold text-gray-900">Taping the LEDs on</div>
+
+                      <svg xmlns="http://www.w3.org/2000/svg" x-bind:style="expanded ? 'transform: rotate(180deg); transition: transform 0.3s ease;' : 'transform: rotate(0deg); transition: transform 0.3s ease;'" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 accordion-arrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"></path>
+                      </svg>
+                    </div>
+                    <div x-ref="content" x-bind:style="expanded ? 'max-height: ' + $refs.content.scrollHeight + 'px; padding: 1.25rem; border-radius: 0.5rem' : 'max-height: 150px; padding: 1.25rem'" class="accordion-content overflow-hidden bg-gray-50 transition-all duration-500">
+                      <img src="/cwp-11ty/assets/boombox-taping-DiAdp_-p.JPG" class="w-full h-auto mb-2 mx-auto rounded-md not-prose">
+                      
+                    </div>
+                  </div>
+                </div>
+<div>
+                  <div x-data="{ expanded: false }" class="border-b border-gray-200 last:border-b-0 shadow-upward">
+                    <div x-on:click="expanded = !expanded" class="flex items-center justify-between p-5 bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors duration-200 select-none rounded-t-md">
+                      <div class="text-xl font-semibold text-gray-900">Connecting the tilt sensor</div>
+
+                      <svg xmlns="http://www.w3.org/2000/svg" x-bind:style="expanded ? 'transform: rotate(180deg); transition: transform 0.3s ease;' : 'transform: rotate(0deg); transition: transform 0.3s ease;'" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 accordion-arrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"></path>
+                      </svg>
+                    </div>
+                    <div x-ref="content" x-bind:style="expanded ? 'max-height: ' + $refs.content.scrollHeight + 'px; padding: 1.25rem; border-radius: 0.5rem' : 'max-height: 150px; padding: 1.25rem'" class="accordion-content overflow-hidden bg-gray-50 transition-all duration-500">
+                      <img src="/cwp-11ty/assets/boombox-connecting-DT0LryF9.JPG" class="w-full h-auto mb-2 mx-auto rounded-md not-prose">
+                      
+                    </div>
+                  </div>
+                </div>
+<div>
+                  <div x-data="{ expanded: false }" class="border-b border-gray-200 last:border-b-0 shadow-upward">
+                    <div x-on:click="expanded = !expanded" class="flex items-center justify-between p-5 bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors duration-200 select-none rounded-t-md">
+                      <div class="text-xl font-semibold text-gray-900">Connecting the Button </div>
+
+                      <svg xmlns="http://www.w3.org/2000/svg" x-bind:style="expanded ? 'transform: rotate(180deg); transition: transform 0.3s ease;' : 'transform: rotate(0deg); transition: transform 0.3s ease;'" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 accordion-arrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"></path>
+                      </svg>
+                    </div>
+                    <div x-ref="content" x-bind:style="expanded ? 'max-height: ' + $refs.content.scrollHeight + 'px; padding: 1.25rem; border-radius: 0.5rem' : 'max-height: 150px; padding: 1.25rem'" class="accordion-content overflow-hidden bg-gray-50 transition-all duration-500">
+                      <img src="/cwp-11ty/assets/boombox-button-DXwElTk1.JPG" class="w-full h-auto mb-2 mx-auto rounded-md not-prose">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+
+      <!-- Pullout Drawer if medium/small screen -->
+      <div x-data="{ drawerOpen: false }" class="lg:hidden">
+        <div class="p-4">
+          <div x-on:click="drawerOpen = true" class="fixed right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white px-2 py-6 rounded-l-lg shadow-lg cursor-pointer transition-all duration-200 hover:px-3 z-30">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </div>
+        </div>
+        <!-- Overlay -->
+        <div x-show="drawerOpen" x-transition:enter="transition-opacity ease-linear duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition-opacity ease-linear duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-on:click="drawerOpen = false" class="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+
+        <!-- Drawer -->
+        <div x-show="drawerOpen" x-transition:enter="transform transition ease-in-out duration-300" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transform transition ease-in-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" class="fixed top-0 right-0 z-50 w-80 h-full bg-white shadow-xl">
+          <div class="flex items-center justify-between p-4 border-b border-gray-200">
+            <h2 class="text-xl font-semibold text-gray-800">
+              Table of Contents
+            </h2>
+            <button x-on:click="drawerOpen = false" class="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-gray-600">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Drawer Content -->
+          <div class="p-4">
+            <ul class="text-sm text-gray-600 space-y-1">
+              <a x-on:click="drawerOpen=false" href="#videos" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">
+                Videos
+              </a>
+
+              
+                
+              
+
+                <li>
+                  <a x-on:click="drawerOpen=false" href="#section-1" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
+                </li>
+              
+
+                <li>
+                  <a x-on:click="drawerOpen=false" href="#section-2" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Materials</a>
+                </li>
+              
+
+                <li>
+                  <a x-on:click="drawerOpen=false" href="#section-3" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
+                </li>
+              
+
+                <li>
+                  <a x-on:click="drawerOpen=false" href="#section-4" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
+                </li>
+              
+
+                <li>
+                  <a x-on:click="drawerOpen=false" href="#section-5" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Subcomponents</a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar if large screen -->
+      <aside class="hidden lg:block lg:w-[20%] lg:flex-shrink-0">
+        <div class="sticky top-4">
+          <div class="bg-violet-100 rounded-lg p-4 shadow-sm">
+            <div class="space-y-4">
+              <div>
+                <h2 class="text-md font-medium text-gray-700 mb-2">
+                  Table of Contents
+                </h2>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <a href="#videos" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">
+                    Videos
+                  </a>
+
+                  
+                    
+                  
+
+                    <li>
+                      <a href="#section-1" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
+                    </li>
+                  
+
+                    <li>
+                      <a href="#section-2" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Materials</a>
+                    </li>
+                  
+
+                    <li>
+                      <a href="#section-3" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
+                    </li>
+                  
+
+                    <li>
+                      <a href="#section-4" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
+                    </li>
+                  
+
+                    <li>
+                      <a href="#section-5" class="block px-3 py-1 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Subcomponents</a>
+                    </li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div>
+      <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
+      <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        <!-- Block below uses a different script in the .eleventy.js file change back-->
+        <div class="p-4 grid-item">
+  <div class="card">
+    <a href="/cwp-11ty/builds/Be-Your-Girl-Dance/" class="card-content">
+      <img src="/cwp-11ty/assets/be-your-girl-voqdLIeW.gif" class="card-img">
+      <p class="card-name">Be Your Girl Dance</p>
+      <p>STEM From Dance instructors choreography for "Be Your Girl" by Kaytranada</p>
+    </a>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+
+</div>
+
+    
+    <script>/*__EleventyBundle:get:js:default:EleventyBundle__*/
+if ('scrollRestoration' in history) {
+				history.scrollRestoration = 'manual';
+			}
+document.addEventListener('alpine:init', () => {
+      Alpine.store('trinket', {
+        on: Alpine.$persist(false).as('trinket')
+      });
+    });</script>
+    <style>.shadow-upward {
+    box-shadow:
+      0 -4px 6px 0px rgba(0, 0, 0, 0.1),
+      0 -2px 4px 0px rgba(0, 0, 0, 0.06),
+      -2px 0 4px 0px rgba(0, 0, 0, 0.06),
+      2px 0 4px 0px rgba(0, 0, 0, 0.06);
+    border-radius: 0.5rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  [id^='section-'] {
+    scroll-margin-top: 2rem;
+  }
+/*__EleventyBundle:get:css:default:EleventyBundle__*/</style>
+
+	
+
+</body>
+</html>
