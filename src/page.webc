@@ -40,9 +40,9 @@
               </div>
               <div class="flex flex-wrap gap-2">
                 <span
-                  webc:for="tag of rich_tags.filter(t => t.category == 'Interaction')"
+                  webc:for="tag of p.interaction ?? rich_tags.filter(t => t.category == 'Interaction')"
                   class="px-3 py-1 rounded-full text-sm font-normal bg-purple-300 text-gray-900"
-                  @text="tag.name"
+                  @text="tag.name ? tag.name : tag"
                 >
                 </span>
               </div>
@@ -54,9 +54,9 @@
               </div>
               <div class="flex flex-wrap gap-2">
                 <span
-                  webc:for="tag of rich_tags.filter(t => t.category == 'Techniques & Concepts')"
+                  webc:for="tag of p.techniques ?? rich_tags.filter(t => t.category == 'Techniques & Concepts')"
                   class="px-3 py-1 rounded-full text-sm font-normal bg-pink-200 text-gray-900"
-                  @text="tag.name"
+                  @text="tag.name ? tag.name : tag"
                 >
                 </span>
               </div>
