@@ -130,6 +130,7 @@
                         webkitallowfullscreen
                         msallowfullscreen
                         class="w-full aspect-video rounded"
+                        sandbox="allow-scripts allow-same-origin"
                       ></iframe>
                     </div>
                   </div>
@@ -172,7 +173,7 @@
               ></h2>
               <div class="flex justify-center">
                 <div
-                  class="relative w-11/12 lg:w-2/3 pb-[56.25%] overflow-hidden"
+                  class="relative w-11/12 pb-[56.25%] overflow-hidden"
                 >
                   <iframe
                     :src="f.url"
