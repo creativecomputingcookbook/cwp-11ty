@@ -161,11 +161,12 @@ function setup_parsons(uid, initial) {
     //   lineObj.indent = 0;
     // });
     initial = initial
-      .replace(/\/\/.*$/gm, '')
+      .replace(/\s*\/\/.*$/gm, '')
       .replace(/\/\*[\s\S]*?\*\//g, '')
       .replace(/</g, '&lt')
       .replace(/>/g, '&gt')
       .replace(/^\s*[\t\n\r]/, '') // no empty first line
+      .replace(/#continue\n/g, '\\n')
       .trimEnd();
     // get first line
     let firstIndent = initial.split('\n')[0].match(/^\s+/);
