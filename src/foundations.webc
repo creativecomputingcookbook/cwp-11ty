@@ -124,7 +124,7 @@
               <div class="flex-row">
                 <!-- Block below uses a different script in the .eleventy.js file (findPostByDBPosts) change back to findPostByTitles-->
                 <other-combos
-                  webc:for="item of findPostByDBPosts(sample_data, f.other)"
+                  webc:for="item of findPostByDBPosts(pages, f.other)"
                   @attributes="item"
                 >
                 </other-combos>
