@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Ultrasonic Sensor with Angular Servo :: Cookbook Demo</title>
+    <title>Angular Servo Motor :: Cookbook Demo</title>
 
 
-    <link rel="canonical" href="https://localhost:8000/foundations/Ultrasonic-Sensor-with-Angular-Servo/">
+    <link rel="canonical" href="https://localhost:8000/foundations/Angular-Servo-Motor/">
 
 
     <meta property="og:site_name" content="Cookbook Demo">
-  <meta property="og:title" content="Ultrasonic Sensor with Angular Servo :: Cookbook Demo">
+  <meta property="og:title" content="Angular Servo Motor :: Cookbook Demo">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://localhost:8000/foundations/Ultrasonic-Sensor-with-Angular-Servo/">
+  <meta property="og:url" content="https://localhost:8000/foundations/Angular-Servo-Motor/">
   
 
 
@@ -26,9 +26,9 @@
   
 
 
-    <meta name="description" content="Learn how to use an Ultrasonic Sensor with an Angular Servo Motor!">
-  <meta name="twitter:description" content="Learn how to use an Ultrasonic Sensor with an Angular Servo Motor!">
-  <meta property="og:description" content="Learn how to use an Ultrasonic Sensor with an Angular Servo Motor!">
+    <meta name="description" content="Learn how to use an Angular Servo Motor!">
+  <meta name="twitter:description" content="Learn how to use an Angular Servo Motor!">
+  <meta property="og:description" content="Learn how to use an Angular Servo Motor!">
   
 
 
@@ -137,8 +137,8 @@
     <div class="flex flex-col lg:flex-row lg:gap-8">
       <div class="flex-1 lg:w-[75%]">
         <!-- Page Title -->
-        <h1 id="title" class="text-5xl font-bold leading-tight text-gray-900 mb-0">Ultrasonic Sensor with Angular Servo</h1>
-        <img src="/cwp-11ty/assets/Ultrasonic_Sensor-BmJYVh1b.JPG" class="my-8">
+        <h1 id="title" class="text-5xl font-bold leading-tight text-gray-900 mb-0">Angular Servo Motor</h1>
+        <img src="/cwp-11ty/assets/servo-CRPxB2Hg.png" class="my-8">
 
         <div class="prose-gray text-gray-700 py-4">
           
@@ -161,7 +161,7 @@
             <!-- Text -->
             <div id="section-1" class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
               <h2 class="text-3xl font-bold text-gray-900 mb-4">Introduction</h2>
-              <div class="text-gray-700 leading-relaxed mb-4"><p>In this example, the angular servo motor moves based on input from the ultrasonic distance sensor. The measured distance is mapped to its corresponding angle, which is then used to position the servo.</p>
+              <div class="text-gray-700 leading-relaxed mb-4"><p>An angular servo motor is a little motor that can move to specific angles or positions, kind of like how the hands of a clock move to point at different numbers, and it's really good at holding still in one spot once it gets there. People use them in robots and toys to control things like moving an arm or turning a wheel to an exact spot because the servo can understand and remember specific positions it needs to turn to!</p>
 </div>
             </div>
 
@@ -184,9 +184,9 @@
             <!-- Circuit Assembly -->
             <div class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
               <h2 id="section-2" class="text-3xl font-bold text-gray-900">Circuit Assembly</h2>
-              <div class="text-gray-700 leading-relaxed mb-4"><p>Connect the ultrasonic sensor and servo motor to any digital pin. In our example, we’re using D11/D10 for the ultrasonic sensor and D3/D2 for the angular servo motor.<br><br>The pin that you connect your ultrasonic sensor to corresponds to a particular echo/trig value in your code. In our case, the trig is 11 and echo is 10. You can remix yours to look like this:<br>• D11/D10 -&gt; ultra_trig = 11, ultra_echo = 10;<br>• D9/D8 -&gt; ultra_trig = 9, ultra_echo = 8;<br>• D7/D6 -&gt; ultra_trig = 7, ultra_echo = 6;<br>• D5/D4 -&gt; ultra_trig = 5, ultra_echo = 4;<br>• D3/D2 -&gt; ultra_trig = 3, ultra_echo = 2;<br>• D1/D0 -&gt; ultra_trig = 1, ultra_echo = 0;<br><br>The pin that you connect your angular servo with corresponds to a pin value on your code. We’re using D3/D2, which corresponds to 3. You can remix yours to look like this:<br>• D11/D10 -&gt; servo_pin = 11;<br>• D9/D8 -&gt; servo_pin = 9;<br>• D7/D6 -&gt; servo_pin = 7;<br>• D5/D4 -&gt; servo_pin = 5;<br>• D3/D2 -&gt; servo_pin = 3;<br>• D1/D0 -&gt; servo_pin = 1;</p>
+              <div class="text-gray-700 leading-relaxed mb-4"><p>Connect the angular servo to any digital pin. In our example, we're using <strong>D5/D14</strong>.<br><br> The pin that you connect your angular servo to corresponds to a pin value on your code. We're using <strong>D5/D4</strong>, which corresponds to <strong>5</strong>. You can remix yours to look like this:<br><br> - D11/D10 → <strong>servo_pin</strong> = 11;<br> - D9/D8 → <strong>servo_pin</strong> = 9;<br> - D7/D6 → <strong>servo_pin</strong> = 7;<br> - D5/D4 → <strong>servo_pin</strong> = 5;<br> - D3/D2 → <strong>servo_pin</strong> = 3;<br> - D1/D0 → <strong>servo_pin</strong> = 1;</p>
 </div>
-              <img src="/cwp-11ty/images/circuit_diagrams/Ultrasonic_Sensor_with_Angular_Servo_Circuit.png" class="w-full h-auto mb-2 mx-auto rounded-md not-prose">
+              <img src="/cwp-11ty/assets/Continuous-Servo-Circuit-LJ6vNnyG.png" class="w-full h-auto mb-2 mx-auto rounded-md not-prose">
             </div>
 
             <!-- Code -->
@@ -210,7 +210,7 @@
               <h2 class="text-3xl font-bold text-gray-900 mb-2">Code</h2>
               <div class="flex justify-center">
                 <div class="relative w-11/12 lg:w-4/5 pb-[56.25%] overflow-hidden">
-                  <iframe src="https://app.arduino.cc/sketches/030e61ca-2cbf-4c6e-9779-f81de1237733?view-mode=embed" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" class="absolute inset-0 w-full h-full makercode"></iframe>
+                  <iframe src="https://app.arduino.cc/sketches/5df30a26-9236-4f4c-8139-13f205f7620c?view-mode=embed" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" class="absolute inset-0 w-full h-full makercode"></iframe>
                 </div>
               </div>
             </div>
@@ -241,26 +241,26 @@
               <div class="flex-row">
                 <!-- Block below uses a different script in the .eleventy.js file (findPostByDBPosts) change back to findPostByTitles-->
                 <div class="p-4">
-  <a href="/cwp-11ty/foundations/Angular-Servo-Motor/" class="group hover:shadow-lg transition-shadow">
+  <a href="/cwp-11ty/foundations/Potentiometer-with-Angular-Servo/" class="group hover:shadow-lg transition-shadow">
     <div class="relative h-64 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow cursor-pointer">
-      <img src="/cwp-11ty/assets/servo-CRPxB2Hg.png" alt="Electronics workspace" class="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105">
+      <img src="/cwp-11ty/assets/Potentiometer-BY25_LH9.JPG" alt="Electronics workspace" class="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105">
       <div class="absolute inset-0 bg-black opacity-60"></div>
       <div class="absolute inset-0 p-6 flex flex-col justify-between">
-        <div class="text-2xl font-bold mb-2 text-white">Angular Servo Motor</div>
-        <p class="text-gray-200">Learn how to use an Angular Servo Motor!</p>
+        <div class="text-2xl font-bold mb-2 text-white">Potentiometer with Angular Servo</div>
+        <p class="text-gray-200">Learn how to use a Potentiometer with Angular Servo!</p>
       </div>
     </div>
   </a>
 </div>
 
 <div class="p-4">
-  <a href="/cwp-11ty/foundations/Ultrasonic-Sensor/" class="group hover:shadow-lg transition-shadow">
+  <a href="/cwp-11ty/foundations/Ultrasonic-Sensor-with-Angular-Servo-Motor/" class="group hover:shadow-lg transition-shadow">
     <div class="relative h-64 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow cursor-pointer">
       <img src="/cwp-11ty/assets/Ultrasonic_Sensor-BmJYVh1b.JPG" alt="Electronics workspace" class="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105">
       <div class="absolute inset-0 bg-black opacity-60"></div>
       <div class="absolute inset-0 p-6 flex flex-col justify-between">
-        <div class="text-2xl font-bold mb-2 text-white">Ultrasonic Sensor</div>
-        <p class="text-gray-200">Learn how to use an Ultrasonic Sensor!</p>
+        <div class="text-2xl font-bold mb-2 text-white">Ultrasonic Sensor with Angular Servo Motor</div>
+        <p class="text-gray-200">Learn how to use an Ultrasonic Sensor with an Angular Servo Motor!</p>
       </div>
     </div>
   </a>
@@ -300,7 +300,7 @@
           <!-- Drawer Content -->
           <div class="p-4">
             <ul class="text-sm text-gray-600 space-y-1">
-              <a x-on:click="drawerOpen=false" href="#title" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"><p>Ultrasonic Sensor with Angular Servo</p>
+              <a x-on:click="drawerOpen=false" href="#title" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"><p>Angular Servo Motor</p>
 </a>
 
               
@@ -341,7 +341,7 @@
                   Table of Contents
                 </h2>
                 <ul class="text-sm text-gray-600 space-y-1">
-                  <a href="#title" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"><p>Ultrasonic Sensor with Angular Servo</p>
+                  <a href="#title" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"><p>Angular Servo Motor</p>
 </a>
 
                   
