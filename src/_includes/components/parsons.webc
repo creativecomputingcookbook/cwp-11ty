@@ -21,19 +21,21 @@
         delay(1500);
       }
   </parsons>
+  However, if the code comes from some variable in the page, then it should be in property "code". eg.
+  <parsons :code="myVariable"></parsons>
 </div>
 
 <parsons-dependencies></parsons-dependencies>
 
 <script webc:type="js">
   `<script>
-    setup_parsons("${uid}", \`${slots.text.default}\`);
+    setup_parsons("${uid}", \`${code ?? slots.text.default}\`);
   </` + "script>";
 </script>
 <!-- Component container with clear boundaries -->
 <div class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 mx-auto" :id="uid">
   <!-- Title from attribute -->
-  <h3 class="text-xl font-semibold mb-4 text-gray-800" @text="title"> Try your hand at a parsons problem! </h3>
+  <!-- <h3 class="text-xl font-semibold mb-4 text-gray-800" @text="title"> Try your hand at a parsons problem! </h3> -->
   
   <!-- Parsons problem widget container -->
   <div class="parsons-widget bg-white border border-gray-300 rounded-lg p-5 shadow-sm">

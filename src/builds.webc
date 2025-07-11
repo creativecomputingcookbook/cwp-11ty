@@ -2,7 +2,7 @@
 {
   layout: "layouts/base.webc",
   pagination: { 
-    data: "pages", 
+    data: "categorized_pages.builds", 
     size: 1,
     alias: "p" 
   }, 

@@ -1,0 +1,292 @@
+---js 
+{
+  layout: "layouts/base.webc",
+  pagination: { 
+    data: "categorized_pages.foundations",
+    size: 1,
+    alias: "p" 
+  }, 
+  permalink: args => args.p.permalink,
+  eleventyComputed: {
+    title: args => args.p.title,
+    tags: args => args.p.tags,
+    rich_tags: args => {
+      return args.p.tags.map(t => args.tag_categories.find(c => c.name == t)).filter(t => t != null);
+    },
+    thumbnail: args => args.p.thumbnail,
+    meta: { desc: args => args.p.shortDesc }
+  },
+} 
+---
+
+<main id="main-content" tabindex="-1">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-6">
+    <div class="flex flex-col lg:flex-row lg:gap-8">
+      <div class="flex-1 lg:w-[75%]">
+        <!-- Page Title -->
+        <h1
+          class="text-5xl font-bold leading-tight text-gray-900 mb-0"
+          id="title"
+          @text="p.title"
+        ></h1>
+        <img class="my-8" :src="p.thumbnail" />
+
+        <div class="prose-gray text-gray-700 py-4">
+          <template webc:for="(f,i) of p.fields" webc:nokeep>
+            <!-- Text -->
+            <div
+              webc:if="f.type == 'text'"
+              class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500"
+              :id="'section-' + i"
+            >
+              <h2
+                webc:if="f.heading"
+                class="text-3xl font-bold text-gray-900 mb-4"
+                @text="f.heading"
+              ></h2>
+              <div
+                class="text-gray-700 leading-relaxed mb-4"
+                @html="markdown(f.text)"
+              ></div>
+            </div>
+
+            <!-- Circuit Assembly -->
+            <div
+              webc:if="f.type == 'circuit'"
+              class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500"
+            >
+              <h2
+                class="text-3xl font-bold text-gray-900"
+                @text="f.heading"
+                :id="'section-' + i"
+              ></h2>
+              <div
+                class="text-gray-700 leading-relaxed mb-4"
+                @html="markdown(f.text)"
+              ></div>
+              <img
+                :src="f.src"
+                class="w-full h-auto mb-2 mx-auto rounded-md not-prose"
+              />
+            </div>
+
+            <!-- Code -->
+            <div
+              webc:if="f.type == 'code'"
+              class="my-8 w-full h-auto p-4 bg-gray-200 border-t-4 border-gray-500"
+              :id="'section-' + i"
+            >
+              <h2
+                class="text-3xl font-bold text-gray-900 mb-2"
+                @text="f.heading"
+              ></h2>
+              <div class="flex justify-center">
+                <div
+                  class="relative w-11/12 lg:w-4/5 pb-[56.25%] overflow-hidden"
+                >
+                  <iframe
+                    :src="f.url"
+                    class="absolute inset-0 w-full h-full makercode"
+                    frameborder="0"
+                    sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parsons Problems -->
+            <div
+              webc:if="f.type == 'parsons'"
+              class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500"
+              :id="'section-' + i"
+            >
+              <h2
+                class="text-3xl font-bold text-gray-900 mb-2"
+                @text="f.heading"
+              ></h2>
+              <div
+                class="text-gray-700 leading-relaxed mb-4"
+                @text="f.text"
+              ></div>
+              <parsons :code="f.code"></parsons>
+            </div>
+
+            <!-- Other combinations -->
+            <div
+              webc:if="f.type == 'othercombinations'"
+              class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500"
+            >
+              <h2
+                class="text-3xl font-bold leading-tight text-gray-900"
+                @html="markdown(f.heading)"
+                :id="'section-' + i"
+              ></h2>
+              <div class="flex-row">
+                <!-- Block below uses a different script in the .eleventy.js file (findPostByDBPosts) change back to findPostByTitles-->
+                <other-combos
+                  webc:for="item of findPostByDBPosts(sample_data, f.other)"
+                  @attributes="item"
+                >
+                </other-combos>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- Pullout Drawer if medium/small screen -->
+      <div x-data="{ drawerOpen: false }" class="lg:hidden">
+        <div class="p-4">
+          <div
+            x-on:click="drawerOpen = true"
+            class="fixed right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white px-2 py-6 rounded-l-lg shadow-lg cursor-pointer transition-all duration-200 hover:px-3 z-30"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <!-- Overlay -->
+        <div
+          x-show="drawerOpen"
+          x-transition:enter="transition-opacity ease-linear duration-300"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition-opacity ease-linear duration-300"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          x-on:click="drawerOpen = false"
+          class="fixed inset-0 bg-black bg-opacity-50 z-40"
+        ></div>
+
+        <!-- Drawer -->
+        <div
+          x-show="drawerOpen"
+          x-transition:enter="transform transition ease-in-out duration-300"
+          x-transition:enter-start="translate-x-full"
+          x-transition:enter-end="translate-x-0"
+          x-transition:leave="transform transition ease-in-out duration-300"
+          x-transition:leave-start="translate-x-0"
+          x-transition:leave-end="translate-x-full"
+          class="fixed top-0 right-0 z-50 w-80 h-full bg-white shadow-xl"
+        >
+          <div
+            class="flex items-center justify-between p-4 border-b border-gray-200"
+          >
+            <h2 class="text-xl font-semibold text-gray-800">
+              Table of Contents
+            </h2>
+            <button
+              x-on:click="drawerOpen = false"
+              class="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+            >
+              <svg
+                class="w-5 h-5 text-gray-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Drawer Content -->
+          <div class="p-4">
+            <ul class="text-sm text-gray-600 space-y-1">
+              <a
+                x-on:click="drawerOpen=false"
+                href="#title"
+                class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"
+                @html="markdown(p.title)"
+              >
+              </a>
+
+              <template webc:for="(f,i) of p.fields" webc:nokeep>
+                <li webc:if="f.heading">
+                  <a
+                    x-on:click="drawerOpen=false"
+                    :href="'#section-' + i"
+                    class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"
+                    @text="f.heading"
+                  ></a>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar if large screen -->
+      <aside class="hidden lg:block lg:w-[20%] lg:flex-shrink-0">
+        <div class="sticky top-4">
+          <div class="bg-gray-100 border-t-4 border-gray-500 p-4 shadow-sm">
+            <div class="space-y-4">
+              <div>
+                <h2 class="text-md font-medium text-gray-700 mb-2">
+                  Table of Contents
+                </h2>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <a
+                    href="#title"
+                    class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"
+                    @html="markdown(p.title)"
+                  >
+                  </a>
+
+                  <template webc:for="(f,i) of p.fields" webc:nokeep>
+                    <li webc:if="f.heading">
+                      <a
+                        :href="'#section-' + i"
+                        class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"
+                        @text="f.heading"
+                      ></a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div webc:if="p.related">
+      <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
+      <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        <!-- Block below uses a different script in the .eleventy.js file (findPostByDBPosts) change back to findPostByTitles-->
+        <related-pages
+          webc:for="item of findPostByDBPosts(pages, p.related)"
+          @attributes="item"
+        ></related-pages>
+      </div>
+    </div>
+  </div>
+</main>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  [id^='section-'] {
+    scroll-margin-top: 2rem;
+  }
+</style>
+<script @raw="getBundle('js')"></script>
+<style @raw="getBundle('css')"></style>
