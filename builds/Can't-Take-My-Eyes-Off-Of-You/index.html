@@ -187,7 +187,12 @@
                   <p class="text-sm lg:mb-0 mb-1">Instructor Notes:</p>
 
                   <!-- For the rest of the clips -->
-                  
+                  <button x-on:click="k = Number($el.dataset.index)" data-index="2" x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }" class="px-2 py-1 border rounded lg:w-full transition-all duration-200">Clip 1</button>
+<button x-on:click="k = Number($el.dataset.index)" data-index="3" x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }" class="px-2 py-1 border rounded lg:w-full transition-all duration-200">Clip 2</button>
+<button x-on:click="k = Number($el.dataset.index)" data-index="4" x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }" class="px-2 py-1 border rounded lg:w-full transition-all duration-200">Clip 3</button>
+<button x-on:click="k = Number($el.dataset.index)" data-index="5" x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }" class="px-2 py-1 border rounded lg:w-full transition-all duration-200">Clip 4</button>
+<button x-on:click="k = Number($el.dataset.index)" data-index="6" x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }" class="px-2 py-1 border rounded lg:w-full transition-all duration-200">Clip 5</button>
+<button x-on:click="k = Number($el.dataset.index)" data-index="7" x-bind:class="{ 'bg-blue-500 text-white ring-2 ring-blue-300 ring-offset-2': k == Number($el.dataset.index) }" class="px-2 py-1 border rounded lg:w-full transition-all duration-200">Clip 6</button>
                 </div>
 
                 <!-- Display the current item -->
@@ -195,7 +200,43 @@
                   
                     <div x-show="k == Number($el.dataset.index)" data-index="1" class="w-full max-w-full">
                       
-                      <iframe src="https://nyu.box.com/embed/s/jqnrrlzyvf7wmchyweww0wy7z00z7mn9" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="" sandbox="allow-scripts allow-same-origin" class="w-full aspect-video rounded"></iframe>
+                      <iframe src="https://www.youtube.com/embed/yMgCfAx5j3A?si=1Pr06Jo20l3saWVj" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="" sandbox="allow-scripts allow-same-origin" class="w-full aspect-video rounded"></iframe>
+                    </div>
+                  
+
+                    <div x-show="k == Number($el.dataset.index)" data-index="2" class="w-full max-w-full">
+                      
+                      <iframe src="https://www.youtube.com/embed/nB1NYLm2Pz4?si=c8t9sRCqXzUBLZrh" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="" sandbox="allow-scripts allow-same-origin" class="w-full aspect-video rounded"></iframe>
+                    </div>
+                  
+
+                    <div x-show="k == Number($el.dataset.index)" data-index="3" class="w-full max-w-full">
+                      
+                      <iframe src="https://www.youtube.com/embed/54CIyISfrxA?si=J-XfdsD2VF-yxh7f" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="" sandbox="allow-scripts allow-same-origin" class="w-full aspect-video rounded"></iframe>
+                    </div>
+                  
+
+                    <div x-show="k == Number($el.dataset.index)" data-index="4" class="w-full max-w-full">
+                      
+                      <iframe src="https://www.youtube.com/embed/nb64iy4apZg?si=gO7f932ssIPKHfRd" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="" sandbox="allow-scripts allow-same-origin" class="w-full aspect-video rounded"></iframe>
+                    </div>
+                  
+
+                    <div x-show="k == Number($el.dataset.index)" data-index="5" class="w-full max-w-full">
+                      
+                      <iframe src="https://www.youtube.com/embed/_VZ_fgop6KI?si=-Chz-koUp7Ouh6gF" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="" sandbox="allow-scripts allow-same-origin" class="w-full aspect-video rounded"></iframe>
+                    </div>
+                  
+
+                    <div x-show="k == Number($el.dataset.index)" data-index="6" class="w-full max-w-full">
+                      
+                      <iframe src="https://www.youtube.com/embed/XBrzLkiPUkQ?si=JXkttlGBT52vD70g" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="" sandbox="allow-scripts allow-same-origin" class="w-full aspect-video rounded"></iframe>
+                    </div>
+                  
+
+                    <div x-show="k == Number($el.dataset.index)" data-index="7" class="w-full max-w-full">
+                      
+                      <iframe src="https://www.youtube.com/embed/jnHWYPfJyo8?si=HmE_wXy8sg3vYwiZ" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="" sandbox="allow-scripts allow-same-origin" class="w-full aspect-video rounded"></iframe>
                     </div>
                   
                 </div>
