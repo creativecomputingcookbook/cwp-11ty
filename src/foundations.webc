@@ -2,7 +2,7 @@
 {
   layout: "layouts/base.webc",
   pagination: { 
-    data: "sample_data", //using "sample_data", change back to "pages"
+    data: "categorized_pages.foundations",
     size: 1,
     alias: "p" 
   }, 
