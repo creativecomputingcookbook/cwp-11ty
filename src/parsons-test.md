@@ -13,11 +13,11 @@ eleventyExcludeFromCollections: true
 // Include the Servo library for controlling servo motors
 #include <Servo.h>
 
-// Define pin connections
-#define POT_PIN A0 #continue    // Analog pin A0 for potentiometer input
+// Define pin connections #continue
+#define POT_PIN A0    // Analog pin A0 for potentiometer input #continue
 #define SERVO_PIN 9   // Digital pin 9 for servo control
 
-// Create servo object to control the angular servo motor
+// Create servo object to control the angular servo motor #continue
 Servo myServo;
 
 int lastServoAngle;  // Previous servo angle to avoid unnecessary movements
@@ -31,15 +31,15 @@ void setup() { #continue
 } #continue
 #continue
 void loop() {
-  // Read analog value from potentiometer (0-1023 range)
+  // Read analog value from potentiometer (0-1023 range) #continue
   int potValue = analogRead(POT_PIN);
   
-  // Map potentiometer value to servo angle
-  // Pot value 0-1023 maps to servo angle 0-180 degrees
-  // This creates a linear relationship between pot position and servo angle
+  // Map potentiometer value to servo angle #continue
+  // Pot value 0-1023 maps to servo angle 0-180 degrees #continue
+  // This creates a linear relationship between pot position and servo angle #continue
   int servoAngle = map(potValue, 0, 1023, 0, 180);
   
-  // Constrain servo angle to valid range (0-180 degrees) for safety
+  // Constrain servo angle to valid range (0-180 degrees) for safety #continue
   servoAngle = constrain(servoAngle, 0, 180);
   
   // Only move servo if angle has changed (prevents jitter and unnecessary movement)

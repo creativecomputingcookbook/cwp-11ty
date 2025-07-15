@@ -161,7 +161,6 @@ function setup_parsons(uid, initial) {
     //   lineObj.indent = 0;
     // });
     initial = initial
-      .replace(/\s*\/\/.*$/gm, '')
       .replace(/\/\*[\s\S]*?\*\//g, '')
       .replace(/</g, '&lt')
       .replace(/>/g, '&gt')
@@ -170,11 +169,9 @@ function setup_parsons(uid, initial) {
       .trimEnd();
     // get first line
     let firstIndent = initial.split('\n')[0].match(/^\s+/);
-    console.log(initial.split('\n')[0], firstIndent);
     if (firstIndent) {
       initial = initial.replace(new RegExp(`^${firstIndent[0]}`, 'gm'), '');
     }
-    console.log(initial);
     parson.init(initial);
     parson.shuffleLines();
 

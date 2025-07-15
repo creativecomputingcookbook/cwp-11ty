@@ -562,7 +562,6 @@
   // which case it will be split on newline.
   // For each line in the model solution, there should be a matching line
   // in the executable_code.
-	console.log("replaceCodelines");
   LanguageTranslationGrader.prototype._replaceCodelines = function() {
     var student_code = this.parson.normalizeIndents(this.parson.getModifiedCode("#ul-" +
                           this.parson.options.sortableId)),
@@ -836,8 +835,22 @@
     if (codestring) {
       // Consecutive lines to be dragged as a single block of code have strings "\\n" to
       // represent newlines => replace them with actual new line characters "\n"
-      this.code = codestring.replace(/#distractor\s*$/, "").replace(trimRegexp, "$1").replace(/\\n/g, "\n");
+      // modified to cater comments
+      let preprocessed = codestring
+        .replace(/#distractor\s*$/, "")
+        .replace(/\\n/g, "\n");
+      this.code = preprocessed
+        .replace(/\s*\/\/.*$/gm, '')
+        .replace(trimRegexp, "$1")
+        .replace(/(?:^ *\n)/gm, '');
+      // add comments. if multiline, this is abridged
+      let comments = preprocessed
+        .replace(/(^[^\n]*|\s*(\n).+?)\/\/\s*|^((?!\/\/).)*$/gm, '\n')
+        .replace(/\n\n/g, '\n')
+        .replace(/^\s*\n/g, '');
+      if (comments != preprocessed) this.comment = comments;
       this.indent = codestring.length - codestring.replace(/^\s+/, "").length;
+      console.log(this.code);
     }
   };
   ParsonsCodeline.prototype.elem = function() {
@@ -1420,7 +1433,8 @@ ParsonsCodeline.prototype._addInputs = function() {
 
 
     ParsonsWidget.prototype.codeLineToHTML = function(codeline) {
-        return '<li id="' + codeline.id + '" class="prettyprint lang-py">' + codeline.code + '<\/li>';
+        let comment = codeline.comment ? (' title="' + codeline.comment + '"') : '';
+        return '<li id="' + codeline.id + '" class="prettyprint lang-py"' + comment + '>' + codeline.code + '<\/li>';
     };
 
     ParsonsWidget.prototype.codeLinesToHTML = function(codelineIDs, destinationID) {
