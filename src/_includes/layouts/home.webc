@@ -57,8 +57,8 @@ function item(settings) {
       switch (this.category) {
         case "Builds":
           return this.tagFilters.concat(["Builds"]).every((v) => this.tags.includes(v)) && (
-              (this.$store.trinket.on && !this.tags.includes("arduino")) ||
-              (!this.$store.trinket.on && !this.tags.includes("trinket"))
+              (this.$store.trinket.on && !this.tags.includes("Arduino")) ||
+              (!this.$store.trinket.on && !this.tags.includes("Trinket"))
             );
         case "Foundations":
           return this.tagFilters.concat(["Foundations"]).every((v) => this.tags.includes(v));
