@@ -23,6 +23,8 @@
   </parsons>
   However, if the code comes from some variable in the page, then it should be in property "code". eg.
   <parsons :code="myVariable"></parsons>
+  For toggles, the syntax is $$toggle::(first choice)::(subsequent choices)::(...)$$; the first choice
+  is the correct answer. Don't worry, the choices are shuffled for users.
 </div>
 
 <parsons-dependencies></parsons-dependencies>

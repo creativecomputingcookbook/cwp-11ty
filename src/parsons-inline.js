@@ -201,7 +201,8 @@ function setup_parsons(uid, initial) {
       let studentCode = parson
         .normalizeIndents(parson.getModifiedCode('#ul-' + sortableId))
         .map((c) => {
-          let decoded = decodeHtmlEntities(c.code);
+          let code = c.code.replace(/\$\$toggle::([^:]+)::[^\$]+\$\$/g, '$1');
+          let decoded = decodeHtmlEntities(code);
           return `${'    '.repeat(c.indent < 0 ? 0 : c.indent)}${decoded}`;
         });
 

@@ -3,43 +3,6 @@
    // regexp used for trimming
    var trimRegexp = /^\s*(.*?)\s*$/;
    var translations = {
-     fi: {
-       trash_label: 'Raahaa rivit ohjelmaasi tästä',
-       solution_label: 'Muodosta ratkaisusi tähän',
-       order: function() {
-         return "Ohjelma sisältää vääriä palasia tai palasten järjestys on väärä. Tämä on mahdollista korjata siirtämällä, poistamalla tai vaihtamalla korostettuja palasia.";},
-       lines_missing: function() {
-         return "Ohjelmassasi on liian vähän palasia, jotta se toimisi oikein.";},
-       lines_too_many: function() {
-         return "Ohjelmassasi on liian monta palasta, jotta se toimisi oikein.";},
-       no_matching: function(lineNro) {
-         return "Korostettu palanen (" + lineNro + ") on sisennetty kieliopin vastaisesti."; },
-       no_matching_open: function(lineNro, block) {
-         return "Rivillä " + lineNro + " päätettävää " + block +
-                 " lohkoa ei ole aloitettu."; },
-       no_matching_close: function(lineNro, block) {
-         return block + " lohkoa riviltä " + lineNro + " ei ole päätetty."; },
-       block_close_mismatch: function(closeLine, closeBlock, openLine, inBlock) {
-         return "Ei voi päättää lohkoa " + closeBlock + " rivillä " + closeLine +
-                " oltaessa vielä lohkossa " + inBlock + " riviltä " + openLine; },
-       block_structure: function(lineNro) {
-         return "Korostettu palanen (" + lineNro + ") on sisennetty väärään koodilohkoon."; },
-       unittest_error: function(errormsg) {
-         return "<span class='msg'>Virhe ohjelman jäsentämisessä/suorituksessa</span><br/> <span class='errormsg'>" + errormsg + "</span>";
-       },
-       unittest_output_assertion: function(expected, actual) {
-        return "Odotettu tulostus: <span class='expected output'>" + expected + "</span>" +
-              "Ohjelmasi tulostus: <span class='actual output'>" + actual + "</span>";
-       },
-       unittest_assertion: function(expected, actual) {
-        return "Odotettu arvo: <span class='expected'>" + expected + "</span><br>" +
-              "Ohjelmasi antama arvo: <span class='actual'>" + actual + "</span>";
-       },
-       variabletest_assertion: function(varname, expected, actual) {
-        return "Muuttujan " + varname + " odotettu arvo: <span class='expected'>" + expected + "</span> " +
-              "Ohjelmasi antama arvo: <span class='actual'>" + actual + "</span>";
-       }
-     },
      en: {
        trash_label: 'Drag from here',
        solution_label: 'Construct your solution here',
@@ -49,6 +12,9 @@
          return "Your program has too few code fragments.";},
        lines_too_many: function() {
          return "Your program has too many code fragments.";},
+       wrong_toggle: function() {
+         return "This fragment contains a toggle with the wrong value selected, which is marked in red.";
+       },
        no_matching: function(lineNro) {
          return "Based on language syntax, the highlighted fragment (" + lineNro + ") is not correctly indented."; },
        no_matching_open: function(lineNro, block) {
@@ -730,6 +696,28 @@
       }
     }
 
+    // ADDED FOR CWP
+    // finally, check values
+    var toggleRegexp = new RegExp("\\$\\$toggle(" + parson.options.toggleSeparator + ".*?)?\\$\\$", "g");
+		// var inputRegexp = new RegExp("\\$\\$input(" + parson.options.inputSeparator + ".*?)?\\$\\$", "g");
+    if (errors.length === 0) {
+      for (j = 0; j < lines_to_check; j++) {
+        var code_line = student_code[j];
+        var toggles = code_line.code.match(toggleRegexp);
+        // var inputs = execline.match(inputRegexp);
+        if (toggles) {
+          for (var i = 0; i < toggles.length; i++) {
+            var answer = toggles[i].substring(10, toggles[i].length - 2).split(parson.options.toggleSeparator);
+            if (answer[0] != code_line.toggleValue(i)) {
+              code_line.markIncorrectToggle(i);
+              errors.push(parson.translations.wrong_toggle());
+              log_errors.push({type: "incorrectToggle", line: (j+1)});
+            }
+          }
+        }
+      }
+    }
+
     return {errors: errors, log_errors: log_errors, success: (errors.length === 0)};
   };
 
@@ -760,11 +748,10 @@
       }
    };
    var addToggleableElements = function(widget) {
+      let randomize = !widget.options.unittests && !widget.options.vartests;
       for (var i = 0; i < widget.modified_lines.length; i++) {
-        widget.modified_lines[i]._addToggles();
+        widget.modified_lines[i]._addToggles(randomize);
       }
-      // toggleable elements are only enabled for unit tests
-      if (!widget.options.unittests && !widget.options.vartests) { return; }
       var handlers = $.extend(defaultToggleTypeHandlers, widget.options.toggleTypeHandlers),
           context = $("#" + widget.options.sortableId + ", #" + widget.options.trashId);
       $(".jsparson-toggle", context).each(function(index, item) {
@@ -850,7 +837,6 @@
         .replace(/^\s*\n/g, '');
       if (comments != preprocessed) this.comment = comments;
       this.indent = codestring.length - codestring.replace(/^\s+/, "").length;
-      console.log(this.code);
     }
   };
   ParsonsCodeline.prototype.elem = function() {
@@ -866,8 +852,13 @@
   ParsonsCodeline.prototype.markIncorrectIndent = function() {
     this.elem().addClass(this.widget.FEEDBACK_STYLES.incorrectIndent);
   };
+  // ADDED FOR CWP
+  ParsonsCodeline.prototype.markIncorrectToggle = function(i) {
+    this.elem().removeClass(this.widget.FEEDBACK_STYLES.correctPosition);
+    $(this._toggles[i]).addClass(this.widget.FEEDBACK_STYLES.incorrectToggle);
+  }
   //
-  ParsonsCodeline.prototype._addToggles = function() {
+  ParsonsCodeline.prototype._addToggles = function(randomize) {
     var toggleRegexp = new RegExp("\\$\\$toggle(" + this.widget.options.toggleSeparator + ".*?)?\\$\\$", "g");
     var toggles = this.code.match(toggleRegexp);
     var that = this;
@@ -876,6 +867,11 @@
       var html = this.code;
       for (var i = 0; i < toggles.length; i++) {
         var opts = toggles[i].substring(10, toggles[i].length - 2).split(this.widget.options.toggleSeparator);
+        // ADDED FOR CWP: for line-based grader, randomize the options
+        if (randomize) {
+          let permutation = this.widget.getRandomPermutation(opts.length);
+          opts = permutation.map(p => opts[p]);
+        }
         html = html.replace(toggles[i], "<span class='jsparson-toggle' data-jsp-options='" +
                       JSON.stringify(opts).replace("<", "&lt;") + "'></span>");
 
@@ -982,6 +978,7 @@ ParsonsCodeline.prototype._addInputs = function() {
      }
      this.FEEDBACK_STYLES = { 'correctPosition' : 'correctPosition',
                               'incorrectPosition' : 'incorrectPosition',
+                              'incorrectToggle': 'incorrectToggle',
                               'correctIndent' : 'correctIndent',
                               'incorrectIndent' : 'incorrectIndent'};
 
@@ -1381,6 +1378,8 @@ ParsonsCodeline.prototype._addInputs = function() {
        $.each(this.FEEDBACK_STYLES, function(index, value) {
                 li_elements.removeClass(value);
               });
+        // added for CWP
+        $("#ul-" + this.options.sortableId + " li .jsparson-toggle").removeClass(this.FEEDBACK_STYLES.incorrectToggle);
      }
      this.feedback_exists = false;
    };

@@ -117,8 +117,9 @@ li.correctPosition, .testcase.pass {
     min-width: 10px;
     min-height: 15px;
 }
-.jsparson-toggle:empty {
+.jsparson-toggle:empty, .jsparson-toggle.incorrectToggle {
     border-color: red;
+    color: red
 }
 .jsparson-toggle:empty:before {
     content: "??";
