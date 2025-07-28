@@ -23,7 +23,7 @@ document.addEventListener('alpine:init', () => {
     category: 'Builds',
 
     set(category) {
-      this.$store.pages.set({'a': {}, 't': {}});
+      Alpine.store('pages').set({'a': {}, 't': {}});
       this.category = category;
     }
   });
@@ -32,7 +32,7 @@ document.addEventListener('alpine:init', () => {
     tags: [],
 
     set(tags) {
-      this.$store.pages.set({'a': {}, 't': {}});
+      Alpine.store('pages').set({'a': {}, 't': {}});
       this.tags = tags;
     },
   });
