@@ -23,6 +23,7 @@ document.addEventListener('alpine:init', () => {
     category: 'Builds',
 
     set(category) {
+      this.$store.pages.set({'a': {}, 't': {}});
       this.category = category;
     }
   });
@@ -31,7 +32,16 @@ document.addEventListener('alpine:init', () => {
     tags: [],
 
     set(tags) {
+      this.$store.pages.set({'a': {}, 't': {}});
       this.tags = tags;
+    },
+  });
+
+  Alpine.store('pages', {
+    pages: { a: {}, t: {} },
+
+    set(pages) {
+      this.pages = pages;
     },
   });
   
@@ -53,17 +63,38 @@ function item(settings) {
       return this.$store.category.category;
     },
 
+    addToPages(tags) {
+      let newPages = this.$store.pages.pages;
+      let a = this.$store.trinket.on ? 't' : 'a';
+      tags.map(t => {
+        if (!(t in newPages[a])) {
+          newPages[a][t] = 1;
+        }
+        else {
+          newPages[a][t] += 1;
+        }
+      })
+      this.$store.pages.set(newPages);
+    },
+
     get shouldShow() {
       switch (this.category) {
         case "Builds":
-          return this.tagFilters.concat(["Builds"]).every((v) => this.tags.includes(v)) && (
+          if ([...this.tagFilters, "Builds"].every((v) => this.tags.includes(v)) && (
               (this.$store.trinket.on && !this.tags.includes("Arduino")) ||
               (!this.$store.trinket.on && !this.tags.includes("Trinket"))
-            );
+            )) {
+            this.addToPages(this.tags);
+            return true;
+          };
+          return false;
         case "Foundations":
-          return this.tagFilters.concat(["Foundations"]).every((v) => this.tags.includes(v));
+          if ([...this.tagFilters, "Foundations"].every((v) => this.tags.includes(v))) {
+            this.addToPages(this.tags);
+            return true;
+          }
         default:
-          return false
+          return false;
       }
     },
   };
@@ -96,11 +127,23 @@ function item(settings) {
       show: window.innerWidth >= 768,
       showOption: false,
 
+      init() {
+        this.$watch(\`$store.trinket.on\`, (v) => {
+          let pages = this.$store.pages.pages;
+          pages[v ? \`t\` : \`a\`] = {};
+          this.$store.pages.set(pages);
+        })
+      },
+
       get tags() {
         return this.$store.filter.tags;
       },
       set tags(value) {
         this.$store.filter.set(value);
+      },
+
+      pageCount(tag) {
+        return this.$store.pages.pages[this.$store.trinket.on ? \`t\` : \`a\`][tag] ?? 0;
       },
 
       checkWindowSize() {
@@ -124,6 +167,7 @@ function item(settings) {
                   <label>
                     <input type="checkbox" x-bind:value="tag" x-model="tags">
                     <span x-text="tag"></span>
+                    <span x-text="pageCount(tag)"></span>
                   </label>
                 </li>
               </template>
