@@ -1,6 +1,6 @@
 <div
   class="p-4 grid-item"
-  :x-data="!isHome ? null : `item({ tags: ${JSON.stringify(tags)} })`"
+  :x-data="!isHome ? null : `item({ tags: ${JSON.stringify(tags)}, index: ${index} })`"
   :x-show="!isHome ? null : 'shouldShow'"
 >
   <div class="card">
