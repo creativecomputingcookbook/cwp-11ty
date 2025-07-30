@@ -8,64 +8,103 @@ handleHashChange = () => {
     case '':
       return;
     case '#builds':
-      Alpine.store("category").set("Builds");
+      Alpine.store("store").setCategory("Builds");
       break;
     case '#foundations':
-      Alpine.store("category").set("Foundations");
+      Alpine.store("store").setCategory("Foundations");
       break;
   }
 
   window.location.hash = '';
 }
 
+handleResize = () => {
+  let w = window.innerWidth;
+  let s = 6;
+  if (w >= 1024) s = 9;
+  if (w < 640) s = 3;
+  Alpine.store("store").changePageMaxSize(s);
+}
+
 document.addEventListener('alpine:init', () => {
-  Alpine.store('filter', {
-    tags: [],
+  Alpine.store('store', {
+    tags: ['Builds'],
+    category: 'Builds',
+    allItems: {},
+    page: 1,
+    maxSize: 3,
+    currentItems: [],
 
-    set(tags) {
+    setTags(tags) {
+      this.page = 1;
       this.tags = tags;
+      this.filterItems();
     },
-
-    add(tag) {
+    addTag(tag) {
+      this.page = 1;
       this.tags.push(tag);
+      this.filterItems();
     },
-
-    remove(tag) {
+    removeTag(tag) {
       let i = this.tags.indexOf(tag);
       if (i > -1) {
+        this.page = 1;
         this.tags.splice(this.tags.indexOf(tag), 1);
+        this.filterItems();
       }
     },
-
-    replace(oldTag, newTag) {
+    replaceTag(oldTag, newTag) {
+      this.page = 1;
       this.tags.splice(this.tags.indexOf(oldTag), 1, newTag);
+      this.filterItems();
     },
-  });
 
-  Alpine.store('category', {
-    category: 'Builds',
+    filterItems() {
+      this.currentItems = Object.entries(this.allItems).filter(o => this.tags.every((v) => o[1].includes(v))).map(o => o[0]);
+    },
 
-    set(category) {
-      Alpine.store('filter').replace(this.category, category);
+    setCategory(category) {
+      this.replaceTag(this.category, category);
       if (this.category == 'Builds' && category == 'Foundations') {
-        Alpine.store('filter').remove('Trinket');
-        Alpine.store('filter').remove('Arduino');
+        this.removeTag('Trinket');
+        this.removeTag('Arduino');
       }
       if (this.category == 'Foundations' && category == 'Builds') {
-        Alpine.store('filter').add(Alpine.store('trinket').on ? 'Trinket' : 'Arduino');
+        this.addTag(Alpine.store('trinket').on ? 'Trinket' : 'Arduino');
       }
       this.category = category;
-    }
-  });
-
-  Alpine.store('pages', {
-    pages: {},
-
-    add(index, tags) {
-      this.pages[index] = tags;
     },
-  });
+
+    addItem(index, tags) {
+      this.allItems[index] = tags;
+      this.filterItems();
+    },
+
+    setPage(page) {
+      this.page = page;
+    },
+
+    pageCount() {
+      return Math.ceil(this.currentItems.length / this.maxSize);
+    },
+
+    countPagesForTag(tag) {
+      return this.currentItems.map(i => this.allItems[i]).filter(i => i.includes(tag)).length;
+    },
+
+    shouldShow(index) {
+      let i = this.currentItems.indexOf(index.toString());
+      return (i >= (this.page - 1) * this.maxSize && i < this.page * this.maxSize);
+    },
+
+    changePageMaxSize(maxSize) {
+      this.maxSize = maxSize;
+    }
+  })
   
+  window.addEventListener("resize", handleResize);
+  handleResize();
+
   window.addEventListener("hashchange", handleHashChange);
   handleHashChange();
 });
@@ -78,23 +117,43 @@ function item(settings) {
     index: settings.index,
 
     init() {
-      this.$store.pages.add(this.index, this.tags);
+      this.$store.store.addItem(this.index, this.tags);
     },
 
     get tagFilters() {
-      return this.$store.filter.tags;
+      return this.$store.store.tags;
     },
 
     get category() {
-      return this.$store.category.category;
+      return this.$store.store.category;
     },
 
     get shouldShow() {
-      return this.tagFilters.every((v) => this.tags.includes(v));
-    },
+      return this.$store.store.shouldShow(this.index);
+    }
   };
 }
 </script>
+<style>
+  .pagination {
+    display: inline-block;
+  }
+
+  .pagination a {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .pagination a.active {
+    background-color: #2A005F;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
 
 <main id="main-content" tabindex="-1">
 <div>
@@ -123,27 +182,26 @@ function item(settings) {
       showOption: false,
 
       init() {
-        if (this.$store.category.category == \`Builds\`) {
+        if (this.$store.store.category == \`Builds\`) {
           let v = this.$store.trinket.on;
-          this.$store.filter.replace(v ? \`Arduino\` : \`Trinket\`, v ? \`Trinket\` : \`Arduino\`);
+          this.$store.store.addTag(v ? \`Trinket\` : \`Arduino\`);
         }
         this.$watch(\`$store.trinket.on\`, (v) => {
-          if (this.$store.category.category == \`Builds\`) {
-           this.$store.filter.replace(v ? \`Arduino\` : \`Trinket\`, v ? \`Trinket\` : \`Arduino\`);
+          if (this.$store.store.category == \`Builds\`) {
+           this.$store.store.replaceTag(v ? \`Arduino\` : \`Trinket\`, v ? \`Trinket\` : \`Arduino\`);
           }
         })
       },
 
       get tags() {
-        return this.$store.filter.tags;
+        return this.$store.store.tags;
       },
       set tags(value) {
-        this.$store.filter.set(value);
+        this.$store.store.setTags(value);
       },
 
       pageCount(tag) {
-        return 0; // todo
-        // return this.$store.pages.pages[this.$store.trinket.on ? \`t\` : \`a\`][tag] ?? 0;
+        return this.$store.store.countPagesForTag(tag);
       },
 
       checkWindowSize() {
@@ -176,15 +234,33 @@ function item(settings) {
         </template>
       </div>
       <div class="p-4 md:flex-3">
-        <p class="py-4 px-6" x-show="$store.category.category == 'Builds'">
+        <p class="py-4 px-6" x-show="$store.store.category == 'Builds'">
           Showcase students’ final projects, emphasizing their connection to foundational
           learning and activity design.
         </p>
-        <p class="py-4 px-6" x-show="$store.category.category == 'Foundations'">
+        <p class="py-4 px-6" x-show="$store.store.category == 'Foundations'">
           Provide students with the resources and small exercises needed to learn and master core concepts.
         </p>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3">
           <related-pages webc:for="(item, i) of pages" @attributes="item" :index="i" :is-home="true"></related-pages>
+        </div>
+        <div class="pagination">
+          <a
+            x-show="$store.store.page > 1"
+            x-on:click.prevent="$store.store.page -= 1"
+          >&laquo;</a>
+          <template x-for="idx in $store.store.pageCount()">
+            <a
+              x-bind:class="idx === $store.store.page ? 'active' : false"
+              x-text="idx"
+              x-bind:aria-current="idx === $store.store.page ? 'page' : false"
+              x-on:click.prevent="$store.store.page = idx"
+            ></a>
+          </template>
+          <a
+            x-show="$store.store.page < $store.store.pageCount()"
+            x-on:click.prevent="$store.store.page += 1"
+          >&raquo;</a>
         </div>
       </div>
 	</div>
