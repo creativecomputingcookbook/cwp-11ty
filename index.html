@@ -155,22 +155,26 @@
       showOption: false,
 
       init() {
+        if (this.$store.store.category == `Builds`) {
+          let v = this.$store.trinket.on;
+          this.$store.store.addTag(v ? `Trinket` : `Arduino`);
+        }
         this.$watch(`$store.trinket.on`, (v) => {
-          let pages = this.$store.pages.pages;
-          pages[v ? `t` : `a`] = {};
-          this.$store.pages.set(pages);
+          if (this.$store.store.category == `Builds`) {
+           this.$store.store.replaceTag(v ? `Arduino` : `Trinket`, v ? `Trinket` : `Arduino`);
+          }
         })
       },
 
       get tags() {
-        return this.$store.filter.tags;
+        return this.$store.store.tags;
       },
       set tags(value) {
-        this.$store.filter.set(value);
+        this.$store.store.setTags(value);
       },
 
       pageCount(tag) {
-        return this.$store.pages.pages[this.$store.trinket.on ? `t` : `a`][tag] ?? 0;
+        return this.$store.store.countPagesForTag(tag);
       },
 
       checkWindowSize() {
@@ -203,15 +207,15 @@
         </template>
       </div>
       <div class="p-4 md:flex-3">
-        <p x-show="$store.category.category == 'Builds'" class="py-4 px-6">
+        <p x-show="$store.store.category == 'Builds'" class="py-4 px-6">
           Showcase students’ final projects, emphasizing their connection to foundational
           learning and activity design.
         </p>
-        <p x-show="$store.category.category == 'Foundations'" class="py-4 px-6">
+        <p x-show="$store.store.category == 'Foundations'" class="py-4 px-6">
           Provide students with the resources and small exercises needed to learn and master core concepts.
         </p>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3">
-          <div x-data="item({ tags: [&quot;Hip Hop&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Button&quot;,&quot;LED&quot;,&quot;Press Button on Beat Drop&quot;,&quot;Tape&quot;,&quot;Scissors&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+          <div x-data="item({ tags: [&quot;Hip Hop&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Button&quot;,&quot;LED&quot;,&quot;Press Button on Beat Drop&quot;,&quot;Tape&quot;,&quot;Scissors&quot;], index: 0 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/All-of-the-Lights-with-Buttons/" class="card-content">
       <img src="/cwp-11ty/assets/all-of-the-lights-BZBnA6P-.gif" class="card-img">
@@ -221,7 +225,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Foundations&quot;], index: 1 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/foundations/Angular-Servo-Motor/" class="card-content">
       <img src="/cwp-11ty/assets/servo-CRPxB2Hg.png" class="card-img">
@@ -231,7 +235,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Foundations&quot;], index: 2 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/foundations/Animate/" class="card-content">
       <img src="/cwp-11ty/assets/Animate-BnwkmkLe.JPG" class="card-img">
@@ -241,7 +245,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;House&quot;,&quot;Freestyle&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Heel Digs&quot;,&quot;Cross Step&quot;,&quot;Tilt Sensors&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;House&quot;,&quot;Freestyle&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Heel Digs&quot;,&quot;Cross Step&quot;,&quot;Tilt Sensors&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;], index: 3 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/Be-Your-Girl-with-Tilt-sensors/" class="card-content">
       <img src="/cwp-11ty/assets/be-your-girl-voqdLIeW.gif" class="card-img">
@@ -251,7 +255,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Foundations&quot;], index: 4 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/foundations/Button-(Counter)/" class="card-content">
       <img src="/cwp-11ty/assets/button-CipuL4Cr.png" class="card-img">
@@ -261,7 +265,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Foundations&quot;], index: 5 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/foundations/Button-(On-or-Off)/" class="card-content">
       <img src="/cwp-11ty/assets/button-CipuL4Cr.png" class="card-img">
@@ -271,7 +275,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Hip Hop&quot;,&quot;Choreography&quot;,&quot;Collaboration&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Cross Turn&quot;,&quot;Prep&quot;,&quot;Happy Feet&quot;,&quot;Tilt Sensors&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Cardboard&quot;,&quot;Scissors&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Hip Hop&quot;,&quot;Choreography&quot;,&quot;Collaboration&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Cross Turn&quot;,&quot;Prep&quot;,&quot;Happy Feet&quot;,&quot;Tilt Sensors&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Cardboard&quot;,&quot;Scissors&quot;], index: 6 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/Can't-Take-My-Eyes-Off-Of-You-with-Buttons/" class="card-content">
       <img src="/cwp-11ty/assets/cant-take-my-eyes-CkqoZo5C.gif" class="card-img">
@@ -281,7 +285,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Foundations&quot;], index: 7 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/foundations/Continuous-Servo-Motor/" class="card-content">
       <img src="/cwp-11ty/assets/servo-CRPxB2Hg.png" class="card-img">
@@ -291,7 +295,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Storytelling&quot;,&quot;Metaphor&quot;,&quot;Builds&quot;,&quot;Arduino&quot;,&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;Button&quot;,&quot;Servo Motor&quot;,&quot;Tilt Sensors&quot;,&quot;LEDs&quot;,&quot;Potentiometer&quot;,&quot;Cardboard&quot;,&quot;Springs&quot;,&quot;Paint&quot;,&quot;Fake Moss&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Storytelling&quot;,&quot;Metaphor&quot;,&quot;Builds&quot;,&quot;Arduino&quot;,&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;Button&quot;,&quot;Servo Motor&quot;,&quot;Tilt Sensors&quot;,&quot;LEDs&quot;,&quot;Potentiometer&quot;,&quot;Cardboard&quot;,&quot;Springs&quot;,&quot;Paint&quot;,&quot;Fake Moss&quot;], index: 8 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/Corporate-in-Red/" class="card-content">
       <img src="/cwp-11ty/assets/corporate-in-red-DKJ1HPh7.png" class="card-img">
@@ -301,7 +305,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Afrobeat&quot;,&quot;Freestyle&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Foot taps&quot;,&quot;Cross Step&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Afrobeat&quot;,&quot;Freestyle&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Foot taps&quot;,&quot;Cross Step&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;], index: 9 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/Done-For-Me-with-Buttons/" class="card-content">
       <img src="/cwp-11ty/assets/done-for-me-CKG-uO1O.gif" class="card-img">
@@ -311,7 +315,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Foundations&quot;], index: 10 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/foundations/LED-Strip/" class="card-content">
       <img src="/cwp-11ty/assets/ledstrip-C0BeLxeu.jpg" class="card-img">
@@ -321,7 +325,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Hip Hop&quot;,&quot;Dance Levels&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Sharp sways&quot;,&quot;Bounce&quot;,&quot;Tilt Sensors&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Hip Hop&quot;,&quot;Dance Levels&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Sharp sways&quot;,&quot;Bounce&quot;,&quot;Tilt Sensors&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;], index: 11 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/Mona-Lisa-with-Buttons-and-Tilt-Sensors/" class="card-content">
       <img src="/cwp-11ty/assets/mona-lisa-BcVCZ5Oc.gif" class="card-img">
@@ -331,7 +335,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Hip Hop&quot;,&quot;House&quot;,&quot;Freestyle&quot;,&quot;Modern Influence&quot;,&quot;Synchronization&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Foot Taps&quot;,&quot;Collaborative Side Steps&quot;,&quot;Tilt Sensors&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Hip Hop&quot;,&quot;House&quot;,&quot;Freestyle&quot;,&quot;Modern Influence&quot;,&quot;Synchronization&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Foot Taps&quot;,&quot;Collaborative Side Steps&quot;,&quot;Tilt Sensors&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;], index: 12 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/My-POWER-with-Buttons-and-Tilt-Sensors/" class="card-content">
       <img src="/cwp-11ty/assets/my-power-CS8kiJmn.gif" class="card-img">
@@ -341,7 +345,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Delays&quot;,&quot;Storytelling&quot;,&quot;Nostalgia&quot;,&quot;Builds&quot;,&quot;Arduino&quot;,&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;Button&quot;,&quot;LED Strip&quot;,&quot;Semi Translucent Poster Board &quot;,&quot;Paint&quot;,&quot;Foam&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Delays&quot;,&quot;Storytelling&quot;,&quot;Nostalgia&quot;,&quot;Builds&quot;,&quot;Arduino&quot;,&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;Button&quot;,&quot;LED Strip&quot;,&quot;Semi Translucent Poster Board &quot;,&quot;Paint&quot;,&quot;Foam&quot;], index: 13 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/Poem-Puzzle/" class="card-content">
       <img src="/cwp-11ty/assets/poem-puzzle-B-EyhxFJ.png" class="card-img">
@@ -351,7 +355,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Foundations&quot;], index: 14 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/foundations/Potentiometer/" class="card-content">
       <img src="/cwp-11ty/assets/Potentiometer-BY25_LH9.JPG" class="card-img">
@@ -361,7 +365,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Foundations&quot;], index: 15 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/foundations/Potentiometer-with-Angular-Servo/" class="card-content">
       <img src="/cwp-11ty/assets/temp-pot-servo-CL1NdNCF.png" class="card-img">
@@ -371,7 +375,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Contemporary&quot;,&quot;Street Jazz&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Graceful Sways&quot;,&quot;Arm raise&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;,&quot;Cardboard&quot;,&quot;Paint&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Contemporary&quot;,&quot;Street Jazz&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Graceful Sways&quot;,&quot;Arm raise&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;,&quot;Cardboard&quot;,&quot;Paint&quot;], index: 16 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/Push-2-Start-with-Buttons/" class="card-content">
       <img src="/cwp-11ty/assets/push-2-start-fOdPcRpo.gif" class="card-img">
@@ -381,7 +385,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Modern Influence&quot;,&quot;Levels&quot;,&quot;Collaborative Dance&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Taps&quot;,&quot;Sways&quot;,&quot;Contemporary&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Books&quot;,&quot;Scissors&quot;,&quot;Tape&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Modern Influence&quot;,&quot;Levels&quot;,&quot;Collaborative Dance&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Taps&quot;,&quot;Sways&quot;,&quot;Contemporary&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Books&quot;,&quot;Scissors&quot;,&quot;Tape&quot;], index: 17 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/Session-32-with-Buttons/" class="card-content">
       <img src="/cwp-11ty/assets/session-32-BI15sRH-.gif" class="card-img">
@@ -391,7 +395,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Step&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Blade move&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;,&quot;Velcro&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Step&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Blade move&quot;,&quot;Button&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;,&quot;Velcro&quot;], index: 18 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/Stir-Fry-with-Buttons/" class="card-content">
       <img src="/cwp-11ty/assets/stirfry-O0iggRmZ.gif" class="card-img">
@@ -401,7 +405,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Afroswing&quot;,&quot;Rap&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Group Dance&quot;,&quot;Side Steps&quot;,&quot;Legwork&quot;,&quot;Tilt Sensor&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;,&quot;Velcro&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Afroswing&quot;,&quot;Rap&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Group Dance&quot;,&quot;Side Steps&quot;,&quot;Legwork&quot;,&quot;Tilt Sensor&quot;,&quot;LEDs&quot;,&quot;Tape&quot;,&quot;Scissors&quot;,&quot;Velcro&quot;], index: 19 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/Take-Time-with-Tilt-Sensor/" class="card-content">
       <img src="/cwp-11ty/assets/taketime-B7NNrlVO.gif" class="card-img">
@@ -411,7 +415,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Foundations&quot;], index: 20 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/foundations/Tilt-Sensor/" class="card-content">
       <img src="/cwp-11ty/assets/tiltsensor-CrnVWN8e.png" class="card-img">
@@ -421,7 +425,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Foundations&quot;], index: 21 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/foundations/Tilt-Sensor-and-Animate/" class="card-content">
       <img src="/cwp-11ty/assets/Animate-BnwkmkLe.JPG" class="card-img">
@@ -431,7 +435,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Storytelling&quot;,&quot;Metaphor&quot;,&quot;Builds&quot;,&quot;Arduino&quot;,&quot;0&quot;,&quot;1&quot;,&quot;Ultrasonic sensor&quot;,&quot;Servo Motor&quot;,&quot;Cardboard&quot;,&quot;Glue&quot;,&quot;Paper&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Storytelling&quot;,&quot;Metaphor&quot;,&quot;Builds&quot;,&quot;Arduino&quot;,&quot;0&quot;,&quot;1&quot;,&quot;Ultrasonic sensor&quot;,&quot;Servo Motor&quot;,&quot;Cardboard&quot;,&quot;Glue&quot;,&quot;Paper&quot;], index: 22 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/Turning-Wheel-of-Closeness/" class="card-content">
       <img src="/cwp-11ty/assets/turning-wheel-BHArdlmL.JPG" class="card-img">
@@ -441,7 +445,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Foundations&quot;], index: 23 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/foundations/Ultrasonic-Sensor/" class="card-content">
       <img src="/cwp-11ty/assets/Ultrasonic_Sensor-BmJYVh1b.JPG" class="card-img">
@@ -451,7 +455,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Foundations&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Foundations&quot;], index: 24 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/foundations/Ultrasonic-Sensor-with-Angular-Servo-Motor/" class="card-content">
       <img src="/cwp-11ty/assets/ultra-servo-D9RtaI7W.png" class="card-img">
@@ -461,7 +465,7 @@
   </div>
 </div>
 
-<div x-data="item({ tags: [&quot;Hip Hop&quot;,&quot;Improv&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Head nods&quot;,&quot;Waves&quot;,&quot;Isolations&quot;,&quot;Tilt Sensor&quot;,&quot;Animates&quot;,&quot;Hat&quot;,&quot;Scissors&quot;,&quot;Tape&quot;] })" x-show="shouldShow" class="p-4 grid-item">
+<div x-data="item({ tags: [&quot;Hip Hop&quot;,&quot;Improv&quot;,&quot;Builds&quot;,&quot;Trinket&quot;,&quot;Head nods&quot;,&quot;Waves&quot;,&quot;Isolations&quot;,&quot;Tilt Sensor&quot;,&quot;Animates&quot;,&quot;Hat&quot;,&quot;Scissors&quot;,&quot;Tape&quot;], index: 25 })" x-show="shouldShow" class="p-4 grid-item">
   <div class="card">
     <a href="/cwp-11ty/builds/Update-Dance-with-Tilt-Sensor/" class="card-content">
       <img src="/cwp-11ty/assets/update-DdmMdcY9.gif" class="card-img">
@@ -471,6 +475,13 @@
   </div>
 </div>
 
+        </div>
+        <div class="pagination">
+          <a x-show="$store.store.page > 1" x-on:click.prevent="$store.store.page -= 1">«</a>
+          <template x-for="idx in $store.store.pageCount()">
+            <a x-bind:class="idx === $store.store.page ? 'active' : false" x-text="idx" x-bind:aria-current="idx === $store.store.page ? 'page' : false" x-on:click.prevent="$store.store.page = idx"></a>
+          </template>
+          <a x-show="$store.store.page < $store.store.pageCount()" x-on:click.prevent="$store.store.page += 1">»</a>
         </div>
       </div>
 	</div>
@@ -483,43 +494,103 @@
     case '':
       return;
     case '#builds':
-      Alpine.store("category").set("Builds");
+      Alpine.store("store").setCategory("Builds");
       break;
     case '#foundations':
-      Alpine.store("category").set("Foundations");
+      Alpine.store("store").setCategory("Foundations");
       break;
   }
 
   window.location.hash = '';
 }
 
+handleResize = () => {
+  let w = window.innerWidth;
+  let s = 6;
+  if (w >= 1024) s = 9;
+  if (w < 640) s = 3;
+  Alpine.store("store").changePageMaxSize(s);
+}
+
 document.addEventListener('alpine:init', () => {
-  Alpine.store('category', {
+  Alpine.store('store', {
+    tags: ['Builds'],
     category: 'Builds',
+    allItems: {},
+    page: 1,
+    maxSize: 3,
+    currentItems: [],
 
-    set(category) {
-      Alpine.store('pages').set({'a': {}, 't': {}});
-      this.category = category;
-    }
-  });
-
-  Alpine.store('filter', {
-    tags: [],
-
-    set(tags) {
-      Alpine.store('pages').set({'a': {}, 't': {}});
+    setTags(tags) {
+      this.page = 1;
       this.tags = tags;
+      this.filterItems();
     },
-  });
-
-  Alpine.store('pages', {
-    pages: { a: {}, t: {} },
-
-    set(pages) {
-      this.pages = pages;
+    addTag(tag) {
+      this.page = 1;
+      this.tags.push(tag);
+      this.filterItems();
     },
-  });
+    removeTag(tag) {
+      let i = this.tags.indexOf(tag);
+      if (i > -1) {
+        this.page = 1;
+        this.tags.splice(this.tags.indexOf(tag), 1);
+        this.filterItems();
+      }
+    },
+    replaceTag(oldTag, newTag) {
+      this.page = 1;
+      this.tags.splice(this.tags.indexOf(oldTag), 1, newTag);
+      this.filterItems();
+    },
+
+    filterItems() {
+      this.currentItems = Object.entries(this.allItems).filter(o => this.tags.every((v) => o[1].includes(v))).map(o => o[0]);
+    },
+
+    setCategory(category) {
+      this.replaceTag(this.category, category);
+      if (this.category == 'Builds' && category == 'Foundations') {
+        this.removeTag('Trinket');
+        this.removeTag('Arduino');
+      }
+      if (this.category == 'Foundations' && category == 'Builds') {
+        this.addTag(Alpine.store('trinket').on ? 'Trinket' : 'Arduino');
+      }
+      this.category = category;
+    },
+
+    addItem(index, tags) {
+      this.allItems[index] = tags;
+      this.filterItems();
+    },
+
+    setPage(page) {
+      this.page = page;
+    },
+
+    pageCount() {
+      return Math.ceil(this.currentItems.length / this.maxSize);
+    },
+
+    countPagesForTag(tag) {
+      return this.currentItems.map(i => this.allItems[i]).filter(i => i.includes(tag)).length;
+    },
+
+    shouldShow(index) {
+      let i = this.currentItems.indexOf(index.toString());
+      return (i >= (this.page - 1) * this.maxSize && i < this.page * this.maxSize);
+    },
+
+    changePageMaxSize(maxSize) {
+      this.maxSize = maxSize;
+    }
+  })
   
+  window.addEventListener("resize", handleResize);
+  handleResize();
+
   window.addEventListener("hashchange", handleHashChange);
   handleHashChange();
 });
@@ -529,49 +600,23 @@ document.addEventListener('alpine:init', () => {
 function item(settings) {
   return {
     tags: settings.tags,
+    index: settings.index,
+
+    init() {
+      this.$store.store.addItem(this.index, this.tags);
+    },
 
     get tagFilters() {
-      return this.$store.filter.tags;
+      return this.$store.store.tags;
     },
 
     get category() {
-      return this.$store.category.category;
-    },
-
-    addToPages(tags) {
-      let newPages = this.$store.pages.pages;
-      let a = this.$store.trinket.on ? 't' : 'a';
-      tags.map(t => {
-        if (!(t in newPages[a])) {
-          newPages[a][t] = 1;
-        }
-        else {
-          newPages[a][t] += 1;
-        }
-      })
-      this.$store.pages.set(newPages);
+      return this.$store.store.category;
     },
 
     get shouldShow() {
-      switch (this.category) {
-        case "Builds":
-          if ([...this.tagFilters, "Builds"].every((v) => this.tags.includes(v)) && (
-              (this.$store.trinket.on && !this.tags.includes("Arduino")) ||
-              (!this.$store.trinket.on && !this.tags.includes("Trinket"))
-            )) {
-            this.addToPages(this.tags);
-            return true;
-          };
-          return false;
-        case "Foundations":
-          if ([...this.tagFilters, "Foundations"].every((v) => this.tags.includes(v))) {
-            this.addToPages(this.tags);
-            return true;
-          }
-        default:
-          return false;
-      }
-    },
+      return this.$store.store.shouldShow(this.index);
+    }
   };
 }
 if ('scrollRestoration' in history) {
@@ -582,7 +627,24 @@ document.addEventListener('alpine:init', () => {
         on: Alpine.$persist(false).as('trinket')
       });
     });</script>
-    <style></style>
+    <style>.pagination {
+    display: inline-block;
+  }
+
+  .pagination a {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .pagination a.active {
+    background-color: #2A005F;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .pagination a:hover:not(.active) {background-color: #ddd;}</style>
 
 	
 
