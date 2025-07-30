@@ -585,6 +585,7 @@ document.addEventListener('alpine:init', () => {
 
     changePageMaxSize(maxSize) {
       this.maxSize = maxSize;
+      this.page = Math.min(this.page, this.pageCount());
     }
   })
   
