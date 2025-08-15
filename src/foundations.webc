@@ -96,6 +96,40 @@
 
             <!-- Parsons Problems -->
             <div
+              webc:if="f.type == 'parsons_group'"
+              class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500"
+              :id="'section-' + i"
+            >
+              <h2
+                class="text-3xl font-bold text-gray-900 mb-2"
+                @text="f.heading"
+              ></h2>
+              <div x-data="{ activeTab: 1 }" class="mb-4">
+                <div class="flex border-b border-gray-400 mb-2">
+                  <button
+                    webc:for="(tab, i) of f.fields"
+                    class="px-4 py-2 -mb-px font-semibold text-gray-700 focus:outline-none transition-colors duration-150 border-b-4"
+                    x-bind:class="activeTab === Number($el.dataset.index) ? 'border-gray-500 bg-gray-100' : 'border-transparent'"
+                    x-on:click="activeTab = Number($el.dataset.index)"
+                    :data-index="i + 1"
+                    @text="tab.title"
+                    type="button"
+                  ></button>
+                </div>
+                <div class="p-4 bg-white rounded shadow-inner min-h-[3rem]">
+                  <div
+                    webc:for="(tab, i) of f.fields"
+                    x-show="activeTab === Number($el.dataset.index)"
+                    :data-index="i + 1"
+                  >
+                    <parsons :code="tab.code"></parsons>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parsons Problems -->
+            <div
               webc:if="f.type == 'parsons'"
               class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500"
               :id="'section-' + i"
