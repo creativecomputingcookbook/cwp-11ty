@@ -143,26 +143,7 @@
         <div class="prose-gray text-gray-700 py-4">
           
             <!-- Text -->
-            
-
-            <!-- Circuit Assembly -->
-            
-
-            <!-- Code -->
-            
-
-            <!-- Parsons Problems -->
-            
-
-            <!-- Parsons Problems -->
-            
-
-            <!-- Other combinations -->
-            
-          
-
-            <!-- Text -->
-            <div id="section-1" class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
+            <div id="section-0" class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
               <h2 class="text-3xl font-bold text-gray-900 mb-4">Introduction</h2>
               <div class="text-gray-700 leading-relaxed mb-4"><p>A potentiometer is a simple rotary knob that acts as a variable resistor. As you turn it, it changes the amount of voltage sent to an analog input pin on your microcontroller. This allows you to read a range of values, typically from 0 to 1023, depending on the position of the knob. So one end of the knob will read 0 while the other will read 1023. The range of values on potentiometers can be used to dim lights, control speed, adjust sound, and more. For example, the knobs on a DJ board/deck that control sound are potentiometers.</p>
 </div>
@@ -189,7 +170,7 @@
 
             <!-- Circuit Assembly -->
             <div class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
-              <h2 id="section-2" class="text-3xl font-bold text-gray-900">Circuit Assembly</h2>
+              <h2 id="section-1" class="text-3xl font-bold text-gray-900">Circuit Assembly</h2>
               <div class="text-gray-700 leading-relaxed mb-4"><p>Connect the potentiometer to any analog pin (the ones that start with an A). In our example, we're using <strong>A0/A1</strong>. The analog pins have the ability to read a continuous range of values as opposed to digital pins that can only read 2 values, high or low (on or off).<br><br>The pin that you connect your potentiometer to corresponds to a pin value on your code. We're using <strong>A0/A1</strong>, which corresponds to <strong>A1</strong>. You can remix yours to look like this:<br>• A1/A0 → <strong>pot_pin</strong> = A1;<br>• A3/A2 → <strong>pot_pin</strong> = A3;<br>• A5/A4 → <strong>pot_pin</strong> = A5;<br>• A7/A6 → <strong>pot_pin</strong> = A7;</p>
 </div>
               <img src="/cwp-11ty/assets/Potentiometer-Circuit-yqjidIjY.png" class="w-full h-auto mb-2 mx-auto rounded-md not-prose">
@@ -215,7 +196,7 @@
             
 
             <!-- Code -->
-            <div id="section-3" class="my-8 w-full h-auto p-4 bg-gray-200 border-t-4 border-gray-500">
+            <div id="section-2" class="my-8 w-full h-auto p-4 bg-gray-200 border-t-4 border-gray-500">
               <h2 class="text-3xl font-bold text-gray-900 mb-2">Code</h2>
               <div class="flex justify-center">
                 <div class="relative w-11/12 lg:w-4/5 pb-[56.25%] overflow-hidden">
@@ -251,7 +232,7 @@
 
             <!-- Other combinations -->
             <div class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
-              <h2 id="section-4" class="text-3xl font-bold leading-tight text-gray-900"><p>Other Combinations</p>
+              <h2 id="section-3" class="text-3xl font-bold leading-tight text-gray-900"><p>Other Combinations</p>
 </h2>
               <div class="flex-row">
                 <!-- Block below uses a different script in the .eleventy.js file (findPostByDBPosts) change back to findPostByTitles-->
@@ -306,26 +287,23 @@
 </a>
 
               
-                
-              
-
                 <li>
-                  <a x-on:click="drawerOpen=false" href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
+                  <a x-on:click="drawerOpen=false" href="#section-0" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
                 </li>
               
 
                 <li>
-                  <a x-on:click="drawerOpen=false" href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
+                  <a x-on:click="drawerOpen=false" href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
                 </li>
               
 
                 <li>
-                  <a x-on:click="drawerOpen=false" href="#section-3" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
+                  <a x-on:click="drawerOpen=false" href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
                 </li>
               
 
                 <li>
-                  <a x-on:click="drawerOpen=false" href="#section-4" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Other Combinations</a>
+                  <a x-on:click="drawerOpen=false" href="#section-3" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Other Combinations</a>
                 </li>
               
             </ul>
@@ -347,26 +325,23 @@
 </a>
 
                   
-                    
-                  
-
                     <li>
-                      <a href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
+                      <a href="#section-0" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
                     </li>
                   
 
                     <li>
-                      <a href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
+                      <a href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
                     </li>
                   
 
                     <li>
-                      <a href="#section-3" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
+                      <a href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
                     </li>
                   
 
                     <li>
-                      <a href="#section-4" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Other Combinations</a>
+                      <a href="#section-3" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Other Combinations</a>
                     </li>
                   
                 </ul>

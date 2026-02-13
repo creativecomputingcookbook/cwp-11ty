@@ -143,26 +143,7 @@
         <div class="prose-gray text-gray-700 py-4">
           
             <!-- Text -->
-            
-
-            <!-- Circuit Assembly -->
-            
-
-            <!-- Code -->
-            
-
-            <!-- Parsons Problems -->
-            
-
-            <!-- Parsons Problems -->
-            
-
-            <!-- Other combinations -->
-            
-          
-
-            <!-- Text -->
-            <div id="section-1" class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
+            <div id="section-0" class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
               <h2 class="text-3xl font-bold text-gray-900 mb-4">Introduction</h2>
               <div class="text-gray-700 leading-relaxed mb-4"><p>This example explores how to use a tilt sensor with animates. The tilt sensor detects whether or not the component is inclined to one side versus another and the animate is a single controllable LED. You can use them together to control lighting effects that respond to physical motion. In this example, we’ll be learning how to use an input to control an output as the tilting will change the lighting.</p>
 </div>
@@ -189,7 +170,7 @@
 
             <!-- Circuit Assembly -->
             <div class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
-              <h2 id="section-2" class="text-3xl font-bold text-gray-900">Circuit Assembly</h2>
+              <h2 id="section-1" class="text-3xl font-bold text-gray-900">Circuit Assembly</h2>
               <div class="text-gray-700 leading-relaxed mb-4"><p>Connect the tilt sensor to any digital pin. In our example, we're using <strong>D3/D2</strong>. We're using 2 animates in this example chained together. Connect the first animate to any digital pin, we're using <strong>D11/D10</strong>, and then connect the second animate to the first animate. Make sure the arrow points away from the microcontroller.<br><br>The pin that you connect your tilt sensor and animates to corresponds to a pin value on your code. We're using <strong>D3/D2</strong> for the tilt sensor, which corresponds to <strong>3</strong>. You can remix yours to look like this:<br>• D11/D10 → <strong>tilt_pin</strong> = 11;<br>• D9/D8 → <strong>tilt_pin</strong> = 9;<br>• D7/D6 → <strong>tilt_pin</strong> = 7;<br>• D5/D4 → <strong>tilt_pin</strong> = 5;<br>• D3/D2 → <strong>tilt_pin</strong> = 3;<br>• D1/D0 → <strong>tilt_pin</strong> = 1;<br><br>The pin that you connect animates to also corresponds to a pin value on your code. We're using <strong>D11/D10</strong> for the led pin, which corresponds to <strong>11</strong>. You can remix yours to look like this:<br>• D11/D10 → <strong>led_pin</strong> = 11;<br>• D9/D8 → <strong>led_pin</strong> = 9;<br>• D7/D6 → <strong>led_pin</strong> = 7;<br>• D5/D4 → <strong>led_pin</strong> = 5;<br>• D3/D2 → <strong>led_pin</strong> = 3;<br>• D1/D0 → <strong>led_pin</strong> = 1;</p>
 </div>
               <img src="/cwp-11ty/assets/Tilt-Sensor-and-Animate-Circuit-TjkMATIm.png" class="w-full h-auto mb-2 mx-auto rounded-md not-prose">
@@ -215,7 +196,7 @@
             
 
             <!-- Code -->
-            <div id="section-3" class="my-8 w-full h-auto p-4 bg-gray-200 border-t-4 border-gray-500">
+            <div id="section-2" class="my-8 w-full h-auto p-4 bg-gray-200 border-t-4 border-gray-500">
               <h2 class="text-3xl font-bold text-gray-900 mb-2">Code</h2>
               <div class="flex justify-center">
                 <div class="relative w-11/12 lg:w-4/5 pb-[56.25%] overflow-hidden">
@@ -251,7 +232,7 @@
 
             <!-- Other combinations -->
             <div class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
-              <h2 id="section-4" class="text-3xl font-bold leading-tight text-gray-900"><p>Other Combinations</p>
+              <h2 id="section-3" class="text-3xl font-bold leading-tight text-gray-900"><p>Other Combinations</p>
 </h2>
               <div class="flex-row">
                 <!-- Block below uses a different script in the .eleventy.js file (findPostByDBPosts) change back to findPostByTitles-->
@@ -319,26 +300,23 @@
 </a>
 
               
-                
-              
-
                 <li>
-                  <a x-on:click="drawerOpen=false" href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
+                  <a x-on:click="drawerOpen=false" href="#section-0" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
                 </li>
               
 
                 <li>
-                  <a x-on:click="drawerOpen=false" href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
+                  <a x-on:click="drawerOpen=false" href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
                 </li>
               
 
                 <li>
-                  <a x-on:click="drawerOpen=false" href="#section-3" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
+                  <a x-on:click="drawerOpen=false" href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
                 </li>
               
 
                 <li>
-                  <a x-on:click="drawerOpen=false" href="#section-4" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Other Combinations</a>
+                  <a x-on:click="drawerOpen=false" href="#section-3" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Other Combinations</a>
                 </li>
               
             </ul>
@@ -360,26 +338,23 @@
 </a>
 
                   
-                    
-                  
-
                     <li>
-                      <a href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
+                      <a href="#section-0" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
                     </li>
                   
 
                     <li>
-                      <a href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
+                      <a href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
                     </li>
                   
 
                     <li>
-                      <a href="#section-3" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
+                      <a href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
                     </li>
                   
 
                     <li>
-                      <a href="#section-4" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Other Combinations</a>
+                      <a href="#section-3" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Other Combinations</a>
                     </li>
                   
                 </ul>

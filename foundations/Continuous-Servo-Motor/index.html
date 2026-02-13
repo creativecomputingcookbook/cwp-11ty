@@ -143,26 +143,7 @@
         <div class="prose-gray text-gray-700 py-4">
           
             <!-- Text -->
-            
-
-            <!-- Circuit Assembly -->
-            
-
-            <!-- Code -->
-            
-
-            <!-- Parsons Problems -->
-            
-
-            <!-- Parsons Problems -->
-            
-
-            <!-- Other combinations -->
-            
-          
-
-            <!-- Text -->
-            <div id="section-1" class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
+            <div id="section-0" class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
               <h2 class="text-3xl font-bold text-gray-900 mb-4">Introduction</h2>
               <div class="text-gray-700 leading-relaxed mb-4"><p>A continuous servo motor looks like a regular servo motor, but instead of turning to a specific angle, it spins continuously in either direction. You can change the speed and direction using values between 0 and 180.<br><br>• 90: stop<br>• &lt; 90: spin one direction<br>• &gt; 90: spin the other direction<br><br>At 0 and 180 are the max speeds for either direction. The closer you get to 90, the slower the servo turns. This makes continuous servos great for wheels, fans, or spinning mechanisms in interactive projects.</p>
 </div>
@@ -189,7 +170,7 @@
 
             <!-- Circuit Assembly -->
             <div class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
-              <h2 id="section-2" class="text-3xl font-bold text-gray-900">Circuit Assembly</h2>
+              <h2 id="section-1" class="text-3xl font-bold text-gray-900">Circuit Assembly</h2>
               <div class="text-gray-700 leading-relaxed mb-4"><p>Connect the servo to any pin. In our example, we're using <strong>D10/D11</strong>. The pin that you connect your servo to corresponds to a pin value on your code. We're using <strong>D10/D11</strong>, which corresponds to <strong>11</strong>. You can remix yours to look like this:<br>• D11/D10 → <strong>servo_pin</strong> = 11;<br>• D9/D8 → <strong>servo_pin</strong> = 9;<br>• D7/D6 → <strong>servo_pin</strong> = 7;<br>• D5/D4 → <strong>servo_pin</strong> = 5;<br>• D3/D2 → <strong>servo_pin</strong> = 3;<br>• D1/D0 → <strong>servo_pin</strong> = 1;<br><br>Servos use a lot of power, so make sure you have an external power supply plugged into the micro controller.</p>
 </div>
               <img src="/cwp-11ty/assets/Continuous-Servo-Circuit-LJ6vNnyG.png" class="w-full h-auto mb-2 mx-auto rounded-md not-prose">
@@ -215,7 +196,7 @@
             
 
             <!-- Code -->
-            <div id="section-3" class="my-8 w-full h-auto p-4 bg-gray-200 border-t-4 border-gray-500">
+            <div id="section-2" class="my-8 w-full h-auto p-4 bg-gray-200 border-t-4 border-gray-500">
               <h2 class="text-3xl font-bold text-gray-900 mb-2">Code</h2>
               <div class="flex justify-center">
                 <div class="relative w-11/12 lg:w-4/5 pb-[56.25%] overflow-hidden">
@@ -268,21 +249,18 @@
 </a>
 
               
-                
-              
-
                 <li>
-                  <a x-on:click="drawerOpen=false" href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
+                  <a x-on:click="drawerOpen=false" href="#section-0" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
                 </li>
               
 
                 <li>
-                  <a x-on:click="drawerOpen=false" href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
+                  <a x-on:click="drawerOpen=false" href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
                 </li>
               
 
                 <li>
-                  <a x-on:click="drawerOpen=false" href="#section-3" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
+                  <a x-on:click="drawerOpen=false" href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
                 </li>
               
             </ul>
@@ -304,21 +282,18 @@
 </a>
 
                   
-                    
-                  
-
                     <li>
-                      <a href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
+                      <a href="#section-0" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
                     </li>
                   
 
                     <li>
-                      <a href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
+                      <a href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
                     </li>
                   
 
                     <li>
-                      <a href="#section-3" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
+                      <a href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
                     </li>
                   
                 </ul>
