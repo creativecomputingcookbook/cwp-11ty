@@ -1,0 +1,19 @@
+<aside class="hidden lg:block lg:w-[240px] lg:flex-shrink-0">
+  <div class="sticky top-4">
+    <div class="bg-[#fff3dc] rounded-[15px] p-6 flex flex-col gap-2">
+      <div class="text-[20px] font-normal font-mono text-[#1e1e1e] text-left">
+        Table of Contents
+      </div>
+      <div class="flex flex-col gap-2">
+        <template webc:for="(f,i) of fields" webc:nokeep>
+          <a
+            webc:if="f.heading"
+            :href="'#section-' + i"
+            class="toc-item block px-4 py-3 font-mono font-bold text-[16px] leading-[1.4] rounded-xl bg-peach text-[#1e1e1e] transition text-center"
+            @text="f.heading"
+          ></a>
+        </template>
+      </div>
+    </div>
+  </div>
+</aside>
