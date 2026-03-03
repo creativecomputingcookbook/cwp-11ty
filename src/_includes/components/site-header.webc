@@ -1,82 +1,74 @@
-<header>
-  <nav x-data="{ open: false }" class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-end">
-      <ul class="hidden md:flex space-x-4">
-        <script webc:type="js">
-          const items = $data.navigation.items;
-          const page = $data.page;
+<style>
+  .new-header {
+    padding: 20px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFF3DC;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
 
-          items
-            .map((item) => {
-              let current;
-              let highlight;
+  .new-header-content {
+    max-width: 1312px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-              if (item.url === page.url) {
-                current = 'aria-current="page"';
-                highlight = 'cursor-default';
-              } else {
-                current = '';
-                highlight = 'underline';
-              }
+  .site-title {
+    font-family: 'General Sans', -apple-system, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 140%;
+    color: #000000;
+    text-decoration: none;
+  }
 
-              return `
-                <li>
-                  <a
-                    href="${item.url}"
-                    class="text-base font-bold ${highlight}"
-                    ${current}
-                  >
-                    ${item.text}
-                  </a>
-                </li>
-              `}
-            )
-            .join('');
-        </script>
-        <li><toggle /></li>
-      </ul>
-      <button x-on:click="open = !open" x-bind:aria-expanded="open" type="button" class="flex md:hidden" aria-label="mobile menu" aria-controls="mobileMenu">
-        <svg x-cloak x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
-        <svg x-cloak x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-        </svg>
-      </button>
-      <ul x-cloak x-show="open" id="mobileMenu" class="fixed inset-x-0 top-0 z-10 bg-white px-6 pb-6 pt-6 mt-14 md:hidden">
-        <script webc:type="js">
-          const items = $data.navigation.items;
-          const page = $data.page;
+  .nav-links {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-          items
-            .map((item) => {
-              let current;
-              let highlight;
+  .nav-links a {
+    font-family: 'General Sans', -apple-system, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
+    color: #000000;
+    text-decoration: none;
+    padding: 8px 16px;
+    transition: all 0.2s;
+  }
 
-              if (item.url === page.url) {
-                current = 'aria-current="page"';
-                highlight = '';
-              } else {
-                current = '';
-                highlight = 'font-bold';
-              }
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
 
-              return `
-                <li class="py-2">
-                  <a
-                    href="${item.url}"
-                    class="text-base ${highlight}"
-                    ${current}
-                  >
-                    ${item.text}
-                  </a>
-                </li>
-              `}
-            )
-            .join('');
-        </script>
-        <li class="py-2"><toggle /></li>
-      </ul>
-    </div>
-  </nav>
+  @media (max-width: 768px) {
+    .new-header {
+      padding: 20px;
+    }
+
+    .nav-links {
+      gap: 24px;
+      font-size: 16px;
+    }
+  }
+</style>
+
+<header class="new-header">
+  <div class="new-header-content">
+    <a href="/" class="site-title">Creative Computing Cookbook</a>
+    <ul class="nav-links">
+      <li><a href="/all-recipes">All Recipes</a></li>
+      <li><a href="/builds">Builds</a></li>
+      <li><a href="/foundations">Foundations</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </div>
 </header>
