@@ -66,8 +66,8 @@
     <a href="/" class="site-title">Creative Computing Cookbook</a>
     <ul class="nav-links">
       <li><a href="/all-recipes">All Recipes</a></li>
-      <li><a href="/builds">Builds</a></li>
-      <li><a href="/foundations">Foundations</a></li>
+      <li><a href="/all-recipes/#builds">Builds</a></li>
+      <li><a href="/all-recipes/#foundations">Foundations</a></li>
       <li><a href="/about">About</a></li>
     </ul>
   </div>
