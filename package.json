@@ -79,6 +79,7 @@
     "alpinejs": "^3.11.1",
     "core-js": "^3.29.1",
     "postcss-assets": "^6.0.0",
-    "prismjs": "^1.30.0"
+    "prismjs": "^1.30.0",
+    "yaml": "2.8.2"
   }
 }
