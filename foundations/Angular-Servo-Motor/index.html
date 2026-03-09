@@ -41,124 +41,84 @@
     <meta name="theme-color" content="#4a5568">
 
     <!-- Preconnect to the font file origin -->
-    <link rel="preconnect" href="https://rsms.me" crossorigin="">
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
 		<!-- Preload the font stylesheet asynchronously with low priority -->
-    <link rel="preload" href="https://rsms.me/inter/inter.css" as="style">
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&amp;display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;display=swap" as="style">
 
 		<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
-    <link crossorigin="anonymous" rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'; this.onload=null;">
+    <link crossorigin="anonymous" rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&amp;display=swap" media="print" onload="this.media='all'; this.onload=null;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;display=swap" media="print" onload="this.media='all'; this.onload=null;">
 
 		
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-DI_KQAfK.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-DXAlNPXb.css">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-bShNB-Q4.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-BPAvrYHU.css">
   </head>
-  <body data-env="{{ node.env }}" class="min-h-screen bg-white">
-    <header>
-  <nav x-data="{ open: false }" class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-end">
-      <ul class="hidden md:flex space-x-4">
-        <li>
-                  <a href="/cwp-11ty/#builds" class="text-base font-bold underline">
-                    Builds
-                  </a>
-                </li>
-              
-                <li>
-                  <a href="/cwp-11ty/#foundations" class="text-base font-bold underline">
-                    Foundations
-                  </a>
-                </li>
-              
-                <li>
-                  <a href="/cwp-11ty/about/" class="text-base font-bold underline">
-                    About
-                  </a>
-                </li>
-              
-        <li>
-<div x-data="">
-    <label class="inline-flex items-center cursor-pointer">
-        <input type="checkbox" x-bind:value="$store.trinket.on" x-on:change="$store.trinket.on = !$store.trinket.on" class="sr-only peer">
-        <div class="relative w-11 h-6 bg-teal-500 peer-focus:outline-none peer-focus:ring-4 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-800"></div>
-        <div class="w-[80px]">
-            <span x-show="!$store.trinket.on" class="ms-3 w-100">Arduino</span>
-            <span x-show="$store.trinket.on" class="ms-3 w-100">Trinket</span>
-        </div>
-    </label>
-</div></li>
-      </ul>
-      <button x-on:click="open = !open" x-bind:aria-expanded="open" type="button" aria-label="mobile menu" aria-controls="mobileMenu" class="flex md:hidden">
-        <svg x-cloak="" x-show="!open" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-        </svg>
-        <svg x-cloak="" x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-      <ul x-cloak="" x-show="open" id="mobileMenu" class="fixed inset-x-0 top-0 z-10 bg-white px-6 pb-6 pt-6 mt-14 md:hidden">
-        <li class="py-2">
-                  <a href="/cwp-11ty/#builds" class="text-base font-bold">
-                    Builds
-                  </a>
-                </li>
-              
-                <li class="py-2">
-                  <a href="/cwp-11ty/#foundations" class="text-base font-bold">
-                    Foundations
-                  </a>
-                </li>
-              
-                <li class="py-2">
-                  <a href="/cwp-11ty/about/" class="text-base font-bold">
-                    About
-                  </a>
-                </li>
-              
-        <li class="py-2">
-<div x-data="">
-    <label class="inline-flex items-center cursor-pointer">
-        <input type="checkbox" x-bind:value="$store.trinket.on" x-on:change="$store.trinket.on = !$store.trinket.on" class="sr-only peer">
-        <div class="relative w-11 h-6 bg-teal-500 peer-focus:outline-none peer-focus:ring-4 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-800"></div>
-        <div class="w-[80px]">
-            <span x-show="!$store.trinket.on" class="ms-3 w-100">Arduino</span>
-            <span x-show="$store.trinket.on" class="ms-3 w-100">Trinket</span>
-        </div>
-    </label>
-</div></li>
-      </ul>
-    </div>
-  </nav>
-</header>
+  <body data-env="{{ node.env }}" class="min-h-screen bg-cream font-sans">
+    <site-header>
 
+<header class="new-header">
+  <div class="new-header-content">
+    <a href="/cwp-11ty/" class="site-title">Creative Computing Cookbook</a>
+    <ul class="nav-links">
+      <li><a href="/cwp-11ty/all-recipes">All Recipes</a></li>
+      <li><a href="/cwp-11ty/builds">Builds</a></li>
+      <li><a href="/cwp-11ty/foundations">Foundations</a></li>
+      <li><a href="/cwp-11ty/about">About</a></li>
+    </ul>
+  </div>
+</header>
+</site-header>
 
     <div><main id="main-content" tabindex="-1">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-6">
     <div class="flex flex-col lg:flex-row lg:gap-8">
       <div class="flex-1 lg:w-[75%]">
         <!-- Page Title -->
-        <h1 id="title" class="text-5xl font-bold leading-tight text-gray-900 mb-0">Angular Servo Motor</h1>
-        <img src="/cwp-11ty/assets/servo-CRPxB2Hg.png" class="my-8">
+        <h1 id="page-top" class="text-[32px] font-semibold leading-[1.4] text-[#1e1e1e] mb-0">Angular Servo Motor</h1>
+
+        <!-- Primary Tags -->
+        <div class="flex flex-col gap-5 mt-5 mb-5">
+          <div class="flex flex-col gap-2">
+            <div class="text-[28px] font-semibold font-mono text-[#1e1e1e]">
+              Interaction
+            </div>
+            <div class="flex flex-wrap gap-2">
+              
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <div class="text-[28px] font-semibold font-mono text-[#1e1e1e]">
+              Techniques &amp; Concepts
+            </div>
+            <div class="flex flex-wrap gap-2">
+              
+            </div>
+          </div>
+        </div>
 
         <div class="prose-gray text-gray-700 py-4">
           
             <!-- Text -->
-            <div id="section-0" class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
-              <h2 class="text-3xl font-bold text-gray-900 mb-4">Introduction</h2>
-              <div class="text-gray-700 leading-relaxed mb-4"><p>An angular servo motor is a little motor that can move to specific angles or positions, kind of like how the hands of a clock move to point at different numbers, and it's really good at holding still in one spot once it gets there. People use them in robots and toys to control things like moving an arm or turning a wheel to an exact spot because the servo can understand and remember specific positions it needs to turn to!</p>
+            <div id="section-0" class="my-20">
+              <h2 class="text-2xl font-bold text-black mb-5">Introduction</h2>
+              <div class="text-black text-2xl leading-8"><p>An angular servo motor is a little motor that can move to specific angles or positions, kind of like how the hands of a clock move to point at different numbers, and it's really good at holding still in one spot once it gets there. People use them in robots and toys to control things like moving an arm or turning a wheel to an exact spot because the servo can understand and remember specific positions it needs to turn to!</p>
 </div>
             </div>
 
             <!-- Circuit Assembly -->
             
 
-            <!-- Code -->
+            <!-- Code / Makecode -->
             
 
-            <!-- Parsons Problems -->
+            <!-- Parsons group (tabbed) -->
             
 
-            <!-- Parsons Problems -->
+            <!-- Parsons single -->
             
 
             <!-- Other combinations -->
@@ -169,20 +129,20 @@
             
 
             <!-- Circuit Assembly -->
-            <div class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
-              <h2 id="section-1" class="text-3xl font-bold text-gray-900">Circuit Assembly</h2>
-              <div class="text-gray-700 leading-relaxed mb-4"><p>Connect the angular servo to any digital pin. In our example, we're using <strong>D5/D14</strong>.<br><br> The pin that you connect your angular servo to corresponds to a pin value on your code. We're using <strong>D5/D4</strong>, which corresponds to <strong>5</strong>. You can remix yours to look like this:<br><br> - D11/D10 → <strong>servo_pin</strong> = 11;<br> - D9/D8 → <strong>servo_pin</strong> = 9;<br> - D7/D6 → <strong>servo_pin</strong> = 7;<br> - D5/D4 → <strong>servo_pin</strong> = 5;<br> - D3/D2 → <strong>servo_pin</strong> = 3;<br> - D1/D0 → <strong>servo_pin</strong> = 1;</p>
+            <div class="my-20">
+              <h2 id="section-1" class="text-2xl font-bold text-black mb-5">Circuit Assembly</h2>
+              <div class="text-black text-2xl leading-8 mb-4"><p>Connect the angular servo to any digital pin. In our example, we're using <strong>D5/D14</strong>.<br><br> The pin that you connect your angular servo to corresponds to a pin value on your code. We're using <strong>D5/D4</strong>, which corresponds to <strong>5</strong>. You can remix yours to look like this:<br><br> - D11/D10 → <strong>servo_pin</strong> = 11;<br> - D9/D8 → <strong>servo_pin</strong> = 9;<br> - D7/D6 → <strong>servo_pin</strong> = 7;<br> - D5/D4 → <strong>servo_pin</strong> = 5;<br> - D3/D2 → <strong>servo_pin</strong> = 3;<br> - D1/D0 → <strong>servo_pin</strong> = 1;</p>
 </div>
-              <img src="/cwp-11ty/assets/Continuous-Servo-Circuit-LJ6vNnyG.png" class="w-full h-auto mb-2 mx-auto rounded-md not-prose">
+              <img src="/cwp-11ty/assets/Continuous-Servo-Circuit-LJ6vNnyG.png" class="w-full h-auto mb-2 mx-auto rounded-xl not-prose">
             </div>
 
-            <!-- Code -->
+            <!-- Code / Makecode -->
             
 
-            <!-- Parsons Problems -->
+            <!-- Parsons group (tabbed) -->
             
 
-            <!-- Parsons Problems -->
+            <!-- Parsons single -->
             
 
             <!-- Other combinations -->
@@ -195,9 +155,9 @@
             <!-- Circuit Assembly -->
             
 
-            <!-- Code -->
-            <div id="section-2" class="my-8 w-full h-auto p-4 bg-gray-200 border-t-4 border-gray-500">
-              <h2 class="text-3xl font-bold text-gray-900 mb-2">Code</h2>
+            <!-- Code / Makecode -->
+            <div id="section-2" class="my-20">
+              <h2 class="text-2xl font-bold text-black mb-5">Code</h2>
               <div class="flex justify-center">
                 <div class="relative w-11/12 lg:w-4/5 pb-[56.25%] overflow-hidden">
                   <iframe src="https://app.arduino.cc/sketches/5df30a26-9236-4f4c-8139-13f205f7620c?view-mode=embed" frameborder="0" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" class="absolute inset-0 w-full h-full makercode"></iframe>
@@ -205,10 +165,10 @@
               </div>
             </div>
 
-            <!-- Parsons Problems -->
+            <!-- Parsons group (tabbed) -->
             
 
-            <!-- Parsons Problems -->
+            <!-- Parsons single -->
             
 
             <!-- Other combinations -->
@@ -221,20 +181,20 @@
             <!-- Circuit Assembly -->
             
 
-            <!-- Code -->
+            <!-- Code / Makecode -->
             
 
-            <!-- Parsons Problems -->
+            <!-- Parsons group (tabbed) -->
             
 
-            <!-- Parsons Problems -->
+            <!-- Parsons single -->
             
 
             <!-- Other combinations -->
-            <div class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
-              <h2 id="section-3" class="text-3xl font-bold leading-tight text-gray-900"><p>Other Combinations</p>
+            <div class="my-20">
+              <h2 id="section-3" class="text-2xl font-bold text-black mb-5"><p>Other Combinations</p>
 </h2>
-              <div class="flex-row">
+              <div class="flex flex-row flex-wrap gap-4">
                 <!-- Block below uses a different script in the .eleventy.js file (findPostByDBPosts) change back to findPostByTitles-->
                 <div class="p-4">
   <a href="/cwp-11ty/foundations/Potentiometer-with-Angular-Servo/" class="group hover:shadow-lg transition-shadow">
@@ -272,18 +232,18 @@
             <!-- Circuit Assembly -->
             
 
-            <!-- Code -->
+            <!-- Code / Makecode -->
             
 
-            <!-- Parsons Problems -->
-            <div id="section-4" class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500">
-              <h2 class="text-3xl font-bold text-gray-900 mb-2">Try it yourself!</h2>
+            <!-- Parsons group (tabbed) -->
+            <div id="section-4" class="my-20">
+              <h2 class="text-2xl font-bold text-black mb-5">Try it yourself!</h2>
               <div x-data="{ activeTab: 1 }" class="mb-4">
-                <div class="flex border-b border-gray-400 mb-2">
-                  <button x-bind:class="activeTab === Number($el.dataset.index) ? 'border-gray-500 bg-gray-100' : 'border-transparent'" x-on:click="activeTab = Number($el.dataset.index)" data-index="1" type="button" class="px-4 py-2 -mb-px font-semibold text-gray-700 focus:outline-none transition-colors duration-150 border-b-4">Knob</button>
-<button x-bind:class="activeTab === Number($el.dataset.index) ? 'border-gray-500 bg-gray-100' : 'border-transparent'" x-on:click="activeTab = Number($el.dataset.index)" data-index="2" type="button" class="px-4 py-2 -mb-px font-semibold text-gray-700 focus:outline-none transition-colors duration-150 border-b-4">Sweep</button>
+                <div class="flex gap-2 mb-4 flex-wrap">
+                  <button x-bind:class="activeTab === Number($el.dataset.index) ? 'bg-peach text-gray-900 shadow-button' : 'bg-cream-dark text-gray-500 shadow-sm'" x-on:click="activeTab = Number($el.dataset.index)" data-index="1" type="button" class="px-4 py-3 font-mono font-bold text-base rounded-xl transition-all duration-200">Knob</button>
+<button x-bind:class="activeTab === Number($el.dataset.index) ? 'bg-peach text-gray-900 shadow-button' : 'bg-cream-dark text-gray-500 shadow-sm'" x-on:click="activeTab = Number($el.dataset.index)" data-index="2" type="button" class="px-4 py-3 font-mono font-bold text-base rounded-xl transition-all duration-200">Sweep</button>
                 </div>
-                <div class="p-4 bg-white rounded shadow-inner min-h-[3rem]">
+                <div class="rounded-xl bg-cream-dark p-4 min-h-[3rem]">
                   <div x-show="activeTab === Number($el.dataset.index)" data-index="1">
                     
 
@@ -305,7 +265,7 @@
 
 
 <!-- Component container with clear boundaries -->
-<div id="webc-ydRxE" class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 mx-auto">
+<div id="webc-tOEXE" class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 mx-auto">
   <!-- Title from attribute -->
   <!-- <h3 class="text-xl font-semibold mb-4 text-gray-800" @text="title"> Try your hand at a parsons problem! </h3> -->
   
@@ -315,13 +275,13 @@
       <!-- Source container -->
       <div class="w-full md:w-1/2">
         <h4 class="text-sm font-medium text-gray-500 mb-3">Available Code</h4>
-        <div id="webc-ydRxE-sortableTrash" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
+        <div id="webc-tOEXE-sortableTrash" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
       </div>
       
       <!-- Solution container -->
       <div class="w-full md:w-1/2">
         <h4 class="text-sm font-medium text-gray-500 mb-3">Your Solution</h4>
-        <div id="webc-ydRxE-sortable" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
+        <div id="webc-tOEXE-sortable" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
       </div>
     </div>
     
@@ -364,7 +324,7 @@
 
 
 <!-- Component container with clear boundaries -->
-<div id="webc-Zp7lH" class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 mx-auto">
+<div id="webc-ew43z" class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 mx-auto">
   <!-- Title from attribute -->
   <!-- <h3 class="text-xl font-semibold mb-4 text-gray-800" @text="title"> Try your hand at a parsons problem! </h3> -->
   
@@ -374,13 +334,13 @@
       <!-- Source container -->
       <div class="w-full md:w-1/2">
         <h4 class="text-sm font-medium text-gray-500 mb-3">Available Code</h4>
-        <div id="webc-Zp7lH-sortableTrash" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
+        <div id="webc-ew43z-sortableTrash" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
       </div>
       
       <!-- Solution container -->
       <div class="w-full md:w-1/2">
         <h4 class="text-sm font-medium text-gray-500 mb-3">Your Solution</h4>
-        <div id="webc-Zp7lH-sortable" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
+        <div id="webc-ew43z-sortable" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
       </div>
     </div>
     
@@ -406,7 +366,7 @@
               </div>
             </div>
 
-            <!-- Parsons Problems -->
+            <!-- Parsons single -->
             
 
             <!-- Other combinations -->
@@ -417,140 +377,106 @@
 
       <!-- Pullout Drawer if medium/small screen -->
       <div x-data="{ drawerOpen: false }" class="lg:hidden">
-        <div class="p-4">
-          <div x-on:click="drawerOpen = true" class="fixed right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white px-2 py-6 rounded-l-lg shadow-lg cursor-pointer transition-all duration-200 hover:px-3 z-30">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-          </div>
-        </div>
-        <!-- Overlay -->
-        <div x-show="drawerOpen" x-transition:enter="transition-opacity ease-linear duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition-opacity ease-linear duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-on:click="drawerOpen = false" class="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+  <div class="p-4">
+    <div x-on:click="drawerOpen = true" class="fixed right-0 top-1/2 transform -translate-y-1/2 bg-[#f7cb9c] text-gray-900 px-2 py-6 rounded-l-xl shadow-lg cursor-pointer transition-all duration-200 hover:px-3 z-30">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </div>
+  </div>
 
-        <!-- Drawer -->
-        <div x-show="drawerOpen" x-transition:enter="transform transition ease-in-out duration-300" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transform transition ease-in-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" class="fixed top-0 right-0 z-50 w-80 h-full bg-white shadow-xl">
-          <div class="flex items-center justify-between p-4 border-b border-gray-200">
-            <h2 class="text-xl font-semibold text-gray-800">
-              Table of Contents
-            </h2>
-            <button x-on:click="drawerOpen = false" class="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-gray-600">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-          </div>
+  <!-- Overlay -->
+  <div x-show="drawerOpen" x-transition:enter="transition-opacity ease-linear duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition-opacity ease-linear duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-on:click="drawerOpen = false" class="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
 
-          <!-- Drawer Content -->
-          <div class="p-4">
-            <ul class="text-sm text-gray-600 space-y-1">
-              <a x-on:click="drawerOpen=false" href="#title" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"><p>Angular Servo Motor</p>
-</a>
-
-              
-                <li>
-                  <a x-on:click="drawerOpen=false" href="#section-0" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
-                </li>
-              
-
-                <li>
-                  <a x-on:click="drawerOpen=false" href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
-                </li>
-              
-
-                <li>
-                  <a x-on:click="drawerOpen=false" href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
-                </li>
-              
-
-                <li>
-                  <a x-on:click="drawerOpen=false" href="#section-3" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Other Combinations</a>
-                </li>
-              
-
-                <li>
-                  <a x-on:click="drawerOpen=false" href="#section-4" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Try it yourself!</a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sidebar if large screen -->
-      <aside class="hidden lg:block lg:w-[20%] lg:flex-shrink-0">
-        <div class="sticky top-4">
-          <div class="bg-gray-100 border-t-4 border-gray-500 p-4 shadow-sm">
-            <div class="space-y-4">
-              <div>
-                <h2 class="text-md font-medium text-gray-700 mb-2">
-                  Table of Contents
-                </h2>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <a href="#title" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"><p>Angular Servo Motor</p>
-</a>
-
-                  
-                    <li>
-                      <a href="#section-0" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Introduction</a>
-                    </li>
-                  
-
-                    <li>
-                      <a href="#section-1" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Circuit Assembly</a>
-                    </li>
-                  
-
-                    <li>
-                      <a href="#section-2" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Code</a>
-                    </li>
-                  
-
-                    <li>
-                      <a href="#section-3" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Other Combinations</a>
-                    </li>
-                  
-
-                    <li>
-                      <a href="#section-4" class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition">Try it yourself!</a>
-                    </li>
-                  
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </aside>
+  <!-- Drawer panel -->
+  <div x-show="drawerOpen" x-transition:enter="transform transition ease-in-out duration-300" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transform transition ease-in-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" class="fixed top-0 right-0 z-50 w-80 h-full bg-white shadow-xl">
+    <div class="flex items-center justify-between p-4 border-b border-gray-200">
+      <h2 class="text-xl font-semibold font-mono text-gray-800">
+        Table of Contents
+      </h2>
+      <button x-on:click="drawerOpen = false" class="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-gray-600">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
     </div>
 
-    <div>
-      <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
-      <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-        <!-- Block below uses a different script in the .eleventy.js file (findPostByDBPosts) change back to findPostByTitles-->
-        <div class="p-4 grid-item">
-  <div class="card">
-    <a href="/cwp-11ty/builds/Corporate-in-Red/" class="card-content">
-      <img src="/cwp-11ty/assets/corporate-in-red-DKJ1HPh7.png" class="card-img">
-      <p class="card-name">Corporate in Red</p>
-      <p>"Corporate in Red" blends mechanics and storytelling to reveal a worker’s emotional unraveling through interactive audience control.</p>
-    </a>
+    <div class="p-4">
+      <div class="flex flex-col gap-2">
+        
+          <a x-on:click="drawerOpen = false" href="#section-0" class="toc-item block px-4 py-3 font-mono font-bold text-[16px] leading-[1.4] rounded-xl bg-[#f7cb9c] text-[#1e1e1e] transition text-center">Introduction</a>
+        
+
+          <a x-on:click="drawerOpen = false" href="#section-1" class="toc-item block px-4 py-3 font-mono font-bold text-[16px] leading-[1.4] rounded-xl bg-[#f7cb9c] text-[#1e1e1e] transition text-center">Circuit Assembly</a>
+        
+
+          <a x-on:click="drawerOpen = false" href="#section-2" class="toc-item block px-4 py-3 font-mono font-bold text-[16px] leading-[1.4] rounded-xl bg-[#f7cb9c] text-[#1e1e1e] transition text-center">Code</a>
+        
+
+          <a x-on:click="drawerOpen = false" href="#section-3" class="toc-item block px-4 py-3 font-mono font-bold text-[16px] leading-[1.4] rounded-xl bg-[#f7cb9c] text-[#1e1e1e] transition text-center">Other Combinations</a>
+        
+
+          <a x-on:click="drawerOpen = false" href="#section-4" class="toc-item block px-4 py-3 font-mono font-bold text-[16px] leading-[1.4] rounded-xl bg-[#f7cb9c] text-[#1e1e1e] transition text-center">Try it yourself!</a>
+        
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="p-4 grid-item">
-  <div class="card">
-    <a href="/cwp-11ty/builds/Turning-Wheel-of-Closeness/" class="card-content">
-      <img src="/cwp-11ty/assets/turning-wheel-BHArdlmL.JPG" class="card-img">
-      <p class="card-name">Turning Wheel of Closeness</p>
-      <p>The “Turning Wheel of Closeness” reveals deeper personal images as viewers move closer, blending intimacy with interactive motion.</p>
-    </a>
-  </div>
-</div>
 
+      <!-- Sidebar if large screen -->
+      <aside class="hidden lg:block lg:w-[240px] lg:flex-shrink-0">
+  <div class="sticky top-4">
+    <div class="bg-[#fff3dc] rounded-[15px] p-6 flex flex-col gap-2">
+      <div class="text-[20px] font-normal font-mono text-[#1e1e1e] text-left">
+        Table of Contents
+      </div>
+      <div class="flex flex-col gap-2">
+        
+          <a href="#section-0" class="toc-item block px-4 py-3 font-mono font-bold text-[16px] leading-[1.4] rounded-xl bg-peach text-[#1e1e1e] transition text-center">Introduction</a>
+        
+
+          <a href="#section-1" class="toc-item block px-4 py-3 font-mono font-bold text-[16px] leading-[1.4] rounded-xl bg-peach text-[#1e1e1e] transition text-center">Circuit Assembly</a>
+        
+
+          <a href="#section-2" class="toc-item block px-4 py-3 font-mono font-bold text-[16px] leading-[1.4] rounded-xl bg-peach text-[#1e1e1e] transition text-center">Code</a>
+        
+
+          <a href="#section-3" class="toc-item block px-4 py-3 font-mono font-bold text-[16px] leading-[1.4] rounded-xl bg-peach text-[#1e1e1e] transition text-center">Other Combinations</a>
+        
+
+          <a href="#section-4" class="toc-item block px-4 py-3 font-mono font-bold text-[16px] leading-[1.4] rounded-xl bg-peach text-[#1e1e1e] transition text-center">Try it yourself!</a>
+        
+      </div>
+    </div>
+  </div>
+</aside>
+
+    </div>
+
+    <div class="flex flex-col gap-5 mt-8">
+      <h2 class="explore-heading">More to Explore</h2>
+      <div class="flex flex-row gap-[17px] overflow-x-auto pb-2">
+        
+          <div class="explore-card">
+            <a href="/cwp-11ty/builds/Corporate-in-Red/" class="explore-card-link">
+              <p class="explore-card-title">Corporate in Red</p>
+              <img src="/cwp-11ty/assets/corporate-in-red-DKJ1HPh7.png" class="explore-card-img">
+            </a>
+          </div>
+        
+
+          <div class="explore-card">
+            <a href="/cwp-11ty/builds/Turning-Wheel-of-Closeness/" class="explore-card-link">
+              <p class="explore-card-title">Turning Wheel of Closeness</p>
+              <img src="/cwp-11ty/assets/turning-wheel-BHArdlmL.JPG" class="explore-card-img">
+            </a>
+          </div>
+        
       </div>
     </div>
   </div>
 </main>
-
 
 
 
@@ -2500,7 +2426,7 @@ function setup_parsons(uid, initial) {
     });
   });
 }
-setup_parsons("webc-ydRxE", `
+setup_parsons("webc-tOEXE", `
 #include <Servo.h>
 
 Servo myservo;  // create servo object to control a servo
@@ -2519,7 +2445,7 @@ void loop() {
   delay(15);                           // waits for the servo to get there
 }
 `);
-setup_parsons("webc-Zp7lH", `
+setup_parsons("webc-ew43z", `
 #include <Servo.h>
 
 Servo myservo;  // create servo object to control a servo
@@ -2680,14 +2606,67 @@ li.correctPosition, .testcase.pass {
     display: block;
     color: red;
 }
-html {
-    scroll-behavior: smooth;
+/*__EleventyBundle:get:css:default:EleventyBundle__*/
+.new-header {
+    padding: 20px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFF3DC;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  [id^='section-'] {
-    scroll-margin-top: 2rem;
+  .new-header-content {
+    max-width: 1312px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-/*__EleventyBundle:get:css:default:EleventyBundle__*/</style>
+
+  .site-title {
+    font-family: 'General Sans', -apple-system, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 140%;
+    color: #000000;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    font-family: 'General Sans', -apple-system, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
+    color: #000000;
+    text-decoration: none;
+    padding: 8px 16px;
+    transition: all 0.2s;
+  }
+
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .new-header {
+      padding: 20px;
+    }
+
+    .nav-links {
+      gap: 24px;
+      font-size: 16px;
+    }
+  }</style>
 
 	
 
