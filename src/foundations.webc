@@ -25,59 +25,83 @@
       <div class="flex-1 lg:w-[75%]">
         <!-- Page Title -->
         <h1
-          class="text-5xl font-bold leading-tight text-gray-900 mb-0"
-          id="title"
+          class="text-[32px] font-semibold leading-[1.4] text-[#1e1e1e] mb-0"
+          id="page-top"
           @text="p.title"
         ></h1>
-        <img class="my-8" :src="p.thumbnail" />
+
+        <!-- Primary Tags -->
+        <div class="flex flex-col gap-5 mt-5 mb-5">
+          <div class="flex flex-col gap-2">
+            <div class="text-[28px] font-semibold font-mono text-[#1e1e1e]">
+              Interaction
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                webc:for="tag of p.interaction ?? rich_tags.filter(t => t.category == 'Interaction')"
+                class="tag-chip"
+                @text="tag.name ? tag.name : tag"
+              ></span>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <div class="text-[28px] font-semibold font-mono text-[#1e1e1e]">
+              Techniques & Concepts
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                webc:for="tag of p.techniques ?? rich_tags.filter(t => t.category == 'Techniques & Concepts')"
+                class="tag-chip"
+                @text="tag.name ? tag.name : tag"
+              ></span>
+            </div>
+          </div>
+        </div>
 
         <div class="prose-gray text-gray-700 py-4">
           <template webc:for="(f,i) of p.fields" webc:nokeep>
             <!-- Text -->
             <div
               webc:if="f.type == 'text'"
-              class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500"
+              class="my-20"
               :id="'section-' + i"
             >
               <h2
                 webc:if="f.heading"
-                class="text-3xl font-bold text-gray-900 mb-4"
+                class="text-2xl font-bold text-black mb-5"
                 @text="f.heading"
               ></h2>
               <div
-                class="text-gray-700 leading-relaxed mb-4"
+                class="text-black text-2xl leading-8"
                 @html="markdown(f.text)"
               ></div>
             </div>
 
             <!-- Circuit Assembly -->
-            <div
-              webc:if="f.type == 'circuit'"
-              class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500"
-            >
+            <div webc:if="f.type == 'circuit'" class="my-20">
               <h2
-                class="text-3xl font-bold text-gray-900"
+                class="text-2xl font-bold text-black mb-5"
                 @text="f.heading"
                 :id="'section-' + i"
               ></h2>
               <div
-                class="text-gray-700 leading-relaxed mb-4"
+                class="text-black text-2xl leading-8 mb-4"
                 @html="markdown(f.text)"
               ></div>
               <img
                 :src="f.src"
-                class="w-full h-auto mb-2 mx-auto rounded-md not-prose"
+                class="w-full h-auto mb-2 mx-auto rounded-xl not-prose"
               />
             </div>
 
-            <!-- Code -->
+            <!-- Code / Makecode -->
             <div
               webc:if="f.type == 'code'"
-              class="my-8 w-full h-auto p-4 bg-gray-200 border-t-4 border-gray-500"
+              class="my-20"
               :id="'section-' + i"
             >
               <h2
-                class="text-3xl font-bold text-gray-900 mb-2"
+                class="text-2xl font-bold text-black mb-5"
                 @text="f.heading"
               ></h2>
               <div class="flex justify-center">
@@ -94,29 +118,29 @@
               </div>
             </div>
 
-            <!-- Parsons Problems -->
+            <!-- Parsons group (tabbed) -->
             <div
               webc:if="f.type == 'parsons_group'"
-              class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500"
+              class="my-20"
               :id="'section-' + i"
             >
               <h2
-                class="text-3xl font-bold text-gray-900 mb-2"
+                class="text-2xl font-bold text-black mb-5"
                 @text="f.heading"
               ></h2>
               <div x-data="{ activeTab: 1 }" class="mb-4">
-                <div class="flex border-b border-gray-400 mb-2">
+                <div class="flex gap-2 mb-4 flex-wrap">
                   <button
                     webc:for="(tab, i) of f.fields"
-                    class="px-4 py-2 -mb-px font-semibold text-gray-700 focus:outline-none transition-colors duration-150 border-b-4"
-                    x-bind:class="activeTab === Number($el.dataset.index) ? 'border-gray-500 bg-gray-100' : 'border-transparent'"
+                    class="px-4 py-3 font-mono font-bold text-base rounded-xl transition-all duration-200"
+                    x-bind:class="activeTab === Number($el.dataset.index) ? 'bg-peach text-gray-900 shadow-button' : 'bg-cream-dark text-gray-500 shadow-sm'"
                     x-on:click="activeTab = Number($el.dataset.index)"
                     :data-index="i + 1"
                     @text="tab.title"
                     type="button"
                   ></button>
                 </div>
-                <div class="p-4 bg-white rounded shadow-inner min-h-[3rem]">
+                <div class="rounded-xl bg-cream-dark p-4 min-h-[3rem]">
                   <div
                     webc:for="(tab, i) of f.fields"
                     x-show="activeTab === Number($el.dataset.index)"
@@ -128,18 +152,18 @@
               </div>
             </div>
 
-            <!-- Parsons Problems -->
+            <!-- Parsons single -->
             <div
               webc:if="f.type == 'parsons'"
-              class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500"
+              class="my-20"
               :id="'section-' + i"
             >
               <h2
-                class="text-3xl font-bold text-gray-900 mb-2"
+                class="text-2xl font-bold text-black mb-5"
                 @text="f.heading"
               ></h2>
               <div
-                class="text-gray-700 leading-relaxed mb-4"
+                class="text-black text-2xl leading-8 mb-4"
                 @text="f.text"
               ></div>
               <parsons :code="f.code"></parsons>
@@ -148,14 +172,14 @@
             <!-- Other combinations -->
             <div
               webc:if="f.type == 'othercombinations'"
-              class="my-8 p-4 bg-gray-200 border-t-4 border-gray-500"
+              class="my-20"
             >
               <h2
-                class="text-3xl font-bold leading-tight text-gray-900"
+                class="text-2xl font-bold text-black mb-5"
                 @html="markdown(f.heading)"
                 :id="'section-' + i"
               ></h2>
-              <div class="flex-row">
+              <div class="flex flex-row flex-wrap gap-4">
                 <!-- Block below uses a different script in the .eleventy.js file (findPostByDBPosts) change back to findPostByTitles-->
                 <other-combos
                   webc:for="item of findPostByDBPosts(pages, f.other)"
@@ -169,158 +193,27 @@
       </div>
 
       <!-- Pullout Drawer if medium/small screen -->
-      <div x-data="{ drawerOpen: false }" class="lg:hidden">
-        <div class="p-4">
-          <div
-            x-on:click="drawerOpen = true"
-            class="fixed right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white px-2 py-6 rounded-l-lg shadow-lg cursor-pointer transition-all duration-200 hover:px-3 z-30"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 19l-7-7 7-7"
-              ></path>
-            </svg>
-          </div>
-        </div>
-        <!-- Overlay -->
-        <div
-          x-show="drawerOpen"
-          x-transition:enter="transition-opacity ease-linear duration-300"
-          x-transition:enter-start="opacity-0"
-          x-transition:enter-end="opacity-100"
-          x-transition:leave="transition-opacity ease-linear duration-300"
-          x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-0"
-          x-on:click="drawerOpen = false"
-          class="fixed inset-0 bg-black bg-opacity-50 z-40"
-        ></div>
-
-        <!-- Drawer -->
-        <div
-          x-show="drawerOpen"
-          x-transition:enter="transform transition ease-in-out duration-300"
-          x-transition:enter-start="translate-x-full"
-          x-transition:enter-end="translate-x-0"
-          x-transition:leave="transform transition ease-in-out duration-300"
-          x-transition:leave-start="translate-x-0"
-          x-transition:leave-end="translate-x-full"
-          class="fixed top-0 right-0 z-50 w-80 h-full bg-white shadow-xl"
-        >
-          <div
-            class="flex items-center justify-between p-4 border-b border-gray-200"
-          >
-            <h2 class="text-xl font-semibold text-gray-800">
-              Table of Contents
-            </h2>
-            <button
-              x-on:click="drawerOpen = false"
-              class="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-            >
-              <svg
-                class="w-5 h-5 text-gray-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12"
-                ></path>
-              </svg>
-            </button>
-          </div>
-
-          <!-- Drawer Content -->
-          <div class="p-4">
-            <ul class="text-sm text-gray-600 space-y-1">
-              <a
-                x-on:click="drawerOpen=false"
-                href="#title"
-                class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"
-                @html="markdown(p.title)"
-              >
-              </a>
-
-              <template webc:for="(f,i) of p.fields" webc:nokeep>
-                <li webc:if="f.heading">
-                  <a
-                    x-on:click="drawerOpen=false"
-                    :href="'#section-' + i"
-                    class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"
-                    @text="f.heading"
-                  ></a>
-                </li>
-              </template>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <content-toc-drawer :fields="p.fields"></content-toc-drawer>
 
       <!-- Sidebar if large screen -->
-      <aside class="hidden lg:block lg:w-[20%] lg:flex-shrink-0">
-        <div class="sticky top-4">
-          <div class="bg-gray-100 border-t-4 border-gray-500 p-4 shadow-sm">
-            <div class="space-y-4">
-              <div>
-                <h2 class="text-md font-medium text-gray-700 mb-2">
-                  Table of Contents
-                </h2>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <a
-                    href="#title"
-                    class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"
-                    @html="markdown(p.title)"
-                  >
-                  </a>
-
-                  <template webc:for="(f,i) of p.fields" webc:nokeep>
-                    <li webc:if="f.heading">
-                      <a
-                        :href="'#section-' + i"
-                        class="block px-3 py-1 text-gray-900 hover:bg-gray-200 hover:text-gray-900 transition"
-                        @text="f.heading"
-                      ></a>
-                    </li>
-                  </template>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </aside>
+      <content-toc-sidebar :fields="p.fields"></content-toc-sidebar>
     </div>
 
-    <div webc:if="p.related">
-      <h2 class="text-3xl font-bold leading-tight text-gray-900">Related</h2>
-      <div class="px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-        <!-- Block below uses a different script in the .eleventy.js file (findPostByDBPosts) change back to findPostByTitles-->
-        <related-pages
-          webc:for="item of findPostByDBPosts(pages, p.related)"
-          @attributes="item"
-        ></related-pages>
+    <div webc:if="p.related" class="flex flex-col gap-5 mt-8">
+      <h2 class="explore-heading">More to Explore</h2>
+      <div class="flex flex-row gap-[17px] overflow-x-auto pb-2">
+        <template webc:for="item of findPostByDBPosts(pages, p.related)" webc:nokeep>
+          <div class="explore-card">
+            <a class="explore-card-link" :href="item.permalink">
+              <p class="explore-card-title" @text="item.title"></p>
+              <img class="explore-card-img" :src="item.thumbnail" />
+            </a>
+          </div>
+        </template>
       </div>
     </div>
   </div>
 </main>
 
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-
-  [id^='section-'] {
-    scroll-margin-top: 2rem;
-  }
-</style>
 <script @raw="getBundle('js')"></script>
 <style @raw="getBundle('css')"></style>

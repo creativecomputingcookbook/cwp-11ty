@@ -24,10 +24,33 @@ if ('serviceWorker' in navigator && env === 'production') {
 }
 
 // makercode fix
-let makercodes = document.getElementsByClassName("makercode")
+let makercodes = document.getElementsByClassName('makercode');
 
 for (let i = 0; i < makercodes.length; i++) {
-  makercodes[i].addEventListener("load", e => {
-    e.target.style.display = "inline";
-  })
+  makercodes[i].addEventListener('load', (e) => {
+    e.target.style.display = 'inline';
+  });
 }
+
+// TOC scroll-spy: highlight the active section in Table of Contents
+(function () {
+  const sections = document.querySelectorAll('[id^="section-"]');
+  const tocLinks = document.querySelectorAll('.toc-item');
+  if (!sections.length || !tocLinks.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          tocLinks.forEach((a) => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    },
+    { rootMargin: '-10% 0px -80% 0px', threshold: 0 },
+  );
+
+  sections.forEach((s) => observer.observe(s));
+})();

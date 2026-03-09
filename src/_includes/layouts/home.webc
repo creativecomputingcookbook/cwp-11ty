@@ -135,134 +135,71 @@ function item(settings) {
   };
 }
 </script>
-<style>
-  .pagination {
-    display: inline-block;
-  }
-
-  .pagination a {
-    color: black;
-    padding: 8px 12px;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-
-  .pagination a.active {
-    background-color: #2A005F;
-    color: white;
-    border-radius: 5px;
-  }
-
-  .pagination a:hover:not(.active) {background-color: #ddd;}
-</style>
 
 <main id="main-content" tabindex="-1">
-<div>
-  <div class="home relative overflow-hidden">
-    <div class="m-auto prose md:prose-base prose-sm text-white size-fit py-[15%] px-4">
-      <template @raw="content" webc:nokeep></template>
-    </div>
-    <div class="size-[100%]">
-      <div class="slideshow-slide"></div>
-      <div class="slideshow-slide"></div>
-      <div class="slideshow-slide"></div>
-      <div class="slideshow-slide"></div>
-    </div>
+<!-- Hero Section -->
+<div class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-subtitle">Welcome to your STEM playground.</h1>
+    <p class="hero-title">We turn wires, lights, and little gadgets into projects you can actually play with.</p>
+    <a href="/all-recipes/" class="explore-button">
+      <span>Explore All Recipes</span>
+      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9.5 1.5L17 9.5L9.5 17.5" stroke="#1E1E1E" stroke-width="2"/>
+      </svg>
+    </a>
   </div>
 </div>
-<div>
-		<div class="md:flex" :x-data="`{
-      setup: ${JSON.stringify(
-        tag_categories.reduce((a, c, i) => {
-          if (!a[c.category]) a[c.category] = [];
-          a[c.category].push(c.name);
-          return a;
-        }, {})
-      )},
-      show: window.innerWidth >= 768,
-      showOption: false,
 
-      init() {
-        if (this.$store.store.category == \`Builds\`) {
-          let v = this.$store.trinket.on;
-          this.$store.store.addTag(v ? \`Trinket\` : \`Arduino\`);
-        }
-        this.$watch(\`$store.trinket.on\`, (v) => {
-          if (this.$store.store.category == \`Builds\`) {
-           this.$store.store.replaceTag(v ? \`Arduino\` : \`Trinket\`, v ? \`Trinket\` : \`Arduino\`);
-          }
-        })
-      },
+<!-- Hardware Cards Section -->
+<div class="hardware-cards-section" id="builds">
 
-      get tags() {
-        return this.$store.store.tags;
-      },
-      set tags(value) {
-        this.$store.store.setTags(value);
-      },
-
-      pageCount(tag) {
-        return this.$store.store.countPagesForTag(tag);
-      },
-
-      checkWindowSize() {
-        this.show = window.innerWidth >= 768 || this.showOption;
-      },
-      setShowOption() {
-        this.showOption = !this.showOption;
-        this.checkWindowSize();
-      },
-    }`">
-      <button x-on:click="setShowOption()" type="button" class="md:hidden py-4 px-10 w-full text-center font-bold bg-[#B0DC9C]">
-        Show filters...
-      </button>
-      <div x-show="show" x-on:resize.window="checkWindowSize()" class="p-4 md:flex-1">
-        <template x-for="category in Object.keys(setup)">
-          <div>
-            <h3 x-text="category"></h3>
-            <ul>
-              <template x-for="tag of setup[category]">
-                <li class="filter-option">
-                  <label>
-                    <input type="checkbox" x-bind:value="tag" x-model="tags">
-                    <span x-text="tag"></span>
-                    <span x-text="pageCount(tag)"></span>
-                  </label>
-                </li>
-              </template>
-            </ul>
-          </div>
-        </template>
-      </div>
-      <div class="p-4 md:flex-3">
-        <p class="py-4 px-6" x-show="$store.store.category == 'Builds'">
-          Showcase students’ final projects, emphasizing their connection to foundational
-          learning and activity design.
-        </p>
-        <p class="py-4 px-6" x-show="$store.store.category == 'Foundations'">
-          Provide students with the resources and small exercises needed to learn and master core concepts.
-        </p>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3">
-          <related-pages webc:for="(item, i) of pages" @attributes="item" :index="i" :is-home="true"></related-pages>
+  <!-- Builds Section -->
+  <div class="section-card builds-card">
+    <div class="section-content">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="section-header" style="width: 100%;">
+          <h2 class="section-title">BUILDS</h2>
         </div>
-        <div class="pagination">
-          <a
-            x-show="$store.store.page > 1"
-            x-on:click.prevent="$store.store.page -= 1"
-          >&laquo;</a>
-          <template x-for="idx in $store.store.pageCount()">
-            <a
-              x-bind:class="idx === $store.store.page ? 'active' : false"
-              x-text="idx"
-              x-bind:aria-current="idx === $store.store.page ? 'page' : false"
-              x-on:click.prevent="$store.store.page = idx"
-            ></a>
-          </template>
-          <a
-            x-show="$store.store.page < $store.store.pageCount()"
-            x-on:click.prevent="$store.store.page += 1"
-          >&raquo;</a>
-        </div>
+        <p class="section-description">
+          Projects where parts come alive. Fun, quick demos to show what's possible.
+        </p>
+        <a href="/builds" class="section-link">
+          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.5 1.5L17 9.5L9.5 17.5" stroke="#1E1E1E" stroke-width="2"/>
+          </svg>
+        </a>
       </div>
-	</div>
+    </div>
+    <div style="width: 400px; height: 238px; background: #ddd; border-radius: 8px; flex-shrink: 0;"></div>
+  </div>
+
+  <!-- Foundations Section -->
+  <div class="section-card foundations-card">
+    <div class="section-content">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="section-header" style="width: 100%;">
+          <h2 class="section-title">FOUNDATIONS</h2>
+        </div>
+        <p class="section-description">
+          Learn the basics. Step-by-step guides to master core concepts.
+        </p>
+        <a href="/foundations" class="section-link">
+          <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.5 2L18 10.5L10.5 19" stroke="#1E1E1E" stroke-width="2"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div style="width: 400px; height: 238px; background: #ddd; border-radius: 8px; flex-shrink: 0;"></div>
+  </div>
 </div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    © NYU All Right Reserve
+  </div>
+</footer>
+
+</main>
