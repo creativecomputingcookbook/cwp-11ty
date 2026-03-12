@@ -402,6 +402,20 @@ code .highlight-line::before {
   margin: 16px auto 48px;
   padding: 12px 24px;
   text-decoration: none;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.home-explore-btn:hover,
+.home-explore-btn:focus-visible {
+  box-shadow: -8px 8px 0 rgb(0 0 0 / 28%);
+  transform: translate(2px, -2px);
+}
+
+.home-explore-btn:focus-visible {
+  outline: 2px solid #1e1e1e;
+  outline-offset: 2px;
 }
 
 /* --- Build preview cards row --- */
@@ -427,7 +441,9 @@ code .highlight-line::before {
   gap: 8px;
   padding: 12px;
   text-decoration: none;
-  transition: transform 0.3s ease;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
   transform: translateY(calc(100% - 150px));
   width: 243px;
 }
@@ -445,8 +461,15 @@ code .highlight-line::before {
   background: #f7f19c;
 }
 
-.home-preview-card:hover {
+.home-preview-card:hover,
+.home-preview-card:focus-visible {
+  box-shadow: -8px 8px 0 rgb(0 0 0 / 18%);
   transform: translateY(0);
+}
+
+.home-preview-card:focus-visible {
+  outline: 2px solid #1e1e1e;
+  outline-offset: 2px;
 }
 
 .home-preview-card-title {
@@ -531,7 +554,8 @@ code .highlight-line::before {
   font-size: 28px;
 }
 
-.home-section-arrow {
+.home-section-arrow,
+.home-hw-arrow {
   align-items: center;
   border: 1px solid #1e1e1e;
   border-radius: 12px;
@@ -540,15 +564,72 @@ code .highlight-line::before {
   height: 28px;
   justify-content: center;
   text-decoration: none;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
   width: 28px;
 }
 
 .home-section-illustration {
-  background: rgb(0 0 0 / 8%);
   border-radius: 8px;
   flex-shrink: 0;
   height: 272px;
   width: 440px;
+}
+
+.home-section-illustration-placeholder {
+  background: rgb(0 0 0 / 8%);
+}
+
+.home-foundations-illustration {
+  height: 272px;
+  position: relative;
+  width: 440px;
+}
+
+.home-foundations-illustration-img {
+  display: block;
+  height: auto;
+  object-fit: contain;
+  position: absolute;
+}
+
+.home-foundations-illustration-img-button {
+  left: 10px;
+  max-height: 150px;
+  max-width: 112px;
+  top: 112px;
+  transform: rotate(-10deg);
+}
+
+.home-foundations-illustration-img-board {
+  left: 50%;
+  max-height: 220px;
+  max-width: 176px;
+  top: 18px;
+  transform: translateX(-50%) rotate(6deg);
+}
+
+.home-foundations-illustration-img-led {
+  max-height: 128px;
+  max-width: 108px;
+  right: 18px;
+  top: 130px;
+  transform: rotate(12deg);
+}
+
+.home-section-arrow:hover,
+.home-section-arrow:focus-visible,
+.home-hw-arrow:hover,
+.home-hw-arrow:focus-visible {
+  box-shadow: -6px 6px 0 rgb(0 0 0 / 24%);
+  transform: translate(1px, -1px);
+}
+
+.home-section-arrow:focus-visible,
+.home-hw-arrow:focus-visible {
+  outline: 2px solid #1e1e1e;
+  outline-offset: 2px;
 }
 
 /* --- Hardware type cards row (Trinket / Arduino) --- */
@@ -593,18 +674,6 @@ code .highlight-line::before {
   line-height: 140%;
 }
 
-.home-hw-arrow {
-  align-items: center;
-  border: 1px solid #1e1e1e;
-  border-radius: 12px;
-  display: flex;
-  flex-shrink: 0;
-  height: 28px;
-  justify-content: center;
-  text-decoration: none;
-  width: 28px;
-}
-
 .home-hw-desc {
   color: #1e1e1e;
   font-family: 'General Sans', sans-serif;
@@ -614,11 +683,32 @@ code .highlight-line::before {
 }
 
 .home-hw-illustration {
-  background: rgb(0 0 0 / 8%);
   border-radius: 8px;
-  flex-grow: 1;
-  min-height: 200px;
+  display: flex;
+  flex: 0 0 180px;
+  justify-content: center;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
   width: 100%;
+}
+
+.home-hw-illustration-img {
+  display: block;
+  height: auto;
+  left: 50%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.home-hw-illustration-img-trinket {
+  width: 280px;
+}
+
+.home-hw-illustration-img-arduino {
+  width: 360px;
 }
 
 /* --- Footer --- */
@@ -1061,8 +1151,48 @@ main#main-content {
   }
 
   .home-section-illustration {
-    height: 200px;
+    height: auto;
+    min-height: 200px;
     width: 100%;
+  }
+
+  .home-foundations-illustration {
+    height: 220px;
+    min-height: 220px;
+    width: 100%;
+  }
+
+  .home-foundations-illustration-img-button {
+    left: 0;
+    max-height: 124px;
+    max-width: 88px;
+    top: 100px;
+  }
+
+  .home-foundations-illustration-img-board {
+    max-height: 180px;
+    max-width: 148px;
+    top: 12px;
+  }
+
+  .home-foundations-illustration-img-led {
+    max-height: 100px;
+    max-width: 80px;
+    right: 0;
+    top: 118px;
+  }
+
+  .home-hw-illustration {
+    flex-basis: 160px;
+    height: 160px;
+  }
+
+  .home-hw-illustration-img-trinket {
+    width: 240px;
+  }
+
+  .home-hw-illustration-img-arduino {
+    width: 320px;
   }
 
   .home-section-desc,
