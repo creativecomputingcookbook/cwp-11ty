@@ -409,7 +409,7 @@ code .highlight-line::before {
   display: flex;
   gap: 16px;
   justify-content: center;
-  overflow-x: auto;
+  overflow: hidden;
   padding-bottom: 0;
   scrollbar-width: none;
 }
@@ -427,7 +427,8 @@ code .highlight-line::before {
   gap: 8px;
   padding: 12px;
   text-decoration: none;
-  transition: transform 0.2s;
+  transition: transform 0.3s ease;
+  transform: translateY(calc(100% - 150px));
   width: 243px;
 }
 
@@ -445,7 +446,7 @@ code .highlight-line::before {
 }
 
 .home-preview-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(0);
 }
 
 .home-preview-card-title {
