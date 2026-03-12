@@ -42,7 +42,9 @@ layout: 'layouts/base.webc'
             </svg>
           </a>
         </div>
-        <div class="home-section-illustration home-section-illustration-placeholder" aria-hidden="true"></div>
+        <div class="home-section-illustration home-builds-illustration" aria-hidden="true">
+          <img class="home-builds-illustration-img" src="/images/home/builds.png" alt="" loading="lazy" />
+        </div>
       </div>
 
       <div class="home-hw-row">

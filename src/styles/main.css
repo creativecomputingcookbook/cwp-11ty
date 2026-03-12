@@ -581,6 +581,19 @@ code .highlight-line::before {
   background: rgb(0 0 0 / 8%);
 }
 
+.home-builds-illustration {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.home-builds-illustration-img {
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
 .home-foundations-illustration {
   height: 272px;
   position: relative;
