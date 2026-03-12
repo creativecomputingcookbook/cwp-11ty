@@ -18,7 +18,7 @@ layout: 'layouts/base.webc'
 
     <div class="home-preview-row">
       <a
-        webc:for="(page, idx) of categorized_pages.builds.slice(0, 5)"
+        webc:for="page of categorized_pages.builds.slice(0, 5)"
         class="home-preview-card"
         :href="page.permalink"
       >
@@ -30,8 +30,6 @@ layout: 'layouts/base.webc'
 
   <section class="home-content">
     <div class="home-content-inner">
-
-      <!-- Builds section card -->
       <div class="home-section-card home-builds-card">
         <div class="home-section-text">
           <div>
@@ -44,10 +42,9 @@ layout: 'layouts/base.webc'
             </svg>
           </a>
         </div>
-        <div class="home-section-illustration" aria-hidden="true"></div>
+        <div class="home-section-illustration home-section-illustration-placeholder" aria-hidden="true"></div>
       </div>
 
-      <!-- Hardware type cards (Trinket + Arduino) -->
       <div class="home-hw-row">
         <div class="home-hw-card home-hw-card-trinket">
           <div class="home-hw-inner">
@@ -60,7 +57,9 @@ layout: 'layouts/base.webc'
               </a>
             </div>
             <p class="home-hw-desc">A tiny brain with big energy. Simple and playful for small experiments.</p>
-            <div class="home-hw-illustration" aria-hidden="true"></div>
+            <div class="home-hw-illustration" aria-hidden="true">
+              <img class="home-hw-illustration-img home-hw-illustration-img-trinket" src="/images/home/trinket.png" alt="" loading="lazy" />
+            </div>
           </div>
         </div>
 
@@ -75,7 +74,9 @@ layout: 'layouts/base.webc'
               </a>
             </div>
             <p class="home-hw-desc">The classic tool for makers. Build bigger and brighter ideas.</p>
-            <div class="home-hw-illustration" aria-hidden="true"></div>
+            <div class="home-hw-illustration" aria-hidden="true">
+              <img class="home-hw-illustration-img home-hw-illustration-img-arduino" src="/images/home/arduino.png" alt="" loading="lazy" />
+            </div>
           </div>
         </div>
       </div>
@@ -92,9 +93,12 @@ layout: 'layouts/base.webc'
             </svg>
           </a>
         </div>
-        <div class="home-section-illustration" aria-hidden="true"></div>
+        <div class="home-section-illustration home-foundations-illustration" aria-hidden="true">
+          <img class="home-foundations-illustration-img home-foundations-illustration-img-button" src="/images/home/button.png" alt="" loading="lazy" />
+          <img class="home-foundations-illustration-img home-foundations-illustration-img-board" src="/images/home/extendenboard.png" alt="" loading="lazy" />
+          <img class="home-foundations-illustration-img home-foundations-illustration-img-led" src="/images/home/LED.png" alt="" loading="lazy" />
+        </div>
       </div>
-
     </div>
   </section>
 
