@@ -54,8 +54,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;display=swap" media="print" onload="this.media='all'; this.onload=null;">
 
 		
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-DhZgmn0G.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-BpHoxSEa.css">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-_k6w2407.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-B3-UYJN0.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-cream font-sans">
     <site-header>
@@ -64,7 +64,7 @@
   <div class="new-header-content">
     <a href="/cwp-11ty/" class="site-title">Creative Computing Cookbook</a>
     <ul class="nav-links">
-      <li><a href="/cwp-11ty/all-recipes">All Recipes</a></li>
+      <li><a href="/cwp-11ty/all-recipes/">All Recipes</a></li>
       <li><a href="/cwp-11ty/all-recipes/#builds">Builds</a></li>
       <li><a href="/cwp-11ty/all-recipes/#foundations">Foundations</a></li>
       <li><a href="/cwp-11ty/about">About</a></li>
@@ -74,207 +74,128 @@
 </site-header>
 
     <div><main id="main-content" tabindex="-1">
-<!-- Hero Section -->
-<div class="hero-section">
-  <div class="hero-content">
-    <h1 class="hero-subtitle">Welcome to your STEM playground.</h1>
-    <p class="hero-title">We turn wires, lights, and little gadgets into projects you can actually play with.</p>
-    <a href="/cwp-11ty/all-recipes/" class="explore-button">
-      <span>Explore All Recipes</span>
-      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9.5 1.5L17 9.5L9.5 17.5" stroke="#1E1E1E" stroke-width="2"></path>
-      </svg>
-    </a>
-  </div>
-</div>
 
-<!-- Hardware Cards Section -->
-<div id="builds" class="hardware-cards-section">
+  <section class="home-hero">
+    <div class="home-hero-content">
+      <p class="home-hero-title">We turn wires, lights, and little gadgets into projects you can actually play with.</p>
+      <p class="home-hero-subtitle">Welcome to your STEM playground.</p>
+      <a href="/cwp-11ty/all-recipes/" class="home-explore-btn">
+        <span>Explore All Recipes</span>
+        <svg width="14" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polygon points="0,0 10,7 0,14" fill="#1E1E1E"></polygon>
+        </svg>
+      </a>
+    </div>
 
-  <!-- Builds Section -->
-  <div class="section-card builds-card">
-    <div class="section-content">
-      <div style="display: flex; flex-direction: column; gap: 12px">
-        <div style="width: 100%" class="section-header">
-          <h2 class="section-title">BUILDS</h2>
+    <div class="home-preview-row">
+      <a href="/cwp-11ty/builds/All-of-the-Lights-with-Buttons/" class="home-preview-card">
+        <p class="home-preview-card-title">All of the Lights with Buttons</p>
+        <img src="/cwp-11ty/assets/all-of-the-lights-BZBnA6P-.gif" alt="All of the Lights with Buttons" loading="lazy" class="home-preview-card-img">
+      </a>
+<a href="/cwp-11ty/builds/Be-Your-Girl-with-Tilt-sensors/" class="home-preview-card">
+        <p class="home-preview-card-title">Be Your Girl with Tilt sensors</p>
+        <img src="/cwp-11ty/assets/be-your-girl-voqdLIeW.gif" alt="Be Your Girl with Tilt sensors" loading="lazy" class="home-preview-card-img">
+      </a>
+<a href="/cwp-11ty/builds/Can't-Take-My-Eyes-Off-Of-You-with-Buttons/" class="home-preview-card">
+        <p class="home-preview-card-title">Can’t Take My Eyes Off Of You with Buttons</p>
+        <img src="/cwp-11ty/assets/cant-take-my-eyes-CkqoZo5C.gif" alt="Can’t Take My Eyes Off Of You with Buttons" loading="lazy" class="home-preview-card-img">
+      </a>
+<a href="/cwp-11ty/builds/Corporate-in-Red/" class="home-preview-card">
+        <p class="home-preview-card-title">Corporate in Red</p>
+        <img src="/cwp-11ty/assets/corporate-in-red-DKJ1HPh7.png" alt="Corporate in Red" loading="lazy" class="home-preview-card-img">
+      </a>
+<a href="/cwp-11ty/builds/Done-For-Me-with-Buttons/" class="home-preview-card">
+        <p class="home-preview-card-title">Done For Me with Buttons</p>
+        <img src="/cwp-11ty/assets/done-for-me-CKG-uO1O.gif" alt="Done For Me with Buttons" loading="lazy" class="home-preview-card-img">
+      </a>
+    </div>
+  </section>
+
+  <section class="home-content">
+    <div class="home-content-inner">
+      <div class="home-section-card home-builds-card">
+        <div class="home-section-text">
+          <div>
+            <p class="home-section-label">BUILDS</p>
+            <p class="home-section-desc">Projects where parts come alive. Fun, quick demos to show what's possible.</p>
+          </div>
+          <a href="/cwp-11ty/all-recipes/#builds" aria-label="Explore Builds" class="home-section-arrow">
+            <svg width="10" height="12" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polygon points="0,0 10,7 0,14" fill="#1E1E1E"></polygon>
+            </svg>
+          </a>
         </div>
-        <p class="section-description">
-          Projects where parts come alive. Fun, quick demos to show what's possible.
-        </p>
-        <a href="/cwp-11ty/all-recipes/#builds" class="section-link">
-          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.5 1.5L17 9.5L9.5 17.5" stroke="#1E1E1E" stroke-width="2"></path>
-          </svg>
-        </a>
+        <div aria-hidden="true" class="home-section-illustration home-builds-illustration">
+          <img src="/cwp-11ty/assets/builds-Dm-jKf6w.png" alt="" loading="lazy" class="home-builds-illustration-img">
+        </div>
+      </div>
+
+      <div class="home-hw-row">
+        <div class="home-hw-card home-hw-card-trinket">
+          <div class="home-hw-inner">
+            <div class="home-hw-header">
+              <span class="home-hw-label">TRINKET</span>
+              <a href="/cwp-11ty/all-recipes/#builds" aria-label="Explore Trinket builds" class="home-hw-arrow">
+                <svg width="10" height="12" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <polygon points="0,0 10,7 0,14" fill="#1E1E1E"></polygon>
+                </svg>
+              </a>
+            </div>
+            <p class="home-hw-desc">A tiny brain with big energy. Simple and playful for small experiments.</p>
+            <div aria-hidden="true" class="home-hw-illustration">
+              <img src="/cwp-11ty/assets/trinket-BFihEpgg.png" alt="" loading="lazy" class="home-hw-illustration-img home-hw-illustration-img-trinket">
+            </div>
+          </div>
+        </div>
+
+        <div class="home-hw-card home-hw-card-arduino">
+          <div class="home-hw-inner">
+            <div class="home-hw-header">
+              <span class="home-hw-label">ARDUINO</span>
+              <a href="/cwp-11ty/all-recipes/#builds" aria-label="Explore Arduino builds" class="home-hw-arrow">
+                <svg width="10" height="12" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <polygon points="0,0 10,7 0,14" fill="#1E1E1E"></polygon>
+                </svg>
+              </a>
+            </div>
+            <p class="home-hw-desc">The classic tool for makers. Build bigger and brighter ideas.</p>
+            <div aria-hidden="true" class="home-hw-illustration">
+              <img src="/cwp-11ty/assets/arduino-BF_CAL9Y.png" alt="" loading="lazy" class="home-hw-illustration-img home-hw-illustration-img-arduino">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-section-card home-foundations-card">
+        <div class="home-section-text">
+          <div>
+            <p class="home-section-label home-section-label-sm">FOUNDATION</p>
+            <p class="home-section-desc home-section-desc-sm">Learn the basics. Step-by-step guides to master core concepts.</p>
+          </div>
+          <a href="/cwp-11ty/all-recipes/#foundations" aria-label="Explore Foundations" class="home-section-arrow">
+            <svg width="10" height="12" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polygon points="0,0 10,7 0,14" fill="#1E1E1E"></polygon>
+            </svg>
+          </a>
+        </div>
+        <div aria-hidden="true" class="home-section-illustration home-foundations-illustration">
+          <img src="/cwp-11ty/assets/button-D776dg52.png" alt="" loading="lazy" class="home-foundations-illustration-img home-foundations-illustration-img-button">
+          <img src="/cwp-11ty/assets/extendenboard-pVPC8VTb.png" alt="" loading="lazy" class="home-foundations-illustration-img home-foundations-illustration-img-board">
+          <img src="/cwp-11ty/assets/LED-Co3PdLNq.png" alt="" loading="lazy" class="home-foundations-illustration-img home-foundations-illustration-img-led">
+        </div>
       </div>
     </div>
-    <div style="width: 400px; height: 238px; background: #ddd; border-radius: 8px; flex-shrink: 0"></div>
-  </div>
+  </section>
 
-  <!-- Foundations Section -->
-  <div class="section-card foundations-card">
-    <div class="section-content">
-      <div style="display: flex; flex-direction: column; gap: 12px">
-        <div style="width: 100%" class="section-header">
-          <h2 class="section-title">FOUNDATIONS</h2>
-        </div>
-        <p class="section-description">
-          Learn the basics. Step-by-step guides to master core concepts.
-        </p>
-        <a href="/cwp-11ty/all-recipes/#foundations" class="section-link">
-          <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10.5 2L18 10.5L10.5 19" stroke="#1E1E1E" stroke-width="2"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-    <div style="width: 400px; height: 238px; background: #ddd; border-radius: 8px; flex-shrink: 0"></div>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="footer-content">
-    © NYU All Right Reserve
-  </div>
-</footer>
+  <footer class="home-footer">
+    <p>© NYU All Rights Reserved</p>
+  </footer>
 
 </main>
 </div>
 
     
-    <script>handleHashChange = () => {
-  switch (window.location.hash) {
-    case '':
-      return;
-    case '#builds':
-      Alpine.store("store").setCategory("Builds");
-      break;
-    case '#foundations':
-      Alpine.store("store").setCategory("Foundations");
-      break;
-  }
-
-  window.location.hash = '';
-}
-
-handleResize = () => {
-  let w = window.innerWidth;
-  let s = 6;
-  if (w >= 1024) s = 9;
-  if (w < 640) s = 3;
-  Alpine.store("store").changePageMaxSize(s);
-}
-
-document.addEventListener('alpine:init', () => {
-  Alpine.store('store', {
-    tags: ['Builds'],
-    category: 'Builds',
-    allItems: {},
-    page: 1,
-    maxSize: 3,
-    currentItems: [],
-
-    setTags(tags) {
-      this.page = 1;
-      this.tags = tags;
-      this.filterItems();
-    },
-    addTag(tag) {
-      this.page = 1;
-      this.tags.push(tag);
-      this.filterItems();
-    },
-    removeTag(tag) {
-      let i = this.tags.indexOf(tag);
-      if (i > -1) {
-        this.page = 1;
-        this.tags.splice(this.tags.indexOf(tag), 1);
-        this.filterItems();
-      }
-    },
-    replaceTag(oldTag, newTag) {
-      this.page = 1;
-      this.tags.splice(this.tags.indexOf(oldTag), 1, newTag);
-      this.filterItems();
-    },
-
-    filterItems() {
-      this.currentItems = Object.entries(this.allItems).filter(o => this.tags.every((v) => o[1].includes(v))).map(o => o[0]);
-    },
-
-    setCategory(category) {
-      this.replaceTag(this.category, category);
-      if (this.category == 'Builds' && category == 'Foundations') {
-        this.removeTag('Trinket');
-        this.removeTag('Arduino');
-      }
-      if (this.category == 'Foundations' && category == 'Builds') {
-        this.addTag(Alpine.store('trinket').on ? 'Trinket' : 'Arduino');
-      }
-      this.category = category;
-    },
-
-    addItem(index, tags) {
-      this.allItems[index] = tags;
-      this.filterItems();
-    },
-
-    setPage(page) {
-      this.page = page;
-    },
-
-    pageCount() {
-      return Math.ceil(this.currentItems.length / this.maxSize);
-    },
-
-    countPagesForTag(tag) {
-      return this.currentItems.map(i => this.allItems[i]).filter(i => i.includes(tag)).length;
-    },
-
-    shouldShow(index) {
-      let i = this.currentItems.indexOf(index.toString());
-      return (i >= (this.page - 1) * this.maxSize && i < this.page * this.maxSize);
-    },
-
-    changePageMaxSize(maxSize) {
-      this.maxSize = maxSize;
-      this.page = Math.min(this.page, this.pageCount());
-    }
-  })
-  
-  window.addEventListener("resize", handleResize);
-  handleResize();
-
-  window.addEventListener("hashchange", handleHashChange);
-  handleHashChange();
-});
-
-// https://codepen.io/rblasam/pen/gOWrNMy
-
-function item(settings) {
-  return {
-    tags: settings.tags,
-    index: settings.index,
-
-    init() {
-      this.$store.store.addItem(this.index, this.tags);
-    },
-
-    get tagFilters() {
-      return this.$store.store.tags;
-    },
-
-    get category() {
-      return this.$store.store.category;
-    },
-
-    get shouldShow() {
-      return this.$store.store.shouldShow(this.index);
-    }
-  };
-}
-if ('scrollRestoration' in history) {
+    <script>if ('scrollRestoration' in history) {
 				history.scrollRestoration = 'manual';
 			}
 document.addEventListener('alpine:init', () => {
@@ -300,12 +221,34 @@ document.addEventListener('alpine:init', () => {
   }
 
   .site-title {
+    align-items: center;
+    background: #f7cb9c;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    box-shadow: -4px 4px 0 rgb(0 0 0 / 10%);
+    display: inline-flex;
     font-family: 'General Sans', -apple-system, sans-serif;
     font-weight: 700;
     font-size: 20px;
+    letter-spacing: 0.01em;
     line-height: 140%;
     color: #000000;
     text-decoration: none;
+    padding: 10px 18px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .site-title:hover {
+    background: #f79cb6;
+    box-shadow: -8px 8px 0 rgb(0 0 0 / 18%);
+    transform: translate(1px, -1px);
+  }
+
+  .site-title:focus-visible {
+    background: #f79cb6;
+    box-shadow: -8px 8px 0 rgb(0 0 0 / 18%);
+    outline: 2px solid #1e1e1e;
+    outline-offset: 2px;
   }
 
   .nav-links {
@@ -318,6 +261,7 @@ document.addEventListener('alpine:init', () => {
   }
 
   .nav-links a {
+    border-radius: 12px;
     font-family: 'General Sans', -apple-system, sans-serif;
     font-weight: 400;
     font-size: 20px;
@@ -325,11 +269,20 @@ document.addEventListener('alpine:init', () => {
     color: #000000;
     text-decoration: none;
     padding: 8px 16px;
-    transition: all 0.2s;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
 
   .nav-links a:hover {
-    text-decoration: underline;
+    background: rgba(247, 203, 156, 0.55);
+    box-shadow: -6px 6px 0 rgb(0 0 0 / 18%);
+    transform: translate(1px, -1px);
+  }
+
+  .nav-links a:focus-visible {
+    background: rgba(247, 203, 156, 0.55);
+    box-shadow: -6px 6px 0 rgb(0 0 0 / 18%);
+    outline: 2px solid #1e1e1e;
+    outline-offset: 2px;
   }
 
   @media (max-width: 768px) {
@@ -337,9 +290,22 @@ document.addEventListener('alpine:init', () => {
       padding: 20px;
     }
 
+    .new-header-content {
+      gap: 16px;
+    }
+
+    .site-title {
+      font-size: 18px;
+      padding: 8px 14px;
+    }
+
     .nav-links {
       gap: 24px;
+    }
+
+    .nav-links a {
       font-size: 16px;
+      padding: 8px 12px;
     }
   }</style>
 

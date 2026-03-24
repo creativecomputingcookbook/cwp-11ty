@@ -54,8 +54,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;display=swap" media="print" onload="this.media='all'; this.onload=null;">
 
 		
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-DhZgmn0G.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-BpHoxSEa.css">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-_k6w2407.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-B3-UYJN0.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-cream font-sans">
     <site-header>
@@ -64,7 +64,7 @@
   <div class="new-header-content">
     <a href="/cwp-11ty/" class="site-title">Creative Computing Cookbook</a>
     <ul class="nav-links">
-      <li><a href="/cwp-11ty/all-recipes">All Recipes</a></li>
+      <li><a href="/cwp-11ty/all-recipes/">All Recipes</a></li>
       <li><a href="/cwp-11ty/all-recipes/#builds">Builds</a></li>
       <li><a href="/cwp-11ty/all-recipes/#foundations">Foundations</a></li>
       <li><a href="/cwp-11ty/about">About</a></li>
@@ -265,7 +265,7 @@
 
 
 <!-- Component container with clear boundaries -->
-<div id="webc-izID-" class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 mx-auto">
+<div id="webc-9SVx2" class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 mx-auto">
   <!-- Title from attribute -->
   <!-- <h3 class="text-xl font-semibold mb-4 text-gray-800" @text="title"> Try your hand at a parsons problem! </h3> -->
   
@@ -275,13 +275,13 @@
       <!-- Source container -->
       <div class="w-full md:w-1/2">
         <h4 class="text-sm font-medium text-gray-500 mb-3">Available Code</h4>
-        <div id="webc-izID--sortableTrash" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
+        <div id="webc-9SVx2-sortableTrash" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
       </div>
       
       <!-- Solution container -->
       <div class="w-full md:w-1/2">
         <h4 class="text-sm font-medium text-gray-500 mb-3">Your Solution</h4>
-        <div id="webc-izID--sortable" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
+        <div id="webc-9SVx2-sortable" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
       </div>
     </div>
     
@@ -324,7 +324,7 @@
 
 
 <!-- Component container with clear boundaries -->
-<div id="webc-W-QgN" class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 mx-auto">
+<div id="webc-10Ad0" class="parsons-problem bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 mx-auto">
   <!-- Title from attribute -->
   <!-- <h3 class="text-xl font-semibold mb-4 text-gray-800" @text="title"> Try your hand at a parsons problem! </h3> -->
   
@@ -334,13 +334,13 @@
       <!-- Source container -->
       <div class="w-full md:w-1/2">
         <h4 class="text-sm font-medium text-gray-500 mb-3">Available Code</h4>
-        <div id="webc-W-QgN-sortableTrash" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
+        <div id="webc-10Ad0-sortableTrash" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
       </div>
       
       <!-- Solution container -->
       <div class="w-full md:w-1/2">
         <h4 class="text-sm font-medium text-gray-500 mb-3">Your Solution</h4>
-        <div id="webc-W-QgN-sortable" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
+        <div id="webc-10Ad0-sortable" class="sortable-code min-h-[100px] bg-gray-100 p-2 rounded border border-gray-300"></div>
       </div>
     </div>
     
@@ -2426,7 +2426,7 @@ function setup_parsons(uid, initial) {
     });
   });
 }
-setup_parsons("webc-izID-", `
+setup_parsons("webc-9SVx2", `
 #include <Servo.h>
 
 Servo myservo;  // create servo object to control a servo
@@ -2445,7 +2445,7 @@ void loop() {
   delay(15);                           // waits for the servo to get there
 }
 `);
-setup_parsons("webc-W-QgN", `
+setup_parsons("webc-10Ad0", `
 #include <Servo.h>
 
 Servo myservo;  // create servo object to control a servo
@@ -2481,9 +2481,9 @@ document.addEventListener('alpine:init', () => {
     <style>/** Stylesheet for the problems */
 
 .parsons-problem {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  width: 100%; 
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
   margin: 0 auto;
+  width: 100%;
 }
 
 /* Make the code blocks stretch to fill available space */
@@ -2496,56 +2496,61 @@ document.addEventListener('alpine:init', () => {
 }
 
 .sortable-code {
-    position: static;
-    padding-left: 0px;
-    margin-left: 2%;
     float: left;
+    margin-left: 2%;
 		overflow-y: auto; /* Add scroll if needed */
+    padding-left: 0;
+    position: static;
 }
 #sortableTrash { width: 65%; }
 #sortable { width: 65%; }
+
 .sortable-code ul {
-    font-size: 80%;
-    font-family: monospace;
-    list-style: none;
     background-color: #efefff;
-    padding-bottom: 10px;
-    padding-left: 0;
+    border: 1px solid #efefff;
+    font-family: monospace;
+    font-size: 80%;
+    list-style: none;
     margin-left: 0;
-    border: 1px solid #efefff;;
+    padding-bottom: 10px;
+    padding-left: 0;;
 }
+
 .sortable-code ul:empty {
   padding-bottom: 30px;
 }
-.sortable-code li, .sortable-code li:before, .sortable-code li:after {
+
+.sortable-code li, .sortable-code li::before, .sortable-code li::after {
   box-sizing: content-box;
 }
+
 ul.output {
     background-color: #FFA;
 }
+
 .sortable-code li {
-    -moz-border-radius:10px;
-    -webkit-border-radius:10px;
-    border-radius: 10px;
     background-color:#EFEFEF;
     border:1px solid lightgray;
-    padding:10px;
-    margin-top: 5px;
-    white-space: pre-wrap;
-    overflow: hidden;
+    border-radius:10px;
+    border-radius:10px;
+    border-radius: 10px;
     cursor: move;
+    margin-top: 5px;
+    overflow: hidden;
+    padding:10px;
+    white-space: pre-wrap;
 }
+
 .sortable-code li:hover {
     overflow: visible;
 }
 
 ul.incorrect {
-    border: 1px solid red;
     background-color: #ffefef;
+    border: 1px solid red;
 }
 
 ul.correct {
-    background-color: #efffef;
     background-color: #DFF2BF;
 }
 
@@ -2569,42 +2574,47 @@ li.correctPosition, .testcase.pass {
     border:1px solid green;
 }
 
-.testcase { padding: 10px; margin-bottom: 10px;}
+.testcase { margin-bottom: 10px; padding: 10px;}
 .testcase .msg { font-weight: bold; }
 .testcase .error { color: red;}
 .testcase .feedback { font-weight: bolder;}
+
 .testcase .fail .expected, .testcase .fail .actual {
     color: red; 
     font-weight: bolder;
 }
+
 .testcase .output { 
-    display: block; 
-    white-space: pre; 
-    background-color: #555555;
-    color: white;
+    background-color: #555;
+    color: white; 
+    display: block;
     font-size: 12px;
     line-height: 15px;
     margin: 5px;
-    padding: 5px;
+    padding: 5px; 
+    white-space: pre;
 }
+
 /** For styling the toggleable elements */
 .jsparson-toggle {
-    padding: 0 15px;
-    display: inline-block;
     border: 1px dashed black;
-    z-index: 500;
     cursor: pointer;
-    min-width: 10px;
+    display: inline-block;
     min-height: 15px;
+    min-width: 10px;
+    padding: 0 15px;
+    z-index: 500;
 }
+
 .jsparson-toggle:empty, .jsparson-toggle.incorrectToggle {
     border-color: red;
     color: red
 }
-.jsparson-toggle:empty:before {
+
+.jsparson-toggle:empty::before {
+    color: red;
     content: "??";
     display: block;
-    color: red;
 }
 /*__EleventyBundle:get:css:default:EleventyBundle__*/
 .new-header {
@@ -2625,12 +2635,34 @@ li.correctPosition, .testcase.pass {
   }
 
   .site-title {
+    align-items: center;
+    background: #f7cb9c;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    box-shadow: -4px 4px 0 rgb(0 0 0 / 10%);
+    display: inline-flex;
     font-family: 'General Sans', -apple-system, sans-serif;
     font-weight: 700;
     font-size: 20px;
+    letter-spacing: 0.01em;
     line-height: 140%;
     color: #000000;
     text-decoration: none;
+    padding: 10px 18px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .site-title:hover {
+    background: #f79cb6;
+    box-shadow: -8px 8px 0 rgb(0 0 0 / 18%);
+    transform: translate(1px, -1px);
+  }
+
+  .site-title:focus-visible {
+    background: #f79cb6;
+    box-shadow: -8px 8px 0 rgb(0 0 0 / 18%);
+    outline: 2px solid #1e1e1e;
+    outline-offset: 2px;
   }
 
   .nav-links {
@@ -2643,6 +2675,7 @@ li.correctPosition, .testcase.pass {
   }
 
   .nav-links a {
+    border-radius: 12px;
     font-family: 'General Sans', -apple-system, sans-serif;
     font-weight: 400;
     font-size: 20px;
@@ -2650,11 +2683,20 @@ li.correctPosition, .testcase.pass {
     color: #000000;
     text-decoration: none;
     padding: 8px 16px;
-    transition: all 0.2s;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
 
   .nav-links a:hover {
-    text-decoration: underline;
+    background: rgba(247, 203, 156, 0.55);
+    box-shadow: -6px 6px 0 rgb(0 0 0 / 18%);
+    transform: translate(1px, -1px);
+  }
+
+  .nav-links a:focus-visible {
+    background: rgba(247, 203, 156, 0.55);
+    box-shadow: -6px 6px 0 rgb(0 0 0 / 18%);
+    outline: 2px solid #1e1e1e;
+    outline-offset: 2px;
   }
 
   @media (max-width: 768px) {
@@ -2662,9 +2704,22 @@ li.correctPosition, .testcase.pass {
       padding: 20px;
     }
 
+    .new-header-content {
+      gap: 16px;
+    }
+
+    .site-title {
+      font-size: 18px;
+      padding: 8px 14px;
+    }
+
     .nav-links {
       gap: 24px;
+    }
+
+    .nav-links a {
       font-size: 16px;
+      padding: 8px 12px;
     }
   }</style>
 
