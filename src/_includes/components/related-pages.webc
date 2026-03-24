@@ -1,13 +1,18 @@
 <div
-  class="p-4 grid-item"
+  class="archive-card"
   :x-data="!isHome ? null : `item({ tags: ${JSON.stringify(tags)}, index: ${index} })`"
   :x-show="!isHome ? null : 'shouldShow'"
 >
-  <div class="card">
-    <a class="card-content" :href="permalink">
-      <img class="card-img" :src="thumbnail"></img>
-      <p class="card-name" @text="title"></p>
-      <p webc:if="shortDesc" @text="shortDesc"></p>
-    </a>
-  </div>
+  <a class="archive-card-link" :href="permalink">
+    <!-- Title row with hardware chip -->
+    <div class="archive-card-header">
+      <p class="archive-card-title" @text="title"></p>
+      <span webc:if="tags.includes('Trinket')" class="archive-hw-chip archive-hw-chip-trinket">Trinket</span>
+      <span webc:if="tags.includes('Arduino')" class="archive-hw-chip archive-hw-chip-arduino">Arduino</span>
+    </div>
+    <!-- Thumbnail -->
+    <img class="archive-card-img" :src="thumbnail" alt=""></img>
+    <!-- Description -->
+    <p class="archive-card-desc" webc:if="shortDesc" @text="shortDesc"></p>
+  </a>
 </div>

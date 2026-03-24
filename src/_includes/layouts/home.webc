@@ -2,204 +2,110 @@
 layout: 'layouts/base.webc'
 ---
 
-<script>
-handleHashChange = () => {
-  switch (window.location.hash) {
-    case '':
-      return;
-    case '#builds':
-      Alpine.store("store").setCategory("Builds");
-      break;
-    case '#foundations':
-      Alpine.store("store").setCategory("Foundations");
-      break;
-  }
-
-  window.location.hash = '';
-}
-
-handleResize = () => {
-  let w = window.innerWidth;
-  let s = 6;
-  if (w >= 1024) s = 9;
-  if (w < 640) s = 3;
-  Alpine.store("store").changePageMaxSize(s);
-}
-
-document.addEventListener('alpine:init', () => {
-  Alpine.store('store', {
-    tags: ['Builds'],
-    category: 'Builds',
-    allItems: {},
-    page: 1,
-    maxSize: 3,
-    currentItems: [],
-
-    setTags(tags) {
-      this.page = 1;
-      this.tags = tags;
-      this.filterItems();
-    },
-    addTag(tag) {
-      this.page = 1;
-      this.tags.push(tag);
-      this.filterItems();
-    },
-    removeTag(tag) {
-      let i = this.tags.indexOf(tag);
-      if (i > -1) {
-        this.page = 1;
-        this.tags.splice(this.tags.indexOf(tag), 1);
-        this.filterItems();
-      }
-    },
-    replaceTag(oldTag, newTag) {
-      this.page = 1;
-      this.tags.splice(this.tags.indexOf(oldTag), 1, newTag);
-      this.filterItems();
-    },
-
-    filterItems() {
-      this.currentItems = Object.entries(this.allItems).filter(o => this.tags.every((v) => o[1].includes(v))).map(o => o[0]);
-    },
-
-    setCategory(category) {
-      this.replaceTag(this.category, category);
-      if (this.category == 'Builds' && category == 'Foundations') {
-        this.removeTag('Trinket');
-        this.removeTag('Arduino');
-      }
-      if (this.category == 'Foundations' && category == 'Builds') {
-        this.addTag(Alpine.store('trinket').on ? 'Trinket' : 'Arduino');
-      }
-      this.category = category;
-    },
-
-    addItem(index, tags) {
-      this.allItems[index] = tags;
-      this.filterItems();
-    },
-
-    setPage(page) {
-      this.page = page;
-    },
-
-    pageCount() {
-      return Math.ceil(this.currentItems.length / this.maxSize);
-    },
-
-    countPagesForTag(tag) {
-      return this.currentItems.map(i => this.allItems[i]).filter(i => i.includes(tag)).length;
-    },
-
-    shouldShow(index) {
-      let i = this.currentItems.indexOf(index.toString());
-      return (i >= (this.page - 1) * this.maxSize && i < this.page * this.maxSize);
-    },
-
-    changePageMaxSize(maxSize) {
-      this.maxSize = maxSize;
-      this.page = Math.min(this.page, this.pageCount());
-    }
-  })
-  
-  window.addEventListener("resize", handleResize);
-  handleResize();
-
-  window.addEventListener("hashchange", handleHashChange);
-  handleHashChange();
-});
-
-// https://codepen.io/rblasam/pen/gOWrNMy
-
-function item(settings) {
-  return {
-    tags: settings.tags,
-    index: settings.index,
-
-    init() {
-      this.$store.store.addItem(this.index, this.tags);
-    },
-
-    get tagFilters() {
-      return this.$store.store.tags;
-    },
-
-    get category() {
-      return this.$store.store.category;
-    },
-
-    get shouldShow() {
-      return this.$store.store.shouldShow(this.index);
-    }
-  };
-}
-</script>
-
 <main id="main-content" tabindex="-1">
-<!-- Hero Section -->
-<div class="hero-section">
-  <div class="hero-content">
-    <h1 class="hero-subtitle">Welcome to your STEM playground.</h1>
-    <p class="hero-title">We turn wires, lights, and little gadgets into projects you can actually play with.</p>
-    <a href="/all-recipes/" class="explore-button">
-      <span>Explore All Recipes</span>
-      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9.5 1.5L17 9.5L9.5 17.5" stroke="#1E1E1E" stroke-width="2"/>
-      </svg>
-    </a>
-  </div>
-</div>
 
-<!-- Hardware Cards Section -->
-<div class="hardware-cards-section" id="builds">
+  <section class="home-hero">
+    <div class="home-hero-content">
+      <p class="home-hero-title">We turn wires, lights, and little gadgets into projects you can actually play with.</p>
+      <p class="home-hero-subtitle">Welcome to your STEM playground.</p>
+      <a href="/all-recipes/" class="home-explore-btn">
+        <span>Explore All Recipes</span>
+        <svg width="14" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polygon points="0,0 10,7 0,14" fill="#1E1E1E"/>
+        </svg>
+      </a>
+    </div>
 
-  <!-- Builds Section -->
-  <div class="section-card builds-card">
-    <div class="section-content">
-      <div style="display: flex; flex-direction: column; gap: 12px;">
-        <div class="section-header" style="width: 100%;">
-          <h2 class="section-title">BUILDS</h2>
+    <div class="home-preview-row">
+      <a
+        webc:for="page of categorized_pages.builds.slice(0, 5)"
+        class="home-preview-card"
+        :href="page.permalink"
+      >
+        <p class="home-preview-card-title" @text="page.title"></p>
+        <img class="home-preview-card-img" :src="page.thumbnail" :alt="page.title" loading="lazy" />
+      </a>
+    </div>
+  </section>
+
+  <section class="home-content">
+    <div class="home-content-inner">
+      <div class="home-section-card home-builds-card">
+        <div class="home-section-text">
+          <div>
+            <p class="home-section-label">BUILDS</p>
+            <p class="home-section-desc">Projects where parts come alive. Fun, quick demos to show what's possible.</p>
+          </div>
+          <a href="/all-recipes/#builds" class="home-section-arrow" aria-label="Explore Builds">
+            <svg width="10" height="12" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polygon points="0,0 10,7 0,14" fill="#1E1E1E"/>
+            </svg>
+          </a>
         </div>
-        <p class="section-description">
-          Projects where parts come alive. Fun, quick demos to show what's possible.
-        </p>
-        <a href="/all-recipes/#builds" class="section-link">
-          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.5 1.5L17 9.5L9.5 17.5" stroke="#1E1E1E" stroke-width="2"/>
-          </svg>
-        </a>
+        <div class="home-section-illustration home-builds-illustration" aria-hidden="true">
+          <img class="home-builds-illustration-img" src="/images/home/builds.png" alt="" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="home-hw-row">
+        <div class="home-hw-card home-hw-card-trinket">
+          <div class="home-hw-inner">
+            <div class="home-hw-header">
+              <span class="home-hw-label">TRINKET</span>
+              <a href="/all-recipes/#builds" class="home-hw-arrow" aria-label="Explore Trinket builds">
+                <svg width="10" height="12" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <polygon points="0,0 10,7 0,14" fill="#1E1E1E"/>
+                </svg>
+              </a>
+            </div>
+            <p class="home-hw-desc">A tiny brain with big energy. Simple and playful for small experiments.</p>
+            <div class="home-hw-illustration" aria-hidden="true">
+              <img class="home-hw-illustration-img home-hw-illustration-img-trinket" src="/images/home/trinket.png" alt="" loading="lazy" />
+            </div>
+          </div>
+        </div>
+
+        <div class="home-hw-card home-hw-card-arduino">
+          <div class="home-hw-inner">
+            <div class="home-hw-header">
+              <span class="home-hw-label">ARDUINO</span>
+              <a href="/all-recipes/#builds" class="home-hw-arrow" aria-label="Explore Arduino builds">
+                <svg width="10" height="12" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <polygon points="0,0 10,7 0,14" fill="#1E1E1E"/>
+                </svg>
+              </a>
+            </div>
+            <p class="home-hw-desc">The classic tool for makers. Build bigger and brighter ideas.</p>
+            <div class="home-hw-illustration" aria-hidden="true">
+              <img class="home-hw-illustration-img home-hw-illustration-img-arduino" src="/images/home/arduino.png" alt="" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-section-card home-foundations-card">
+        <div class="home-section-text">
+          <div>
+            <p class="home-section-label home-section-label-sm">FOUNDATION</p>
+            <p class="home-section-desc home-section-desc-sm">Learn the basics. Step-by-step guides to master core concepts.</p>
+          </div>
+          <a href="/all-recipes/#foundations" class="home-section-arrow" aria-label="Explore Foundations">
+            <svg width="10" height="12" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polygon points="0,0 10,7 0,14" fill="#1E1E1E"/>
+            </svg>
+          </a>
+        </div>
+        <div class="home-section-illustration home-foundations-illustration" aria-hidden="true">
+          <img class="home-foundations-illustration-img home-foundations-illustration-img-button" src="/images/home/button.png" alt="" loading="lazy" />
+          <img class="home-foundations-illustration-img home-foundations-illustration-img-board" src="/images/home/extendenboard.png" alt="" loading="lazy" />
+          <img class="home-foundations-illustration-img home-foundations-illustration-img-led" src="/images/home/LED.png" alt="" loading="lazy" />
+        </div>
       </div>
     </div>
-    <div style="width: 400px; height: 238px; background: #ddd; border-radius: 8px; flex-shrink: 0;"></div>
-  </div>
+  </section>
 
-  <!-- Foundations Section -->
-  <div class="section-card foundations-card">
-    <div class="section-content">
-      <div style="display: flex; flex-direction: column; gap: 12px;">
-        <div class="section-header" style="width: 100%;">
-          <h2 class="section-title">FOUNDATIONS</h2>
-        </div>
-        <p class="section-description">
-          Learn the basics. Step-by-step guides to master core concepts.
-        </p>
-        <a href="/all-recipes/#foundations" class="section-link">
-          <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10.5 2L18 10.5L10.5 19" stroke="#1E1E1E" stroke-width="2"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-    <div style="width: 400px; height: 238px; background: #ddd; border-radius: 8px; flex-shrink: 0;"></div>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="footer-content">
-    © NYU All Right Reserve
-  </div>
-</footer>
+  <footer class="home-footer">
+    <p>© NYU All Rights Reserved</p>
+  </footer>
 
 </main>
