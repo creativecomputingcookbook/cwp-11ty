@@ -747,8 +747,10 @@ code .highlight-line::before {
 .pagination a {
   border-radius: 5px;
   color: black;
+  cursor: pointer;
   padding: 8px 12px;
   text-decoration: none;
+  user-select: none;
 }
 
 .pagination a.active {
