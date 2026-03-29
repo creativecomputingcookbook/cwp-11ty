@@ -13,6 +13,14 @@ handleHashChange = () => {
     case '#foundations':
       Alpine.store("store").setCategory("Foundations");
       break;
+    case '#trinket':
+      Alpine.store("store").setCategory("Builds");
+      Alpine.store("store").setHardware("Trinket");
+      break;
+    case '#arduino':
+      Alpine.store("store").setCategory("Builds");
+      Alpine.store("store").setHardware("Arduino");
+      break;
   }
   window.location.hash = '';
 }

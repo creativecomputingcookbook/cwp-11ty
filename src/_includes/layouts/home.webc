@@ -52,7 +52,7 @@ layout: 'layouts/base.webc'
           <div class="home-hw-inner">
             <div class="home-hw-header">
               <span class="home-hw-label">TRINKET</span>
-              <a href="/all-recipes/#builds" class="home-hw-arrow" aria-label="Explore Trinket builds">
+              <a href="/all-recipes/#trinket" class="home-hw-arrow" aria-label="Explore Trinket builds">
                 <svg width="10" height="12" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <polygon points="0,0 10,7 0,14" fill="#1E1E1E"/>
                 </svg>
@@ -69,7 +69,7 @@ layout: 'layouts/base.webc'
           <div class="home-hw-inner">
             <div class="home-hw-header">
               <span class="home-hw-label">ARDUINO</span>
-              <a href="/all-recipes/#builds" class="home-hw-arrow" aria-label="Explore Arduino builds">
+              <a href="/all-recipes/#arduino" class="home-hw-arrow" aria-label="Explore Arduino builds">
                 <svg width="10" height="12" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <polygon points="0,0 10,7 0,14" fill="#1E1E1E"/>
                 </svg>
