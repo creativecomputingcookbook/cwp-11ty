@@ -155,7 +155,7 @@ function item(settings) {
 <main id="main-content" tabindex="-1">
 <div>
   <div class="home relative overflow-hidden">
-    <div class="m-auto prose md:prose-base prose-sm text-white size-fit py-[15%] px-4">
+    <div class="m-auto prose md:prose-base prose-sm size-fit py-[5%] px-4">
       <template @raw="content" webc:nokeep></template>
     </div>
     <div class="size-[100%]">
@@ -221,7 +221,7 @@ function item(settings) {
             <div class="archive-dropdown" x-show="openDropdown === cat" x-on:click.outside="openDropdown = null" x-transition>
               <template x-for="tag in setup[cat]" :key="tag">
                 <label class="archive-tag-row" x-on:click="$store.store.toggleTag(tag)">
-                  <span class="archive-tag-label" x-text="tag"></span>
+                  <span class="archive-tag-label" x-text="tag + ' (' + $store.store.countPagesForTag(tag) + ')' "></span>
                   <span class="archive-tag-radio" x-bind:class="isTagActive(tag) ? 'archive-tag-radio-on' : 'archive-tag-radio-off'"></span>
                 </label>
               </template>

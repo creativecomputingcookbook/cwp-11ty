@@ -45,11 +45,16 @@ body {
 }
 
 .home {
-  background: #2a005faa;
+  background: linear-gradient(180deg, #fff3dc 0%, #f4c2ff 56%, #fffaef 100%);
 }
 
 .home h1 {
-  color: var(--color-white);
+  color: #4b2378;
+}
+
+.home .prose,
+.home .prose p {
+  color: #4b2378;
 }
 
 /* As we cannot replace the numbers with variables or calls to element
@@ -790,14 +795,14 @@ code .highlight-line::before {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 12px;
 }
 
 /* Hardware buttons */
 .archive-hw-group {
   align-items: center;
   display: flex;
-  gap: 6px;
+  gap: 12px;
 }
 
 .archive-hw-btn {
@@ -833,7 +838,7 @@ code .highlight-line::before {
   border-radius: 12px;
   flex-shrink: 0;
   height: 44px;
-  margin: 0 4px;
+  margin: 0 8px;
   width: 4px;
 }
 
@@ -842,7 +847,7 @@ code .highlight-line::before {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 12px;
 }
 
 .archive-cat-wrap {
