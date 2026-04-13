@@ -154,9 +154,11 @@ function item(settings) {
 
 <main id="main-content" tabindex="-1">
 <div>
-  <div class="home relative overflow-hidden">
+  <div class="home relative overflow-hidden" x-data="{}">
     <div class="m-auto prose md:prose-base prose-sm size-fit py-[5%] px-4">
-      <template @raw="content" webc:nokeep></template>
+      <h1>Creative Computing Cookbook</h1>
+      <p x-show="$store.store.category === 'Builds'"><strong>Builds</strong> are creative projects made by students or instructors integrating technology into dance, performance, visual art and poetry. Builds vary in complexity, but most would take several hours to replicate. We hope you'll use them as inspiration for your own creative goals.</p>
+      <p x-show="$store.store.category === 'Foundations'"><strong>Foundations</strong> provide information about individual electronic components. In each post you'll find details about how to plug elements in, example code, and opportunities to practice your code.</p>
     </div>
     <div class="size-[100%]">
       <div class="slideshow-slide"></div>
