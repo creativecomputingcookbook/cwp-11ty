@@ -9,4 +9,4 @@ eleventyExcludeFromCollections: true
 
 # Learning Activities
 
-This is a placeholder Learning Activities page.
+Coming soon.
