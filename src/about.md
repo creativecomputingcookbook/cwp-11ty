@@ -37,10 +37,6 @@ We'd love to hear from you. Reach out with feedback, collaboration ideas, or jus
 
 **Email**: [contact@creativecomputingcookbook.com](mailto:contact@creativecomputingcookbook.com)
 
-**Discord**: Join our community server to chat with other makers and get support
-
-**Social**: Follow us on Twitter and Instagram for project inspiration and updates
-
 ## NSF
 
 ## Our Team
