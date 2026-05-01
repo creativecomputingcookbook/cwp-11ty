@@ -20,24 +20,26 @@ Build with code. Remix with your own style.
 
 <div class="not-prose mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
   <div class="rounded-xl border-2 border-dashed border-neutral-400 bg-neutral-100 p-4">
-    <div class="h-52 rounded-lg border-2 border-dashed border-neutral-400 bg-white flex items-center justify-center text-sm text-neutral-400">Photo placeholder</div>
+    <img src="/images/team/kayladesportes.jpg" alt="Kayla DesPortes" class="w-full h-64 object-cover rounded-lg" />
     <p class="mb-0 mt-3 font-mono text-sm">Kayla DesPortes, PhD</p>
     <p class="mb-0 mt-1 text-sm">PI, New York University</p>
     <div class="mt-2 flex gap-2 text-xs">
       <a href="https://steinhardt.nyu.edu/people/kayla-desportes" class="text-blue-600 hover:underline">Website</a>
       <span class="text-neutral-400">•</span>
-      <a href="mailto:" class="text-blue-600 hover:underline">Email</a>
+      <a href="mailto:kd90@nyu.edu" class="text-blue-600 hover:underline">Email</a>
     </div>
   </div>
 
   <div class="rounded-xl border-2 border-dashed border-neutral-400 bg-neutral-100 p-4">
-    <div class="h-52 rounded-lg border-2 border-dashed border-neutral-400 bg-white flex items-center justify-center text-sm text-neutral-400">Photo placeholder</div>
+    <img src="/images/team/mcdermott_kathleen.jpg" alt="Kathleen McDermott" class="w-full h-64 object-cover rounded-lg" />
     <p class="mb-0 mt-3 font-mono text-sm">Kathleen McDermott, PhD</p>
     <p class="mb-0 mt-1 text-sm">Co-PI, New York University</p>
     <div class="mt-2 flex gap-2 text-xs">
-      <a href="#" class="text-blue-600 hover:underline">Website</a>
+      <a href="https://engineering.nyu.edu/faculty/kathleen-mcdermott" class="text-blue-600 hover:underline">Website</a>
       <span class="text-neutral-400">•</span>
-      <a href="mailto:" class="text-blue-600 hover:underline">Email</a>
+      <a href="https://kthartic.com/" class="text-blue-600 hover:underline">Portfolio</a>
+      <span class="text-neutral-400">•</span>
+      <a href="mailto:kmcdermott@nyu.edu" class="text-blue-600 hover:underline">Email</a>
     </div>
   </div>
 
@@ -55,13 +57,13 @@ Build with code. Remix with your own style.
   </div>
 
   <div class="rounded-xl border-2 border-dashed border-neutral-400 bg-neutral-100 p-4">
-    <div class="h-52 rounded-lg border-2 border-dashed border-neutral-400 bg-white flex items-center justify-center text-sm text-neutral-400">Photo placeholder</div>
+    <img src="/images/team/yoavbergner.jpg" alt="Yoav Bergner" class="w-full h-64 object-cover rounded-lg" />
     <p class="mb-0 mt-3 font-mono text-sm">Yoav Bergner, PhD</p>
     <p class="mb-0 mt-1 text-sm">Co-PI, New York University</p>
     <div class="mt-2 flex gap-2 text-xs">
-      <a href="#" class="text-blue-600 hover:underline">Website</a>
+      <a href="https://yoavbergner.com/" class="text-blue-600 hover:underline">Website</a>
       <span class="text-neutral-400">•</span>
-      <a href="mailto:" class="text-blue-600 hover:underline">Email</a>
+      <a href="mailto:yoav.bergner@nyu.edu" class="text-blue-600 hover:underline">Email</a>
     </div>
   </div>
 </div>
@@ -70,29 +72,31 @@ Build with code. Remix with your own style.
 
 <div class="not-prose mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
   <div class="rounded-xl border-2 border-dashed border-neutral-400 bg-neutral-100 p-4">
-    <div class="h-40 rounded-lg border-2 border-dashed border-neutral-400 bg-white flex items-center justify-center text-sm text-neutral-400">Photo placeholder</div>
-    <p class="mb-0 mt-3 font-mono text-sm">Vinayak Bhadoriya</p>
+    <div class="h-64 rounded-lg border-2 border-dashed border-neutral-400 bg-white flex items-center justify-center text-sm text-neutral-400">Photo placeholder</div>
+    <p class="mb-0 mt-3 font-mono text-sm">Vinayak Singh Bhadoriya</p>
     <p class="mb-0 mt-1 text-sm">Software Developer, New York University</p>
     <div class="mt-2 flex gap-2 text-xs">
-      <a href="#" class="text-blue-600 hover:underline">Website</a>
+      <a href="https://vinayuck.com/" class="text-blue-600 hover:underline">Website</a>
       <span class="text-neutral-400">•</span>
-      <a href="mailto:" class="text-blue-600 hover:underline">Email</a>
+      <a href="https://www.linkedin.com/in/vinayaksbhadoriya/" class="text-blue-600 hover:underline">LinkedIn</a>
+      <span class="text-neutral-400">•</span>
+      <a href="mailto:vinayaksbhadoriya@gmail.com" class="text-blue-600 hover:underline">Email</a>
     </div>
   </div>
 
   <div class="rounded-xl border-2 border-dashed border-neutral-400 bg-neutral-100 p-4">
-    <div class="h-40 rounded-lg border-2 border-dashed border-neutral-400 bg-white flex items-center justify-center text-sm text-neutral-400">Photo placeholder</div>
+    <div class="h-64 rounded-lg border-2 border-dashed border-neutral-400 bg-white flex items-center justify-center text-sm text-neutral-400">Photo placeholder</div>
     <p class="mb-0 mt-3 font-mono text-sm">Austin Huang</p>
     <p class="mb-0 mt-1 text-sm">Software Developer, New York University</p>
     <div class="mt-2 flex gap-2 text-xs">
-      <a href="#" class="text-blue-600 hover:underline">Website</a>
+      <a href="https://austinhuang.me/" class="text-blue-600 hover:underline">Website</a>
       <span class="text-neutral-400">•</span>
       <a href="mailto:" class="text-blue-600 hover:underline">Email</a>
     </div>
   </div>
 
   <div class="rounded-xl border-2 border-dashed border-neutral-400 bg-neutral-100 p-4">
-    <div class="h-40 rounded-lg border-2 border-dashed border-neutral-400 bg-white flex items-center justify-center text-sm text-neutral-400">Photo placeholder</div>
+    <div class="h-64 rounded-lg border-2 border-dashed border-neutral-400 bg-white flex items-center justify-center text-sm text-neutral-400">Photo placeholder</div>
     <p class="mb-0 mt-3 font-mono text-sm">Sabria Islam</p>
     <p class="mb-0 mt-1 text-sm">Content Developer and Researcher, New York University</p>
     <div class="mt-2 flex gap-2 text-xs">
@@ -103,7 +107,7 @@ Build with code. Remix with your own style.
   </div>
 
   <div class="rounded-xl border-2 border-dashed border-neutral-400 bg-neutral-100 p-4">
-    <div class="h-40 rounded-lg border-2 border-dashed border-neutral-400 bg-white flex items-center justify-center text-sm text-neutral-400">Photo placeholder</div>
+    <div class="h-64 rounded-lg border-2 border-dashed border-neutral-400 bg-white flex items-center justify-center text-sm text-neutral-400">Photo placeholder</div>
     <p class="mb-0 mt-3 font-mono text-sm">Billie Chen</p>
     <p class="mb-0 mt-1 text-sm">Undergraduate Researcher, New York University</p>
     <div class="mt-2 flex gap-2 text-xs">
@@ -114,7 +118,7 @@ Build with code. Remix with your own style.
   </div>
 
   <div class="rounded-xl border-2 border-dashed border-neutral-400 bg-neutral-100 p-4">
-    <div class="h-40 rounded-lg border-2 border-dashed border-neutral-400 bg-white flex items-center justify-center text-sm text-neutral-400">Photo placeholder</div>
+    <div class="h-64 rounded-lg border-2 border-dashed border-neutral-400 bg-white flex items-center justify-center text-sm text-neutral-400">Photo placeholder</div>
     <p class="mb-0 mt-3 font-mono text-sm">Plato Peng</p>
     <p class="mb-0 mt-1 text-sm">UX Designer, New York University</p>
     <div class="mt-2 flex gap-2 text-xs">
@@ -129,17 +133,17 @@ Build with code. Remix with your own style.
 
 <div class="not-prose mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
   <div class="rounded-xl p-4 flex items-center gap-4">
-    <div class="w-20 h-20 bg-neutral-100 rounded-md flex items-center justify-center text-sm text-neutral-400">Logo</div>
+    <img src="/images/team/cwp_logo.webp" alt="Community-Word Project logo" class="w-20 h-20 object-contain" />
     <div>
       <p class="mb-0 font-mono text-sm">Community-Word Project</p>
-      <a href="#" class="text-blue-600 hover:underline">Website</a>
+      <a href="https://communitywordproject.org/" class="text-blue-600 hover:underline">Website</a>
     </div>
   </div>
   <div class="rounded-xl p-4 flex items-center gap-4">
-    <div class="w-20 h-20 bg-neutral-100 rounded-md flex items-center justify-center text-sm text-neutral-400">Logo</div>
+    <img src="/images/team/stem_from_dance_logo.jpeg" alt="STEM From Dance logo" class="w-20 h-20 object-contain" />
     <div>
       <p class="mb-0 font-mono text-sm">STEM From Dance</p>
-      <a href="#" class="text-blue-600 hover:underline">Website</a>
+      <a href="https://stemfromdance.org/" class="text-blue-600 hover:underline">Website</a>
     </div>
   </div>
 </div>
