@@ -85,7 +85,7 @@ Build with code. Remix with your own style.
   </div>
 
   <div class="rounded-xl border-2 border-dashed border-neutral-400 bg-neutral-100 p-4">
-    <img src="/images/team/photoplaceholder.jpg" alt="Austin Huang" class="w-full h-64 object-cover rounded-lg" />
+    <img src="/images/team/austin_huang.jpeg" alt="Austin Huang" class="w-full h-64 object-cover rounded-lg" />
     <p class="mb-0 mt-3 font-mono text-sm">Austin Huang</p>
     <p class="mb-0 mt-1 text-sm">Software Developer, New York University</p>
     <div class="mt-2 flex gap-2 text-xs">
