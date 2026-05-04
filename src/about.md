@@ -46,7 +46,7 @@ Build with code. Remix with your own style.
   <div class="rounded-xl border-2 border-dashed border-neutral-400 bg-neutral-100 p-4">
     <img src="/images/team/francisco-castro.jpg" alt="Francisco Castro" class="w-full h-64 object-cover rounded-lg" />
     <p class="mb-0 mt-3 font-mono text-sm">Francisco Castro, PhD</p>
-    <p class="mb-0 mt-1 text-sm">Senior Research Scientist and Technical Lead</p>
+    <p class="mb-0 mt-1 text-sm">Senior Research Scientist and Technical Lead, New York University</p>
     <div class="mt-2 flex gap-2 text-xs">
       <a href="https://www.linkedin.com/in/fevgcastro/" class="text-blue-600 hover:underline">LinkedIn</a>
       <span class="text-neutral-400">•</span>
