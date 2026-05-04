@@ -96,7 +96,7 @@ Build with code. Remix with your own style.
   </div>
 
   <div class="rounded-xl border-2 border-dashed border-neutral-400 bg-neutral-100 p-4">
-    <img src="/images/team/sabria_islam.jpeg" alt="Sabria Islam" class="w-full h-64 object-cover rounded-lg" />
+    <img src="/images/team/photoplaceholder.jpg" alt="Sabria Islam" class="w-full h-64 object-cover rounded-lg" />
     <p class="mb-0 mt-3 font-mono text-sm">Sabria Islam</p>
     <p class="mb-0 mt-1 text-sm">Content Developer and Researcher, New York University</p>
     <div class="mt-2 flex gap-2 text-xs">
