@@ -54,8 +54,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;display=swap" media="print" onload="this.media='all'; this.onload=null;">
 
 		
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-C8MBt6pX.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-p3U44ESl.css">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-D47YIihC.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-VkbeCo7B.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-cream font-sans">
     <site-header>
@@ -75,12 +75,11 @@
 
     <div><main id="main-content" tabindex="-1">
 <div>
-  <div class="home relative overflow-hidden">
+  <div x-data="{}" class="home relative overflow-hidden">
     <div class="m-auto prose md:prose-base prose-sm size-fit py-[5%] px-4">
       <h1>Creative Computing Cookbook</h1>
-<p><strong>Builds</strong> are creative projects made by students or instructors integrating technology into dance, performance, visual art and poetry. Builds vary in complexity, but most would take several hours to replicate. We hope you'll use them as inspiration for your own creative goals.</p>
-<p><strong>Foundations</strong> provide information about individual electronic components. In each post you'll find details about how to plug elements in, example code, and opportunities to practice your code.</p>
-
+      <p x-show="$store.store.category === 'Builds'"><strong>Builds</strong> are creative projects made by students or instructors integrating technology into dance, performance, visual art and poetry. Builds vary in complexity, but most would take several hours to replicate. We hope you'll use them as inspiration for your own creative goals.</p>
+      <p x-show="$store.store.category === 'Foundations'"><strong>Foundations</strong> provide information about individual electronic components. In each post you'll find details about how to plug elements in, example code, and opportunities to practice your code.</p>
     </div>
     <div class="size-[100%]">
       <div class="slideshow-slide"></div>
@@ -111,14 +110,14 @@
       <div class="archive-filter-divider"></div>
 
       <!-- Category dropdown buttons -->
-      <div class="archive-cat-group">
+      <div x-on:click.outside="openDropdown = null" class="archive-cat-group">
         <template x-for="cat in Object.keys(setup)">
           <div class="archive-cat-wrap">
             <button type="button" x-bind:class="openDropdown === cat &amp;&amp; 'is-active'" x-on:click="toggleDropdown(cat)" class="archive-cat-btn">
               <span x-text="cat"></span>
               <svg x-bind:class="openDropdown === cat ? 'archive-cat-chevron--open' : ''" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="archive-cat-chevron"><path d="M6 9l6 6 6-6"></path></svg>
             </button>
-            <div x-show="openDropdown === cat" x-on:click.outside="openDropdown = null" x-transition="" class="archive-dropdown">
+            <div x-show="openDropdown === cat" x-transition="" class="archive-dropdown">
               <template x-for="tag in setup[cat]">
                 <label x-on:click="$store.store.toggleTag(tag)" class="archive-tag-row">
                   <span x-text="tag + ' (' + $store.store.countPagesForTag(tag) + ')' " class="archive-tag-label"></span>
@@ -665,8 +664,16 @@ document.addEventListener('alpine:init', () => {
       return Math.ceil(this.currentItems.length / this.maxSize);
     },
 
+    itemsForCountContext() {
+      return Object.values(this.allItems).filter(itemTags => {
+        if (!itemTags.includes(this.category)) return false;
+        if (this.category === 'Builds' && this.hardware !== 'All' && !itemTags.includes(this.hardware)) return false;
+        return true;
+      });
+    },
+
     countPagesForTag(tag) {
-      return this.currentItems.map(i => this.allItems[i]).filter(i => i.includes(tag)).length;
+      return this.itemsForCountContext().filter(itemTags => itemTags.includes(tag)).length;
     },
 
     shouldShow(index) {
