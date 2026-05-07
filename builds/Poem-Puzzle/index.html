@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Poem Puzzle :: Cookbook Demo</title>
+    <title>Poem Puzzle :: Creative Computing Cookbook</title>
 
 
     <link rel="canonical" href="https://localhost:8000/builds/Poem-Puzzle/">
 
 
-    <meta property="og:site_name" content="Cookbook Demo">
-  <meta property="og:title" content="Poem Puzzle :: Cookbook Demo">
+    <meta property="og:site_name" content="Creative Computing Cookbook">
+  <meta property="og:title" content="Poem Puzzle :: Creative Computing Cookbook">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://localhost:8000/builds/Poem-Puzzle/">
   
@@ -21,8 +21,8 @@
     <meta name="twitter:card" content="summary_large_image">
   <meta property="og:image" content="https://localhost:8000/images/social-share.png">
   <meta name="twitter:image" content="https://localhost:8000/images/social-share.png">
-  <meta property="og:image:alt" content="Page image for Cookbook Demo">
-  <meta name="twitter:image:alt" content="Page image for Cookbook Demo">
+  <meta property="og:image:alt" content="Page image for Creative Computing Cookbook">
+  <meta name="twitter:image:alt" content="Page image for Creative Computing Cookbook">
   
 
 
@@ -54,8 +54,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;display=swap" media="print" onload="this.media='all'; this.onload=null;">
 
 		
-    <script type="module" crossorigin src="/cwp-11ty/assets/main-D47YIihC.js"></script>
-    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-VkbeCo7B.css">
+    <script type="module" crossorigin src="/cwp-11ty/assets/main-BL4lm5ub.js"></script>
+    <link rel="stylesheet" crossorigin href="/cwp-11ty/assets/main-DBHcCW7R.css">
   </head>
   <body data-env="{{ node.env }}" class="min-h-screen bg-cream font-sans">
     <site-header>
@@ -63,14 +63,40 @@
 <header class="new-header">
   <div class="new-header-content">
     <a href="/cwp-11ty/" class="site-title">Creative Computing Cookbook</a>
-    <ul class="nav-links">
-      <li><a href="/cwp-11ty/all-recipes/#builds">Builds</a></li>
-      <li><a href="/cwp-11ty/all-recipes/#foundations">Foundations</a></li>
-      <li><a href="/cwp-11ty/learning-activities/">Learning Activities</a></li>
-      <li><a href="/cwp-11ty/about/">About</a></li>
-    </ul>
+    <nav aria-label="Primary" class="nav-links-desktop">
+      <ul class="nav-links">
+        <li><a href="/cwp-11ty/all-recipes/#builds">Builds</a></li>
+        <li><a href="/cwp-11ty/all-recipes/#foundations">Foundations</a></li>
+        <li><a href="/cwp-11ty/learning-activities/">Learning Activities</a></li>
+        <li><a href="/cwp-11ty/about/">About</a></li>
+      </ul>
+    </nav>
+    <details class="nav-links-mobile">
+      <summary aria-label="Toggle navigation" class="nav-toggle">
+        <span aria-hidden="true" class="nav-toggle-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </summary>
+      <div data-nav-close="" class="nav-drawer-backdrop"></div>
+      <nav aria-label="Mobile" class="nav-drawer">
+        <div class="nav-drawer-header">
+          <p class="nav-drawer-title">Navigation</p>
+          <button type="button" aria-label="Close navigation" data-nav-close="" class="nav-drawer-close">×</button>
+        </div>
+        <ul class="nav-links nav-drawer-list">
+          <li><a href="/cwp-11ty/all-recipes/#builds">Builds</a></li>
+          <li><a href="/cwp-11ty/all-recipes/#foundations">Foundations</a></li>
+          <li><a href="/cwp-11ty/learning-activities/">Learning Activities</a></li>
+          <li><a href="/cwp-11ty/about/">About</a></li>
+        </ul>
+      </nav>
+    </details>
   </div>
 </header>
+
+
 </site-header>
 
     <div><main id="main-content" tabindex="-1">
@@ -453,6 +479,19 @@
 
     
     <script>/*__EleventyBundle:get:js:default:EleventyBundle__*/
+document.addEventListener('click', (event) => {
+    const closeTarget = event.target.closest('[data-nav-close]');
+    if (!closeTarget) return;
+    const details = event.target.closest('.nav-links-mobile');
+    if (details) details.removeAttribute('open');
+  });
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('.nav-drawer a');
+    if (!link) return;
+    const details = event.target.closest('.nav-links-mobile');
+    if (details) details.removeAttribute('open');
+  });
 if ('scrollRestoration' in history) {
 				history.scrollRestoration = 'manual';
 			}
@@ -519,6 +558,136 @@ document.addEventListener('alpine:init', () => {
     padding: 0;
   }
 
+  .nav-links-desktop {
+    display: block;
+  }
+
+  .nav-links-mobile {
+    display: none;
+  }
+
+  .nav-toggle {
+    align-items: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 10px;
+    padding: 6px;
+    list-style: none;
+  }
+
+  .nav-toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .nav-toggle-icon {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .nav-toggle-icon span {
+    background: #1e1e1e;
+    border-radius: 2px;
+    display: block;
+    height: 2px;
+    width: 16px;
+  }
+
+  .nav-drawer-backdrop {
+    background: rgba(0, 0, 0, 0.35);
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    transition: opacity 0.2s ease;
+    z-index: 40;
+  }
+
+  .nav-drawer {
+    background: linear-gradient(180deg, #fff3dc 0%, #fffaef 100%);
+    border-left: 2px solid rgba(0, 0, 0, 0.08);
+    box-shadow: -12px 0 24px rgba(0, 0, 0, 0.18);
+    height: 100vh;
+    padding: 20px 18px 24px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: translateX(100%);
+    transition: transform 0.2s ease;
+    width: min(80vw, 320px);
+    z-index: 50;
+  }
+
+  .nav-drawer-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav-drawer-title {
+    color: #1e1e1e;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .nav-drawer-close {
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: #1e1e1e;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 22px;
+    justify-content: center;
+    line-height: 1;
+    padding: 6px 8px;
+  }
+
+  .nav-drawer-close:hover,
+  .nav-drawer-close:focus-visible {
+    background: rgba(247, 203, 156, 0.55);
+    border-radius: 10px;
+    box-shadow: -4px 4px 0 rgb(0 0 0 / 14%);
+  }
+
+  .nav-drawer-list {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .nav-drawer-list a {
+    background: #f7cb9c;
+    border-radius: 12px;
+    box-shadow: -4px 4px 0 rgb(0 0 0 / 12%);
+    font-weight: 600;
+    padding: 10px 14px;
+    width: 100%;
+  }
+
+  .nav-drawer-list a:hover,
+  .nav-drawer-list a:focus-visible {
+    background: #f79cb6;
+    box-shadow: -6px 6px 0 rgb(0 0 0 / 18%);
+    transform: translate(1px, -1px);
+  }
+
+  .nav-links-mobile[open] .nav-drawer-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links-mobile[open] .nav-drawer {
+    transform: translateX(0);
+  }
+
   .nav-links a {
     border-radius: 12px;
     font-family: 'General Sans', -apple-system, sans-serif;
@@ -565,6 +734,33 @@ document.addEventListener('alpine:init', () => {
     .nav-links a {
       font-size: 16px;
       padding: 8px 12px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .new-header-content {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 12px 16px;
+      justify-content: flex-start;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      padding: 6px 10px;
+    }
+
+    .nav-links-desktop {
+      display: none;
+    }
+
+    .nav-links-mobile {
+      display: block;
     }
   }</style>
 
