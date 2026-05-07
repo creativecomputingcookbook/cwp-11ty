@@ -13,7 +13,7 @@
 }
 
 body {
-  background: white;
+  background: #fffaef;
   margin: 0;
   padding: 0;
 }
@@ -88,6 +88,13 @@ h4 {
   padding: 10px;
   text-align: left;
   width: fit-content;
+}
+
+.prose-lg h2,
+.prose-lg h3,
+.prose-lg h4 {
+  padding: 0;
+  width: auto;
 }
 
 .filter-option {
