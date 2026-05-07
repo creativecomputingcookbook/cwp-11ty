@@ -428,9 +428,10 @@ code .highlight-line::before {
   display: flex;
   gap: 16px;
   justify-content: center;
-  overflow: hidden;
+  overflow-x: auto;
   padding-bottom: 0;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .home-preview-row::-webkit-scrollbar {
@@ -1230,5 +1231,128 @@ main#main-content {
 
   .home-footer {
     padding: 20px;
+  }
+}
+
+@media (width <= 1024px) {
+  .home-preview-row {
+    justify-content: flex-start;
+    padding: 0 4px 8px;
+  }
+}
+
+@media (width <= 640px) {
+  .home-hero-content {
+    padding: 56px 0 32px;
+  }
+
+  .home-hero-title {
+    font-size: 28px;
+  }
+
+  .home-hero-subtitle {
+    font-size: 16px;
+  }
+
+  .home-explore-btn {
+    font-size: 16px;
+    margin: 12px auto 32px;
+    padding: 10px 18px;
+  }
+
+  .home-preview-row {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 0 4px 8px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .home-preview-card {
+    scroll-snap-align: start;
+    transform: none;
+    width: 200px;
+  }
+
+  .home-preview-card-img {
+    height: 168px;
+  }
+
+  .home-content {
+    padding: 32px 16px 60px;
+  }
+
+  .home-section-card {
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .home-section-label {
+    font-size: 20px;
+  }
+
+  .home-section-label-sm {
+    font-size: 18px;
+  }
+
+  .home-section-desc,
+  .home-section-desc-sm {
+    font-size: 20px;
+  }
+
+  .home-hw-card {
+    padding: 16px;
+  }
+
+  .home-hw-label {
+    font-size: 18px;
+  }
+
+  .home-hw-desc {
+    font-size: 20px;
+  }
+
+  .home-hw-illustration {
+    flex-basis: 140px;
+    height: 140px;
+  }
+
+  .home-hw-illustration-img-trinket {
+    width: 220px;
+  }
+
+  .home-hw-illustration-img-arduino {
+    width: 280px;
+  }
+
+  .archive-page {
+    padding: 20px 16px 48px;
+  }
+
+  .archive-filter-bar {
+    gap: 10px;
+    justify-content: flex-start;
+    padding: 12px;
+  }
+
+  .archive-filter-divider {
+    display: none;
+  }
+
+  .archive-hw-group,
+  .archive-cat-group {
+    gap: 8px;
+  }
+
+  .archive-hw-btn,
+  .archive-cat-btn {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .archive-dropdown {
+    left: 0;
+    min-width: 0;
+    right: 0;
+    width: 100%;
   }
 }
