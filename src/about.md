@@ -138,16 +138,14 @@ Build with code. Remix with your own style.
 <div class="not-prose mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
   <div class="rounded-xl p-4 flex items-center gap-4">
     <img src="/images/team/cwp_logo.webp" alt="Community-Word Project logo" class="w-20 h-20 object-contain" />
-    <div>
-      <p class="mb-0 font-mono text-sm">Community-Word Project</p>
-      <a href="https://communitywordproject.org/" class="text-blue-600 hover:underline">Website</a>
+    <div class="flex flex-col justify-center">
+      <a href="https://communitywordproject.org/" class="font-mono text-base text-blue-600 hover:underline">Community-Word Project</a>
     </div>
   </div>
   <div class="rounded-xl p-4 flex items-center gap-4">
     <img src="/images/team/stem_from_dance_logo.jpeg" alt="STEM From Dance logo" class="w-20 h-20 object-contain" />
-    <div>
-      <p class="mb-0 font-mono text-sm">STEM From Dance</p>
-      <a href="https://stemfromdance.org/" class="text-blue-600 hover:underline">Website</a>
+    <div class="flex flex-col justify-center">
+      <a href="https://stemfromdance.org/" class="font-mono text-base text-blue-600 hover:underline">STEM From Dance</a>
     </div>
   </div>
 </div>
@@ -160,9 +158,8 @@ Want to collaborate? Please contact us at the email below or any member of the P
 
 **Email:** creativecomputingcookbook@gmail.com
 
-## Project Support and Funding
-
-<div class="not-prose mt-4">
+<div class="not-prose mt-6 flex flex-wrap items-center gap-4">
+  <h2 class="text-2xl font-bold leading-tight text-gray-900 m-0">Project Support and Funding</h2>
   <img src="/images/team/NSF_NSB_LogoLockup_RGB.png" alt="National Science Foundation logo" class="h-20 w-auto object-contain" />
 </div>
 
