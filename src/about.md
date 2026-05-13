@@ -9,10 +9,7 @@ eleventyExcludeFromCollections: true
 
 ## Creative Computing Cookbook
 
-Creative technology for movement, art, and storytelling.
-
-Build with code. Remix with your own style.
-Build with code. Remix with your own style.
+The Creative Computing Cookbook is an interactive educational resource for creative computing that features project recipes with fun and engaging combinations of visual arts, poetry, dance, and computing. The recipes in the Cookbook were developed using a problem-to-project-based structure that builds on cognitivist and constructivist theories of learning and the instructional scaffolds we use are informed by theory and principles of case-based reasoning, worked examples, and Parsons problems.
 
 ## Our Team
 
