@@ -158,9 +158,9 @@ Want to collaborate? Please contact us at the email below or any member of the P
 
 **Email:** creativecomputingcookbook@gmail.com
 
-<div class="not-prose mt-6 flex flex-wrap items-center gap-4">
-  <h2 class="text-2xl font-bold leading-tight text-gray-900 m-0">Project Support and Funding</h2>
-  <img src="/images/team/NSF_NSB_LogoLockup_RGB.png" alt="National Science Foundation logo" class="h-20 w-auto object-contain" />
-</div>
+## Project Support and Funding
 
-This material is based upon work supported by the US National Science Foundation under Grant Nos. ITEST 2241809 and 2127309 to the Computing Research Association for the CIFellows 2021 Project. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+<div class="not-prose mt-4 flex items-start gap-4">
+  <img src="/images/team/NSF_NSB_LogoLockup_RGB.png" alt="National Science Foundation logo" class="h-28 w-auto object-contain flex-shrink-0" />
+  <p class="m-0">This material is based upon work supported by the US National Science Foundation under Grant Nos. ITEST 2241809 and 2127309 to the Computing Research Association for the CIFellows 2021 Project. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</p>
+</div>
